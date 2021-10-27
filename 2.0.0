@@ -1,0 +1,10 @@
++ eslint-plugin-prettier@4.0.0
++ prettier@2.4.1
++ eslint@7.32.0
+added 6 packages from 4 contributors, removed 30 packages, updated 4 packages, moved 1 package and audited 1999 packages in 15.379s
+
+155 packages are looking for funding
+  run `npm fund` for details
+
+found 27 vulnerabilities (8 moderate, 18 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
