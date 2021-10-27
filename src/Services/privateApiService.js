@@ -1,10 +1,16 @@
-import axios from "axios";
+import axios from "axios"; //import axios
+import getToken from "../utils/getToken"; //import gettoken
 
+// getting API-URL
 const API = process.env.REACT_APP_API_URL;
 
-//function for add authorization in header
-const getToken = (token) => {
-  const config = {
+// POST
+export const Post = async (url, body) => {
+  //getting token
+  const token = getToken();
+
+  //set header
+  const header = {
     headers: {
       Group: "Grupo 93",
       Accept: "*/*",
@@ -12,20 +18,11 @@ const getToken = (token) => {
       Authorization: token,
     },
   };
-  return config;
+
+  try {
+    let response = await axios.post(`${API}/${url}`, body, header);
+    return JSON.stringify(response);
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-// POST
-const Post = (URI, body, token) => {
-  //set config
-  const config = getToken(token);
-  // using axios for petition
-  axios
-    .post(`${API}/${URI}`, body, config)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-};
-
-
-
-export { Post };
