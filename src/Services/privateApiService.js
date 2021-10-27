@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+const getToken = () => {
+    const token = localStorage.getItem('token_agent');
+    if (token) {
+        return `Bearer ${token}`;
+    }
+    return null;
+};
+
 const config = {
     headers: { 
         Group: 93
@@ -21,7 +29,7 @@ export const Patch = async (URI, id, body) => {
         Group: "Grupo 93",
         Accept: "*/*",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: token
       },
     };
     try {
