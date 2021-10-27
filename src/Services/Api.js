@@ -3,8 +3,6 @@
 import isString from "lodash/isString";
 import axios from "axios";
 
-// const {API} = process.env;
-
 const getTokenUser = () => {
   const token = localStorage.getItem("token_agent");
   if (token) {
