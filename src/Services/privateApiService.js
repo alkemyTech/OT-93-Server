@@ -1,15 +1,31 @@
-import axios from 'axios';
+import axios from "axios";
 
-const config = {
+const API = process.env.REACT_APP_API_URL;
+
+//function for add authorization in header
+const getToken = (token) => {
+  const config = {
     headers: {
-        Group: 01                //Aqui va el ID del equipo!!
-    }
-}
+      Group: "Grupo 93",
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  return config;
+};
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-}
+// POST
+const Post = (URI, body, token) => {
+  //set config
+  const config = getToken(token);
+  // using axios for petition
+  axios
+    .post(`${API}/${URI}`, body, config)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
 
-export default Get
+
+
+export { Post };
