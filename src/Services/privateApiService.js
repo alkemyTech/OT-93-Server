@@ -1,9 +1,6 @@
 import axios from "axios"; //import axios
 import getToken from "../utils/getToken"; //import gettoken
 
-// getting API-URL
-const API = process.env.REACT_APP_API_URL;
-
 // DELETE
 export const Delete = async (URI, id) => {
   //getting token
@@ -19,7 +16,7 @@ export const Delete = async (URI, id) => {
   };
 
   try {
-    let response = await axios.post(`${API}/${URI}/${id}`, header);
+    let response = await axios.post(`${process.env.REACT_APP_API_URL}/${URI}/${id}`, header);
     return JSON.stringify(response);
   } catch (error) {
     console.log(error);
