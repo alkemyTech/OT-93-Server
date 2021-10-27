@@ -5,7 +5,7 @@ import getToken from "../utils/getToken"; //import gettoken
 const API = process.env.REACT_APP_API_URL;
 
 // POST
-export const Post = async (url, body) => {
+export const Post = async (URI, body) => {
   //getting token
   const token = getToken();
 
@@ -20,7 +20,7 @@ export const Post = async (url, body) => {
   };
 
   try {
-    let response = await axios.post(`${API}/${url}`, body, header);
+    let response = await axios.post(`${API}/${URI}`, body, header);
     return JSON.stringify(response);
   } catch (error) {
     console.log(error);
