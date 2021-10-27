@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+const getToken = () => {
+    const token = localStorage.getItem('token_agent');
+    if (token) {
+        return `Bearer ${token}`;
+    }
+    return null;
+};
+
 const config = {
     headers: { 
         Group: 93
