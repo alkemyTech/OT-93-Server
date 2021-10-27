@@ -3,10 +3,8 @@ import logo from '../logo.svg';
 import { Counter } from '../features/counter/Counter';
 import '../css/App.css';
 import Router from './router';
-import { Post } from '../Services/privateApiService';
 
 function App() {
-  console.log(Post("posts",{"title":"hola"}))
   return (
     <>
       <Router />
