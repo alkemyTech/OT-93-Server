@@ -21,7 +21,7 @@ export const Patch = async (URI, id, body) => {
         Group: "Grupo 93",
         Accept: "*/*",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: token
       },
     };
     try {
