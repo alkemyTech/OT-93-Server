@@ -5,7 +5,7 @@ import getToken from "../utils/getToken"; //import gettoken
 const API = process.env.REACT_APP_API_URL;
 
 // DELETE
-export const Delete = async (url, id) => {
+export const Delete = async (URI, id) => {
   //getting token
   const token = getToken();
 
@@ -20,7 +20,7 @@ export const Delete = async (url, id) => {
   };
 
   try {
-    let response = await axios.post(`${API}/${url}/${id}`, header);
+    let response = await axios.post(`${API}/${URI}/${id}`, header);
     return JSON.stringify(response);
   } catch (error) {
     console.log(error);
