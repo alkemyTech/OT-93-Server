@@ -67,6 +67,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx}": [
       "eslint --config ./.eslintrc.json --ext js  --ext jsx "
-    ]
+    ],
+    "*.js": "eslint --cache --fix"
   }
 }
