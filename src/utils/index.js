@@ -5,6 +5,7 @@ import pick from 'lodash/pick';
 import noop from 'lodash/noop';
 import routeContent from './navigation';
 
+
 export const getRoutes = entity => {
     if (isArray(entity)) {
         return pick(routeContent, entity);
@@ -35,3 +36,75 @@ export function swalConfirmAction(icon, title, text, confirmButtonText, cancelBu
         return actionConfirm();
     });
 }
+
+export const authUser = () => {
+    if (localStorage.token === undefined) {
+        return false
+    } else {
+        return true
+    }
+}
+const mainRoutes = getRoutes('mainRoutes');
+
+export const publicHeaderDataArray = [
+    {
+        name: 'Home',
+        label: 'Inicio',
+        path: mainRoutes.home,
+
+    },
+    {
+        name: 'About us',
+        label: 'Nosotros',
+        path: mainRoutes.aboutUs,
+    },
+    {
+        name: 'Contact',
+        label: 'Contacto',
+        path: mainRoutes.contact,
+
+    },
+    {
+        name: 'Toys campaign',
+        label: 'Campaña juguetes',
+        path: mainRoutes.toysCampaign,
+
+    },
+    {
+        name: 'School campaign',
+        label: 'Campaña materiales escolares',
+        path: mainRoutes.schoolCampaign,
+
+    }
+]
+export const privateHeaderDataArray = [
+    {
+        name: 'Home',
+        label: 'Inicio',
+        path: mainRoutes.home,
+
+    },
+    {
+        name: 'About us',
+        label: 'Nosotros',
+        path: mainRoutes.aboutUs,
+    },
+    {
+        name: 'Contact',
+        label: 'Contacto',
+        path: mainRoutes.contact,
+
+    },
+    {
+        name: 'Toys campaign',
+        label: 'Campaña juguetes',
+        path: mainRoutes.toysCampaign,
+
+    },
+    {
+        name: 'School campaign',
+        label: 'Campaña materiales escolares',
+        path: mainRoutes.schoolCampaign,
+
+    }
+]
