@@ -1,14 +1,20 @@
 import React from "react";
-import logo from "../logo.svg";
-import { Counter } from "../features/counter/Counter";
 import "../css/App.css";
+import { HashRouter } from "react-router-dom";
 import Router from "./router";
+import Footer from "./Footer";
+import Header from "./Header";
 
 function App() {
   return (
     <>
-      <Router />
-      <div className="App"></div>
+      <div className="App">
+        <HashRouter>
+          <Header />
+          <Router />
+          <Footer />
+        </HashRouter>
+      </div>
     </>
   );
 }

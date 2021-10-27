@@ -46,7 +46,7 @@ a {
   transition: 0.3s ease;
   font-size: 20px;
   border-bottom: 1px solid var(--primaryClr);
-  color: #6956ec;
+  color: #6956ec !important;
 }
 
 a:hover {
