@@ -1,15 +1,28 @@
-import axios from 'axios';
+import axios from "axios"; //import axios
+import getToken from "../utils/getToken"; //import gettoken
 
-const config = {
+// getting API-URL
+const API = process.env.REACT_APP_API_URL;
+
+// DELETE
+export const Delete = async (url, id) => {
+  //getting token
+  const token = getToken();
+
+  //set header
+  const header = {
     headers: {
-        Group: 01                //Aqui va el ID del equipo!!
-    }
-}
+      Group: "Grupo 93",
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-}
-
-export default Get
+  try {
+    let response = await axios.post(`${API}/${url}/${id}`, header);
+    return JSON.stringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
