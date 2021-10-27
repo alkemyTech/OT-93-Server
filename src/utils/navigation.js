@@ -1,10 +1,10 @@
 const mainRoutes = {
-    home: '/',
-    news: '/news',
-    newsForm: '/new',
-    backOffice: '/backoffice'
+  home: "/",
+  news: "/novedades",
+  newsForm: "/new",
+  backOffice: "/backoffice",
 };
 
 export default {
-    mainRoutes
+  mainRoutes,
 };
