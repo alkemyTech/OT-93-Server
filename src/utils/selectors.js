@@ -1,6 +1,7 @@
 import { getRoutes } from './index'
 
-const publicRoutes = getRoutes('mainRoutes')
+const { publicRoutes } = getRoutes('mainRoutes')
+const { backOfficeRoutes } = getRoutes("mainRoutes")
 
 export const getNavigationFooter = () => {
   const navigationFooter = [
@@ -33,48 +34,48 @@ export const getNavigationFooter = () => {
   return navigationFooter
 } 
 
-// export const getNavigationBackOffice = () => {
-//   const navigationBackOffice = [
-//     {
-//       name: "news",
-//       label: "noticias",
-//       url: `${backOfficeRouts.news}`,
-//     },
-//     {
-//       name: "activities",
-//       label: "actividades",
-//       url: `${backOfficeRouts.activities}`,
-//     },
-//     {
-//       name: "categories",
-//       label: "categorias",
-//       url: `${backOfficeRouts.categories}`,
-//     },
-//     {
-//       name: "testimonials",
-//       label: "testimonios",
-//       url: `${backOfficeRouts.testimonials}`,
-//     },
-//     {
-//       name: "organization",
-//       label: "organizacion",
-//       url: `${backOfficeRouts.organization}`,
-//     },
-//     {
-//       name: "slides",
-//       label: "galeria",
-//       url: `${backOfficeRouts.slides}`,
-//     },
-//     {
-//       name: "users",
-//       label: "usuarios",
-//       url: `${backOfficeRouts.users}`,
-//     },
-//     {
-//       name: "members",
-//       label: "miembros",
-//       url: `${backOfficeRouts.members}`,
-//     },
-//   ];
-//   return navigationBackOffice;
-// };
+export const getNavigationBackOffice = () => {
+  const navigationBackOffice = [
+    {
+      name: "news",
+      label: "noticias",
+      url: `${backOfficeRoutes.news}`,
+    },
+    {
+      name: "activities",
+      label: "actividades",
+      url: `${backOfficeRoutes.activities}`,
+    },
+    {
+      name: "categories",
+      label: "categorias",
+      url: `${backOfficeRoutes.categories}`,
+    },
+    {
+      name: "testimonials",
+      label: "testimonios",
+      url: `${backOfficeRoutes.testimonials}`,
+    },
+    {
+      name: "organization",
+      label: "organizacion",
+      url: `${backOfficeRoutes.organization}`,
+    },
+    {
+      name: "slides",
+      label: "galeria",
+      url: `${backOfficeRoutes.slides}`,
+    },
+    {
+      name: "users",
+      label: "usuarios",
+      url: `${backOfficeRoutes.users}`,
+    },
+    {
+      name: "members",
+      label: "miembros",
+      url: `${backOfficeRoutes.members}`,
+    },
+  ];
+  return navigationBackOffice;
+};
