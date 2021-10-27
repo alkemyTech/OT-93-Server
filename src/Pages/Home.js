@@ -2,9 +2,9 @@ import Alerts from "../Components/Alert/Alerts";
 import React from "react";
 import { Sidenav } from "../Components/Sidenav/Sidenav";
 import { getMember } from "../utils/Const/Functions";
-
+import { sweetProps } from "../utils/Const/constants";
 const Home = () => {
-  const { name, img } = getMember(5);
+  const { name, img } = getMember(7);
 
   return (
     <div className="container-fluid">
@@ -18,7 +18,7 @@ const Home = () => {
         >
           Show Alert
         </button>
-        <Alerts show={true} icon="success" tittle="cargando..."></Alerts>
+        <Alerts {...sweetProps}></Alerts>
       </div>
     </div>
   );
