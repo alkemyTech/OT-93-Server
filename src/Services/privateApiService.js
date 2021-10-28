@@ -1,4 +1,7 @@
-import axios from 'axios';
+import axios from "axios"; //import axios
+import getToken from "../utils/getToken"; //import gettoken
+
+const API = process.env.REACT_APP_API_URL
 
 const getToken = () => {
     const token = localStorage.getItem('token_agent');
@@ -8,19 +11,28 @@ const getToken = () => {
     return null;
 };
 
-const config = {
-    headers: { 
-        Group: 93
-    }
-}
+// POST
+export const Post = async (URI, body) => {
+  //getting token
+  const token = getToken();
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config) 
-    .then(res => console.log(res)) 
-    .catch(err => console.log(err)) 
-}
+  //set header
+  const header = {
+    headers: {
+      Group: "Grupo 93",
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
 
-export default Get
+  try {
+    let response = await axios.post(`${API}/${URI}`, body, header);
+    return JSON.stringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const Patch = async (URI, id, body) => {
     const token = getToken();
