@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Col, Row, Container } from "reactstrap";
-import Sidenav from "../../Components/Sidenav/index";
-import Alerts from "../../Components/Alert/Alerts";
+import { Col, Row } from "reactstrap";
+import Sidenav from "../../Components/Sidenav";
+import Spinner from "../../Components/Spinner";
+import { spinnerProps } from "../../utils/constants";
 
 const Component = ({ welcomeText }) => {
   return (
@@ -10,14 +11,14 @@ const Component = ({ welcomeText }) => {
       <Row>
         <Col>
           <Sidenav></Sidenav>
-          {/* Show of props pass to Alerts, Must recive an object */}
-          <Alerts show={true} icon="success" title="Cargando..."></Alerts>
+
+          <Spinner {...spinnerProps}></Spinner>
           <button
             onClick={() => {
               document.location.reload();
             }}
           >
-            Show Alert
+            reload
           </button>
         </Col>
       </Row>

@@ -41,3 +41,17 @@ SHOW : Determina si la alerta se muestra, en caso de ser true se muestra, si es 
 ICON : Determina el tipo de icono de la misma, pueden ser /success/error/info/warning/question/
 
 Se implemento un archivo Css al mismo que controla la animacion del texto intermitente.
+
+
+### Spinner Component ###
+
+Se utilizo la libreria react-loader-spinner para crear un componente Spinner reutilizable.
+
+El mismo requiere de las siguientes props.
+
+visible: true    --- Determina si es visible o no.
+type: "Oval"     --- El tipo de spinner a utilizar, pueden ser Hearts-Oval-Puff-Rings-TailSpin-ThreeDots-Bars-Circles.
+color: "#db5752" --- Color del spinner.
+height: 100      ---  Height del mismo.
+width: 100       --- Width del mismo.
+timeout: 3000    --- El tiempo que se mostrara en pantalla en milisegundos
