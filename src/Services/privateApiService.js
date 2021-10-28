@@ -3,6 +3,14 @@ import getToken from "../utils/getToken"; //import gettoken
 
 const API = process.env.REACT_APP_API_URL
 
+const getToken = () => {
+    const token = localStorage.getItem('token_agent');
+    if (token) {
+        return `Bearer ${token}`;
+    }
+    return null;
+};
+
 // POST
 export const Post = async (URI, body) => {
   //getting token
@@ -25,3 +33,21 @@ export const Post = async (URI, body) => {
     console.log(error);
   }
 };
+
+export const Patch = async (URI, id, body) => {
+    const token = getToken();
+    const header = {
+      headers: {
+        Group: "Grupo 93",
+        Accept: "*/*",
+        "Content-Type": "application/json",
+        Authorization: token
+      },
+    };
+    try {
+      let response = await axios.Patch(`${API}/${URI}${id}`, body, header);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
