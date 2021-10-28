@@ -8,15 +8,12 @@ const config = {
 
 const Get = () => {
   axios.get('https://jsonplaceholder.typicode.com/users', config)
-    // eslint-disable-next-line no-console
-    .then((res) => console.log(res))
-    // eslint-disable-next-line no-console
-    .catch((err) => console.log(err));
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 };
 export default Get;
 
 export const Patch = async (URI, id, body) => {
-  // eslint-disable-next-line no-undef
   const token = getToken();
   const header = {
     headers: {
@@ -27,7 +24,6 @@ export const Patch = async (URI, id, body) => {
     },
   };
   try {
-    // eslint-disable-next-line no-undef
     const response = await axios.Patch(`${API}/${URI}${id}`, body, header);
     return response;
   } catch (error) {
@@ -35,7 +31,6 @@ export const Patch = async (URI, id, body) => {
   }
 };
 export const Delete = async (URI, id) => {
-  // eslint-disable-next-line no-undef
   const token = getToken();
   const header = {
     headers: {
@@ -47,7 +42,6 @@ export const Delete = async (URI, id) => {
   };
 
   try {
-    // eslint-disable-next-line no-undef
     const response = await axios.post(`${API}/${URI}/${id}`, header);
     return JSON.stringify(response);
   } catch (error) {
