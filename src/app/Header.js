@@ -16,7 +16,6 @@ const Header = () => {
       return 'header-link'
     }
   }
-  console.log(window.location.pathname === '/')
   return (
     <nav className='container-fluid p-0'>
       <Container>
