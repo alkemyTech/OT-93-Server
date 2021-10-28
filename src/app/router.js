@@ -10,10 +10,10 @@ import NewList from "../pages/News/List";
 // import SlidesForm from '../Components/Slides/SlidesForm';
 // import TestimonialForm from '../Components/Testimonials/TestimonialsForm';
 // import UserForm from '../Components/Users/UsersForm';
-// import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
-// import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 // import MembersForm from '../Components/Members/MembersForm';
 // import ProjectsForm from '../Components/Projects/ProjectsForm';
+import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
+import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
 const mainRoutes = getRoutes("mainRoutes");
 const backOfficeRoutes = getRoutes("mainRoutes");

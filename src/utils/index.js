@@ -42,3 +42,11 @@ export function swalConfirmAction(
     return actionConfirm();
   });
 }
+
+export const authUser = () => {
+  if (localStorage.token === undefined) {
+    return false
+  } else {
+    return true
+  }
+}
