@@ -1,9 +1,9 @@
 import React from "react";
 import { HashRouter, BrowserRouter, Route, Switch } from "react-router-dom";
 import { getRoutes } from "../utils";
-import Home from "../Pages/Home";
-import NewForm from "../Pages/News/Form";
-import NewList from "../Pages/News/List";
+import Home from "../pages/Home";
+import NewForm from "../pages/News/Form";
+import NewList from "../pages/News/List";
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
