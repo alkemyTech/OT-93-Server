@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap'
 import { authUser } from '../utils/index';
-import { publicHeaderDataArray, privateHeaderDataArray } from '../utils/index'
-import './header.css'
+import '../css/header.css'
 import ongLogo from '../images/LOGO-SOMOS MAS.png'
+import map from "lodash/map";
+import { getNavigationHeader } from '../utils/selectors';
 
 const Header = () => {
-  const publicLinks = publicHeaderDataArray
-  const privateLinks = privateHeaderDataArray
   const userAuthenticated = authUser()
   const checkPath = (path) => {
     if (window.location.pathname === path) {
@@ -26,13 +25,9 @@ const Header = () => {
             <img className='header-logo' src={ongLogo} alt="Logo ONG" />
           </Col>
           <Col lg={7} className='d-flex flex-row align-items-center'>
-            {userAuthenticated ?
-              privateLinks.map(link => {
-                return <Link to={link.path} className={`m-2  ${checkPath(link.path)}`}>{link.label}</Link>
-              })
-              : publicLinks.map(link => {
-                return <Link to={link.path} className={`m-2  ${checkPath(link.path)}`}>{link.label} </Link>
-              })
+            {map(getNavigationHeader(userAuthenticated), (e, index) => {
+              return <Link to={`${e.url}`} className={`m-2  ${checkPath(e.url)}`} key={index}>{e.label} </Link>
+            })
             }
           </Col>
           <Col lg={3} className='d-flex flex-row align-items-center justify-content-end'>

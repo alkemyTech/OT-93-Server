@@ -1,6 +1,6 @@
 import { getRoutes } from "./index";
 
-const { publicRoutes } = getRoutes("mainRoutes");
+const { publicRoutes, landingPages } = getRoutes("mainRoutes");
 const { backOfficeRoutes } = getRoutes("mainRoutes");
 
 export const getNavigationBackOffice = () => {
@@ -86,3 +86,70 @@ export const getNavigationFooter = () => {
   ];
   return navigationFooter;
 };
+export const getNavigationHeader = (userAuthentication) => {
+  const publicHeader = [
+    {
+      name: 'Home',
+      label: 'Inicio',
+      url: publicRoutes.home,
+
+    },
+    {
+      name: 'Us',
+      label: 'Nosotros',
+      url: publicRoutes.us,
+    },
+    {
+      name: 'Contact',
+      label: 'Contacto',
+      url: publicRoutes.contact,
+
+    },
+    {
+      name: 'Toys campaign',
+      label: 'Campaña juguetes',
+      url: landingPages.toysCampaign,
+
+    },
+    {
+      name: 'School campaign',
+      label: 'Campaña escolar',
+      url: landingPages.schoolCampaign,
+
+    }
+  ]
+  const publicAndBackOfficeHeader = [
+    {
+      name: 'Home',
+      label: 'Inicio',
+      url: publicRoutes.home,
+
+    },
+    {
+      name: 'Us',
+      label: 'Nosotros',
+      url: publicRoutes.us,
+    },
+    {
+      name: 'Contact',
+      label: 'Contacto',
+      url: publicRoutes.contact,
+
+    },
+    {
+      name: 'Toys campaign',
+      label: 'Campaña juguetes',
+      url: landingPages.toysCampaign,
+
+    },
+    {
+      name: 'School campaign',
+      label: 'Campaña escolar',
+      url: landingPages.schoolCampaign,
+
+    }
+  ]
+  return userAuthentication ?
+    publicAndBackOfficeHeader
+    : publicHeader
+}

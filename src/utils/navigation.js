@@ -27,6 +27,10 @@ const mainRoutes = {
     editProfile: "/editProfile",
     backOffice: "/backOffice",
   },
+  landingPages: {
+    toysCampaign: "/toys-campaign",
+    schoolCampaign: "/school-campaign"
+  }
 };
 
 export default {

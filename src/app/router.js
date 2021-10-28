@@ -14,8 +14,6 @@ import NewList from "../pages/News/List";
 // import ProjectsForm from '../Components/Projects/ProjectsForm';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
-import AboutUs from '../pages/AboutUs/';
-import Contact from '../pages/Contact/';
 
 const mainRoutes = getRoutes("mainRoutes");
 const backOfficeRoutes = getRoutes("mainRoutes");
