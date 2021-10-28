@@ -1,0 +1,18 @@
+.welcome-text {
+  font-family: Montserrat;
+}
+.news-link {
+  color: #18a0fb;
+}
+.news-btn {
+  color: #18a0fb !important;
+  border-color: #18a0fb !important;
+}
+.news-btn:hover {
+  color: #fff !important;
+  background-color: #18a0fb;
+}
+.news-btn:active {
+  color: #fff !important;
+  background-color: #18a0fb;
+}
