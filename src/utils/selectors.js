@@ -61,27 +61,27 @@ export const getNavigationFooter = () => {
     {
       name: "news",
       label: "Noticias",
-      url: publicRoutes.news,
+      url: `${publicRoutes.news}`,
     },
     {
       name: "activities",
       label: "Actividades",
-      url: publicRoutes.activities,
+      url: `${publicRoutes.activities}`,
     },
     {
       name: "testimonials",
       label: "Testimonios",
-      url: publicRoutes.testimonials,
+      url: `${publicRoutes.testimonials}`,
     },
     {
       name: "us",
       label: "Nosotros",
-      url: publicRoutes.us,
+      url: `${publicRoutes.us}`,
     },
     {
       name: "contact",
       label: "Contacto",
-      url: publicRoutes.contact,
+      url: `${publicRoutes.contact}`,
     },
   ];
   return navigationFooter;
