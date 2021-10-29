@@ -16,12 +16,12 @@
     height: 7rem;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 992px) {
   .header-slogan {
     display: flex;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1400px) {
   .header-container {
     background-color: #50c87880;
   }
