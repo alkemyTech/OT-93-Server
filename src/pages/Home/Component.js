@@ -1,17 +1,21 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row } from 'reactstrap';
-import Form from '../../Components/Edit-Create-Form';
+import { Col, Container, Row } from 'reactstrap';
+import Spinner from '../../Components/Spinner';
+import Sidebar from '../../Components/Sidenav';
 
 const Component = ({ welcomeText }) => (
-  <div>
+  <Container fluid>
     <Row>
       <Col>
         <h1>{welcomeText}</h1>
-        <Form />
+        <Sidebar />
+        <Spinner show text="cargando" />
       </Col>
     </Row>
-  </div>
+  </Container>
 );
 
 Component.propTypes = {
