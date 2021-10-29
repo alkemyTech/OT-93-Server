@@ -12,4 +12,16 @@ const get = () => {
     .catch(err => console.log(err))
 }
 
+export const Put = async (URL, id, body) => {
+    const config = getTokenHeader();
+    
+    try {
+      const response = await axios.put(`${API}/${URI}${id}`, body, config);
+    return response;
+    } catch (err) {
+      return err;
+    }
+  }
+
+
 export default get
