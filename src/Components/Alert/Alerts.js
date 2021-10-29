@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import swal from "sweetalert2";
-import PropTypes from "prop-types";
-import "../../css/Alert.css";
+import { useEffect } from 'react';
+import swal from 'sweetalert2';
+import PropTypes from 'prop-types';
+import '../../css/Alert.css';
 
 const Alert = ({ show, title, icon }) => {
   useEffect(() => {
     if (show) {
       const alert = swal.fire({
-        position: "center",
+        position: 'center',
         title: `${title}`,
-        padding: "1rem 2rem",
+        padding: '1rem 2rem',
         icon: `${icon}`,
         timer: 2500,
         showConfirmButton: false,
@@ -18,7 +18,7 @@ const Alert = ({ show, title, icon }) => {
         allowEscapeKey: false,
         stopKeydownPropagation: false,
       });
-      swal.getContainer().style.zIndex = "3000";
+      swal.getContainer().style.zIndex = '3000';
       swal.showLoading();
     }
   }, [show]);
@@ -38,6 +38,6 @@ Alert.propTypes = {
 
 Alert.defaultProps = {
   show: true,
-  title: "cargando",
-  icon: "success",
+  title: 'cargando',
+  icon: 'success',
 };
