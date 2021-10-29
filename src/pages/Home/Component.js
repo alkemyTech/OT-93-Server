@@ -1,28 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'reactstrap';
-import Sidenav from '../../Components/Sidenav/index';
-import Alerts from '../../Components/Alert/Alerts';
+import Spinner from '../../Components/Spinner';
 
-const Component = ({ welcomeText }) => (
+const Component = ({ welcomeText }) => {
+  // if show === true, the component is visible, if it´s false not.
+  const show = true;
+
+  return (
     <div>
       <Row>
         <Col>
-          <Sidenav />
-          {/* Show of props pass to Alerts, Must recive an object */}
-          <Alerts show icon="success" title="Cargando..." />
-          <button
-            type="button"
-            onClick={() => {
-              document.location.reload();
-            }}
-          >
-            {welcomeText}
-          </button>
+          <h1>{welcomeText}</h1>
+          <Spinner show={show} text="Cargando.." />
         </Col>
       </Row>
     </div>
-);
+  );
+};
 
 Component.propTypes = {
   welcomeText: PropTypes.string.isRequired,

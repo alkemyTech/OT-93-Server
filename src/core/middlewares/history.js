@@ -1,31 +1,31 @@
-/* eslint-disable no-restricted-globals */
+// /* eslint-disable no-restricted-globals */
 
-import { createHashHistory } from 'history';
-import qs from 'qs';
+// import { createHashHistory } from 'history';
+// import qs from 'qs';
 
-const history = createHashHistory();
+// const history = createHashHistory();
 
-history.location = {
-  ...history.location,
-  query: qs.parse(history.location.search.substr(1)),
-  state: {
-  },
-};
-history.listen(() => {
-  history.location = {
-    ...history.location,
-    query: qs.parse(history.location.search.substr(1)),
-    state: history.location.state || {
-    },
-  };
-});
+// history.location = {
+//   ...history.location,
+//   query: qs.parse(history.location.search.substr(1)),
+//   state: {
+//   },
+// };
+// history.listen(() => {
+//   history.location = {
+//     ...history.location,
+//     query: qs.parse(history.location.search.substr(1)),
+//     state: history.location.state || {
+//     },
+//   };
+// });
 
-const {
-  go, goBack, push, replace, getRedirectPath,
-} = history;
+// const {
+//   go, goBack, push, replace, getRedirectPath,
+// } = history;
 
-export {
-  go, goBack, push, replace, getRedirectPath,
-};
+// export {
+//   go, goBack, push, replace, getRedirectPath,
+// };
 
-export default history;
+// export default history;
