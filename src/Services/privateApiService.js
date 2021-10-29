@@ -16,7 +16,7 @@ export const Delete = async (URI, id) => {
   };
 
   try {
-    const response = await axios.post(`${API}/${URI}/${id}`, header);
+    const response = await axios.delete(`${API}/${URI}/${id}`, header);
     return JSON.stringify(response);
   } catch (error) {
     console.log(error);

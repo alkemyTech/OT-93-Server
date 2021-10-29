@@ -12,7 +12,7 @@ import { reactotronEnhancer } from './middlewares/devTools';
 
 import LoadAsyncStore from './loadAsyncStore';
 
-const composeEnhancers = compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const isProduction = includes(['production', 'test'], process.env.NODE_ENV);
 

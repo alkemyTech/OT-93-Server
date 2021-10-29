@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 
 const config = {
@@ -7,7 +8,8 @@ const config = {
 };
 
 const Get = () => {
-  axios.get('https://jsonplaceholder.typicode.com/users', config)
+  axios
+    .get('https://jsonplaceholder.typicode.com/users', config)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };

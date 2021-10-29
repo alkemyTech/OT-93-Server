@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../FormStyles.css';
+import '../../css/FormStyles.css';
 
 const TestimonialForm = () => {
   const [initialValues, setInitialValues] = useState({
@@ -17,6 +17,7 @@ const TestimonialForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-console
     console.log(initialValues);
   };
 

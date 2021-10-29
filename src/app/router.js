@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {
-  Route, Switch,
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { getRoutes } from '../utils';
 import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
