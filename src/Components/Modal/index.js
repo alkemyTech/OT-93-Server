@@ -9,7 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
-import logo from '../../images/LOGO.png';
+import logo from '../../images/LOGO-SOMOS MAS.png';
 
 const ModalLogin = ({
   isOpen,

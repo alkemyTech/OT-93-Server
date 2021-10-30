@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; // import axios
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -58,6 +58,6 @@ export const Delete = async (URI, id) => {
     const response = await axios.post(`${API}/${URI}/${id}`, config);
     return JSON.stringify(response);
   } catch (error) {
-    return (error);
+    return error;
   }
 };
