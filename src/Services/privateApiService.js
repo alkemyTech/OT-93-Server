@@ -11,8 +11,8 @@ export const Delete = async (URI, id) => {
       Group: "Grupo 93",
       Accept: "*/*",
       "Content-Type": "application/json",
-      Authorization: token,
-    },
+      Authorization: token
+    }
   };
 
   try {
@@ -23,3 +23,17 @@ export const Delete = async (URI, id) => {
   }
 };
 
+export async function Get(URI, id) {
+  const config = getToken();
+  try {
+    if (id) {
+      const response = await axios.get(`${"API"}/${URI}/${id}`, config);
+      return JSON.stringify(response);
+    } else {
+      const response = await axios.get(`${"API"}/${URI}`, config);
+      return JSON.stringify(response);
+    }
+  } catch (error) {
+    return error;
+  }
+}
