@@ -4,15 +4,13 @@ import Slider from './Slider';
 import Content from './Content';
 import Footer from './Footer';
 
-const SchoolCampaign = () => {
-  return (
+const SchoolCampaign = () => (
     <>
       <Header />
       <Slider />
       <Content />
       <Footer />
     </>
-  );
-}
- 
+);
+
 export default SchoolCampaign;

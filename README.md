@@ -28,3 +28,16 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+### Alert Component ###
+
+Se utilizo la libreria sweetAlert2 para crear un componente que muestre las alertas de una manera dinamica y esteticamente agradable.
+
+El componente recibe 2 props.
+
+SHOW : Determina si la alerta se muestra, en caso de ser true se muestra, si es falso no.
+
+ICON : Determina el tipo de icono de la misma, pueden ser /success/error/info/warning/question/
+
+Se implemento un archivo Css al mismo que controla la animacion del texto intermitente.

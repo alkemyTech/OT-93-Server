@@ -1,0 +1,15 @@
+/* Animation for Alert Component*/
+
+.swal2-title {
+  animation: fade-in-out 0.8s alternate infinite ease-in-out;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

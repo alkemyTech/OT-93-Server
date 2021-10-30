@@ -1,10 +1,19 @@
-import axios from 'axios';
+import axios from 'axios'; // import axios
+import getToken from '../utils/getToken'; // import gettoken
 
-const config = {
+// DELETE
+export const Delete = async (URI, id) => {
+  // getting token
+  const token = getToken();
+  // set header
+  const header = {
     headers: {
-        Group: '93'
-    }
-}
+      Group: 'Grupo 93',
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  };
 
 const get = () => {
     axios.get('https://jsonplaceholder.typicode.com/users', config)
