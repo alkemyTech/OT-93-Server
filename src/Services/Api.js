@@ -1,4 +1,3 @@
-/* global API */
 /* eslint-disable no-console */
 import isString from 'lodash/isString';
 import axios from 'axios';
