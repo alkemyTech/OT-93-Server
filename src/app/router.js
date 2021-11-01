@@ -1,9 +1,10 @@
-import React from "react";
-import { HashRouter, BrowserRouter, Route, Switch } from "react-router-dom";
-import { getRoutes } from "../utils";
-import Home from "../pages/Home";
-import NewForm from "../pages/News/Form";
-import NewList from "../pages/News/List";
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { getRoutes } from '../utils';
+import Home from '../pages/Home';
+import NewForm from '../pages/News/Form';
+import NewList from '../pages/News/List';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -15,8 +16,8 @@ import NewList from "../pages/News/List";
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
-const mainRoutes = getRoutes("mainRoutes");
-const backOfficeRoutes = getRoutes("mainRoutes");
+const mainRoutes = getRoutes('mainRoutes');
+const backOfficeRoutes = getRoutes('mainRoutes');
 
 function Router() {
   return (
