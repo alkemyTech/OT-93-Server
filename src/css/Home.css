@@ -1,0 +1,36 @@
+.news-row {
+  margin-top: 86px !important;
+}
+
+.news-img {
+  width: 22vw;
+  height: 15vw;
+  min-width: 135px;
+  min-height: 94px;
+  max-width: 323px;
+  max-height: 239px;
+}
+
+.news-link {
+  color: #18a0fb !important;
+  border: none;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.news-btn {
+  color: #18a0fb !important;
+  border-color: #18a0fb !important;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.news-btn:hover {
+  color: #fff !important;
+  background-color: #18a0fb;
+}
+
+.news-btn:active {
+  color: #fff !important;
+  background-color: #18a0fb;
+}
