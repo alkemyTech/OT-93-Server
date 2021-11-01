@@ -2,6 +2,17 @@ import axios from 'axios';
 // eslint-disable-next-line import/named
 import { getToken } from '../utils';
 
+export const Patch = async (URI, id, body) => {
+  const config = getToken();
+  try {
+    // eslint-disable-next-line no-undef
+    const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const Delete = async (URI, id) => {
   const token = getToken();
   const header = {
