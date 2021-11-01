@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import map from 'lodash/map';
 import { Container, Row, Col } from 'reactstrap';
+import map from 'lodash/map';
 import { authUser } from '../utils/index';
 import '../css/header.css';
 import ongLogo from '../images/LOGO-SOMOS MAS.png';
@@ -24,11 +24,19 @@ const Header = () => {
             <img className="header-logo" src={ongLogo} alt="Logo ONG" />
           </Col>
           <Col lg={7} className="d-flex flex-row align-items-center">
-            {map(getNavigationHeader(userAuthenticated), (e, index) => <Link to={`${e.url}`} className={`m-2  ${checkPath(e.url)}`} key={index}>{e.label} </Link>)}
+            {map(getNavigationHeader(userAuthenticated), (e, index) => (
+              <Link
+                to={`${e.url}`}
+                className={`m-2  ${checkPath(e.url)}`}
+                key={index}
+              >{e.label}
+              </Link>
+            ))}
           </Col>
           <Col lg={3} className="d-flex flex-row align-items-center justify-content-end">
-            <button className="btn header-button-login m-1 " outline type="button">Log in</button>
-            <button className="btn header-button-register m-1 " outline type="button">Registrarse</button>
+            <button type="button" className="btn header-button-login m-1 " outline>Log in</button>
+            <button type="button" className="btn header-button-register m-1 " outline>Registrarse</button>
+            {map(getNavigationHeader(userAuthenticated), (e, index) => <Link to={`${e.url}`} className={`m-2  ${checkPath(e.url)}`} key={index}>{e.label} </Link>)}
           </Col>
         </Row>
       </Container>
