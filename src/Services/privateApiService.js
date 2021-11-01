@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 import axios from 'axios';
+// eslint-disable-next-line import/named
 import { getToken } from '../utils';
 
 export const Delete = async (URI, id) => {
@@ -14,6 +14,7 @@ export const Delete = async (URI, id) => {
   };
 
   try {
+    // eslint-disable-next-line no-undef
     const response = await axios.delete(`${API}/${URI}/${id}`, header);
     return JSON.stringify(response);
   } catch (error) {
