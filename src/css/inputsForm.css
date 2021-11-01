@@ -1,0 +1,19 @@
+.Button {
+  width: 70px !important;
+}
+
+@media (min-width: 300px) {
+  .Button {
+    width: 100px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .Button {
+    width: 30% !important;
+  }
+}
+
+img {
+  width: 150px !important;
+}

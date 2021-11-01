@@ -1,13 +1,12 @@
-import React from "react";
-import "../../css/Sidenav.css";
-import map from "lodash/map";
-import { Navbar, Container } from "reactstrap";
-import { Link } from "react-router-dom";
-import { getNavigationBackOffice } from "../../utils/selectors";
-import Logo from "../../utils/assets/LOGO.png";
+import React from 'react';
+import '../../css/Sidenav.css';
+import map from 'lodash/map';
+import { Navbar, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { getNavigationBackOffice } from '../../utils/selectors';
+import Logo from '../../utils/assets/LOGO.png';
 
-const Sidenav = () => {
-  return (
+const Sidenav = () => (
     <Navbar className="shadow" color="light" light>
       <Container>
         <button
@@ -16,13 +15,12 @@ const Sidenav = () => {
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
-          <span className="navbar-toggler-icon "></span>
+          <span className="navbar-toggler-icon " />
         </button>
 
         <div
           className="modal fade Modal"
           id="exampleModal"
-          tabindex="40"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -32,22 +30,20 @@ const Sidenav = () => {
                 <h3>Bienvenido! </h3>
               </div>
               <ul className="navbar-nav p-0 content">
-                {map(getNavigationBackOffice(), (e, index) => {
-                  return (
+                {map(getNavigationBackOffice(), (e, index) => (
                     <li
                       className="nav-item "
                       data-bs-dismiss="modal"
                       key={index}
                     >
                       <Link
-                        className="nav-link p-2 mt-0 d-flex justify-content-start"
+                        className="nav-link p-2 mt-0 d-flex justify-content-start link-sidebar"
                         to={`${e.url}`}
                       >
                         {e.label}
                       </Link>
                     </li>
-                  );
-                })}
+                ))}
               </ul>
               <div className="modal-footer flex-column pt-5">
                 <button
@@ -57,14 +53,13 @@ const Sidenav = () => {
                 >
                   Cerrar
                 </button>
-                <img alt="nav-logo" className="logo" src={Logo}></img>
+                <img alt="nav-logo" className="logo" src={Logo} />
               </div>
             </div>
           </div>
         </div>
       </Container>
     </Navbar>
-  );
-};
+);
 
 export default Sidenav;

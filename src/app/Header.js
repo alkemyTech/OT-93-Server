@@ -15,6 +15,7 @@ const Header = () => {
     }
     return 'header-link';
   };
+
   return (
     <nav className="container-fluid p-0">
       <Container>
@@ -35,6 +36,7 @@ const Header = () => {
           <Col lg={3} className="d-flex flex-row align-items-center justify-content-end">
             <button type="button" className="btn header-button-login m-1 " outline>Log in</button>
             <button type="button" className="btn header-button-register m-1 " outline>Registrarse</button>
+            {map(getNavigationHeader(userAuthenticated), (e, index) => <Link to={`${e.url}`} className={`m-2  ${checkPath(e.url)}`} key={index}>{e.label} </Link>)}
           </Col>
         </Row>
       </Container>
