@@ -4,3 +4,7 @@ export const ADD = 'Agregar';
 export const CANCEL = 'Cancelar';
 export const SEND = 'Enviar';
 export const TOYS_CAMPAIGN = 'Campaña Juguetes';
+export const SOCIAL_MEDIA = 'Redes Sociales';
+export const SITE = 'Sitio';
+export const CONTACT = 'Contacto';
+export const LOGO_ALT = 'Logo de Somos Más';

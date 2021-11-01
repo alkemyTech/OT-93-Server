@@ -1,6 +1,7 @@
 import React from 'react';
 import map from 'lodash/map';
 import filter from 'lodash/filter';
+import PropTypes from 'prop-types';
 import '../../../css/Footer.css';
 import {
   Container, Row, Media, Col,
@@ -45,5 +46,9 @@ const Footer = ({ campaignInfo }) => (
       </Container>
     </footer>
 );
+
+Footer.propTypes = {
+  campaignInfo: PropTypes.element.isRequired,
+};
 
 export default Footer;
