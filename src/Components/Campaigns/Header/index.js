@@ -7,7 +7,7 @@ const Header = ({ campaignLogo, slogan }) => (
     <Container className="container-fluid p-0 ">
         <Row className="header-container align-items-center">
             <Col>
-                <img className="header-campaign-logo" src={campaignLogo} alt="School campaign logo" />
+                <img className="header-campaign-logo" src={campaignLogo} alt="Toys campaign logo" />
             </Col>
             <Col className="header-slogan justify-content-center">
                 <h1>{slogan}</h1>
