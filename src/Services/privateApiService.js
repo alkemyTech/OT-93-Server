@@ -1,41 +1,24 @@
+/* eslint-disable no-undef */
 import axios from 'axios';
-// eslint-disable-next-line import/named
-import { getToken } from '../utils';
 
-export const Patch = async (URI, id, body) => {
-  const config = getToken();
-  try {
-    // eslint-disable-next-line no-undef
-    const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
-    return response;
-  } catch (error) {
-    return error;
+const getTokenHeader = () => {
+  const token = localStorage.getItem('token_agent');
+  if (token) {
+    const header = {
+      headers: {
+        Group: 'Grupo 93',
+        Accept: '*/*',
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    };
+    return header;
   }
-};
-
-export const Delete = async (URI, id) => {
-  const token = getToken();
-  const header = {
-    headers: {
-      Group: 'Grupo 93',
-      Accept: '*/*',
-      'Content-Type': 'application/json',
-      Authorization: token,
-    },
-  };
-
-  try {
-    // eslint-disable-next-line no-undef
-    const response = await axios.delete(`${API}/${URI}/${id}`, header);
-    return JSON.stringify(response);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    return console.log(error);
-  }
+  return null;
 };
 
 export async function Get(URI, id) {
-  const config = getToken();
+  const config = getTokenHeader();
   try {
     if (id) {
       const response = await axios.get(`${'API'}/${URI}/${id}`, config);
@@ -47,3 +30,22 @@ export async function Get(URI, id) {
     return error;
   }
 }
+
+export const Patch = async (URI, id, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+export const Delete = async (URI, id) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.post(`${API}/${URI}/${id}`, config);
+    return JSON.stringify(response);
+  } catch (error) {
+    return (error);
+  }
+};
