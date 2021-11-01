@@ -1,0 +1,28 @@
+.header-container {
+  height: 10rem;
+}
+.header-campaign-logo {
+  height: 7rem;
+}
+.header-slogan {
+  display: none;
+}
+.header-ong-logo {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .header-ong-logo {
+    display: flex;
+    height: 7rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .header-slogan {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .header-container {
+    background-color: #50c87880;
+  }
+}
