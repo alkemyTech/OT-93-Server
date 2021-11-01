@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const patch = async (URI, id, body) => {
+export const Patch = async (URI, id, body) => {
   const config = getTokenHeader();
   try {
     const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
