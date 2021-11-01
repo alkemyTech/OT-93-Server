@@ -1,29 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Col, Row, Container } from "reactstrap";
-import Sidenav from "../../Components/Sidenav/index";
-import Alerts from "../../Components/Alert/Alerts";
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Col, Container, Row } from 'reactstrap';
+import Spinner from '../../Components/Spinner';
+import Sidebar from '../../Components/Sidenav';
 
-const Component = ({ welcomeText }) => {
-  return (
-    <div>
-      <Row>
-        <Col>
-          <Sidenav></Sidenav>
-          {/* Show of props pass to Alerts, Must recive an object */}
-          <Alerts show={true} icon="success" title="Cargando..."></Alerts>
-          <button
-            onClick={() => {
-              document.location.reload();
-            }}
-          >
-            Show Alert
-          </button>
-        </Col>
-      </Row>
-    </div>
-  );
-};
+const Component = ({ welcomeText }) => (
+  <Container fluid>
+    <Row>
+      <Col>
+        <h1>{welcomeText}</h1>
+        <Sidebar />
+        <Spinner show text="cargando" />
+      </Col>
+    </Row>
+  </Container>
+);
 
 Component.propTypes = {
   welcomeText: PropTypes.string.isRequired,
