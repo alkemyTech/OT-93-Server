@@ -39,7 +39,7 @@
   border-radius: 50% !important;
 }
 
-a {
+.link-sidebar {
   transition: 0.3s ease !important;
   text-transform: capitalize;
   display: block;
@@ -49,6 +49,6 @@ a {
   color: #6956ec !important;
 }
 
-a:hover {
+.link-sidebar:hover {
   padding: 8px 20px !important;
 }

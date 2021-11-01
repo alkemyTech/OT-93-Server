@@ -1,8 +1,9 @@
 {
   "tabWidth": 2,
-  "trailingComma": "none",
+  "prettier.trailingComma": "none",
   "parser": "babel",
   "semi": true,
+  "singleQuote": true,
   "htmlWhitespaceSensitivity": "css",
   "quoteProps": "as-needed",
   "overrides": [
