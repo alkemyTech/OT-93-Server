@@ -1,28 +1,25 @@
-import {createHashHistory} from 'history';
-import qs from 'qs';
+// /* eslint-disable object-curly-newline */
 
-const history = createHashHistory();
-history.location = {
-    ...history.location,
-    query: qs.parse(history.location.search.substr(1)),
-    state: {
-    }
-};
-history.listen(() => {
-    history.location = {
-        ...history.location,
-        query: qs.parse(history.location.search.substr(1)),
-        state: history.location.state || {
-        }
-    };
-});
+// import { createHashHistory } from 'history';
+// import qs from 'qs';
 
-const {
-    go, goBack, push, replace, getRedirectPath
-} = history;
+// const history = createHashHistory();
 
-export {
-    go, goBack, push, replace, getRedirectPath
-};
+// history.location = {
+//   ...history.location,
+//   query: qs.parse(history.location.search.substr(1)),
+//   state: {},
+// };
+// history.listen(() => {
+//   history.location = {
+//     ...history.location,
+//     query: qs.parse(history.location.search.substr(1)),
+//     state: history.location.state || {},
+//   };
+// });
 
-export default history;
+// const { go, goBack, push, replace, getRedirectPath } = history;
+
+// export { go, goBack, push, replace, getRedirectPath };
+
+// export default history;

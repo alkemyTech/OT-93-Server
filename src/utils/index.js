@@ -1,9 +1,9 @@
-import Swal from "sweetalert2";
-import get from "lodash/get";
-import isArray from "lodash/isArray";
-import pick from "lodash/pick";
-import noop from "lodash/noop";
-import routeContent from "./navigation";
+import Swal from 'sweetalert2';
+import get from 'lodash/get';
+import isArray from 'lodash/isArray';
+import pick from 'lodash/pick';
+import noop from 'lodash/noop';
+import routeContent from './navigation';
 
 export const getRoutes = (entity) => {
   if (isArray(entity)) {
@@ -23,15 +23,15 @@ export function swalConfirmAction(
   confirmButtonText,
   cancelButtonText,
   actionConfirm,
-  CancelConfirm = noop
+  CancelConfirm = noop,
 ) {
   return Swal.fire({
     title,
     text,
     icon,
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
     reverseButtons: true,
     confirmButtonText,
     cancelButtonText,
@@ -45,8 +45,7 @@ export function swalConfirmAction(
 
 export const authUser = () => {
   if (localStorage.token === undefined) {
-    return false
-  } else {
-    return true
+    return false;
   }
-}
+  return true;
+};

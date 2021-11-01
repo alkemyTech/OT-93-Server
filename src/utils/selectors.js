@@ -1,55 +1,58 @@
-import { getRoutes } from "./index";
+import {
+  FaFacebookF, FaInstagram, FaPhoneAlt, FaAt, FaTwitter,
+} from 'react-icons/fa';
+import { getRoutes } from './index';
 
-const { publicRoutes, landingPages } = getRoutes("mainRoutes");
-const { backOfficeRoutes } = getRoutes("mainRoutes");
+const { publicRoutes, landingPages } = getRoutes('mainRoutes');
+const { backOfficeRoutes } = getRoutes('mainRoutes');
 
 export const getNavigationBackOffice = () => {
   const navigationBackOffice = [
     {
-      home: "/",
-      label: "Home",
+      home: '/',
+      label: 'Home',
       url: `${backOfficeRoutes.home}`,
     },
     {
-      name: "activities",
-      label: "actividades",
+      name: 'activities',
+      label: 'actividades',
       url: `${backOfficeRoutes.activities}`,
     },
     {
-      name: "categories",
-      label: "categorias",
+      name: 'categories',
+      label: 'categorias',
       url: `${backOfficeRoutes.categories}`,
     },
 
     {
-      name: "slides",
-      label: "galeria",
+      name: 'slides',
+      label: 'galeria',
       url: `${backOfficeRoutes.slides}`,
     },
     {
-      name: "members",
-      label: "miembros",
+      name: 'members',
+      label: 'miembros',
       url: `${backOfficeRoutes.members}`,
     },
     {
-      name: "news",
-      label: "noticias",
+      name: 'news',
+      label: 'noticias',
       url: `${backOfficeRoutes.news}`,
     },
     {
-      name: "organization",
-      label: "organizacion",
+      name: 'organization',
+      label: 'organizacion',
       url: `${backOfficeRoutes.organization}`,
     },
 
     {
-      name: "testimonials",
-      label: "testimonios",
+      name: 'testimonials',
+      label: 'testimonios',
       url: `${backOfficeRoutes.testimonials}`,
     },
     {
-      name: "users",
-      label: "usuarios",
+      name: 'users',
+      label: 'usuarios',
       url: `${backOfficeRoutes.users}`,
     },
   ];
@@ -59,28 +62,28 @@ export const getNavigationBackOffice = () => {
 export const getNavigationFooter = () => {
   const navigationFooter = [
     {
-      name: "news",
-      label: "Noticias",
+      name: 'news',
+      label: 'Noticias',
       url: publicRoutes.news,
     },
     {
-      name: "activities",
-      label: "Actividades",
+      name: 'activities',
+      label: 'Actividades',
       url: publicRoutes.activities,
     },
     {
-      name: "testimonials",
-      label: "Testimonios",
+      name: 'testimonials',
+      label: 'Testimonios',
       url: publicRoutes.testimonials,
     },
     {
-      name: "us",
-      label: "Nosotros",
+      name: 'us',
+      label: 'Nosotros',
       url: publicRoutes.us,
     },
     {
-      name: "contact",
-      label: "Contacto",
+      name: 'contact',
+      label: 'Contacto',
       url: publicRoutes.contact,
     },
   ];
@@ -116,8 +119,8 @@ export const getNavigationHeader = (userAuthentication) => {
       label: 'Campaña escolar',
       url: landingPages.schoolCampaign,
 
-    }
-  ]
+    },
+  ];
   const publicAndBackOfficeHeader = [
     {
       name: 'Home',
@@ -147,9 +150,53 @@ export const getNavigationHeader = (userAuthentication) => {
       label: 'Campaña escolar',
       url: landingPages.schoolCampaign,
 
-    }
-  ]
-  return userAuthentication ?
-    publicAndBackOfficeHeader
-    : publicHeader
-}
+    },
+  ];
+  return userAuthentication
+    ? publicAndBackOfficeHeader
+    : publicHeader;
+};
+
+export const socialMediaInfo = [
+  {
+    component: FaFacebookF,
+    title: 'Facebook',
+    url: 'www.facebook.com',
+    className: 'icon-facebook',
+  },
+  {
+    component: FaInstagram,
+    title: 'Instagram',
+    url: 'www.instagram.com',
+    className: 'icon-instagram',
+  },
+  {
+    component: FaPhoneAlt,
+    title: 'Teléfono',
+    url: 'tel:23324524',
+    className: 'icon-phone',
+  },
+  {
+    component: FaAt,
+    title: 'Email',
+    url: 'mailto: somosmas@somosmas.com',
+    className: 'icon-at',
+  },
+  {
+    component: FaTwitter,
+    title: 'Twitter',
+    url: 'Twitter',
+    className: 'icon-twitter',
+  },
+];
+
+export const campaignLinks = [
+  {
+    label: 'Campaña Juguetes',
+    url: '/toys-campaign',
+  },
+  {
+    label: 'Campaña Escolar',
+    url: '/school-campaign',
+  },
+];
