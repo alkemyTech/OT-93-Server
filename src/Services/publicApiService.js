@@ -1,17 +1,21 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 
-const config = {
-  headers: {
-    Group: '93', // Aqui va el ID del equipo!!
-  },
+const Post = async (URI, body) => {
+  const header = {
+    headers: {
+      Group: '93',
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const response = await axios.post(URI, body, header);
+    return JSON.stringify(response);
+  } catch (error) {
+    return error;
+  }
 };
 
-const Get = () => {
-  axios
-    .get('https://jsonplaceholder.typicode.com/users', config)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-};
-
-export default Get;
+export default Post;
