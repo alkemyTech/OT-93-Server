@@ -1,3 +1,6 @@
+import {
+  FaFacebookF, FaInstagram, FaPhoneAlt, FaAt, FaTwitter,
+} from 'react-icons/fa';
 import { getRoutes } from './index';
 
 const { publicRoutes, landingPages } = getRoutes('mainRoutes');
@@ -153,3 +156,47 @@ export const getNavigationHeader = (userAuthentication) => {
     ? publicAndBackOfficeHeader
     : publicHeader;
 };
+
+export const socialMediaInfo = [
+  {
+    component: FaFacebookF,
+    title: 'Facebook',
+    url: 'www.facebook.com',
+    className: 'icon-facebook',
+  },
+  {
+    component: FaInstagram,
+    title: 'Instagram',
+    url: 'www.instagram.com',
+    className: 'icon-instagram',
+  },
+  {
+    component: FaPhoneAlt,
+    title: 'Teléfono',
+    url: 'tel:23324524',
+    className: 'icon-phone',
+  },
+  {
+    component: FaAt,
+    title: 'Email',
+    url: 'mailto: somosmas@somosmas.com',
+    className: 'icon-at',
+  },
+  {
+    component: FaTwitter,
+    title: 'Twitter',
+    url: 'Twitter',
+    className: 'icon-twitter',
+  },
+];
+
+export const campaignLinks = [
+  {
+    label: 'Campaña Juguetes',
+    url: '/toys-campaign',
+  },
+  {
+    label: 'Campaña Escolar',
+    url: '/school-campaign',
+  },
+];
