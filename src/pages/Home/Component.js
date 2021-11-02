@@ -15,7 +15,6 @@ const Component = ({ welcomeText }) => {
       <Container fluid>
         <Row>
           <Col>
-            <h1>{welcomeText}</h1>
             <Sidebar />
             <Spinner show text="cargando" />
           </Col>
