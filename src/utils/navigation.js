@@ -26,6 +26,7 @@ const mainRoutes = {
     novelty: '/novelty',
     editProfile: '/editProfile',
     backOffice: '/backOffice',
+    register: '/register',
   },
   landingPages: {
     toysCampaign: '/toys-campaign',
