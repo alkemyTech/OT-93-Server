@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 
+const API = process.env.REACT_APP_API_URL;
+
 const Post = async (URI, body) => {
   const header = {
     headers: {
@@ -11,8 +13,8 @@ const Post = async (URI, body) => {
   };
 
   try {
-    const response = await axios.post(URI, body, header);
-    return JSON.stringify(response);
+    const response = await axios.post(`${API}/${URI}`, body, header);
+    return response;
   } catch (error) {
     return error;
   }
