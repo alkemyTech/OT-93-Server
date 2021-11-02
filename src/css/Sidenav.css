@@ -1,0 +1,54 @@
+:root {
+  --primaryClr: #db5752;
+}
+
+.Modal {
+  width: 300px !important;
+  font-family: Montserrat;
+  background-color: #fff;
+}
+
+.modal-content {
+  width: 300px !important;
+  color: #fff;
+}
+
+.modal-header {
+  width: 300px !important;
+  background-color: var(--primaryClr) !important;
+}
+
+.closeBtn {
+  background-color: var(--primaryClr) !important;
+}
+
+.logo {
+  width: 100px !important;
+  height: 100px !important  ;
+  object-fit: cover;
+}
+
+.modal-footer {
+  width: 300px !important;
+}
+
+.imgUser {
+  width: 100px !important;
+  height: 100px !important  ;
+  object-fit: cover;
+  border-radius: 50% !important;
+}
+
+.link-sidebar {
+  transition: 0.3s ease !important;
+  text-transform: capitalize;
+  display: block;
+  transition: 0.3s ease;
+  font-size: 20px;
+  border-bottom: 1px solid var(--primaryClr);
+  color: #6956ec !important;
+}
+
+.link-sidebar:hover {
+  padding: 8px 20px !important;
+}

@@ -1,53 +1,51 @@
-import axios from "axios"; //import axios
-import getToken from "../utils/getToken"; //import gettoken
+/* eslint-disable no-undef */
+import axios from 'axios';
 
-const API = process.env.REACT_APP_API_URL
-
-const getToken = () => {
-    const token = localStorage.getItem('token_agent');
-    if (token) {
-        return `Bearer ${token}`;
-    }
-    return null;
-};
-
-// POST
-export const Post = async (URI, body) => {
-  //getting token
-  const token = getToken();
-
-  //set header
-  const header = {
-    headers: {
-      Group: "Grupo 93",
-      Accept: "*/*",
-      "Content-Type": "application/json",
-      Authorization: token,
-    },
-  };
-
-  try {
-    let response = await axios.post(`${API}/${URI}`, body, header);
-    return JSON.stringify(response);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const Patch = async (URI, id, body) => {
-    const token = getToken();
+const getTokenHeader = () => {
+  const token = localStorage.getItem('token_agent');
+  if (token) {
     const header = {
       headers: {
-        Group: "Grupo 93",
-        Accept: "*/*",
-        "Content-Type": "application/json",
-        Authorization: token
+        Group: 'Grupo 93',
+        Accept: '*/*',
+        'Content-Type': 'application/json',
+        Authorization: token,
       },
     };
-    try {
-      let response = await axios.Patch(`${API}/${URI}${id}`, body, header);
-      return response;
-    } catch (error) {
-      return error;
+    return header;
+  }
+  return null;
+};
+
+export async function Get(URI, id) {
+  const config = getTokenHeader();
+  try {
+    if (id) {
+      const response = await axios.get(`${'API'}/${URI}/${id}`, config);
+      return JSON.stringify(response);
     }
-  };
+    const response = await axios.get(`${'API'}/${URI}`, config);
+    return JSON.stringify(response);
+  } catch (error) {
+    return error;
+  }
+}
+
+export const Patch = async (URI, id, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+export const Delete = async (URI, id) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.post(`${API}/${URI}/${id}`, config);
+    return JSON.stringify(response);
+  } catch (error) {
+    return (error);
+  }
+};

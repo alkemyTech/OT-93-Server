@@ -2,7 +2,8 @@ footer {
   width: 100%;
   bottom: 0;
   left: 0;
-  position: absolute;
+  position: relative;
+  border-top: 1px solid rgba(219, 87, 82, 0.1);
 }
 
 .footer-logo {
@@ -26,6 +27,7 @@ footer {
 .icon-instagram:hover {  
   background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); 
   color: white;  
+  
 }
 
 .icon-phone:hover {  
@@ -38,6 +40,17 @@ footer {
   color: white;  
 }
 
+.icon-twitter:hover {  
+  background: #00acee;  
+  color: white;  
+}
+
+.footer-navigation-list a {
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  color: rgb(11, 22, 22);
+}
+
 .footer-navigation-list a:hover {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #DB5752;
 }

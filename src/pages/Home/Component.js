@@ -1,29 +1,25 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Col,
-    Row,
-    Container
-} from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
+import Spinner from '../../Components/Spinner';
+import Sidebar from '../../Components/Sidenav';
 
-
-const Component = ({
-    welcomeText
-}) => {
-
-    return (
-        <Container>
-            <Row>
-                <Col>
-                    <h1>hola homes </h1>
-                </Col>
-            </Row>
-        </Container>
-    );
-};
+const Component = ({ welcomeText }) => (
+  <Container fluid>
+    <Row>
+      <Col>
+        <h1>{welcomeText}</h1>
+        <Sidebar />
+        <Spinner show text="cargando" />
+      </Col>
+    </Row>
+  </Container>
+);
 
 Component.propTypes = {
-    welcomeText: PropTypes.string.isRequired
+  welcomeText: PropTypes.string.isRequired,
 };
 
 export default Component;
