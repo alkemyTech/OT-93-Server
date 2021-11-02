@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import map from 'lodash/map';
 import filter from 'lodash/filter';

@@ -5,6 +5,7 @@ import { getRoutes } from '../utils';
 import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
+import Activities from '../pages/Activities';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -22,7 +23,7 @@ const backOfficeRoutes = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={Home} />
+      <Route exact path={mainRoutes.home} component={Activities} />
       <Route exact path={mainRoutes.newsForm} component={NewForm} />
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />

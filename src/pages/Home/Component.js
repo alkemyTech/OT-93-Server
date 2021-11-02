@@ -12,7 +12,7 @@ const Component = ({ welcomeText }) => (
       <Col>
         <h1>{welcomeText}</h1>
         <Sidebar />
-        <Spinner show text="cargando" />
+        <Spinner show={false} text="cargando" />
       </Col>
     </Row>
   </Container>
