@@ -1,13 +1,14 @@
 import React from 'react';
 import map from 'lodash/map';
 import filter from 'lodash/filter';
-import '../../../css/Footer.css';
+import PropTypes from 'prop-types';
+import '../../css/Footer.css';
 import {
   Container, Row, Media, Col,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../../utils/assets/LOGO.png';
-import { socialMediaInfo, campaignLinks } from '../../../utils/selectors';
+import logo from '../../utils/assets/LOGO.png';
+import { socialMediaInfo, campaignLinks } from '../../utils/selectors';
 
 const Footer = ({ campaignInfo }) => (
     <footer className="text-center bg-light container-fluid pt-3">
@@ -45,5 +46,9 @@ const Footer = ({ campaignInfo }) => (
       </Container>
     </footer>
 );
+
+Footer.propTypes = {
+  campaignInfo: PropTypes.element.isRequired,
+};
 
 export default Footer;
