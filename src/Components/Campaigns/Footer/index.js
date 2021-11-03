@@ -1,15 +1,15 @@
 import React from 'react';
-import map from 'lodash/map';
-import filter from 'lodash/filter';
+// import map from 'lodash/map';
+// import filter from 'lodash/filter';
 import '../../../css/Footer.css';
 import {
   Container, Row, Media, Col,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import logo from '../../../utils/assets/LOGO.png';
-import { socialMediaInfo, campaignLinks } from '../../../utils/selectors';
+// import { socialMediaInfo, campaignLinks } from '../../../utils/selectors';
 
-const Footer = ({ campaignInfo }) => (
+const Footer = () => (
     <footer className="text-center bg-light container-fluid pt-3">
       <Container>
         <Row>
@@ -18,7 +18,7 @@ const Footer = ({ campaignInfo }) => (
           </Col>
           <Col lg="3" md="4" sm="8" className="my-auto d-none d-md-block footer-navigation-list">
             <a href="www.google.com" className="mb-3 d-inline-block fw-bold text-uppercase">¡Ingresá a Somos Más!</a>
-            <ul className="list-unstyled d-none d-xxl-block">
+            {/* <ul className="list-unstyled d-none d-xxl-block">
 
             {map(filter(campaignLinks, (campaign) => campaign.label !== campaignInfo), (item) => (
 <li>
@@ -39,7 +39,7 @@ const Footer = ({ campaignInfo }) => (
                   </li>
                 ))
               }
-            </ul>
+            </ul> */}
           </Col>
         </Row>
       </Container>

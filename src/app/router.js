@@ -5,7 +5,7 @@ import { getRoutes } from '../utils';
 import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
-import Register from '../pages/Register/Form';
+import Register from '../pages/Register/Component';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -27,7 +27,7 @@ function Router() {
       <Route exact path={mainRoutes.newsForm} component={NewForm} />
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />
-      <Route exact path={mainRoutes.register} component={Register} />
+      <Route path={mainRoutes.register} component={Register} />
       {/* <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
