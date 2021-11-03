@@ -26,6 +26,7 @@ export const Post = async (URI, body) => {
   } catch (error) {
     return error;
   }
+};
 
 export const Get = async (URI, id) => {
   const config = getTokenHeader();
@@ -39,7 +40,7 @@ export const Get = async (URI, id) => {
   } catch (error) {
     return error;
   }
-}
+};
 
 export const Patch = async (URI, id, body) => {
   const config = getTokenHeader();
@@ -50,7 +51,7 @@ export const Patch = async (URI, id, body) => {
     return error;
   }
 };
-  
+
 export const Delete = async (URI, id) => {
   const config = getTokenHeader();
   try {
@@ -58,5 +59,15 @@ export const Delete = async (URI, id) => {
     return JSON.stringify(response);
   } catch (error) {
     return (error);
+  }
+};
+
+export const Put = async (URI, id, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.put(`${API}${URI}/${id}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
   }
 };
