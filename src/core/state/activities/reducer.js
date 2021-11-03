@@ -1,5 +1,5 @@
 import {
-  FETCH_ACTIVITIES_REQUESTED,
+  FETCH_ACTIVITIES_SUCCEEDED,
   FETCH_ONE_ACTIVITIES_SUCCEEDED,
   CLEAN_ACTIVITIES_FORM,
 } from './types';
@@ -8,9 +8,9 @@ const initialState = {
   activityForm: {
     name: '',
     image: '',
-    content: '',
+    description: '',
     categoryId: 1,
-    type: 'news',
+    type: 'activity',
   },
   actFields: [
     {
@@ -31,8 +31,8 @@ const initialState = {
       label: 'Contenido',
       placeholder: 'Contenido',
       type: 'CKEditor',
-      id: 'content',
-      name: 'content',
+      id: 'description',
+      name: 'description',
     },
   ],
   list: {
@@ -52,7 +52,7 @@ const Activities = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
-    case FETCH_ACTIVITIES_REQUESTED: {
+    case FETCH_ACTIVITIES_SUCCEEDED: {
       return {
         ...initialState,
         list: {

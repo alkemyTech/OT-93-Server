@@ -4,11 +4,11 @@
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
-import fromState from '../../core/selectors';
+import fromState from '../../../core/selectors';
 import {
   submitActivitiesRequested,
   fetchActivitiesRequested,
-} from '../../core/state/activities/actions';
+} from '../../../core/state/activities/actions';
 import Component from './Component';
 
 export default connect(

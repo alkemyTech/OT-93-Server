@@ -1,22 +1,25 @@
 import React from 'react';
 import '../../css/Sidenav.css';
 import map from 'lodash/map';
-import { Navbar, Container } from 'reactstrap';
+import {
+  Navbar, Row, Col, Button,
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { getNavigationBackOffice } from '../../utils/selectors';
 import Logo from '../../utils/assets/LOGO.png';
 
 const Sidenav = () => (
     <Navbar className="shadow" color="light" light>
-      <Container>
-        <button
+        <Row>
+          <Col>
+        <Button
           className="navbar-toggler "
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
           <span className="navbar-toggler-icon " />
-        </button>
+        </Button>
 
         <div
           className="modal fade Modal"
@@ -27,7 +30,7 @@ const Sidenav = () => (
           <div className="modal-dialog modal-fullscreen">
             <div className="modal-content">
               <div className="modal-header d-flex flex-column p-3">
-                <h3>Bienvenido! </h3>
+                <h3>Somos Mas</h3>
               </div>
               <ul className="navbar-nav p-0 content">
                 {map(getNavigationBackOffice(), (e, index) => (
@@ -46,19 +49,20 @@ const Sidenav = () => (
                 ))}
               </ul>
               <div className="modal-footer flex-column pt-5">
-                <button
+                <Button
                   type="button"
                   className="btn btn-secondary closeBtn"
                   data-bs-dismiss="modal"
                 >
                   Cerrar
-                </button>
+                </Button>
                 <img alt="nav-logo" className="logo" src={Logo} />
               </div>
             </div>
           </div>
         </div>
-      </Container>
+          </Col>
+        </Row>
     </Navbar>
 );
 

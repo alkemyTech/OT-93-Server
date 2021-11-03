@@ -1,8 +1,11 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable no-empty-function */
 /* eslint-disable no-unused-vars */
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
+
 import {
   SUBMIT_ACTIVITIES_REQUESTED,
   FETCH_ACTIVITIES_REQUESTED,
@@ -14,21 +17,52 @@ import {
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
   cleanActivitiesForm,
+  fetchActivitiesRequested,
 } from './actions';
 
-import ACTIVITIES from '../../../Services/Urls';
+import { ACTIVITIES } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
+import {
+  Get, Post, Patch,
+} from '../../../Services/privateApiService';
 
-const mainRoutes = getRoutes('mainRoutes');
-const backOfficeRoutes = getRoutes('backOffice');
+const backOfficeRoutes = getRoutes('mainRoutes').backOfficeRoutes;
 
-function* submitActivitieRequestedSagas() {
-  yield console.log('paso el fetch');
+function* submitActivitieRequestedSagas({ payload, id }) {
+  const { name, image, description } = payload;
+  if (!id) {
+    yield Post(`${ACTIVITIES}`, {
+      name,
+      image,
+      description,
+    }).then((e) => console.log(e));
+  }
+  if (id) {
+    const data = {
+      name,
+      image,
+      description,
+    };
+
+    const response = yield Patch(ACTIVITIES, id, data);
+    console.log(response);
+  }
 }
 
-function* fetchActivitiesRequestedSagas() {}
+function* fetchActivitiesRequestedSagas({ id }) {
+  if (!id) {
+    const response = yield Get(`${ACTIVITIES}`);
+    const documents = get(response.data, 'data');
+    yield put(fetchActivitiesSucceeded({ documents }));
+  }
+  if (id) {
+    const response = yield Get(`${ACTIVITIES}/${id}`);
+    const entry = get(response.data, 'data');
+    yield put(fetchOneActivitiesSucceeded({ entry }));
+  }
+}
 
-function* deleteActivitieRequestedSagas() {}
+function* deleteActivitieRequestedSagas() { }
 
 export default function* userSagas() {
   yield all([
