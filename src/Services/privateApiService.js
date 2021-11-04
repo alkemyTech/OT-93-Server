@@ -21,7 +21,16 @@ const getTokenHeader = () => {
   return null;
 };
 
-export async function Get(URI, id) {
+export const Post = async (URI, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.post(`${API}/${URI}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+
+export const Get = async (URI, id) => {
   const config = getTokenHeader();
   try {
     if (id) {
