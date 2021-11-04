@@ -1,9 +1,8 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable no-console */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable no-console */
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
+
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 
@@ -14,19 +13,13 @@ import {
 } from './types';
 
 import {
-  submitActivitiesRequested,
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
   setSystemMessage,
-  cleanActivitiesForm,
-  fetchActivitiesRequested,
 } from './actions';
 
 import { ACTIVITIES } from '../../../Services/Urls';
-import { getRoutes } from '../../../utils';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
-
-const backOfficeRoutes = getRoutes('mainRoutes').backOfficeRoutes;
 
 function* submitActivitieRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
