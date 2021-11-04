@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
-import fromState from '../../../core/selectors';
+import fromState from '../../core/selectors';
 import {
   submitNewsRequested,
   fetchNewsRequested,
-} from '../../../core/state/News/actions';
+} from '../../core/state/Users/actions';
 import Component from './Component';
 
 export default connect(

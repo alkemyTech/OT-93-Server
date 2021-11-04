@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { getRoutes } from '../../../utils';
-import BackForm from '../../../Components/BackForm';
-import { REQUIRED } from '../../../utils/constants';
+import { getRoutes } from '../../utils';
+import BackForm from '../../Components/BackForm';
+import { REQUIRED } from '../../utils/constants';
 
 const backOfficeRoutes = getRoutes('backOffice');
 

@@ -1,4 +1,4 @@
-import * as News from './state/News/selectors';
+import * as News from './state/Users/selectors';
 
 export default {
   News,

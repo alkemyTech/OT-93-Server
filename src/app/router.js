@@ -3,8 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { getRoutes } from '../utils';
 import Home from '../pages/Home';
-import NewForm from '../pages/News/Form';
-import NewList from '../pages/News/List';
+import Register from '../pages/Register';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -22,10 +21,7 @@ const backOfficeRoutes = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={Home} />
-      <Route exact path={mainRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={mainRoutes.news} component={NewList} />
+      <Route exact path={mainRoutes.home} component={Register} />
       {/* <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
