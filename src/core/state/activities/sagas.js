@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
@@ -16,26 +17,29 @@ import {
   submitActivitiesRequested,
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
+  setSystemMessage,
   cleanActivitiesForm,
   fetchActivitiesRequested,
 } from './actions';
 
 import { ACTIVITIES } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
-import {
-  Get, Post, Patch,
-} from '../../../Services/privateApiService';
+import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 const backOfficeRoutes = getRoutes('mainRoutes').backOfficeRoutes;
 
 function* submitActivitieRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
+
   if (!id) {
     yield Post(`${ACTIVITIES}`, {
       name,
       image,
       description,
     }).then((e) => console.log(e));
+    yield put(
+      setSystemMessage({ icon: 'success', title: 'Activity created correctly' })
+    );
   }
   if (id) {
     const data = {
@@ -46,6 +50,12 @@ function* submitActivitieRequestedSagas({ payload, id }) {
 
     const response = yield Patch(ACTIVITIES, id, data);
     console.log(response);
+    yield put(
+      setSystemMessage({
+        icon: 'success',
+        title: 'Activity modified correctly',
+      })
+    );
   }
 }
 
@@ -62,7 +72,7 @@ function* fetchActivitiesRequestedSagas({ id }) {
   }
 }
 
-function* deleteActivitieRequestedSagas() { }
+function* deleteActivitieRequestedSagas() {}
 
 export default function* userSagas() {
   yield all([

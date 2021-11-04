@@ -5,10 +5,16 @@ import {
   FETCH_ACTIVITIES_SUCCEEDED,
   DELETE_ACTIVITIES_REQUESTED,
   CLEAN_ACTIVITIES_FORM,
+  SET_SYSTEM_MSG,
 } from './types';
 
 export const submitActivitiesRequested = (props) => ({
   type: SUBMIT_ACTIVITIES_REQUESTED,
+  ...props,
+});
+
+export const setSystemMessage = (props) => ({
+  type: SET_SYSTEM_MSG,
   ...props,
 });
 
