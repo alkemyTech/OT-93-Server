@@ -1,13 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable no-return-assign */
 /* eslint-disable consistent-return */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable no-console */
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
+
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 
@@ -18,23 +14,18 @@ import {
 } from './types';
 
 import {
-  submitActivitiesRequested,
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
   setSystemMessage,
-  cleanActivitiesForm,
-  fetchActivitiesRequested,
+
 } from './actions';
 
 import { ACTIVITIES } from '../../../Services/Urls';
-import { getRoutes } from '../../../utils';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
-
-const backOfficeRoutes = getRoutes('mainRoutes').backOfficeRoutes;
 
 function* submitActivitieRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
-  let data = '';
+  let alertProps = '';
   try {
     if (!id) {
       yield Post(`${ACTIVITIES}`, {
@@ -43,20 +34,20 @@ function* submitActivitieRequestedSagas({ payload, id }) {
         description,
       }).then((e) => {
         if (e.data.success) {
+          return alertProps = {
+            icon: 'success',
+            title: 'data submited successfully'
+          };
+        } if (e.data.error) {
           return (
-            data = {
-              icon: 'success',
-              title: 'data submited successfully'
+            alertProps = {
+              icon: 'error',
+              title: 'there was an error submiting the data',
             }
           );
-        } if (e.data.error) {
-          return data = {
-            icon: 'error',
-            title: 'there was an error submiting the data',
-          };
         }
       });
-      const { icon, title } = data;
+      const { icon, title } = alertProps;
       yield put(setSystemMessage({
         icon,
         title,
@@ -68,19 +59,27 @@ function* submitActivitieRequestedSagas({ payload, id }) {
         image,
         description,
       };
-
-      const response = yield Patch(ACTIVITIES, id, data);
-      console.log(response);
-      yield put(
-        setSystemMessage({
-          icon: 'success',
-          title: 'Activity modified correctly',
-        })
-      );
+      yield Patch(ACTIVITIES, id, data).then((e) => {
+        if (e.data.success) {
+          return alertProps = {
+            icon: 'success',
+            title: 'data submited successfully'
+          };
+        } if (e.data.error) {
+          return alertProps = {
+            icon: 'error',
+            title: 'there was an error submiting the data',
+          };
+        }
+      });
+      const { icon, title } = alertProps;
+      yield put(setSystemMessage({
+        icon,
+        title,
+      }));
     }
   } catch (error) {
-    console.log(error);
-    setSystemMessage({ icon: 'error', title: 'there was an error submiting the data' });
+    yield console.log(error);
   }
 }
 
@@ -102,6 +101,7 @@ function* fetchActivitiesRequestedSagas({ id }) {
   }
 }
 
+// eslint-disable-next-line no-empty-function
 function* deleteActivitieRequestedSagas() {}
 
 export default function* userSagas() {
