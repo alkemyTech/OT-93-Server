@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
+import 'animate.css';
 import {
   Label,
   Col,

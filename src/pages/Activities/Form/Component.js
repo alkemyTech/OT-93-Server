@@ -20,10 +20,9 @@ const Component = ({
   const goBackToList = () => push('/');
   const validate = (values) => {
     const errors = {};
-    if (!values.name || !values.image || !values.description) {
+    if (!values.name || !values.image) {
       errors.name = REQUIRED;
       errors.image = REQUIRED;
-      errors.description = REQUIRED;
     }
     return errors;
   };
@@ -47,8 +46,7 @@ const Component = ({
             fetch={fetchActivitiesRequested}
             id={id}
             goBack={goBackToList}
-            vali
-            date={validate}
+            validate={validate}
           />
         </Col>
       </Row>
