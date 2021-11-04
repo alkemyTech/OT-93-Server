@@ -19,12 +19,10 @@ const News = ({ data, title }) => (
     <Row>
       <Col>
         <h1>{title}</h1>
-        <div>
-          {data.length > 0 ? (
-            <>
-              {/* Cambiar h1 por componente para mostrar titulos */}
-              <h1>Listado de Novedades</h1>
-              {map(data, (element, index) => (
+        <Row>
+          {data?.length > 0 ? (
+            map(data, (element, index) => (
+              <Col>
                 <Card key={index}>
                   <CardImg
                     top
@@ -41,12 +39,14 @@ const News = ({ data, title }) => (
                     <Button>Button</Button>
                   </CardBody>
                 </Card>
-              ))}
-            </>
+              </Col>
+            ))
           ) : (
-            <p>No hay novedades</p>
+            <Col>
+              <p>No hay novedades</p>
+            </Col>
           )}
-        </div>
+        </Row>
       </Col>
     </Row>
   </Container>
@@ -55,7 +55,6 @@ const News = ({ data, title }) => (
 News.propTypes = {
   title: PropTypes.string,
   data: PropTypes.object,
-
 };
 
 export default News;
