@@ -1,5 +1,5 @@
-import * as News from './state/Users/selectors';
+import * as Users from './state/Users/selectors';
 
 export default {
-  News,
+  Users,
 };

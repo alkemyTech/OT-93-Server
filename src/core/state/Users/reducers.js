@@ -1,20 +1,17 @@
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 import {
-  FETCH_NEWS_SUCCEEDED,
-  FETCH_ONE_NEWS_SUCCEEDED,
-  CLEAN_NEWS_FORM,
-  SET_SYSTEM_MSG,
+  REGISTER_USER,
 } from './types';
 
 const initialState = {
-  newsForm: {
+  registerForm: {
     email: '',
     password: '',
     confirmPassword: '',
     categoryId: 1,
     type: 'register',
   },
-  newsFields: [
+  registerFields: [
     {
       label: 'Email',
       placeholder: 'Email',
@@ -37,45 +34,16 @@ const initialState = {
       name: 'confirmPassword',
     },
   ],
-  list: {
-    documents: [],
-    total: null,
-  },
 };
 
-const News = (state = { ...initialState }, { type, ...props }) => {
+const Users = (state = { ...initialState }, { type, ...props }) => {
   switch (type) {
-    case FETCH_ONE_NEWS_SUCCEEDED: {
+    case REGISTER_USER: {
       return {
         ...initialState,
-        newsForm: {
-          ...state.newsForm,
+        registerForm: {
+          ...state.registerForm,
           ...props.entry,
-        },
-      };
-    }
-    case FETCH_NEWS_SUCCEEDED: {
-      return {
-        ...initialState,
-        list: {
-          documents: props.documents,
-          total: props.documents.length,
-        },
-      };
-    }
-
-    case SET_SYSTEM_MSG: {
-      swal.fire(props);
-      return {
-        ...state,
-      };
-    }
-
-    case CLEAN_NEWS_FORM: {
-      return {
-        ...state,
-        newsForm: {
-          ...initialState.newsForm,
         },
       };
     }
@@ -84,4 +52,4 @@ const News = (state = { ...initialState }, { type, ...props }) => {
   }
 };
 
-export default News;
+export default Users;

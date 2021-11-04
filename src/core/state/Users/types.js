@@ -1,7 +1,2 @@
-export const SUBMIT_NEWS_REQUESTED = 'SUBMIT_NEWS_REQUESTED';
-export const FETCH_NEWS_REQUESTED = 'FETCH_NEWS_REQUESTED';
-export const FETCH_ONE_NEWS_SUCCEEDED = 'FETCH_ONE_NEWS_SUCCEEDED';
-export const FETCH_NEWS_SUCCEEDED = 'FETCH_NEWS_SUCCEEDED';
-export const DELETE_NEWS_REQUESTED = 'DELETE_NEWS_REQUESTED';
-export const CLEAN_NEWS_FORM = 'CLEAN_NEWS_FORM';
-export const SET_SYSTEM_MSG = 'SET_SYSTEM_MSG';
+// eslint-disable-next-line import/prefer-default-export
+export const REGISTER_USER = 'REGISTER_USER';

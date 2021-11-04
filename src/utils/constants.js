@@ -4,3 +4,6 @@ export const ADD = 'Agregar';
 export const CANCEL = 'Cancelar';
 export const SEND = 'Enviar';
 export const TOYS_CAMPAIGN = 'Campaña Juguetes';
+export const WRONG_PASSWORD = 'Las contraseñas no coinciden';
+export const SHORT_PASSWORD = 'Debe tener un mínimo de 6 caractéres';
+export const INVALID_PASSWORD = 'Debe tener al menos una letra un numero y un simbolo';
