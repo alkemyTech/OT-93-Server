@@ -7,6 +7,8 @@ import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import News from '../pages/News';
+
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -18,7 +20,9 @@ import ActivitiesList from '../pages/Activities/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
+
 const { backOfficeRoutes } = getRoutes('mainRoutes');
+
 
 function Router() {
   return (
