@@ -4,6 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { getRoutes } from '../utils';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
+import NewForm from '../pages/News/Form';
+import NewList from '../pages/News/List';
+import News from '../pages/News';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -15,7 +18,7 @@ import Register from '../pages/Register';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
-const mainRoutes = getRoutes('mainRoutes');
+const { publicRoutes } = getRoutes('mainRoutes');
 const backOfficeRoutes = getRoutes('mainRoutes');
 
 function Router() {
@@ -24,6 +27,12 @@ function Router() {
       <Route exact path={mainRoutes.home} component={Home} />
       <Route path={mainRoutes.register} component={Register} />
       {/* <Route path="/create-activity" component={ActivitiesForm} />
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+      <Route exact path={publicRoutes.news} component={News} />
+      {/* <Route exact path={publicRoutes.news} component={NewList} />
+      <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
