@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
-// import Spinner from '../../Components/Spinner';
+import Spinner from '../../Components/Spinner';
 import Sidebar from '../../Components/Sidenav';
 
 const Component = ({ welcomeText }) => (
@@ -12,7 +12,7 @@ const Component = ({ welcomeText }) => (
       <Col>
         <h1>{welcomeText}</h1>
         <Sidebar />
-        {/* <Spinner show text="cargando" /> */}
+        <Spinner show="false" text="cargando" />
       </Col>
     </Row>
   </Container>
