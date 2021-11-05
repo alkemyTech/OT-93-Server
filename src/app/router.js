@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
 import Register from '../pages/Register';
+import News from '../pages/News';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -17,18 +18,19 @@ import Register from '../pages/Register';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
-const mainRoutes = getRoutes('mainRoutes');
+const { publicRoutes } = getRoutes('mainRoutes');
 const backOfficeRoutes = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={Register} />
+      <Route exact path={mainRoutes.home} component={Home} />
       <Route exact path={mainRoutes.newsForm} component={NewForm} />
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />
-      <Route path={mainRoutes.register} component={Register} />
-      {/* <Route path="/create-activity" component={ActivitiesForm} />
+      <Route exact path={mainRoutes.register} component={Register} />
+      {/* <Route exact path={publicRoutes.news} component={NewList} />
+          <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
