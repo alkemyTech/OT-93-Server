@@ -3,8 +3,10 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import history from './middlewares/history';
 import news from './state/News/reducers';
+import login from './state/Session/reducers';
 
 export default () => combineReducers({
   router: connectRouter(history),
   news,
+  login,
 });
