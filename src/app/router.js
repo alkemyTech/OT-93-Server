@@ -15,6 +15,7 @@ import NewList from '../pages/News/List';
 // import ProjectsForm from '../Components/Projects/ProjectsForm';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
+import Categories from '../pages/Categories';
 
 const mainRoutes = getRoutes('mainRoutes');
 const backOfficeRoutes = getRoutes('mainRoutes');
@@ -22,7 +23,7 @@ const backOfficeRoutes = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={Home} />
+      <Route exact path={mainRoutes.home} component={Categories} />
       <Route exact path={mainRoutes.newsForm} component={NewForm} />
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />

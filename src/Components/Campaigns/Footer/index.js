@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../utils/assets/LOGO.png';
 import { socialMediaInfo, campaignLinks } from '../../../utils/selectors';
 
+// eslint-disable-next-line react/prop-types
 const Footer = ({ campaignInfo }) => (
     <footer className="text-center bg-light container-fluid pt-3">
       <Container>

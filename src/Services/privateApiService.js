@@ -17,15 +17,25 @@ const getTokenHeader = () => {
   return null;
 };
 
+export const Post = async (URI, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.post(`${API}/${URI}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export async function Get(URI, id) {
   const config = getTokenHeader();
   try {
     if (id) {
-      const response = await axios.get(`${'API'}/${URI}/${id}`, config);
-      return JSON.stringify(response);
+      const response = await axios.get(`${API}${URI}/${id}`, config);
+      return response;
     }
-    const response = await axios.get(`${'API'}/${URI}`, config);
-    return JSON.stringify(response);
+    const response = await axios.get(`${API}${URI}`, config);
+    return response;
   } catch (error) {
     return error;
   }
