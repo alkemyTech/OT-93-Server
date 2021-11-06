@@ -1,6 +1,9 @@
-import React from 'react';
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
+import 'animate.css';
 import {
   Label,
   Col,
