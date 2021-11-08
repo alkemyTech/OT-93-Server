@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-return-assign */
 /* eslint-disable consistent-return */
@@ -28,10 +29,8 @@ function* submitActivitieRequestedSagas({ payload, id }) {
   let alertProps = '';
   try {
     if (!id) {
-      yield Post(`${ACTIVITIES}`, {
-        name,
-        image,
-        description,
+      yield Post(ACTIVITIES, {
+        name, image, description,
       }).then((e) => {
         if (e.data.success) {
           return alertProps = {
@@ -87,6 +86,7 @@ function* fetchActivitiesRequestedSagas({ id }) {
   try {
     if (!id) {
       const response = yield Get(`${ACTIVITIES}`);
+
       const documents = get(response.data, 'data');
       yield put(fetchActivitiesSucceeded({ documents }));
     }

@@ -18,8 +18,10 @@ const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={CategoriesForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.home} component={ActivitiesList} />
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
+      <Route exact path={`${backOfficeRoutes.newActivity}`} component={ActivitiesForm} />
+       {/* <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.home} component={Home} />
@@ -27,7 +29,7 @@ function Router() {
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />
       <Route exact path={mainRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
     </Switch>
   );
 }
