@@ -1,13 +1,7 @@
-import {
-  all,
-  put,
-  takeLatest,
-} from 'redux-saga/effects';
+import { all, put, takeLatest } from 'redux-saga/effects';
 
 import get from 'lodash/get';
-import {
-  NEWS,
-} from '../../../Services/Urls';
+import { NEWS } from '../../../Services/Urls';
 
 import { getRoutes } from '../../../utils';
 import Api from '../../../Services/Api';
@@ -77,37 +71,7 @@ function* fetchNewsRequestedSagas({ id }) {
       }
       return yield put(fetchOneNewsSucceeded({ entry }));
     }
-    let entries = yield Api.get(`${NEWS}`);
-    entries = {
-      success: true,
-      data: [
-        {
-          id: 0,
-          name: 'string',
-          slug: 'string',
-          content: 'string',
-          image: 'string',
-          user_id: 0,
-          category_id: 0,
-          created_at: '2021-10-27T03:58:49.655Z',
-          updated_at: '2021-10-27T03:58:49.655Z',
-          deleted_at: '2021-10-27T03:58:49.655Z',
-        },
-        {
-          id: 2,
-          name: 'string2',
-          slug: 'string2',
-          content: 'string2',
-          image: 'string2',
-          user_id: 0,
-          category_id: 0,
-          created_at: '2021-10-27T03:58:49.655Z',
-          updated_at: '2021-10-27T03:58:49.655Z',
-          deleted_at: '2021-10-27T03:58:49.655Z',
-        },
-      ],
-      message: 'realizado con exito',
-    };
+    const entries = yield Api.get(`${NEWS}`);
     const documents = get(entries, 'data');
     return yield put(fetchNewsSucceeded({ documents }));
   } catch (err) {
