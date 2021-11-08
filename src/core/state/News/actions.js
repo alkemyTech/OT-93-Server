@@ -5,16 +5,10 @@ import {
   FETCH_NEWS_SUCCEEDED,
   DELETE_NEWS_REQUESTED,
   CLEAN_NEWS_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 export const submitNewsRequested = (props) => ({
   type: SUBMIT_NEWS_REQUESTED,
-  ...props,
-});
-
-export const setSystemMessage = (props) => ({
-  type: SET_SYSTEM_MSG,
   ...props,
 });
 
