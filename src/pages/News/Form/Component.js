@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { getRoutes } from '../../../utils';
 import BackForm from '../../../Components/BackForm';
@@ -26,32 +27,34 @@ const Component = ({
   };
 
   const goBackToList = () => push(backOfficeRoutes.news.list);
+  const id = match.params.id;
+ 
+  useEffect(() => {
+    fetchNewsRequested({ id });
+  }, [fetchNewsRequested]);
 
   return (
-        <>
-            <h1 className="text-center mb-4">{title}</h1>
-            <BackForm
-              key="NewsForm"
-              form={form}
-              fields={fields}
-              submit={submitNewsRequested}
-              fetch={fetchNewsRequested}
-              id={match.params.id}
-              validate={validate}
-              goBack={goBackToList}
-            />
-        </>
+    <>
+      <h1 className="text-center mb-4">{title}</h1>
+      <BackForm
+        key="NewsForm"
+        form={form}
+        fields={fields}
+        submit={submitNewsRequested}
+        fetch={fetchNewsRequested}
+        id={id}
+        validate={validate}
+        goBack={goBackToList}
+      />
+    </>
   );
 };
 
 export default Component;
 
 Component.propTypes = {
-  form: PropTypes.shape({
-  }).isRequired,
-  fields: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
+  form: PropTypes.shape({}).isRequired,
+  fields: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   submitNewsRequested: PropTypes.func.isRequired,
   fetchNewsRequested: PropTypes.func.isRequired,
   match: PropTypes.shape({

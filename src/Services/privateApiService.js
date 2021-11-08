@@ -32,10 +32,10 @@ export const Get = async (URI, id) => {
   const config = getTokenHeader();
   try {
     if (id) {
-      const response = await axios.get(`${'API'}/${URI}/${id}`, config);
+      const response = await axios.get(`${API}/${URI}/${id}`, config);
       return JSON.stringify(response);
     }
-    const response = await axios.get(`${'API'}/${URI}`, config);
+    const response = await axios.get(`${API}/${URI}`, config);
     return JSON.stringify(response);
   } catch (error) {
     return error;

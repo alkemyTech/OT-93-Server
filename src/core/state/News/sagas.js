@@ -1,13 +1,8 @@
-import {
-  all,
-  put,
-  takeLatest,
-} from 'redux-saga/effects';
+/* eslint-disable */
+import { all, put, takeLatest } from 'redux-saga/effects';
 
 import get from 'lodash/get';
-import {
-  NEWS,
-} from '../../../Services/Urls';
+import { NEWS } from '../../../Services/Urls';
 
 import { getRoutes } from '../../../utils';
 import Api from '../../../Services/Api';
@@ -27,17 +22,25 @@ import {
 
 const mainRoutes = getRoutes('mainRoutes');
 const backOfficeRoutes = getRoutes('backOffice');
+import { Get, Post, Patch, Put } from '../../../Services/privateApiService';
 
 function* submitNewsRequestedSagas({ payload, id }) {
+  const { name, image, description } = payload;
   try {
     let success = null;
     if (id) {
-      const responseNews = yield Api.put(`${NEWS}/${id}`, payload);
+      const responseNews = yield Post(`${NEWS}`, id, {
+        name,
+        image,
+        description,
+      });
+      console.log(responseNews);
       success = get(responseNews, 'data.success');
-      yield push(`${mainRoutes.news}/${id}`);
+      yield push(`${backOfficeRoutes.news}/${id}`);
     }
     if (!id) {
-      const responseNews = yield Api.post(`${NEWS}`, payload);
+      const responseNews = yield Post(NEWS, payload);
+      console.log(responseNews)
       success = get(responseNews, 'data.success');
       yield push(backOfficeRoutes.news.list);
     }
@@ -53,25 +56,9 @@ function* submitNewsRequestedSagas({ payload, id }) {
 function* fetchNewsRequestedSagas({ id }) {
   try {
     if (id) {
-      let response = yield Api.get(`${NEWS}/${id}`);
-      response = {
-        success: true,
-        data: {
-          id: 2,
-          name: 'string2',
-          slug: 'string2',
-          content: 'string2',
-          image: 'string2',
-          user_id: 0,
-          category_id: 0,
-          created_at: '2021-10-27T03:58:49.655Z',
-          updated_at: '2021-10-27T03:58:49.655Z',
-          deleted_at: '2021-10-27T03:58:49.655Z',
-        },
-        message: 'realizado con exito',
-      };
-
-      const entry = get(response, 'data');
+      let response = yield Get(NEWS, id); 
+      const entry2 = get(JSON.parse(response), 'data');
+      const entry = get(entry2, 'data');
       if (!entry) {
         return yield put(cleanNewsForm({}));
       }

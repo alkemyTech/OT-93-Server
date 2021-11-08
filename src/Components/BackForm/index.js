@@ -1,6 +1,9 @@
-import React from 'react';
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
+import 'animate.css';
 import {
   Label,
   Col,
@@ -15,16 +18,23 @@ import {
 } from 'reactstrap';
 import map from 'lodash/map';
 import get from 'lodash/get';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SEND, CANCEL } from '../../utils/constants';
 
 const BackForm = ({
   form, fields, submit, id, validate, goBack, push,
 }) => {
+  const [text, setText] = useState('');
+
   const Formik = useFormik({
     enableReinitialize: true,
     initialValues: { ...form },
     validate,
-    onSubmit: (payload) => submit({ payload, id, push }),
+    onSubmit: (payload) => {
+      payload.description = text;
+      submit({ payload, id, push });
+    },
   });
 
   return (
@@ -46,16 +56,28 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                      <Input
-                        className="form-control"
-                        onChange={Formik.handleChange}
-                        onBlur={Formik.handleBlur}
-                        value={Formik.values[get(field, 'name')]}
-                        placeholder={get(field, 'placeholder')}
-                        type={get(field, 'type')}
-                        name={get(field, 'name')}
-                        id={get(field, 'id')}
-                      />
+                      {get(field, 'type') !== 'CKEditor' ? (
+                        <Input
+                          className="form-control"
+                          onChange={Formik.handleChange}
+                          onBlur={Formik.handleBlur}
+                          value={Formik.values[get(field, 'name')]}
+                          placeholder={get(field, 'placeholder')}
+                          type={get(field, 'type')}
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                        />
+                      ) : (
+                        <CKEditor
+                          editor={ClassicEditor}
+                          data={Formik.values[get(field, 'name')]}
+                          onChange={(event, editor) => {
+                            const data = editor.getData();
+                            setText(data);
+                            Formik.setFieldValue('content', data);
+                          }}
+                        />
+                      )}
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]

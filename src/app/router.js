@@ -5,7 +5,7 @@ import { getRoutes } from '../utils';
 import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
-import News from '../pages/News';
+import News from '../pages/News/Index';
 // import ActivitiesForm from '../Components/Activities/ActivitiesForm';
 // import CategoriesForm from '../Components/Categories/CategoriesForm';
 // import NewsForm from '../Components/News/NewsForm';
@@ -17,15 +17,18 @@ import News from '../pages/News';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
-const { publicRoutes } = getRoutes('mainRoutes');
-const backOfficeRoutes = getRoutes('mainRoutes');
+const { publicRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
       <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+      <Route exact path={backOfficeRoutes.news} component={NewForm} />
+      <Route
+        exact
+        path={`${backOfficeRoutes.news}/:id`}
+        component={NewForm}
+      />
       <Route exact path={publicRoutes.news} component={News} />
 
       {/* <Route exact path={publicRoutes.news} component={NewList} />
