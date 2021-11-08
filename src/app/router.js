@@ -12,11 +12,14 @@ import ActivitiesList from '../pages/Activities/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 
-const { mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
+const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.home} component={Home} />
       <Route exact path={mainRoutes.newsForm} component={NewForm} />
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
