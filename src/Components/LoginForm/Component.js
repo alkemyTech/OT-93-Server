@@ -1,9 +1,5 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { useFormik } from 'formik';
-import 'animate.css';
 import {
   Label,
   Col,
@@ -18,26 +14,45 @@ import {
 } from 'reactstrap';
 import map from 'lodash/map';
 import get from 'lodash/get';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { SEND, CANCEL } from '../../utils/constants';
+import { PropTypes } from 'prop-types';
+import { REQUIRED, SEND, CANCEL } from '../../utils/constants';
 
-const BackForm = ({
-  form, fields, submit, id, validate, goBack, push,
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = REQUIRED;
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Dirección de e-mail inválida';
+  }
+  if (!values.password) {
+    errors.password = REQUIRED;
+  } else if (!/^(?=.*\d)(?=.*[^\w\s\d])(?=.*[a-zA-Z])(?!.*[\s]).{6,}$/gm.test(values.password)) {
+    errors.password = 'Contraseña inválida. La contraseña debe tener una longitud mínima de 6 caraceteres, y contener al menos un número, una letra y un símbolo.';
+  }
+  return errors;
+};
+
+const Component = ({
+  title,
+  form,
+  fields,
+  submitLoginRequested,
+  cleanLoginForm,
 }) => {
-  const [text, setText] = useState('');
-
   const Formik = useFormik({
     enableReinitialize: true,
     initialValues: { ...form },
     validate,
-    onSubmit: (payload) => {
-      payload.description = text;
-      submit({ payload, id, push });
+    onSubmit: (values) => {
+      submitLoginRequested(values);
+      cleanLoginForm();
     },
   });
-
   return (
+        <>
+            <h1 className="text-center mb-4">{title}</h1>
+
     <Container>
       <Row>
         <Col
@@ -56,7 +71,6 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                    { get(field, 'type') !== 'CKEditor' ? (
                       <Input
                         className="form-control"
                         onChange={Formik.handleChange}
@@ -67,17 +81,6 @@ const BackForm = ({
                         name={get(field, 'name')}
                         id={get(field, 'id')}
                       />
-                    ) : (
-              <CKEditor
-                editor={ClassicEditor}
-                data={Formik.values[get(field, 'name')]}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setText(data);
-                }}
-
-              />
-                    )}
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]
@@ -93,7 +96,7 @@ const BackForm = ({
                   <Button
                     color="danger"
                     className="btn-cancel"
-                    onClick={goBack}
+                    // onClick={goBack}
                   >
                     {CANCEL}
                   </Button>
@@ -111,30 +114,28 @@ const BackForm = ({
         </Col>
       </Row>
     </Container>
+        </>
   );
 };
 
-export default BackForm;
+export default Component;
 
-BackForm.propTypes = {
-  form: PropTypes.shape({}).isRequired,
+Component.propTypes = {
+  form: PropTypes.shape({
+  }).isRequired,
   fields: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    PropTypes.shape({}),
   ).isRequired,
-  goBack: PropTypes.func.isRequired,
-  id: PropTypes.string,
-  submit: PropTypes.func.isRequired,
-  fetch: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
-  validate: PropTypes.func.isRequired,
+  submitLoginRequested: PropTypes.func.isRequired,
+  cleanLoginForm: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+  title: PropTypes.string,
 };
 
-BackForm.defaultProps = {
-  id: null,
+Component.defaultProps = {
+  title: 'Log-in',
 };

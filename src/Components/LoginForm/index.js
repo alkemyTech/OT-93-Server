@@ -3,18 +3,21 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
-import Component from './Component';
 import {
-  fetchNewsRequested,
-} from '../../core/state/News/actions';
+  submitLoginRequested,
+  cleanLoginForm,
+} from '../../core/state/Session/actions';
+import Component from './Component';
 
 export default connect(
   (state) => ({
-    data: fromState.News.getNews(state),
+    form: fromState.Login.getLoginForm(state),
+    fields: fromState.Login.getLoginFields(state),
   }),
   (dispatch) => bindActionCreators(
     {
-      fetchNewsRequested,
+      submitLoginRequested,
+      cleanLoginForm,
     },
     dispatch,
   ),

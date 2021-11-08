@@ -95,38 +95,38 @@ const TableList = ({
                                                 </Label>
                                             )}
                                             {column.actions && (
-                                                <>
+                                                <Col className="d-flex justify-content-evenly">
                                                     {column.edit && (
                                                         <Button
                                                           onClick={() => onEdit(document)}
                                                           onTouchEnd={() => onEdit(document)}
-                                                          color="light"
-                                                          className="btn-grey"
+                                                          color="warning"
+                                                          className="btn-grey "
                                                         >
-                                                                 edit
+                                                                 Edit
                                                         </Button>
                                                     )}
                                                     {column.view && (
                                                         <Button
                                                           onClick={() => onView(document)}
                                                           onTouchEnd={() => onView(document)}
-                                                          color="light"
-                                                          className="btn-grey"
+                                                          color="success"
+                                                          className="btn-grey "
                                                         >
-                                                            ver
+                                                            More Info
                                                         </Button>
                                                     )}
                                                     {column.delete && (
                                                         <Button
                                                           onClick={() => onDelete(document)}
                                                           onTouchEnd={() => onDelete(document)}
-                                                          color="light"
-                                                          className="btn-grey"
+                                                          color="danger"
+                                                          className="btn-grey "
                                                         >
-                                                            delete
+                                                            Delete
                                                         </Button>
                                                     )}
-                                                </>
+                                                </Col>
                                             )}
                                             {column.drawInformation && column.drawInformation(document)}
                                             {!column.drawInformation && get(document, column.key)}
