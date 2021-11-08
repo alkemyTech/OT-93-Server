@@ -2,10 +2,12 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Title = ({ text, onlyTitle, image }) => (
-  <Row>
+const Title = ({
+  text, className, onlyTitle, image,
+}) => (
+  <Row className={className}>
     <Col>
-      <h1>{text}</h1>
+      {text}
       {!onlyTitle && (
         <img
           style={{ position: 'relative', bottom: '56px', zIndex: -1 }}
@@ -18,7 +20,8 @@ const Title = ({ text, onlyTitle, image }) => (
 );
 
 Title.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired,
+  className: PropTypes.string,
   onlyTitle: PropTypes.bool,
   image: PropTypes.string,
 };
