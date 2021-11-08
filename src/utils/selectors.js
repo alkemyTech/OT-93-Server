@@ -19,6 +19,11 @@ export const getNavigationBackOffice = () => {
       url: `${backOfficeRoutes.activities}`,
     },
     {
+      name: 'create activities',
+      label: 'crear actividades',
+      url: `${backOfficeRoutes.newActivity}`,
+    },
+    {
       name: 'categories',
       label: 'categorias',
       url: `${backOfficeRoutes.categories}`,

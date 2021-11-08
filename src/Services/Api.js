@@ -4,8 +4,6 @@
 import isString from 'lodash/isString';
 import axios from 'axios';
 
-// const {API} = process.env;
-
 const getTokenUser = () => {
   const token = localStorage.getItem('token_agent');
   if (token) {
@@ -18,7 +16,7 @@ export default class Api {
   static async get(URL) {
     const token = getTokenUser();
     try {
-      return await axios.get(`http://ongapi.alkemy.org/docs/api/${URL}`, {
+      return await axios.get(`http://ongapi.alkemy.org/api/${URL}`, {
         headers: token ? {
           Authorization: token,
         } : {},
@@ -32,7 +30,7 @@ export default class Api {
     const token = getTokenUser();
     try {
       return await axios.post(
-        `http://ongapi.alkemy.org/docs/api/${URL}`, isString(body) ? body : JSON.stringify(body), {
+        `http://ongapi.alkemy.org/api/${URL}`, isString(body) ? body : JSON.stringify(body), {
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +47,7 @@ export default class Api {
     const token = getTokenUser();
     try {
       return await axios.put(
-        `http://ongapi.alkemy.org/docs/api/${URL}`, body, {
+        `http://ongapi.alkemy.org/api/${URL}`, body, {
           headers: token ? {
             Authorization: token,
           } : {},
