@@ -44,17 +44,7 @@ export async function Get(URI, id) {
   } catch (error) {
     return error;
   }
-};
-
-export const Post = async (URI, body) => {
-  const config = getTokenHeader();
-  try {
-    const response = await axios.post(`${API}${URI}`, body, config);
-    return response;
-  } catch (error) {
-    return error;
-  }
-};
+}
 
 export const Patch = async (URI, id, body) => {
   const config = getTokenHeader();
