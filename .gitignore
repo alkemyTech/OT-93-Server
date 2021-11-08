@@ -9,6 +9,7 @@ dist/
 package-lock.json
 .env
 .eslintcache
+.eslintcache~fc99b96180d065e65322fd78b0af8e61ec6ca56d
 
 # Compiled Java class files
 *.class
@@ -70,7 +71,9 @@ Thumbs.db
 .env.development.local
 .env.test.local
 .env.production.local
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.env

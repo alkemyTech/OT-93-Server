@@ -2,7 +2,8 @@ const mainRoutes = {
   backOfficeRoutes: {
     home: '/',
     news: '/create-news',
-    activities: '/create-activity',
+    activities: '/activity',
+    newActivity: '/create-activity',
     categories: '/create-category',
     testimonials: '/create-testimonials',
     organization: '/create-organization',
@@ -26,6 +27,7 @@ const mainRoutes = {
     novelty: '/novelty',
     editProfile: '/editProfile',
     backOffice: '/backOffice',
+    register: '/register',
   },
   landingPages: {
     toysCampaign: '/toys-campaign',
