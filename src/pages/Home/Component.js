@@ -1,29 +1,30 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Col,
-    Row,
-    Container
-} from 'reactstrap';
 
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
 
-const Component = ({
-    welcomeText
-}) => {
+import Sidebar from '../../Components/Sidenav';
+import Spinner from '../../Components/Spinner';
+import '../../css/Home.css';
 
-    return (
-        <Container>
-            <Row>
-                <Col>
-                    <h1>hola homes </h1>
-                </Col>
-            </Row>
-        </Container>
-    );
-};
+const Component = ({ welcomeText }) => (
+     <Container fluid>
+    <Row>
+      <Col>
+        <h1>{welcomeText}</h1>
+        <Sidebar />
+        <Spinner show={false} text="cargando" />
+      </Col>
+    </Row>
+     </Container>
+);
 
 Component.propTypes = {
-    welcomeText: PropTypes.string.isRequired
+  welcomeText: PropTypes.string.isRequired,
 };
 
 export default Component;

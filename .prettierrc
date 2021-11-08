@@ -1,0 +1,23 @@
+{
+  "tabWidth": 2,
+  "prettier.trailingComma": "none",
+  "parser": "babel",
+  "semi": true,
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "css",
+  "quoteProps": "as-needed",
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "parser": "css"
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "parser": "scss"
+      }
+    }
+  ]
+}
