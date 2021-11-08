@@ -17,10 +17,10 @@ const Component = ({ data }) => (
   <Row>
     <Col>
       <Card>
-        <CardImg top width="100%" src={data.url ? data.url : placeholder} alt="Card image" />
+        <CardImg top width="100%" src={get(data, 'image') || placeholder} alt="Card image" />
         <CardBody>
-          <CardTitle tag="h5">{get(data, 'description')}</CardTitle>
-          <CardText>{get(data, 'description')}</CardText>
+          <CardTitle tag="h5">{get(data, 'name')}</CardTitle>
+          <CardText>{get(data, 'content')}</CardText>
         </CardBody>
       </Card>
     </Col>

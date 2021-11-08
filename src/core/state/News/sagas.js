@@ -11,6 +11,7 @@ import {
   FETCH_NEWS_REQUESTED,
   DELETE_NEWS_REQUESTED,
 } from './types';
+import { Get } from '../../../Services/privateApiService';
 
 import {
   fetchNewsRequested,
@@ -71,7 +72,7 @@ function* fetchNewsRequestedSagas({ id }) {
       }
       return yield put(fetchOneNewsSucceeded({ entry }));
     }
-    const entries = yield Api.get(`${NEWS}`);
+    const entries = yield Get(NEWS);
     const documents = get(entries, 'data');
     return yield put(fetchNewsSucceeded({ documents }));
   } catch (err) {

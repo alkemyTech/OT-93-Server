@@ -11,3 +11,5 @@ export const SOCIAL_MEDIA = 'Redes Sociales';
 export const SITE = 'Sitio';
 export const CONTACT = 'Contacto';
 export const LOGO_ALT = 'Logo de Somos Más';
+export const NEWS = 'Novedades';
+export const NO_NEWS = 'No hay novedades';
