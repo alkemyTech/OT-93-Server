@@ -1,6 +1,6 @@
 import axios from 'axios'; // import axios
 
-const API = process.env.REACT_APP_API_URL;
+const API = process.env.REACT_APP_API;
 
 const getTokenHeader = () => {
   const token = localStorage.getItem('token_agent');
@@ -32,11 +32,11 @@ export const Get = async (URI, id) => {
   const config = getTokenHeader();
   try {
     if (id) {
-      const response = await axios.get(`${'API'}/${URI}/${id}`, config);
-      return JSON.stringify(response);
+      const response = await axios.get(`${API}${URI}/${id}`, config);
+      return response;
     }
-    const response = await axios.get(`${'API'}/${URI}`, config);
-    return JSON.stringify(response);
+    const response = await axios.get(`${API}${URI}`, config);
+    return response;
   } catch (error) {
     return error;
   }

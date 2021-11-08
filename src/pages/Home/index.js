@@ -1,17 +1,19 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
+import { fetchOrganizationRequested, fetchSlidesRequested } from '../../core/state/Home/actions';
 import Component from './Component';
 
 export default connect(
   (state) => ({
-    // aca van los selectos
+    organization: fromState.Home.getOrganization(state),
+    slides: fromState.Home.getSlides(state),
   }),
   (dispatch) => bindActionCreators(
     {
-      // aca van los actions
+      fetchOrganizationRequested,
+      fetchSlidesRequested,
     },
     dispatch,
   ),
