@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-extraneous-dependencies */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

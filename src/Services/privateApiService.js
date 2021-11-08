@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+
 import axios from 'axios'; // import axios
 
 const API = process.env.REACT_APP_API;
@@ -18,16 +22,6 @@ const getTokenHeader = () => {
   return null;
 };
 
-export const Post = async (URI, body) => {
-  const config = getTokenHeader();
-  try {
-    const response = await axios.post(`${API}/${URI}`, body, config);
-    return response;
-  } catch (error) {
-    return error;
-  }
-};
-
 export const Get = async (URI, id) => {
   const config = getTokenHeader();
   try {
@@ -42,10 +36,20 @@ export const Get = async (URI, id) => {
   }
 };
 
+export const Post = async (URI, body) => {
+  const config = getTokenHeader();
+  try {
+    const response = await axios.post(`${API}${URI}`, body, config);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const Patch = async (URI, id, body) => {
   const config = getTokenHeader();
   try {
-    const response = await axios.Patch(`${API}/${URI}${id}`, body, config);
+    const response = await axios.put(`${API}${URI}/${id}`, body, config);
     return response;
   } catch (error) {
     return error;
@@ -57,16 +61,6 @@ export const Delete = async (URI, id) => {
   try {
     const response = await axios.post(`${API}/${URI}/${id}`, config);
     return JSON.stringify(response);
-  } catch (error) {
-    return error;
-  }
-};
-
-export const Put = async (URI, id, body) => {
-  const config = getTokenHeader();
-  try {
-    const response = await axios.put(`${API}${URI}/${id}`, body, config);
-    return response;
   } catch (error) {
     return error;
   }
