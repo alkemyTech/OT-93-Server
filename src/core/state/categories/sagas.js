@@ -26,7 +26,7 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
   let alertProps = '';
   try {
     if (!id) {
-      yield Post(`${CATEGORIES}`, {
+      yield Post(CATEGORIES, {
         name,
         image,
         description,
