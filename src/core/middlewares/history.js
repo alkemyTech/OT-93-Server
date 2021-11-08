@@ -1,9 +1,9 @@
 // /* eslint-disable object-curly-newline */
 
-// import { createHashHistory } from 'history';
+import { createHashHistory } from 'history';
 // import qs from 'qs';
 
-// const history = createHashHistory();
+const history = createHashHistory();
 
 // history.location = {
 //   ...history.location,
@@ -18,8 +18,12 @@
 //   };
 // });
 
-// const { go, goBack, push, replace, getRedirectPath } = history;
+const {
+  go, goBack, push, replace, getRedirectPath,
+} = history;
 
-// export { go, goBack, push, replace, getRedirectPath };
+export {
+  go, goBack, push, replace, getRedirectPath,
+};
 
-// export default history;
+export default history;

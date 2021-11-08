@@ -1,21 +1,26 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
-import Spinner from '../../Components/Spinner';
+
 import Sidebar from '../../Components/Sidenav';
+import Spinner from '../../Components/Spinner';
+import '../../css/Home.css';
 
 const Component = ({ welcomeText }) => (
-  <Container fluid>
+     <Container fluid>
     <Row>
       <Col>
         <h1>{welcomeText}</h1>
         <Sidebar />
-        <Spinner show text="cargando" />
+        <Spinner show={false} text="cargando" />
       </Col>
     </Row>
-  </Container>
+     </Container>
 );
 
 Component.propTypes = {
