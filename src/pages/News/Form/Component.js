@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { getRoutes } from '../../../utils';
@@ -32,7 +31,6 @@ const Component = ({
   useEffect(() => {
     fetchNewsRequested({ id });
   }, [fetchNewsRequested]);
-
 
   return (
     <>
