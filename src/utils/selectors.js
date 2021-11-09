@@ -87,6 +87,11 @@ export const getNavigationFooter = () => {
       url: publicRoutes.us,
     },
     {
+      name: 'news',
+      label: 'Novedades',
+      url: publicRoutes.news,
+    },
+    {
       name: 'contact',
       label: 'Contacto',
       url: publicRoutes.contact,

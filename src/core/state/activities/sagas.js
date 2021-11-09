@@ -1,3 +1,4 @@
+/* eslint-disable no-multiple-empty-lines */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-return-assign */
@@ -17,10 +18,8 @@ import {
 import {
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
-  setSystemMessage,
-
 } from './actions';
-
+import { setSystemMessage } from '../Session/actions';
 import { ACTIVITIES } from '../../../Services/Urls';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
@@ -58,6 +57,7 @@ function* submitActivitieRequestedSagas({ payload, id }) {
         image,
         description,
       };
+
       yield Patch(ACTIVITIES, id, data).then((e) => {
         if (e.data.success) {
           return alertProps = {

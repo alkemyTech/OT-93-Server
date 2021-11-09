@@ -9,5 +9,6 @@ export const SHORT_PASSWORD = 'Las contraseñas no coinciden';
 export const INVALID_PASSWORD = 'La contraseña debe contener al menos un número, una letra y un símbolo';
 export const SOCIAL_MEDIA = 'Redes Sociales';
 export const SITE = 'Sitio';
-export const CONTACT = 'Contacto';
+export const CONTACT = '2021 by Alkemy. All Rights Reserved.';
 export const LOGO_ALT = 'Logo de Somos Más';
+export const SUBSCRIBE = 'Subscribe to our News Letter';

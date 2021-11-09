@@ -1,10 +1,8 @@
 /* eslint-disable no-undef */
-import Swal from 'sweetalert2';
 import {
   FETCH_ACTIVITIES_SUCCEEDED,
   FETCH_ONE_ACTIVITIES_SUCCEEDED,
   CLEAN_ACTIVITIES_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 const initialState = {
@@ -63,11 +61,6 @@ const Activities = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
-    case SET_SYSTEM_MSG:
-      Swal.fire(props);
-      return {
-        ...state,
-      };
     case CLEAN_ACTIVITIES_FORM: {
       return {
         ...state,
