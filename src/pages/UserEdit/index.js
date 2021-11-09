@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
 import {
-  registerUser,
-} from '../../core/state/Edit/actions';
+  editUser,
+} from '../../core/state/UserEdit/actions';
 import Component from './Component';
 
 export default connect(
   (state) => ({
-    form: fromState.Edit.getRegisterForm(state),
-    fields: fromState.Edit.getRegisterFields(state),
+    form: fromState.UserEdit.getUserEditForm(state),
+    fields: fromState.UserEdit.getUserEditFields(state),
   }),
   (dispatch) => bindActionCreators(
     {
-      registerUser,
+      editUser,
     },
     dispatch,
   ),

@@ -5,31 +5,35 @@ import {
 } from 'redux-saga/effects';
 import get from 'lodash/get';
 import {
-  NEWS,
+  USERS,
 } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
-import Api from '../../../Services/Api';
+import { Post, Patch } from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';
 import {
-  REGISTER_USER,
+  EDIT_USER,
 } from './types';
 import {
-  registerUser,
+  editUser,
 } from './actions';
 
 const mainRoutes = getRoutes('mainRoutes');
 
-function* postRegisterUserRequestedSagas({ payload, id }) {
-  // add method to register user
+function* postEditUserRequestedSagas({ payload, id }) {
   try {
     let success = null;
     if (id) {
-      const responseRegister = yield Api.post(`${NEWS}`, payload);
-      success = get(responseRegister, 'data.success');
+      const responseEdit = yield Patch(`${USERS}/${id}`, payload);
+      success = get(responseEdit, 'data.success');
+      yield push(mainRoutes.home);
+    }
+    if (!id) {
+      const responseCreate = yield Post(`${USERS}`, payload);
+      success = get(responseCreate, 'data.success');
       yield push(mainRoutes.home);
     }
     if (success) {
-      yield put(registerUser({}));
+      yield put(editUser({}));
     }
   } catch (err) {
     throw Error(err);
@@ -38,6 +42,6 @@ function* postRegisterUserRequestedSagas({ payload, id }) {
 
 export default function* userSagas() {
   yield all([
-    takeLatest(REGISTER_USER, postRegisterUserRequestedSagas),
+    takeLatest(EDIT_USER, postEditUserRequestedSagas),
   ]);
 }

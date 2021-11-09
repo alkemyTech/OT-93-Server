@@ -6,7 +6,7 @@ import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
 import Register from '../pages/Register';
-import Edit from '../pages/Edit';
+import UserEdit from '../pages/UserEdit';
 
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
@@ -19,7 +19,7 @@ const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={publicRoutes.home} component={Edit} />
+      <Route exact path={publicRoutes.home} component={UserEdit} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />

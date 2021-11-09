@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
@@ -56,7 +57,44 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                    { get(field, 'type') !== 'CKEditor' ? (
+                    { get(field, 'type') === 'CKEditor' && (
+                        <CKEditor
+                          editor={ClassicEditor}
+                          data={Formik.values[get(field, 'name')]}
+                          onChange={(event, editor) => {
+                            const data = editor.getData();
+                            setText(data);
+                          }}
+                        />
+                    )}
+                    { get(field, 'type') === 'dropdown' && (
+                      <>
+                        <Input
+                          className="form-control"
+                          onChange={Formik.handleChange}
+                          onBlur={Formik.handleBlur}
+                          value={Formik.values[get(field, 'name')]}
+                          placeholder={get(field, 'placeholder')}
+                          type="select"
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                        >
+                          <option
+                            disabled
+                            key="select"
+                            value="rol"
+                          >
+                            Selecciona el rol
+                          </option>
+                            {map(fields.options, (option) => (
+                              <option key={get(option.key, 'options')}>
+                                {get(option.value, 'options')}a
+                              </option>
+                            ))}
+                        </Input>
+                      </>
+                    )}
+                    { get(field, 'type') !== 'CKEditor' && get(field, 'type') !== 'dropdown' && (
                       <Input
                         className="form-control"
                         onChange={Formik.handleChange}
@@ -67,16 +105,6 @@ const BackForm = ({
                         name={get(field, 'name')}
                         id={get(field, 'id')}
                       />
-                    ) : (
-              <CKEditor
-                editor={ClassicEditor}
-                data={Formik.values[get(field, 'name')]}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setText(data);
-                }}
-
-              />
                     )}
                     </Col>
                     <Col className="mb-3 p-0">

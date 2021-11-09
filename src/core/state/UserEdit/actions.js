@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import {
-  REGISTER_USER,
+  EDIT_USER,
 } from './types';
 
-export const registerUser = (props) => ({
-  type: REGISTER_USER,
+export const editUser = (props) => ({
+  type: EDIT_USER,
   ...props,
 });

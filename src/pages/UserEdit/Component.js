@@ -5,9 +5,7 @@ import { getRoutes } from '../../utils';
 import BackForm from '../../Components/BackForm';
 import {
   REQUIRED,
-  WRONG_PASSWORD,
   SHORT_PASSWORD,
-  INVALID_PASSWORD,
 } from '../../utils/constants';
 
 const publicRoutes = getRoutes('publicRoutes');
@@ -16,25 +14,27 @@ const Component = ({
   title,
   form,
   fields,
-  postRegisterUserRequestedSagas,
+  postEditUserRequestedSagas,
   match,
   history: { push },
 }) => {
   const validate = (values) => {
     const errors = {};
-    if (!values.email || !values.password || !values.confirmPassword) {
+    if (!values.email || !values.name || !values.image || !values.role || !values.password) {
       errors.email = REQUIRED;
+      errors.name = REQUIRED;
+      errors.image = REQUIRED;
+      errors.role = REQUIRED;
       errors.password = REQUIRED;
     }
-    if (values.confirmPassword !== values.password) {
-      errors.confirmPassword = WRONG_PASSWORD;
-    }
-    if (values.password < 6) {
+    if (values.password < 8) {
       errors.password = SHORT_PASSWORD;
     }
-    const myRegex = /(?=.*[a-z])(?=.*\d)(?=.*[$.,@$!%*?&])[a-zA-Z\d.*]{5,20}[^'\s]/;
-    if (!myRegex.test(values.password)) {
-      errors.password = INVALID_PASSWORD;
+    if (values.name < 4) {
+      errors.name = SHORT_PASSWORD;
+    }
+    if (values.role !== ('administrador' || 'usuario')) {
+      errors.role = REQUIRED;
     }
     return errors;
   };
@@ -50,7 +50,7 @@ const Component = ({
                 key="RegisterForm"
                 form={form}
                 fields={fields}
-                submit={postRegisterUserRequestedSagas}
+                submit={postEditUserRequestedSagas}
                 id={match.params.id}
                 validate={validate}
                 goBack={goBackToHome}
@@ -69,7 +69,7 @@ Component.propTypes = {
   fields: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,
-  postRegisterUserRequestedSagas: PropTypes.func.isRequired,
+  postEditUserRequestedSagas: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -83,5 +83,5 @@ Component.propTypes = {
 
 Component.defaultProps = {
   match: {},
-  title: 'edit',
+  title: 'Editar usuario',
 };
