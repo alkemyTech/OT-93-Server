@@ -8,6 +8,7 @@ import Categories from './state/categories/reducer';
 import users from './state/Users/reducers';
 import login from './state/Session/reducers';
 import Activities from './state/activities/reducer';
+import edit from './state/Edit/reducers';
 
 export default () => combineReducers({
   router: connectRouter(history),
@@ -17,4 +18,5 @@ export default () => combineReducers({
   users,
   login,
   Activities,
+  edit,
 });

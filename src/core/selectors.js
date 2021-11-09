@@ -4,6 +4,7 @@ import * as Categories from './state/categories/selectors';
 import * as Users from './state/Users/selectors';
 import * as Login from './state/Session/selectors';
 import * as Activities from './state/activities/selectors';
+import * as Edit from './state/Edit/selectors';
 
 export default {
   News,
@@ -12,4 +13,5 @@ export default {
   Login,
   Activities,
   Categories,
+  Edit,
 };
