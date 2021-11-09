@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   SUBMIT_LOGIN_REQUESTED,
   CLEAN_LOGIN_FORM,

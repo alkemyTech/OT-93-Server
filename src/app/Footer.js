@@ -1,8 +1,3 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable no-lone-blocks */
-/* eslint-disable no-unused-vars */
-/* eslint-disable eol-last */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import map from 'lodash/map';
