@@ -1,10 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable no-return-assign */
-/* eslint-disable consistent-return */
-/* eslint-disable comma-dangle */
-/* eslint-disable no-param-reassign */
-
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 
@@ -17,34 +10,31 @@ import {
 import {
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
-  setSystemMessage,
-
 } from './actions';
-
+import { setSystemMessage } from '../Session/actions';
 import { ACTIVITIES } from '../../../Services/Urls';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 function* submitActivitieRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
-  let alertProps = '';
+  let alertProps;
   try {
     if (!id) {
       yield Post(ACTIVITIES, {
         name, image, description,
       }).then((e) => {
         if (e.data.success) {
-          return alertProps = {
+          alertProps = {
             icon: 'success',
-            title: 'data submited successfully'
+            title: 'data submited successfully',
           };
         } if (e.data.error) {
-          return (
-            alertProps = {
-              icon: 'error',
-              title: 'there was an error submiting the data',
-            }
-          );
+          alertProps = {
+            icon: 'error',
+            title: 'there was an error submiting the data',
+          };
         }
+        return alertProps;
       });
       const { icon, title } = alertProps;
       yield put(setSystemMessage({
@@ -58,18 +48,20 @@ function* submitActivitieRequestedSagas({ payload, id }) {
         image,
         description,
       };
+
       yield Patch(ACTIVITIES, id, data).then((e) => {
         if (e.data.success) {
-          return alertProps = {
+          alertProps = {
             icon: 'success',
-            title: 'data submited successfully'
+            title: 'data submited successfully',
           };
         } if (e.data.error) {
-          return alertProps = {
+          alertProps = {
             icon: 'error',
             title: 'there was an error submiting the data',
           };
         }
+        return alertProps;
       });
       const { icon, title } = alertProps;
       yield put(setSystemMessage({
@@ -78,7 +70,7 @@ function* submitActivitieRequestedSagas({ payload, id }) {
       }));
     }
   } catch (error) {
-    yield console.log(error);
+    yield error;
   }
 }
 
@@ -96,7 +88,7 @@ function* fetchActivitiesRequestedSagas({ id }) {
       yield put(fetchOneActivitiesSucceeded({ entry }));
     }
   } catch (error) {
-    console.log(error);
+    yield error;
     setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
   }
 }
