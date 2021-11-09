@@ -14,4 +14,3 @@ export const LOGO_ALT = 'Logo de Somos Más';
 export const SUBSCRIBE = 'Subscribe to our News Letter';
 export const NEWS = 'Novedades';
 export const NO_NEWS = 'No hay novedades';
-
