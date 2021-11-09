@@ -1,8 +1,6 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
-
 import get from 'lodash/get';
 import { NEWS } from '../../../Services/Urls';
-
 import { getRoutes } from '../../../utils';
 import Api from '../../../Services/Api';
 import { push } from '../../middlewares/history';
@@ -18,9 +16,7 @@ import {
   fetchOneNewsSucceeded,
   cleanNewsForm,
 } from './actions';
-import {
-  Get, Post,
-} from '../../../Services/privateApiService';
+import { Get, Post } from '../../../Services/privateApiService';
 
 const backOfficeRoutes = getRoutes('backOffice');
 
@@ -55,7 +51,7 @@ function* fetchNewsRequestedSagas({ id }) {
   try {
     if (id) {
       const response = yield Get(NEWS, id);
-      const entry2 = get(JSON.parse(response), 'data');
+      const entry2 = get(response, 'data');
       const entry = get(entry2, 'data');
       if (!entry) {
         return yield put(cleanNewsForm({}));

@@ -28,10 +28,11 @@ const Component = ({
 
   const goBackToList = () => push(backOfficeRoutes.news.list);
   const id = match.params.id;
- 
+
   useEffect(() => {
     fetchNewsRequested({ id });
   }, [fetchNewsRequested]);
+
 
   return (
     <>
