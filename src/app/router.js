@@ -9,11 +9,13 @@ import Register from '../pages/Register';
 import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import TestimonialsForm from '../pages/Testimonials/Form';
+import TestimonialsList from '../pages/Testimonials/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
 
-const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
+const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
