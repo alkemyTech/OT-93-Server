@@ -1,8 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-
 import React, { useEffect } from 'react';
 import {
   Container,
@@ -17,14 +12,16 @@ import {
   getRoutes,
 } from '../../../utils';
 
-const backOfficeRoutes = getRoutes('backOffice');
+const {
+  backOfficeRoutes,
+} = getRoutes('mainRoutes');
 
 const Component = ({
   title,
   form,
   fields,
-  submitNewsRequested,
-  fetchNewsRequested,
+  submitTestimonialRequested,
+  fetchTestimonialRequested,
   match,
   history: { push },
 }) => {
@@ -38,23 +35,26 @@ const Component = ({
     return errors;
   };
 
-  const goBackToList = () => push(backOfficeRoutes.news.list);
+  const goBackToList = () => push(backOfficeRoutes.testimonials);
 
   return (
-        <>
-            <h1 className="text-center mb-4">{title}</h1>
-            <BackForm
-              key="NewsForm"
-              form={form}
-              fields={fields}
-              submit={submitNewsRequested}
-              fetch={fetchNewsRequested}
-              id={match.params.id}
-              validate={validate}
-              goBack={goBackToList}
-            />
-
-        </>
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="text-center mb-4">{title}</h1>
+              <BackForm
+                key="NewsForm"
+                form={form}
+                fields={fields}
+                submit={submitTestimonialRequested}
+                fetch={fetchTestimonialRequested}
+                id={match.params.id}
+                validate={validate}
+                goBack={goBackToList}
+              />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
