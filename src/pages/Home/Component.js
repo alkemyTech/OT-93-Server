@@ -13,16 +13,20 @@ import '../../css/Home.css';
 
 const Component = ({
   fetchOrganizationRequested,
+  fetchSlidesRequested,
+  fetchNewsRequested,
   organization,
+  news,
 }) => {
-  const lastNews = 'Últimas novedades';
   const testimonies = 'Testimonios';
   const contact = 'Contacto';
   const viewAll = 'Ver todas';
 
   useEffect(() => {
     fetchOrganizationRequested();
-  }, [fetchOrganizationRequested]);
+    fetchSlidesRequested();
+    fetchNewsRequested();
+  }, [fetchOrganizationRequested, fetchSlidesRequested, fetchNewsRequested]);
 
   return (
     <>
@@ -35,11 +39,7 @@ const Component = ({
               text={<h1>{organization.welcome_text}</h1>}
               className="mt-3 pb-5"
             />
-            <Title
-              text={<h2>{lastNews}</h2>}
-              className="my-5"
-            />
-            <Slick />
+            <Slick items={news} />
             <Row className="news-row">
               <Col
                 xs="12"
@@ -63,7 +63,7 @@ const Component = ({
               text={<h2>{testimonies}</h2>}
               className="mb-5"
             />
-            <Slick />
+            {/* <Slick /> */}
           </Col>
         </Row>
       </Container>
@@ -73,9 +73,12 @@ const Component = ({
 
 Component.propTypes = {
   fetchOrganizationRequested: PropTypes.func.isRequired,
+  fetchSlidesRequested: PropTypes.func.isRequired,
+  fetchNewsRequested: PropTypes.func.isRequired,
   organization: PropTypes.shape({
     welcome_text: PropTypes.string,
   }).isRequired,
+  news: PropTypes.array.isRequired,
 };
 
 export default Component;
