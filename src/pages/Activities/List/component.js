@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';
 import TableList from '../../../Components/TableList';
 import {
-  GOBACK, ADD, DUMMY_TEXT, ACTIVITIES,
+  GOBACK, ADD, DUMMY_TEXT, ACTIVITIES, Warning, Delete, Confirm, Cancel,
 } from '../../../utils/constants';
 
 import ShowSwction from '../../../Components/ShowSection';
@@ -30,11 +30,11 @@ const Component = ({
       deleteActivitiesRequested(get(prop, 'id'));
     };
     swalConfirmAction(
-      'warning',
-      'Eliminar Registro',
-      '',
-      'Confirmar',
-      'Cancelar',
+      `${Warning}`,
+      `${Delete}`,
+      `${Cancel}`,
+      `${Delete}`,
+      `${Confirm}`,
       deleteField,
     );
   };

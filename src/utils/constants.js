@@ -16,3 +16,7 @@ export const NEWS = 'Novedades';
 export const NO_NEWS = 'No hay novedades';
 export const ACTIVITIES = 'Actividades';
 export const DUMMY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget scelerisque diam, non tempor eros.';
+export const Warning = 'Warning';
+export const Delete = 'Eliminar Registro';
+export const Confirm = 'Confirmar';
+export const Cancel = 'Cancelar';

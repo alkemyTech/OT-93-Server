@@ -1,4 +1,4 @@
-.cardImage {
+.card-Image {
   width: 100% !important;
   height: 180px !important;
   object-fit: cover !important;
@@ -8,11 +8,11 @@
   height: 300px !important;
 }
 
-.showSection {
+.show-Section {
   position: relative;
 }
 
-.leftArrow {
+.left-Arrow {
   position: absolute !important;
   font-size: 40px;
   bottom: 150px;
@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-.rightArrow {
+.right-Arrow {
   position: absolute !important;
   font-size: 40px;
   bottom: 150px;

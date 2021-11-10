@@ -5,22 +5,14 @@ import chunk from 'lodash/chunk';
 import map from 'lodash/map';
 import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import Title from '../Title';
 import Card from '../Card';
 
 const index = ({
   title, titleClass, subtitle, subtitleClass, list,
 }) => {
-  let data;
-  if (list) {
-    data = chunk(list.documents, 5);
-  } else {
-    data = {
-      name: '',
-      image: '',
-      description: '',
-    };
-  }
+  const data = chunk(list.documents, 5);
 
   const [value, setValue] = useState(0);
 
@@ -40,7 +32,7 @@ const index = ({
     }
   };
   return (
-    <Container className="showSection">
+    <Container className="show-Section">
       <Row className="d-flex col-lg-12 mx-auto mt-3">
         <Col>
           <Title text={title} className={titleClass} />
@@ -52,12 +44,12 @@ const index = ({
         </Col>
       </Row>
       <Row className="col-lg-12 mx-auto mt-5">
-    {list ? map(data[value], (e) => <Card data={e} />) : null}
+    {isEmpty(list) ? null : map(data[value], (e) => <Card data={e} />)}
       </Row>
      {list ? (
         <Row>
-        <HiArrowSmLeft className="leftArrow" onClick={() => decrementHandler()} />
-        <HiArrowSmRight className="rightArrow" onClick={() => incrementHandler()} />
+        <HiArrowSmLeft className="left-Arrow" onClick={() => decrementHandler()} />
+        <HiArrowSmRight className="right-Arrow" onClick={() => incrementHandler()} />
         </Row>
      ) : null}
     </Container>
