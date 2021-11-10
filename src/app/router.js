@@ -11,6 +11,8 @@ import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
 import TestimonialsForm from '../pages/Testimonials/Form';
 import TestimonialsList from '../pages/Testimonials/List';
+import SlidesForm from '../pages/Slides/Form';
+import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
