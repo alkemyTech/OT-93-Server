@@ -42,7 +42,9 @@ function Router() {
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />
       <Route exact path={mainRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
+      <Route exact path={backOfficeRoutes.news} component={NewForm} />
+      <Route exact path={`${backOfficeRoutes.news}/:id`} component={NewForm} /> */}
     </Switch>
   );
 }
