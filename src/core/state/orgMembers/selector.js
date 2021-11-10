@@ -19,12 +19,12 @@ export const getTableProps = () => {
       className: 'border-0 pointer text-center',
     },
     {
-      label: 'facebookUrl',
+      label: 'description',
       key: 'description',
       className: 'border-0 pointer text-center',
     },
     {
-      label: 'linkedinUrl',
+      label: 'facebookUrl',
       key: 'description',
       className: 'border-0 pointer text-center',
     },
@@ -40,12 +40,13 @@ export const getTableProps = () => {
       className: 'text-left',
     },
     {
-      key: 'facebookUrl',
-      drawInformation: (document) => get(document, 'facebookUrl'),
+      key: 'description',
+      drawInformation: (document) => get(document, 'description'),
+      className: 'text-left',
     },
     {
-      key: 'linkedinUrl',
-      drawInformation: (document) => get(document, 'linkedinUrl'),
+      key: 'facebookUrl',
+      drawInformation: (document) => get(document, 'facebookUrl'),
     },
     {
       actions: true,

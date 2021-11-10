@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -39,8 +38,7 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    console.log('debe llevar al detalle');
-    console.log(id);
+    return (id);
   };
 
   return (
@@ -63,8 +61,7 @@ const Component = ({
                       onDelete={onDelete}
                       onEdit={onEdit}
                       onView={onView}
-                      // eslint-disable-next-line react/jsx-props-no-spreading
-                      {...table}
+                      table={table}
                     />
                 </Col>
             </Row>
