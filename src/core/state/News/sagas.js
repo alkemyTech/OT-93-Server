@@ -9,14 +9,13 @@ import {
   FETCH_NEWS_REQUESTED,
   DELETE_NEWS_REQUESTED,
 } from './types';
-
+import { Get, Post } from '../../../Services/privateApiService';
 import {
   fetchNewsRequested,
   fetchNewsSucceeded,
   fetchOneNewsSucceeded,
   cleanNewsForm,
 } from './actions';
-import { Get, Post } from '../../../Services/privateApiService';
 
 const backOfficeRoutes = getRoutes('backOffice');
 
@@ -58,7 +57,7 @@ function* fetchNewsRequestedSagas({ id }) {
       }
       return yield put(fetchOneNewsSucceeded({ entry }));
     }
-    const entries = yield Api.get(`${NEWS}`);
+    const entries = yield Get(NEWS);
     const documents = get(entries, 'data');
     return yield put(fetchNewsSucceeded({ documents }));
   } catch (err) {

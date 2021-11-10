@@ -49,7 +49,7 @@ export async function Get(URI, id) {
 export const Patch = async (URI, id, body) => {
   const config = getTokenHeader();
   try {
-    const response = await axios.patch(`${API}${URI}/${id}`, body, config);
+    const response = await axios.put(`${API}${URI}/${id}`, body, config);
     return response;
   } catch (error) {
     return error;
