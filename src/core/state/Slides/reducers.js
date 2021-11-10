@@ -1,19 +1,20 @@
-/* eslint-disable no-undef */
+import swal from 'sweetalert2';
 import {
-  FETCH_ACTIVITIES_SUCCEEDED,
-  FETCH_ONE_ACTIVITIES_SUCCEEDED,
-  CLEAN_ACTIVITIES_FORM,
+  FETCH_SLIDE_SUCCEEDED,
+  FETCH_ONE_SLIDE_SUCCEEDED,
+  CLEAN_SLIDE_FORM,
+  SET_SYSTEM_MSG,
 } from './types';
 
 const initialState = {
-  activityForm: {
+  slideForm: {
     name: '',
     image: '',
     description: '',
     categoryId: 1,
-    type: 'activity',
+    type: 'slides',
   },
-  actFields: [
+  slideFields: [
     {
       label: 'Título',
       placeholder: 'Título',
@@ -32,7 +33,7 @@ const initialState = {
       label: 'Contenido',
       placeholder: 'Contenido',
       type: 'CKEditor',
-      id: 'description',
+      id: 'content',
       name: 'description',
     },
   ],
@@ -42,30 +43,39 @@ const initialState = {
   },
 };
 
-const Activities = (state = { ...initialState }, { type, ...props }) => {
+const Slides = (state = { ...initialState }, { type, ...props }) => {
   switch (type) {
-    case FETCH_ONE_ACTIVITIES_SUCCEEDED: {
+    case FETCH_ONE_SLIDE_SUCCEEDED: {
       return {
         ...initialState,
-        activityForm: {
-          ...state.activityForm,
+        slideForm: {
+          ...state.slideForm,
           ...props.entry,
         },
       };
     }
-    case FETCH_ACTIVITIES_SUCCEEDED: {
+    case FETCH_SLIDE_SUCCEEDED: {
       return {
         ...initialState,
         list: {
           documents: props.documents,
+          total: props.documents.length,
         },
       };
     }
-    case CLEAN_ACTIVITIES_FORM: {
+
+    case SET_SYSTEM_MSG: {
+      swal.fire(props);
       return {
         ...state,
-        activityForm: {
-          ...initialState.activityForm,
+      };
+    }
+
+    case CLEAN_SLIDE_FORM: {
+      return {
+        ...state,
+        slideForm: {
+          ...initialState.slideForm,
         },
       };
     }
@@ -74,4 +84,4 @@ const Activities = (state = { ...initialState }, { type, ...props }) => {
   }
 };
 
-export default Activities;
+export default Slides;

@@ -1,32 +1,45 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-console */
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
-import { all, put, takeLatest } from 'redux-saga/effects';
+
+import {
+  all,
+  put,
+  takeLatest,
+} from 'redux-saga/effects';
+
 import get from 'lodash/get';
 
 import {
-  SUBMIT_CATEGORIES_REQUESTED,
-  FETCH_CATEGORIES_REQUESTED,
-  DELETE_CATEGORIES_REQUESTED,
+  Get,
+  Post,
+  Patch,
+  Delete,
+} from '../../../Services/privateApiService';
+
+import {
+  TESTIMONIALS,
+} from '../../../Services/Urls';
+
+import {
+  SUBMIT_TESTIMONIAL_REQUESTED,
+  FETCH_TESTIMONIAL_REQUESTED,
+  DELETE_TESTIMONIAL_REQUESTED,
 } from './types';
 
 import {
-  fetchCategoriesSucceeded,
-  fetchOneCategoriesSucceeded,
+  fetchTestimonialSucceeded,
+  fetchOneTestimonialSucceeded,
+  fetchTestimonialRequested,
   setSystemMessage,
 } from './actions';
 
-import { CATEGORIES } from '../../../Services/Urls';
-import { Get, Post, Patch } from '../../../Services/privateApiService';
-
-function* submitCategoriesRequestedSagas({ payload, id }) {
+function* submitTestimonialRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
   let alertProps = '';
   try {
     if (!id) {
-      yield Post(CATEGORIES, {
+      yield Post(TESTIMONIALS, {
         name,
         image,
         description,
@@ -57,7 +70,7 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
         image,
         description,
       };
-      yield Patch(CATEGORIES, id, data).then((e) => {
+      yield Patch(TESTIMONIALS, id, data).then((e) => {
         if (e.data.success) {
           return alertProps = {
             icon: 'success',
@@ -81,17 +94,17 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
   }
 }
 
-function* fetchCategoriesRequestedSagas({ id }) {
+function* fetchTestimonialRequestedSagas({ id }) {
   try {
     if (!id) {
-      const response = yield Get(`${CATEGORIES}`);
+      const response = yield Get(`${TESTIMONIALS}`);
       const documents = get(response.data, 'data');
-      yield put(fetchCategoriesSucceeded({ documents }));
+      yield put(fetchTestimonialSucceeded({ documents }));
     }
     if (id) {
-      const response = yield Get(`${CATEGORIES}/${id}`);
+      const response = yield get(`${TESTIMONIALS}/${id}`);
       const entry = get(response.data, 'data');
-      yield put(fetchOneCategoriesSucceeded({ entry }));
+      yield put(fetchOneTestimonialSucceeded({ entry }));
     }
   } catch (error) {
     console.log(error);
@@ -99,13 +112,19 @@ function* fetchCategoriesRequestedSagas({ id }) {
   }
 }
 
-// eslint-disable-next-line no-empty-function
-function* deleteCategoriesRequestedSagas() {}
+function* deleteTestimonialRequestedSagas({ id }) {
+  try {
+    yield Delete(`${TESTIMONIALS}/${id}`);
+    yield put(fetchTestimonialRequested());
+  } catch (err) {
+    throw Error(err);
+  }
+}
 
 export default function* userSagas() {
   yield all([
-    takeLatest(SUBMIT_CATEGORIES_REQUESTED, submitCategoriesRequestedSagas),
-    takeLatest(FETCH_CATEGORIES_REQUESTED, fetchCategoriesRequestedSagas),
-    takeLatest(DELETE_CATEGORIES_REQUESTED, deleteCategoriesRequestedSagas),
+    takeLatest(SUBMIT_TESTIMONIAL_REQUESTED, submitTestimonialRequestedSagas),
+    takeLatest(FETCH_TESTIMONIAL_REQUESTED, fetchTestimonialRequestedSagas),
+    takeLatest(DELETE_TESTIMONIAL_REQUESTED, deleteTestimonialRequestedSagas),
   ]);
 }

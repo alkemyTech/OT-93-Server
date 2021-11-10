@@ -6,20 +6,35 @@ import Home from '../pages/Home';
 import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
 import Register from '../pages/Register';
-
+import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import TestimonialsForm from '../pages/Testimonials/Form';
+import TestimonialsList from '../pages/Testimonials/List';
+import SlidesForm from '../pages/Slides/Form';
+import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
 
-const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
+const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-      <Route exact path={mainRoutes.home} component={CategoriesForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.home} component={SlidesList} />
+      <Route
+        exact
+        path={`${backOfficeRoutes.newActivity}/:id`}
+        component={ActivitiesForm}
+      />
+      <Route
+        exact
+        path={`${backOfficeRoutes.newActivity}`}
+        component={ActivitiesForm}
+      />
+      <Route exact path={publicRoutes.news} component={News} />
+      {/* <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.home} component={Home} />
@@ -27,7 +42,7 @@ function Router() {
       <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={mainRoutes.news} component={NewList} />
       <Route exact path={mainRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
     </Switch>
   );
 }

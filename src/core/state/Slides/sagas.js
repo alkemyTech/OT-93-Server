@@ -1,32 +1,49 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-console */
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
-import { all, put, takeLatest } from 'redux-saga/effects';
+import {
+  all,
+  put,
+  takeLatest,
+} from 'redux-saga/effects';
+
 import get from 'lodash/get';
 
 import {
-  SUBMIT_CATEGORIES_REQUESTED,
-  FETCH_CATEGORIES_REQUESTED,
-  DELETE_CATEGORIES_REQUESTED,
+  Get,
+  Post,
+  Patch,
+  Delete,
+} from '../../../Services/privateApiService';
+
+import {
+  SLIDES,
+} from '../../../Services/Urls';
+
+import {
+  getRoutes,
+} from '../../../utils';
+
+import {
+  SUBMIT_SLIDE_REQUESTED,
+  FETCH_SLIDE_REQUESTED,
+  DELETE_SLIDE_REQUESTED,
 } from './types';
 
 import {
-  fetchCategoriesSucceeded,
-  fetchOneCategoriesSucceeded,
+  fetchSlideSucceeded,
+  fetchOneSlideSucceeded,
+  fetchSlideRequested,
   setSystemMessage,
 } from './actions';
 
-import { CATEGORIES } from '../../../Services/Urls';
-import { Get, Post, Patch } from '../../../Services/privateApiService';
-
-function* submitCategoriesRequestedSagas({ payload, id }) {
+function* submitSlideRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
   let alertProps = '';
   try {
     if (!id) {
-      yield Post(CATEGORIES, {
+      yield Post(SLIDES, {
         name,
         image,
         description,
@@ -57,7 +74,7 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
         image,
         description,
       };
-      yield Patch(CATEGORIES, id, data).then((e) => {
+      yield Patch(SLIDES, id, data).then((e) => {
         if (e.data.success) {
           return alertProps = {
             icon: 'success',
@@ -81,17 +98,17 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
   }
 }
 
-function* fetchCategoriesRequestedSagas({ id }) {
+function* fetchSlideRequestedSagas({ id }) {
   try {
     if (!id) {
-      const response = yield Get(`${CATEGORIES}`);
+      const response = yield Get(`${SLIDES}`);
       const documents = get(response.data, 'data');
-      yield put(fetchCategoriesSucceeded({ documents }));
+      yield put(fetchSlideSucceeded({ documents }));
     }
     if (id) {
-      const response = yield Get(`${CATEGORIES}/${id}`);
+      const response = yield get(`${SLIDES}/${id}`);
       const entry = get(response.data, 'data');
-      yield put(fetchOneCategoriesSucceeded({ entry }));
+      yield put(fetchOneSlideSucceeded({ entry }));
     }
   } catch (error) {
     console.log(error);
@@ -99,13 +116,19 @@ function* fetchCategoriesRequestedSagas({ id }) {
   }
 }
 
-// eslint-disable-next-line no-empty-function
-function* deleteCategoriesRequestedSagas() {}
+function* deleteSlideRequestedSagas({ id }) {
+  try {
+    yield Delete(`${SLIDES}/${id}`);
+    yield put(fetchSlideRequested());
+  } catch (err) {
+    throw Error(err);
+  }
+}
 
 export default function* userSagas() {
   yield all([
-    takeLatest(SUBMIT_CATEGORIES_REQUESTED, submitCategoriesRequestedSagas),
-    takeLatest(FETCH_CATEGORIES_REQUESTED, fetchCategoriesRequestedSagas),
-    takeLatest(DELETE_CATEGORIES_REQUESTED, deleteCategoriesRequestedSagas),
+    takeLatest(SUBMIT_SLIDE_REQUESTED, submitSlideRequestedSagas),
+    takeLatest(FETCH_SLIDE_REQUESTED, fetchSlideRequestedSagas),
+    takeLatest(DELETE_SLIDE_REQUESTED, deleteSlideRequestedSagas),
   ]);
 }

@@ -1,19 +1,20 @@
-/* eslint-disable no-undef */
+import swal from 'sweetalert2';
 import {
-  FETCH_ACTIVITIES_SUCCEEDED,
-  FETCH_ONE_ACTIVITIES_SUCCEEDED,
-  CLEAN_ACTIVITIES_FORM,
+  FETCH_TESTIMONIAL_SUCCEEDED,
+  FETCH_ONE_TESTIMONIAL_SUCCEEDED,
+  CLEAN_TESTIMONIAL_FORM,
+  SET_SYSTEM_MSG,
 } from './types';
 
 const initialState = {
-  activityForm: {
+  testimonialForm: {
     name: '',
     image: '',
     description: '',
     categoryId: 1,
-    type: 'activity',
+    type: 'testimonial',
   },
-  actFields: [
+  testimonialFields: [
     {
       label: 'Título',
       placeholder: 'Título',
@@ -32,7 +33,7 @@ const initialState = {
       label: 'Contenido',
       placeholder: 'Contenido',
       type: 'CKEditor',
-      id: 'description',
+      id: 'content',
       name: 'description',
     },
   ],
@@ -42,30 +43,39 @@ const initialState = {
   },
 };
 
-const Activities = (state = { ...initialState }, { type, ...props }) => {
+const Testimonials = (state = { ...initialState }, { type, ...props }) => {
   switch (type) {
-    case FETCH_ONE_ACTIVITIES_SUCCEEDED: {
+    case FETCH_ONE_TESTIMONIAL_SUCCEEDED: {
       return {
         ...initialState,
-        activityForm: {
-          ...state.activityForm,
+        testimonialForm: {
+          ...state.testimonialForm,
           ...props.entry,
         },
       };
     }
-    case FETCH_ACTIVITIES_SUCCEEDED: {
+    case FETCH_TESTIMONIAL_SUCCEEDED: {
       return {
         ...initialState,
         list: {
           documents: props.documents,
+          total: props.documents.length,
         },
       };
     }
-    case CLEAN_ACTIVITIES_FORM: {
+
+    case SET_SYSTEM_MSG: {
+      swal.fire(props);
       return {
         ...state,
-        activityForm: {
-          ...initialState.activityForm,
+      };
+    }
+
+    case CLEAN_TESTIMONIAL_FORM: {
+      return {
+        ...state,
+        testimonialForm: {
+          ...initialState.testimonialForm,
         },
       };
     }
@@ -74,4 +84,4 @@ const Activities = (state = { ...initialState }, { type, ...props }) => {
   }
 };
 
-export default Activities;
+export default Testimonials;
