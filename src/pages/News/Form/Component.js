@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { getRoutes } from '../../../utils';
 import BackForm from '../../../Components/BackForm';
 import { REQUIRED } from '../../../utils/constants';
+import Title from '../../../Components/Title';
 
 const backOfficeRoutes = getRoutes('backOffice');
 
@@ -34,7 +35,7 @@ const Component = ({
 
   return (
     <>
-      <h1 className="text-center mb-4">{title}</h1>
+      <Title text={title} />
       <BackForm
         key="NewsForm"
         form={form}
