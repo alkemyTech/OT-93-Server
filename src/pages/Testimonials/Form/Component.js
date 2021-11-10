@@ -10,6 +10,7 @@ import {
   Row,
 } from 'reactstrap';
 import BackForm from '../../../Components/BackForm';
+import Title from '../../../Components/Title';
 import {
   REQUIRED,
 } from '../../../utils/constants';
@@ -46,7 +47,7 @@ const Component = ({
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center mb-4">{title}</h1>
+          <Title text={title} />
               <BackForm
                 key="NewsForm"
                 form={form}

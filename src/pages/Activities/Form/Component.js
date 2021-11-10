@@ -4,9 +4,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-import { Col, Row, Container } from 'reactstrap';
+import {
+  Col,
+  Row,
+  Container,
+} from 'reactstrap';
+import Title from '../../../Components/Title';
 import BackForm from '../../../Components/BackForm';
-import { REQUIRED } from '../../../utils/constants';
+import {
+  REQUIRED,
+} from '../../../utils/constants';
 
 const Component = ({
   title,
@@ -37,7 +44,7 @@ const Component = ({
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center mb-4">{title}</h1>
+          <Title text={title} />
           <BackForm
             key="NewsForm"
             form={form}

@@ -8,9 +8,17 @@ import {
   Container,
 } from 'reactstrap';
 import get from 'lodash/get';
-import { getRoutes, swalConfirmAction } from '../../../utils';
+import {
+  getRoutes,
+  swalConfirmAction,
+} from '../../../utils';
+import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
+import {
+  GOBACK,
+  ADD,
+  ACTIVITIES,
+} from '../../../utils/constants';
 
 const Component = ({
   fetchActivitiesRequested,
@@ -52,7 +60,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" color="danger" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Novedades</h1>
+                        <Title text={ACTIVITIES} />
                         <Button className="btn-submit mr-3" color="success" onClick={() => push(backOfficeRoutes.newActivity)}>
                             {ADD}
                         </Button>

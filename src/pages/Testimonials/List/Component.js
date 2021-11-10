@@ -16,7 +16,9 @@ import TableList from '../../../Components/TableList';
 import {
   GOBACK,
   ADD,
+  TESTIMONIALS,
 } from '../../../utils/constants';
+import Title from '../../../Components/Title';
 
 const Component = ({
   deleteTestimonialRequested,
@@ -58,7 +60,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Testimonios</h1>
+                        <Title text={TESTIMONIALS} />
                         <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.testimonial)}>
                             {ADD}
                         </Button>
