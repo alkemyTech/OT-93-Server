@@ -20,3 +20,4 @@ export const Warning = 'Warning';
 export const Delete = 'Eliminar Registro';
 export const Confirm = 'Confirmar';
 export const Cancel = 'Cancelar';
+export const Empty = 'Empty';
