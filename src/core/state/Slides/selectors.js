@@ -10,31 +10,27 @@ export const getList = (state) => get(state, `${path}.list`);
 export const getTableProps = () => {
   const headers = [
     {
-      label: '#ID',
-      key: 'id',
-      className: 'border-0 pointer',
-    },
-    {
-      label: 'Nombre',
+      label: 'Titulo',
       key: 'name',
       className: 'border-0 pointer text-left',
     },
     {
-      label: 'Image',
-      key: 'description',
+      label: 'Imagen',
+      key: 'image',
       className: 'border-0 pointer',
     },
     {
-      label: 'Slides',
-      key: 'slides',
+      label: 'Orden',
+      key: 'order',
+      className: 'border-0 pointer',
+    },
+    {
+      label: 'Acciones',
+      key: 'actions',
       className: 'border-0 pointer text-center',
     },
   ];
   const columns = [
-    {
-      key: 'id',
-      drawInformation: (document) => get(document, 'id'),
-    },
     {
       key: 'name',
       drawInformation: (document) => get(document, 'name'),
@@ -45,9 +41,12 @@ export const getTableProps = () => {
       drawInformation: (document) => get(document, 'image'),
     },
     {
+      key: 'order',
+      drawInformation: (document) => get(document, 'order'),
+    },
+    {
       actions: true,
       edit: true,
-      view: true,
       delete: true,
       className: 'text-center',
     },

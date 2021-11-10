@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -14,9 +12,8 @@ import {
   getRoutes, swalConfirmAction,
 } from '../../../utils';
 import TableList from '../../../Components/TableList';
-import {
-  GOBACK, ADD,
-} from '../../../utils/constants';
+import { GOBACK, ADD, SLIDES } from '../../../utils/constants';
+import Title from '../../../Components/Title';
 
 const Component = ({
   deleteSlideRequested,
@@ -60,7 +57,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Slides</h1>
+                        <Title text={SLIDES} />
                         <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.slideform)}>
                             {ADD}
                         </Button>
@@ -81,8 +78,8 @@ const Component = ({
 };
 
 Component.propTypes = {
-  fetchTestimonialRequested: PropTypes.func.isRequired,
-  deleteTestimonialRequested: PropTypes.func.isRequired,
+  fetchSlideRequested: PropTypes.func.isRequired,
+  deleteSlideRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
   table: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
