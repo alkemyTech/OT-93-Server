@@ -25,8 +25,8 @@ const Component = ({
   title,
   form,
   fields,
-  submitTestimonialRequested,
-  fetchTestimonialRequested,
+  submitSlidesRequested,
+  fetchSlidesRequested,
   match,
   history: { push },
 }) => {
@@ -35,27 +35,30 @@ const Component = ({
     if (!values.name || !values.image || !values.content) {
       errors.name = REQUIRED;
       errors.image = REQUIRED;
-      errors.content = REQUIRED;
     }
     return errors;
   };
 
-  const goBackToList = () => push(backOfficeRoutes.testimonials);
+  const goBackToList = () => push(backOfficeRoutes.slides);
 
   return (
-        <>
+        <Container>
+          <Row>
+            <Col>
             <h1 className="text-center mb-4">{title}</h1>
             <BackForm
-              key="NewsForm"
+              key="SlidesForm"
               form={form}
               fields={fields}
-              submit={submitNewsRequested}
-              fetch={fetchNewsRequested}
+              submit={submitSlidesRequested}
+              fetch={fetchSlidesRequested}
               id={match.params.id}
               validate={validate}
               goBack={goBackToList}
             />
-        </>
+            </Col>
+          </Row>
+        </Container>
   );
 };
 

@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -8,45 +11,43 @@ import {
 } from 'reactstrap';
 import get from 'lodash/get';
 import {
-  getRoutes,
-  swalConfirmAction,
+  getRoutes, swalConfirmAction,
 } from '../../../utils';
 import TableList from '../../../Components/TableList';
 import {
-  GOBACK,
-  ADD,
+  GOBACK, ADD,
 } from '../../../utils/constants';
 
 const Component = ({
-  deleteTestimonialRequested,
-  fetchTestimonialRequested,
+  deleteSlideRequested,
+  fetchSlideRequested,
   list,
   table,
   history: { push },
 }) => {
   useEffect(() => {
-    fetchTestimonialRequested();
-  }, [fetchTestimonialRequested]);
+    fetchSlideRequested();
+  }, [fetchSlideRequested]);
 
-  const { backOfficeRoutes } = getRoutes('mainRoutes');
+  const {
+    backOfficeRoutes,
+  } = getRoutes('mainRoutes');
 
   const onDelete = (prop) => {
     const deleteField = () => {
-      deleteTestimonialRequested(get(prop, 'id'));
+      deleteSlideRequested(get(prop, 'id'));
     };
     swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
   };
 
   const onEdit = (prop) => {
     const id = get(prop, 'id');
-    push(`${backOfficeRoutes.testimonialsform}/${id}`);
+    push(`${backOfficeRoutes.newslide}/${id}`);
   };
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    // eslint-disable-next-line no-console
     console.log('debe llevar al detalle');
-    // eslint-disable-next-line no-console
     console.log(id);
   };
 
@@ -59,8 +60,8 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Testimonios</h1>
-                        <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.testimonial)}>
+                        <h1 className="text-center mb-3 my-1">Slides</h1>
+                        <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.slideform)}>
                             {ADD}
                         </Button>
                         </Col>
