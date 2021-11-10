@@ -53,6 +53,7 @@ const Component = ({
               validate={validate}
               goBack={goBackToList}
             />
+
         </>
   );
 };

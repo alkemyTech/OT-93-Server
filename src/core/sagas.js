@@ -16,5 +16,6 @@ export default function* rootSagas() {
     Session(),
     Categories(),
     Testimonials(),
+
   ]);
 }

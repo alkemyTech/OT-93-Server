@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,7 +9,9 @@ import {
 import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';
 import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
+import {
+  GOBACK, ADD,
+} from '../../../utils/constants';
 
 const Component = ({
   deleteTestimonialRequested,
@@ -39,7 +40,9 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
+    // eslint-disable-next-line no-console
     console.log('debe llevar al detalle');
+    // eslint-disable-next-line no-console
     console.log(id);
   };
 

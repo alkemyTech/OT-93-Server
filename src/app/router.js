@@ -20,7 +20,7 @@ const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes')
 function Router() {
   return (
     <Switch>
-      <Route exact path={publicRoutes.home} component={ActivitiesList} />
+      <Route exact path={backOfficeRoutes.home} component={ActivitiesList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}/:id`}

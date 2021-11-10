@@ -1,0 +1,29 @@
+.cardImage {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+}
+
+.Card {
+  height: 300px !important;
+}
+
+.showSection {
+  position: relative;
+}
+
+.leftArrow {
+  position: absolute !important;
+  font-size: 40px;
+  bottom: 150px;
+  right: 50% !important;
+  cursor: pointer;
+}
+
+.rightArrow {
+  position: absolute !important;
+  font-size: 40px;
+  bottom: 150px;
+  left: 50% !important;
+  cursor: pointer;
+}
