@@ -25,7 +25,7 @@ export const getTableProps = () => {
       className: 'border-0 pointer',
     },
     {
-      label: 'Slides',
+      label: 'Accion',
       key: 'slides',
       className: 'border-0 pointer text-center',
     },
