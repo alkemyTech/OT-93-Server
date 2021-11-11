@@ -9,6 +9,7 @@ import {
   Col,
   Row,
 } from 'reactstrap';
+import Title from '../../../Components/Title';
 import BackForm from '../../../Components/BackForm';
 import {
   REQUIRED,
@@ -45,7 +46,7 @@ const Component = ({
         <Container>
           <Row>
             <Col>
-            <h1 className="text-center mb-4">{title}</h1>
+            <Title text={title} />
             <BackForm
               key="SlidesForm"
               form={form}

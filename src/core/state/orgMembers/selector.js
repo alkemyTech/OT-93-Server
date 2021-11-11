@@ -1,48 +1,52 @@
+/* eslint-disable no-unused-vars */
 import get from 'lodash/get';
 
-const path = 'Slides';
+const path = 'Members';
 
-export const getSlideForm = (state) => get(state, `${path}.slideForm`);
-export const getSlideFields = (state) => get(state, `${path}.slideFields`);
-export const getSlide = (state) => get(state, `${path}.list.documents`);
+// eslint-disable-next-line import/prefer-default-export
 export const getList = (state) => get(state, `${path}.list`);
 
 export const getTableProps = () => {
   const headers = [
     {
-      label: '#ID',
-      key: 'id',
-      className: 'border-0 pointer',
-    },
-    {
       label: 'Nombre',
-      key: 'name',
-      className: 'border-0 pointer text-left',
-    },
-    {
-      label: 'Image',
       key: 'description',
       className: 'border-0 pointer',
     },
     {
-      label: 'Accion',
-      key: 'slides',
+      label: 'image',
+      key: 'description',
+      className: 'border-0 pointer text-center',
+    },
+    {
+      label: 'description',
+      key: 'description',
+      className: 'border-0 pointer text-center',
+    },
+    {
+      label: 'facebookUrl',
+      key: 'description',
       className: 'border-0 pointer text-center',
     },
   ];
   const columns = [
     {
-      key: 'id',
-      drawInformation: (document) => get(document, 'id'),
-    },
-    {
       key: 'name',
       drawInformation: (document) => get(document, 'name'),
-      className: 'text-left',
     },
     {
       key: 'image',
       drawInformation: (document) => get(document, 'image'),
+      className: 'text-left',
+    },
+    {
+      key: 'description',
+      drawInformation: (document) => get(document, 'description'),
+      className: 'text-left',
+    },
+    {
+      key: 'facebookUrl',
+      drawInformation: (document) => get(document, 'facebookUrl'),
     },
     {
       actions: true,
