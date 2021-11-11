@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,42 +8,33 @@ import {
   Container,
 } from 'reactstrap';
 import get from 'lodash/get';
-import {
-  getRoutes, swalConfirmAction,
-} from '../../../utils';
-import Title from '../../../Components/Title';
-import TableList from '../../../Components/TableList';
-import {
-  GOBACK,
-  ADD,
-  SLIDES,
-} from '../../../utils/constants';
+import { getRoutes, swalConfirmAction } from '../../../utils';
+import TableList from '../../../Components/Table-Members';
+import { GOBACK, ADD, MEMBERS } from '../../../utils/constants';
 
 const Component = ({
-  deleteSlideRequested,
-  fetchSlideRequested,
+  fetchMembersRequested,
+  deleteActivitiesRequested,
   list,
   table,
   history: { push },
 }) => {
   useEffect(() => {
-    fetchSlideRequested();
-  }, [fetchSlideRequested]);
+    fetchMembersRequested();
+  }, []);
 
-  const {
-    backOfficeRoutes,
-  } = getRoutes('mainRoutes');
+  const { backOfficeRoutes } = getRoutes('mainRoutes');
 
   const onDelete = (prop) => {
     const deleteField = () => {
-      deleteSlideRequested(get(prop, 'id'));
+      deleteActivitiesRequested(get(prop, 'id'));
     };
     swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
   };
 
   const onEdit = (prop) => {
     const id = get(prop, 'id');
-    push(`${backOfficeRoutes.newslide}/${id}`);
+    push(`${backOfficeRoutes.newActivity}/${id}`);
   };
 
   const onView = (prop) => {
@@ -59,12 +48,12 @@ const Component = ({
             <Row className="list-row">
                 <Col sm="12" className="mr-2">
                     <Row className="d-flex justify-content-between align-items-center">
-                        <Col>
-                        <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
+                        <Col className="d-flex justify-content-evenly">
+                        <Button className="ml-3 px-3 btn-cancel" color="danger" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <Title text={SLIDES} />
-                        <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.slideform)}>
+                        <h1 className="text-center mb-3 my-1">{MEMBERS}</h1>
+                        <Button className="btn-submit mr-3" color="success" onClick={() => push(backOfficeRoutes.newActivity)}>
                             {ADD}
                         </Button>
                         </Col>
@@ -84,8 +73,8 @@ const Component = ({
 };
 
 Component.propTypes = {
-  fetchTestimonialRequested: PropTypes.func.isRequired,
-  deleteTestimonialRequested: PropTypes.func.isRequired,
+  fetchMembersRequested: PropTypes.func.isRequired,
+  deleteActivitiesRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
   table: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
