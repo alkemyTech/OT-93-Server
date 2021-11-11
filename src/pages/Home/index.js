@@ -12,6 +12,7 @@ export default connect(
   (state) => ({
     organization: fromState.Organization.getOrganization(state),
     slides: fromState.Slides.getSlide(state),
+    slickSettings: fromState.Login.getSlickSettings(state),
     news: fromState.News.getNews(state),
     testimonials: fromState.Testimonials.getTestimonial(state),
   }),
