@@ -56,28 +56,28 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                    { get(field, 'type') !== 'CKEditor' ? (
-                      <Input
-                        className="form-control"
-                        onChange={Formik.handleChange}
-                        onBlur={Formik.handleBlur}
-                        value={Formik.values[get(field, 'name')]}
-                        placeholder={get(field, 'placeholder')}
-                        type={get(field, 'type')}
-                        name={get(field, 'name')}
-                        id={get(field, 'id')}
-                      />
-                    ) : (
-              <CKEditor
-                editor={ClassicEditor}
-                data={Formik.values[get(field, 'name')]}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setText(data);
-                }}
-
-              />
-                    )}
+                      {get(field, 'type') !== 'CKEditor' ? (
+                        <Input
+                          className="form-control"
+                          onChange={Formik.handleChange}
+                          onBlur={Formik.handleBlur}
+                          value={Formik.values[get(field, 'name')]}
+                          placeholder={get(field, 'placeholder')}
+                          type={get(field, 'type')}
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                        />
+                      ) : (
+                        <CKEditor
+                          editor={ClassicEditor}
+                          data={Formik.values[get(field, 'name')]}
+                          onChange={(event, editor) => {
+                            const data = editor.getData();
+                            setText(data);
+                            Formik.setFieldValue('content', data);
+                          }}
+                        />
+                      )}
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]

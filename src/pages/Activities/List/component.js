@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Col,
-  Button,
-  Row,
-  Container,
+  Col, Button, Row, Container,
 } from 'reactstrap';
 import get from 'lodash/get';
-import { getRoutes, swalConfirmAction } from '../../../utils';
+import {
+  getRoutes,
+  swalConfirmAction,
+} from '../../../utils';
+import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
-
+import {
+  GOBACK, ADD, DUMMY_TEXT, ACTIVITIES, Warning, Delete, Confirm, Cancel,
+} from '../../../utils/constants';
+import ShowSwction from '../../../Components/ShowSection';
 const Component = ({
   fetchActivitiesRequested,
   deleteActivitiesRequested,
@@ -28,7 +31,14 @@ const Component = ({
     const deleteField = () => {
       deleteActivitiesRequested(get(prop, 'id'));
     };
-    swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
+    swalConfirmAction(
+      `${Warning}`,
+      `${Delete}`,
+      `${Cancel}`,
+      `${Delete}`,
+      `${Confirm}`,
+      deleteField,
+    );
   };
 
   const onEdit = (prop) => {
@@ -38,9 +48,8 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    return (id);
+    return id;
   };
-
   return (
         <Container>
             <Row className="list-row">
