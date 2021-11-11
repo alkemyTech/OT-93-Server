@@ -8,9 +8,10 @@ import Spinner from '../../Components/Spinner';
 import Title from '../../Components/Title/index';
 import Slick from '../../Components/Slick/index';
 import {
-  LAST_NEWS, TESTIMONIES, CONTACTS, VIEW_ALL,
+  LAST_NEWS, TESTIMONIALS, CONTACTS, VIEW_ALL,
 } from '../../utils/constants';
 import { getRoutes } from '../../utils';
+import Slider from '../../Components/Slider';
 import '../../css/Home.css';
 
 const { publicRoutes } = getRoutes('mainRoutes');
@@ -22,8 +23,9 @@ const Component = ({
   fetchTestimonialRequested,
   organization,
   slickSettings,
+  slides,
   news,
-  testimonials,
+  testimonial,
 }) => {
   useEffect(() => {
     fetchOrganizationRequested();
@@ -40,6 +42,7 @@ const Component = ({
           <Col>
             <Sidebar />
             <Spinner show={false} text="cargando" />
+            <Slider items={slides} />
             <Title
               text={<h1>{organization.welcome_text}</h1>}
               className="mt-3 pb-5"
@@ -49,14 +52,14 @@ const Component = ({
               items={news}
               title={LAST_NEWS}
               showLinks
-              links={[TESTIMONIES, CONTACTS]}
+              links={[TESTIMONIALS, CONTACTS]}
               labelButton={VIEW_ALL}
               routes={publicRoutes}
             />
             <Slick
               settings={slickSettings}
-              items={testimonials}
-              title={TESTIMONIES}
+              items={testimonial}
+              title={TESTIMONIALS}
             />
           </Col>
         </Row>
@@ -74,8 +77,9 @@ Component.propTypes = {
     welcome_text: PropTypes.string,
   }).isRequired,
   slickSettings: PropTypes.object.isRequired,
+  slides: PropTypes.array.isRequired,
   news: PropTypes.array.isRequired,
-  testimonials: PropTypes.array.isRequired,
+  testimonial: PropTypes.array.isRequired,
 };
 
 export default Component;

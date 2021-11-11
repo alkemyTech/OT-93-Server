@@ -14,7 +14,7 @@ export default connect(
     slides: fromState.Slides.getSlide(state),
     slickSettings: fromState.Login.getSlickSettings(state),
     news: fromState.News.getNews(state),
-    testimonials: fromState.Testimonials.getTestimonial(state),
+    testimonial: fromState.Testimonials.getTestimonial(state),
   }),
   (dispatch) => bindActionCreators(
     {

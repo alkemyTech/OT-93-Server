@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -16,7 +15,9 @@ import TableList from '../../../Components/TableList';
 import {
   GOBACK,
   ADD,
+  TESTIMONIALS,
 } from '../../../utils/constants';
+import Title from '../../../Components/Title';
 
 const Component = ({
   deleteTestimonialRequested,
@@ -45,7 +46,9 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
+    // eslint-disable-next-line no-console
     console.log('debe llevar al detalle');
+    // eslint-disable-next-line no-console
     console.log(id);
   };
 
@@ -58,7 +61,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Testimonios</h1>
+                        <Title text={TESTIMONIALS} />
                         <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.testimonial)}>
                             {ADD}
                         </Button>

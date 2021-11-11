@@ -13,9 +13,12 @@ import get from 'lodash/get';
 import {
   getRoutes, swalConfirmAction,
 } from '../../../utils';
+import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
 import {
-  GOBACK, ADD,
+  GOBACK,
+  ADD,
+  SLIDES,
 } from '../../../utils/constants';
 
 const Component = ({
@@ -60,7 +63,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Slides</h1>
+                        <Title text={SLIDES} />
                         <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.slideform)}>
                             {ADD}
                         </Button>
