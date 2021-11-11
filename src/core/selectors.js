@@ -1,5 +1,5 @@
 import * as News from './state/News/selectors';
-import * as Home from './state/Home/selectors';
+import * as Organization from './state/Organization/selectors';
 import * as Categories from './state/categories/selectors';
 import * as Users from './state/Users/selectors';
 import * as Login from './state/Session/selectors';
@@ -10,7 +10,7 @@ import * as Members from './state/orgMembers/selector';
 
 export default {
   News,
-  Home,
+  Organization,
   Users,
   Login,
   Activities,

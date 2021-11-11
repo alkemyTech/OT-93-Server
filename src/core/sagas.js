@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
 import news from './state/News/sagas';
-import Home from './state/Home/sagas';
+import Organization from './state/Organization/sagas';
 import Categories from './state/categories/sagas';
 import users from './state/Users/sagas';
 import Activities from './state/activities/sagas';
@@ -12,7 +12,7 @@ import Members from './state/orgMembers/sagas';
 export default function* rootSagas() {
   yield all([
     news(),
-    Home(),
+    Organization(),
     Activities(),
     users(),
     Session(),

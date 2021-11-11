@@ -15,7 +15,7 @@ const Activities = (state = { ...initialState }, { type, ...props }) => {
   switch (type) {
     case FETCH_MEMBERS_SUCCEEDED: {
       return {
-        ...initialState,
+        ...state,
         list: {
           documents: props.documents,
         },

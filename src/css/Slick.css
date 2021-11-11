@@ -1,10 +1,5 @@
-.slick-img {
-  width: 22vw;
-  height: 15vw;
-  min-width: 135px;
-  min-height: 94px;
-  max-width: 323px;
-  max-height: 239px;
+.slick-slide {
+  max-height: 207.91px;
 }
 
 .slick-prev:before,
