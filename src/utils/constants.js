@@ -14,6 +14,7 @@ export const LOGO_ALT = 'Logo de Somos Más';
 export const SUBSCRIBE = 'Subscribe to our News Letter';
 export const NEWS = 'Novedades';
 export const NO_NEWS = 'No hay novedades';
+export const SLIDES = 'Slides';
 export const MEMBERS = 'Miembros';
 export const ACTIVITIES = 'Actividades';
 export const DUMMY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget scelerisque diam, non tempor eros.';
@@ -25,4 +26,3 @@ export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
 export const ACTIVITIES = 'Actividades';
 export const SLIDES = 'Slides';
-
