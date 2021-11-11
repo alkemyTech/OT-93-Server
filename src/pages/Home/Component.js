@@ -5,8 +5,9 @@ import {
 } from 'reactstrap';
 import Sidebar from '../../Components/Sidenav';
 import Spinner from '../../Components/Spinner';
-import Title from '../../Components/Title/index';
-import Slick from '../../Components/Slick/index';
+import Slider from '../../Components/Slider';
+import Title from '../../Components/Title';
+import Slick from '../../Components/Slick';
 import '../../css/Home.css';
 
 const Component = ({
@@ -15,6 +16,7 @@ const Component = ({
   fetchNewsRequested,
   fetchTestimonialRequested,
   organization,
+  slides,
   news,
   testimonials,
 }) => {
@@ -35,6 +37,7 @@ const Component = ({
           <Col>
             <Sidebar />
             <Spinner show={false} text="cargando" />
+            <Slider items={slides} />
             <Title
               text={<h1>{organization.welcome_text}</h1>}
               className="mt-3 pb-5"
@@ -56,6 +59,7 @@ Component.propTypes = {
   organization: PropTypes.shape({
     welcome_text: PropTypes.string,
   }).isRequired,
+  slides: PropTypes.array.isRequired,
   news: PropTypes.array.isRequired,
   testimonials: PropTypes.array.isRequired,
 };
