@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -47,7 +46,9 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
+    // eslint-disable-next-line no-console
     console.log('debe llevar al detalle');
+    // eslint-disable-next-line no-console
     console.log(id);
   };
 

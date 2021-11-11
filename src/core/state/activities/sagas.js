@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 
