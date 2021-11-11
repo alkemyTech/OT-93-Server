@@ -10,6 +10,7 @@ import login from './state/Session/reducers';
 import Activities from './state/activities/reducer';
 import Testimonials from './state/Testimonials/reducers';
 import Slides from './state/Slides/reducers';
+import Project from './state/Project/reducers';
 
 export default () => combineReducers({
   router: connectRouter(history),
@@ -21,4 +22,5 @@ export default () => combineReducers({
   Activities,
   Testimonials,
   Slides,
+  Project,
 });

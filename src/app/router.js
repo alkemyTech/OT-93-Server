@@ -16,22 +16,24 @@ import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
+import ProjectList from '../pages/Project/List';
+import ProjectForm from '../pages/Project/Form';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-      <Route exact path={publicRoutes.home} component={SlidesList} />
+      <Route exact path={publicRoutes.home} component={ProjectList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}/:id`}
-        component={ActivitiesForm}
+        component={ProjectForm}
       />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
-        component={ActivitiesForm}
+        component={ProjectForm}
       />
       <Route exact path={publicRoutes.news} component={News} />
       {/* <Route exact path={publicRoutes.home} component={Home} />

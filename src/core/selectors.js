@@ -6,6 +6,7 @@ import * as Login from './state/Session/selectors';
 import * as Activities from './state/activities/selectors';
 import * as Testimonials from './state/Testimonials/selectors';
 import * as Slides from './state/Slides/selectors';
+import * as Projects from './state/Project/selectors';
 
 export default {
   News,
@@ -16,4 +17,5 @@ export default {
   Categories,
   Testimonials,
   Slides,
+  Projects,
 };
