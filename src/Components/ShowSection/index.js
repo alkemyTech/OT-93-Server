@@ -10,9 +10,9 @@ import Title from '../Title';
 import Card from '../Card';
 
 const index = ({
-  title, titleClass, subtitle, subtitleClass, list,
+  title, titleClass, subtitle, subtitleClass, list, cardNumber,
 }) => {
-  const data = chunk(list.documents, 5);
+  const data = chunk(list.documents, cardNumber);
 
   const [value, setValue] = useState(0);
 

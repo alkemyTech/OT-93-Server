@@ -80,7 +80,7 @@ const Component = ({
             {...table}
           />
         </Col>
-          <ShowSwction title={ACTIVITIES} titleClass="h1" subtitle={DUMMY_TEXT} subtitleClass="h3" list={list} />
+          <ShowSwction title={ACTIVITIES} titleClass="h1" subtitle={DUMMY_TEXT} subtitleClass="h3" list={list} cardNumber={5} />
       </Row>
     </Container>
   );
