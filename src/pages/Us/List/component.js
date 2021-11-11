@@ -1,29 +1,27 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Col, Button, Row, Container,
+  Col,
+  Button,
+  Row,
+  Container,
 } from 'reactstrap';
 import get from 'lodash/get';
-import {
-  getRoutes,
-  swalConfirmAction,
-} from '../../../utils';
-import Title from '../../../Components/Title';
-import TableList from '../../../Components/TableList';
-import {
-  GOBACK, ADD, DUMMY_TEXT, ACTIVITIES, Warning, Delete, Confirm, Cancel,
-} from '../../../utils/constants';
-import ShowSwction from '../../../Components/ShowSection';
+import { getRoutes, swalConfirmAction } from '../../../utils';
+import TableList from '../../../Components/Table-Members';
+import { GOBACK, ADD, MEMBERS } from '../../../utils/constants';
+
 const Component = ({
-  fetchActivitiesRequested,
+  fetchMembersRequested,
   deleteActivitiesRequested,
   list,
   table,
   history: { push },
 }) => {
   useEffect(() => {
-    fetchActivitiesRequested();
-  }, [fetchActivitiesRequested]);
+    fetchMembersRequested();
+  }, []);
 
   const { backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -31,14 +29,7 @@ const Component = ({
     const deleteField = () => {
       deleteActivitiesRequested(get(prop, 'id'));
     };
-    swalConfirmAction(
-      `${Warning}`,
-      `${Delete}`,
-      `${Cancel}`,
-      `${Delete}`,
-      `${Confirm}`,
-      deleteField,
-    );
+    swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
   };
 
   const onEdit = (prop) => {
@@ -48,8 +39,10 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    return id;
+    console.log('debe llevar al detalle');
+    console.log(id);
   };
+
   return (
         <Container>
             <Row className="list-row">
@@ -59,7 +52,7 @@ const Component = ({
                         <Button className="ml-3 px-3 btn-cancel" color="danger" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
-                        <h1 className="text-center mb-3 my-1">Novedades</h1>
+                        <h1 className="text-center mb-3 my-1">{MEMBERS}</h1>
                         <Button className="btn-submit mr-3" color="success" onClick={() => push(backOfficeRoutes.newActivity)}>
                             {ADD}
                         </Button>
@@ -70,7 +63,8 @@ const Component = ({
                       onDelete={onDelete}
                       onEdit={onEdit}
                       onView={onView}
-                      table={table}
+                      // eslint-disable-next-line react/jsx-props-no-spreading
+                      {...table}
                     />
                 </Col>
             </Row>
@@ -79,7 +73,7 @@ const Component = ({
 };
 
 Component.propTypes = {
-  fetchActivitiesRequested: PropTypes.func.isRequired,
+  fetchMembersRequested: PropTypes.func.isRequired,
   deleteActivitiesRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
   table: PropTypes.shape({}).isRequired,
