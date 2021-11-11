@@ -1,10 +1,8 @@
 import get from 'lodash/get';
 
-const path = 'Slides';
+const path = 'Organization';
 
-export const getSlideForm = (state) => get(state, `${path}.slideForm`);
-export const getSlideFields = (state) => get(state, `${path}.slideFields`);
-export const getSlide = (state) => get(state, `${path}.list.documents`);
+export const getOrganization = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
 
 export const getTableProps = () => {
@@ -25,8 +23,8 @@ export const getTableProps = () => {
       className: 'border-0 pointer',
     },
     {
-      label: 'Accion',
-      key: 'slides',
+      label: 'Organization',
+      key: 'organization',
       className: 'border-0 pointer text-center',
     },
   ];
