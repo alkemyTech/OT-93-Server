@@ -16,18 +16,13 @@ import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
+import USmembers from '../pages/Us/List';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-      <Route exact path={backOfficeRoutes.home} component={ActivitiesList} />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}/:id`}
-        component={ActivitiesForm}
-      />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
