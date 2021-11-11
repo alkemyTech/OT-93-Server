@@ -11,9 +11,14 @@ import get from 'lodash/get';
 import {
   getRoutes, swalConfirmAction,
 } from '../../../utils';
-import TableList from '../../../Components/TableList';
-import { GOBACK, ADD, SLIDES } from '../../../utils/constants';
 import Title from '../../../Components/Title';
+import TableList from '../../../Components/TableList';
+import Title from '../../../Components/Title';
+import {
+  GOBACK,
+  ADD,
+  SLIDES,
+} from '../../../utils/constants';
 
 const Component = ({
   deleteSlideRequested,

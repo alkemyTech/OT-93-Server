@@ -58,7 +58,7 @@ function* fetchNewsRequestedSagas({ id }) {
       return yield put(fetchOneNewsSucceeded({ entry }));
     }
     const entries = yield Get(NEWS);
-    const documents = get(entries, 'data');
+    const documents = get(entries.data, 'data');
     return yield put(fetchNewsSucceeded({ documents }));
   } catch (err) {
     throw Error(err);

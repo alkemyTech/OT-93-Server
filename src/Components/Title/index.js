@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
+import '../../css/Title.css';
 
 const Title = ({
   text, className, onlyTitle, image,
