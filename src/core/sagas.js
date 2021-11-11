@@ -7,6 +7,7 @@ import Activities from './state/activities/sagas';
 import Session from './state/Session/sagas';
 import Testimonials from './state/Testimonials/sagas';
 import Slides from './state/Slides/sagas';
+import Members from './state/orgMembers/sagas';
 
 export default function* rootSagas() {
   yield all([
@@ -18,5 +19,6 @@ export default function* rootSagas() {
     Categories(),
     Testimonials(),
     Slides(),
+    Members(),
   ]);
 }
