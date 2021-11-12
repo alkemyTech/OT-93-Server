@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
-
-import axios from 'axios'; // import axios
+import axios from 'axios';
 
 const API = process.env.REACT_APP_API;
 
@@ -59,7 +58,7 @@ export const Patch = async (URI, id, body) => {
 export const Delete = async (URI, id) => {
   const config = getTokenHeader();
   try {
-    const response = await axios.post(`${API}${URI}/${id}`, config);
+    const response = await axios.delete(`${API}${URI}/${id}`, config);
     return JSON.stringify(response);
   } catch (error) {
     return error;

@@ -9,17 +9,20 @@ import get from 'lodash/get';
 import {
   SUBMIT_CATEGORIES_REQUESTED,
   FETCH_CATEGORIES_REQUESTED,
-  DELETE_CATEGORIES_REQUESTED,
+  DELETE_CATEGORIE,
 } from './types';
 
 import {
   fetchCategoriesSucceeded,
   fetchOneCategoriesSucceeded,
   setSystemMessage,
+  deleteCategorie,
 } from './actions';
 
 import { CATEGORIES } from '../../../Services/Urls';
-import { Get, Post, Patch } from '../../../Services/privateApiService';
+import {
+  Get, Post, Patch, Delete,
+} from '../../../Services/privateApiService';
 
 function* submitCategoriesRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
@@ -84,12 +87,12 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
 function* fetchCategoriesRequestedSagas({ id }) {
   try {
     if (!id) {
-      const response = yield Get(`${CATEGORIES}`);
-      const documents = get(response.data, 'data');
+      const response = yield Get(CATEGORIES);
+      const documents = get(response, 'data');
       yield put(fetchCategoriesSucceeded({ documents }));
     }
     if (id) {
-      const response = yield Get(`${CATEGORIES}/${id}`);
+      const response = yield Get(CATEGORIES, id);
       const entry = get(response.data, 'data');
       yield put(fetchOneCategoriesSucceeded({ entry }));
     }
@@ -99,13 +102,19 @@ function* fetchCategoriesRequestedSagas({ id }) {
   }
 }
 
-// eslint-disable-next-line no-empty-function
-function* deleteCategoriesRequestedSagas() {}
+function* deleteCategorieSagas({ id }) {
+  try {
+    yield Delete(CATEGORIES, id);
+    yield put(deleteCategorie);
+  } catch (err) {
+    throw Error(err);
+  }
+}
 
 export default function* userSagas() {
   yield all([
     takeLatest(SUBMIT_CATEGORIES_REQUESTED, submitCategoriesRequestedSagas),
     takeLatest(FETCH_CATEGORIES_REQUESTED, fetchCategoriesRequestedSagas),
-    takeLatest(DELETE_CATEGORIES_REQUESTED, deleteCategoriesRequestedSagas),
+    takeLatest(DELETE_CATEGORIE, deleteCategorieSagas),
   ]);
 }

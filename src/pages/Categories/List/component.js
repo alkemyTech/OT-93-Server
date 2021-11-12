@@ -3,80 +3,85 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Col,
-  Button,
   Row,
   Container,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
 } from 'reactstrap';
-import get from 'lodash/get';
-import { getRoutes, swalConfirmAction } from '../../../utils';
-import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
+import { get, map } from 'lodash';
+import { Link } from 'react-router-dom';
+import Title from '../../../Components/Title';
+import { getRoutes } from '../../../utils';
+// import get from 'lodash/get';
 
+// eslint-disable-next-line arrow-body-style
 const Component = ({
-  fetchCategoriesRequested,
-  deleteCategoriesRequested,
-  list,
-  table,
-  history: { push },
+  list, fetchCategoriesRequested, deleteCategorie, history: { push },
 }) => {
   useEffect(() => {
     fetchCategoriesRequested();
   }, [fetchCategoriesRequested]);
 
   const { backOfficeRoutes } = getRoutes('mainRoutes');
+  const documents = get(list.documents, 'data');
 
   const onDelete = (prop) => {
-    const deleteField = () => {
-      deleteCategoriesRequested(get(prop, 'id'));
-    };
-    swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
+    deleteCategorie(get(prop, 'id'));
+    window.location.reload();
   };
-
   const onEdit = (prop) => {
     const id = get(prop, 'id');
-    push(`${backOfficeRoutes.newCategory}/${id}`);
-  };
-
-  const onView = (prop) => {
-    const id = get(prop, 'id');
-    console.log('debe llevar al detalle');
-    console.log(id);
+    push(`${backOfficeRoutes.categories}/${id}`);
   };
 
   return (
-        <Container>
-            <Row className="list-row">
-                <Col sm="12" className="mr-2">
-                    <Row className="d-flex justify-content-between align-items-center">
-                        <Col className="d-flex justify-content-evenly">
-                        <Button className="ml-3 px-3 btn-cancel" color="danger" onClick={() => push(backOfficeRoutes.home)}>
-                            {GOBACK}
-                        </Button>
-                        <h1 className="text-center mb-3 my-1">Novedades</h1>
-                        <Button className="btn-submit mr-3" color="success" onClick={() => push(backOfficeRoutes.newCategory)}>
-                            {ADD}
-                        </Button>
-                        </Col>
-                    </Row>
-                    <TableList
-                      documents={get(list, 'documents')}
-                      onDelete={onDelete}
-                      onEdit={onEdit}
-                      onView={onView}
-                      // eslint-disable-next-line react/jsx-props-no-spreading
-                      {...table}
-                    />
-                </Col>
-            </Row>
-        </Container>
+    <Container>
+      <Row className="list-row">
+        <Col sm="12" className="mr-2">
+          <Title text={<h1>Categorías</h1>} className="mt-3 pb-5" />
+          <Link
+            to={backOfficeRoutes.categories}
+            className="btn btn-secondary mb-5"
+          >
+            Crear categoría
+          </Link>
+          {documents
+            && map(documents, (element) => (
+              <Card key={element.id}>
+                <CardBody>
+                  <Row>
+                    <Col>
+                      <CardTitle tag="h4">{element.name}</CardTitle>
+                      <CardSubtitle className="mb-2 text-muted" tag="h6">
+                        {element.created_at}
+                      </CardSubtitle>
+                    </Col>
+                    <Col>
+                      <button type="button" className="btn btn-outline-danger m-1" onClick={() => { onDelete(element); }}>
+                        Borrar
+                      </button>
+                      <button type="button" className="btn btn-outline-primary m-1" onClick={() => { onEdit(element); }}>
+                        Editar
+                      </button>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            ))}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 Component.propTypes = {
   fetchCategoriesRequested: PropTypes.func.isRequired,
-  deleteCategoriesRequested: PropTypes.func.isRequired,
-  list: PropTypes.shape({}).isRequired,
-  table: PropTypes.shape({}).isRequired,
+  deleteCategorie: PropTypes.func.isRequired,
+  list: PropTypes.shape({
+    documents: PropTypes.string,
+  }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
