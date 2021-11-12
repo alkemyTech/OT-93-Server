@@ -23,6 +23,5 @@ export const Confirm = 'Confirmar';
 export const Cancel = 'Cancelar';
 export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
-export const ACTIVITIES = 'Actividades';
 export const SLIDES = 'Slides';
-
+export const CONTACT_TITLE = 'Contactate con nosotros';
