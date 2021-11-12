@@ -2,10 +2,8 @@ import { all, takeLatest, put } from 'redux-saga/effects';
 import get from 'lodash/get';
 import { Get } from '../../../Services/privateApiService';
 import { MEMBERS } from '../../../Services/Urls';
-
-import {
-  FETCH_MEMBERS_REQUESTED,
-} from './types';
+import { setSystemMessage } from '../Session/actions';
+import { FETCH_MEMBERS_REQUESTED } from './types';
 import { fetchMembersSucceeded } from './actions';
 
 function* fetchMembersRequestedSagas() {
@@ -14,12 +12,15 @@ function* fetchMembersRequestedSagas() {
     const documents = get(response.data, 'data');
     yield put(fetchMembersSucceeded({ documents }));
   } catch (error) {
-    yield error;
+    yield put(
+      setSystemMessage({
+        icon: 'danger',
+        title: `${error}`,
+      }),
+    );
   }
 }
 
 export default function* userSagas() {
-  yield all([
-    takeLatest(FETCH_MEMBERS_REQUESTED, fetchMembersRequestedSagas),
-  ]);
+  yield all([takeLatest(FETCH_MEMBERS_REQUESTED, fetchMembersRequestedSagas)]);
 }
