@@ -22,14 +22,13 @@ const Component = ({
 }) => {
   useEffect(() => {
     fetchCategoriesRequested();
-  }, [fetchCategoriesRequested]);
+  }, [fetchCategoriesRequested, deleteCategorie]);
 
   const { backOfficeRoutes } = getRoutes('mainRoutes');
   const documents = get(list.documents, 'data');
 
   const onDelete = (prop) => {
     deleteCategorie(get(prop, 'id'));
-    window.location.reload();
   };
   const onEdit = (prop) => {
     const id = get(prop, 'id');

@@ -105,7 +105,7 @@ function* fetchCategoriesRequestedSagas({ id }) {
 function* deleteCategorieSagas({ id }) {
   try {
     yield Delete(CATEGORIES, id);
-    yield put(deleteCategorie);
+    yield put(fetchCategoriesSucceeded);
   } catch (err) {
     throw Error(err);
   }
