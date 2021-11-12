@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Container, Row, Col,
 } from 'reactstrap';
-import { get, isEmpty } from 'lodash';
+import { get } from 'lodash';
 import Title from '../../../Components/Title';
+import { NO_HTML } from '../../../utils/constants';
 
 const Component = ({
   fetchOrganizationRequested,
@@ -25,7 +26,7 @@ const Component = ({
               text={<h1>Nosotros</h1>}
               className="mt-3 pb-5"
             />
-            {isEmpty(!about) ? about?.replace(/<[^>]+>/g, '') : 'empty'}
+            {about?.replace(NO_HTML)}
           </Col>
         </Row>
       </Container>

@@ -25,3 +25,4 @@ export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
 export const SUSCRIBE = 'Actividades';
 export const SLIDES = 'Slides';
+export const NO_HTML = "/<[^>]+>/g, ''";
