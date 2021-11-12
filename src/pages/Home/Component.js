@@ -5,10 +5,16 @@ import {
 } from 'reactstrap';
 import Sidebar from '../../Components/Sidenav';
 import Spinner from '../../Components/Spinner';
+import Title from '../../Components/Title/index';
+import Slick from '../../Components/Slick/index';
+import {
+  LAST_NEWS, TESTIMONIALS, CONTACTS, VIEW_ALL,
+} from '../../utils/constants';
+import { getRoutes } from '../../utils';
 import Slider from '../../Components/Slider';
-import Title from '../../Components/Title';
-import Slick from '../../Components/Slick';
 import '../../css/Home.css';
+
+const { publicRoutes } = getRoutes('mainRoutes');
 
 const Component = ({
   fetchOrganizationRequested,
@@ -16,12 +22,11 @@ const Component = ({
   fetchNewsRequested,
   fetchTestimonialRequested,
   organization,
+  slickSettings,
   slides,
   news,
-  testimonials,
+  testimonial,
 }) => {
-  const lastNews = 'Últimas noticias';
-  const testimonies = 'Testimonios';
   useEffect(() => {
     fetchOrganizationRequested();
     fetchSlideRequested();
@@ -42,8 +47,20 @@ const Component = ({
               text={<h1>{organization.welcome_text}</h1>}
               className="mt-3 pb-5"
             />
-            <Slick items={news} title={lastNews} showLinks />
-            <Slick items={testimonials} title={testimonies} />
+            <Slick
+              settings={slickSettings}
+              items={news}
+              title={LAST_NEWS}
+              showLinks
+              links={[TESTIMONIALS, CONTACTS]}
+              labelButton={VIEW_ALL}
+              routes={publicRoutes}
+            />
+            <Slick
+              settings={slickSettings}
+              items={testimonial}
+              title={TESTIMONIALS}
+            />
           </Col>
         </Row>
       </Container>
@@ -59,9 +76,10 @@ Component.propTypes = {
   organization: PropTypes.shape({
     welcome_text: PropTypes.string,
   }).isRequired,
+  slickSettings: PropTypes.object.isRequired,
   slides: PropTypes.array.isRequired,
   news: PropTypes.array.isRequired,
-  testimonials: PropTypes.array.isRequired,
+  testimonial: PropTypes.array.isRequired,
 };
 
 export default Component;
