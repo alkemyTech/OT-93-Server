@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 import {
   all,
   put,
   takeLatest,
 } from 'redux-saga/effects';
-import get from 'lodash/get';
+// import get from 'lodash/get';
 import {
   USERS,
 } from '../../../Services/Urls';
@@ -20,20 +21,17 @@ import {
 const mainRoutes = getRoutes('mainRoutes');
 
 function* postEditUserRequestedSagas({ payload, id }) {
+  console.log('consoleE');
   try {
-    let success = null;
     if (id) {
-      const responseEdit = yield Patch(`${USERS}/${id}`, payload);
-      success = get(responseEdit, 'data.success');
+      yield Patch(USERS, id, payload);
+      yield put(editUser({}));
       yield push(mainRoutes.home);
     }
     if (!id) {
-      const responseCreate = yield Post(`${USERS}`, payload);
-      success = get(responseCreate, 'data.success');
-      yield push(mainRoutes.home);
-    }
-    if (success) {
+      yield Post(USERS, id, payload);
       yield put(editUser({}));
+      yield push(mainRoutes.home);
     }
   } catch (err) {
     throw Error(err);

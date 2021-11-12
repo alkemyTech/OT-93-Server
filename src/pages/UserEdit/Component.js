@@ -1,20 +1,17 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
-import { getRoutes } from '../../utils';
 import BackForm from '../../Components/BackForm';
 import {
   REQUIRED,
   SHORT_PASSWORD,
 } from '../../utils/constants';
 
-const publicRoutes = getRoutes('publicRoutes');
-
 const Component = ({
   title,
   form,
   fields,
-  postEditUserRequestedSagas,
+  editUser,
   match,
   history: { push },
 }) => {
@@ -24,7 +21,6 @@ const Component = ({
       errors.email = REQUIRED;
       errors.name = REQUIRED;
       errors.image = REQUIRED;
-      errors.role = REQUIRED;
       errors.password = REQUIRED;
     }
     if (values.password < 8) {
@@ -33,13 +29,10 @@ const Component = ({
     if (values.name < 4) {
       errors.name = SHORT_PASSWORD;
     }
-    if (values.role !== ('administrador' || 'usuario')) {
-      errors.role = REQUIRED;
-    }
     return errors;
   };
-
-  const goBackToHome = () => push(publicRoutes.home);
+  const id = match.params.id;
+  const goBackToHome = () => push('/');
 
   return (
         <Container>
@@ -50,8 +43,8 @@ const Component = ({
                 key="RegisterForm"
                 form={form}
                 fields={fields}
-                submit={postEditUserRequestedSagas}
-                id={match.params.id}
+                submit={editUser}
+                id={id}
                 validate={validate}
                 goBack={goBackToHome}
               />
@@ -69,7 +62,7 @@ Component.propTypes = {
   fields: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,
-  postEditUserRequestedSagas: PropTypes.func.isRequired,
+  editUser: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -83,5 +76,5 @@ Component.propTypes = {
 
 Component.defaultProps = {
   match: {},
-  title: 'Editar usuario',
+  title: 'Gestionar usuario',
 };

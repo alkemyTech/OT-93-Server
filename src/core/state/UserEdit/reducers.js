@@ -40,11 +40,11 @@ const initialState = {
       options: [
         {
           key: 1,
-          value: 'admin',
+          value: 'usuario',
         },
         {
           key: 2,
-          value: 'usuario',
+          value: 'admin',
         },
       ],
     },

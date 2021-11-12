@@ -86,9 +86,9 @@ const BackForm = ({
                           >
                             Selecciona el rol
                           </option>
-                            {map(fields.options, (option) => (
-                              <option key={get(option.key, 'options')}>
-                                {get(option.value, 'options')}a
+                            {map((get(field, 'options')), (option) => (
+                              <option key={get(option, 'key')}>
+                                {get(option, 'value')}
                               </option>
                             ))}
                         </Input>
