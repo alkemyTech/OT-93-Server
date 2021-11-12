@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -84,8 +82,8 @@ const Component = ({
 };
 
 Component.propTypes = {
-  fetchTestimonialRequested: PropTypes.func.isRequired,
-  deleteTestimonialRequested: PropTypes.func.isRequired,
+  fetchSlideRequested: PropTypes.func.isRequired,
+  deleteSlideRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
   table: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
