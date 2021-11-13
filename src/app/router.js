@@ -9,6 +9,7 @@ import Register from '../pages/Register';
 import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import Activities from '../pages/Activities';
 import TestimonialsForm from '../pages/Testimonials/Form';
 import TestimonialsList from '../pages/Testimonials/List';
 import SlidesForm from '../pages/Slides/Form';
@@ -23,7 +24,7 @@ const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes')
 function Router() {
   return (
     <Switch>
-    <Route exact path={publicRoutes.home} component={SlidesList} />
+      <Route exact path={publicRoutes.home} component={SlidesList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
@@ -35,8 +36,8 @@ function Router() {
         component={ActivitiesForm}
       />
       <Route exact path={publicRoutes.news} component={News} />
+      <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-
       {/* <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />

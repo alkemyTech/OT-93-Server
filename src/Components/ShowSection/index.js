@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import chunk from 'lodash/chunk';
@@ -12,7 +11,7 @@ import Card from '../Card';
 const index = ({
   title, titleClass, subtitle, subtitleClass, list, cardNumber,
 }) => {
-  const data = chunk(list.documents, cardNumber);
+  const data = chunk(list, cardNumber);
 
   const [value, setValue] = useState(0);
 

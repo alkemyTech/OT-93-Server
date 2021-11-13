@@ -27,3 +27,4 @@ export const Confirm = 'Confirmar';
 export const Cancel = 'Cancelar';
 export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
+export const CARD_NUMBER = 5;
