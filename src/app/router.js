@@ -19,7 +19,9 @@ const { publicRoutes, mainRoutes, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
     <Switch>
-      <Route exact path={publicRoutes.home} component={UserEdit} />
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.user} component={UserEdit} />
+      <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />

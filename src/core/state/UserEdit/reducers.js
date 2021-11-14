@@ -58,7 +58,7 @@ const initialState = {
   ],
 };
 
-const Edit = (state = { ...initialState }, { type, ...props }) => {
+const UserEdit = (state = { ...initialState }, { type, ...props }) => {
   switch (type) {
     case EDIT_USER: {
       return {
@@ -75,4 +75,4 @@ const Edit = (state = { ...initialState }, { type, ...props }) => {
   }
 };
 
-export default Edit;
+export default UserEdit;
