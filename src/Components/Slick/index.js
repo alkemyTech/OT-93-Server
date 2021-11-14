@@ -1,91 +1,70 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Row, Col, Button } from 'reactstrap';
 import Slider from 'react-slick';
 import map from 'lodash/map';
+import Title from '../Title/index';
 import '../../css/Slick.css';
 
-const Slick = ({ items }) => {
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  return (
-    <Row className="mx-5">
-      <Col>
-        <Slider {...settings}>
-          {map(items, (item) => (
-            <img
-              className="slick-img"
-              key={item.id}
-              src={item.src}
-              alt={item.name}
-            />
-          ))}
-        </Slider>
-      </Col>
-    </Row>
-  );
-};
+const Slick = ({
+  settings, items, title, showLinks, links, labelButton, routes,
+}) => (
+  <Row className="mx-5 px-5">
+    <Col>
+      <Title
+        text={<h2>{title}</h2>}
+        className="my-5"
+      />
+      <Slider {...settings}>
+        {map(items, (item) => (
+          <img
+            key={item.id}
+            src={item.image}
+            alt={item.name}
+          />
+        ))}
+      </Slider>
+      {showLinks && (
+        <Row className="news-row">
+          <Col
+            xs="12"
+            md="4"
+            className="d-md-flex text-md-start pt-md-2 ps-md-5"
+          >
+            <Link className="news-link px-2 ps-xl-5 ms-xl-5" to={routes.testimonial}>
+              {links[0]}
+            </Link>
+            <Link className="news-link px-2" to={routes.contact}>
+              {links[1]}
+            </Link>
+          </Col>
+          <Col md="4">
+            <Link className="news-link" to={routes.news}>
+              <Button color="primary" className="news-btn my-3 mt-md-0">
+                {labelButton}
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      )}
+    </Col>
+  </Row>
+);
 
 Slick.propTypes = {
-  items: PropTypes.array,
+  settings: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  showLinks: PropTypes.bool,
+  links: PropTypes.arrayOf(PropTypes.string),
+  labelButton: PropTypes.string,
+  routes: PropTypes.object,
 };
 
 Slick.defaultProps = {
-  items: [
-    {
-      name: 'Placeholder image',
-      id: 1,
-      src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg',
-    },
-    {
-      name: 'Placeholder image',
-      id: 1,
-      src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg',
-    },
-    {
-      name: 'Placeholder image',
-      id: 1,
-      src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg',
-    },
-    {
-      name: 'Placeholder image',
-      id: 1,
-      src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg',
-    },
-  ],
+  showLinks: false,
 };
 
 export default Slick;

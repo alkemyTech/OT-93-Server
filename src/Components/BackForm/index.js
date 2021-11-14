@@ -68,7 +68,6 @@ const BackForm = ({
                         />
                     )}
                     { get(field, 'type') === 'dropdown' && (
-                      <>
                         <Input
                           className="form-control"
                           onChange={Formik.handleChange}
@@ -92,7 +91,6 @@ const BackForm = ({
                               </option>
                             ))}
                         </Input>
-                      </>
                     )}
                     { get(field, 'type') !== 'CKEditor' && get(field, 'type') !== 'dropdown' && (
                       <Input

@@ -4,25 +4,24 @@ import { Row, Col, Container } from 'reactstrap';
 import map from 'lodash/map';
 import Title from '../../Components/Title';
 import Card from '../../Components/Card';
+import { NEWS, NO_NEWS } from '../../utils/constants';
 
 const News = ({ fetchNewsRequested, data }) => {
   useEffect(() => {
     fetchNewsRequested();
   }, [fetchNewsRequested]);
   const { data: info } = data;
-  const title = 'Novedades';
-  const noNews = 'No hay novedades';
   return (
     <Container>
       <Row>
         <Col>
-          <Title text={title} />
+          <Title text={NEWS} />
           <Row>
             {info?.length > 0 ? (
               map(info, (element) => <Card data={element} />)
             ) : (
               <Col>
-                <p>{noNews}</p>
+                <p>{NO_NEWS}</p>
               </Col>
             )}
           </Row>
