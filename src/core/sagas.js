@@ -5,6 +5,7 @@ import Categories from './state/categories/sagas';
 import users from './state/Users/sagas';
 import Activities from './state/activities/sagas';
 import Session from './state/Session/sagas';
+import UserEdit from './state/UserEdit/sagas';
 import Testimonials from './state/Testimonials/sagas';
 import Slides from './state/Slides/sagas';
 import Projects from './state/Project/sagas';
@@ -17,6 +18,7 @@ export default function* rootSagas() {
     Activities(),
     users(),
     Session(),
+    UserEdit(),
     Categories(),
     Testimonials(),
     Slides(),
