@@ -58,7 +58,9 @@ const Categories = (state = { ...initialState }, { type, ...props }) => {
       return {
         ...initialState,
         list: {
-          documents: props.documents,
+          documents: {
+            ...props.documents,
+          },
         },
       };
     }

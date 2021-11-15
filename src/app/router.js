@@ -7,7 +7,6 @@ import NewForm from '../pages/News/Form';
 import NewList from '../pages/News/List';
 import Register from '../pages/Register';
 import UserEdit from '../pages/UserEdit';
-
 import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
@@ -18,9 +17,11 @@ import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
+import Us from '../pages/Us/Page';
 import ProjectList from '../pages/Project/List';
 import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
+import Categories from '../pages/Categories/List';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -41,6 +42,10 @@ function Router() {
         path={`${backOfficeRoutes.newActivity}`}
         component={ProjectForm}
       />
+      <Route exact path={backOfficeRoutes.category} component={Categories} />
+      <Route exact path={backOfficeRoutes.categories} component={CategoriesForm} />
+      <Route exact path={`${backOfficeRoutes.categories}/:id`} component={CategoriesForm} />
+      <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
