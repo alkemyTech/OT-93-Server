@@ -14,9 +14,10 @@ import { get, map } from 'lodash';
 import { Link } from 'react-router-dom';
 import Title from '../../../Components/Title';
 import { getRoutes } from '../../../utils';
-// import get from 'lodash/get';
+import {
+  CATEGORY, CREATE_CATEGORY, Delete, EDIT,
+} from '../../../utils/constants';
 
-// eslint-disable-next-line arrow-body-style
 const Component = ({
   list, fetchCategoriesRequested, deleteCategorie, history: { push },
 }) => {
@@ -39,12 +40,12 @@ const Component = ({
     <Container>
       <Row className="list-row">
         <Col sm="12" className="mr-2">
-          <Title text={<h1>Categorías</h1>} className="mt-3 pb-5" />
+          <Title text={<h1>{CATEGORY}</h1>} className="mt-3 pb-5" />
           <Link
             to={backOfficeRoutes.categories}
             className="btn btn-secondary mb-5"
           >
-            Crear categoría
+            {CREATE_CATEGORY}
           </Link>
           {documents
             && map(documents, (element) => (
@@ -59,10 +60,10 @@ const Component = ({
                     </Col>
                     <Col>
                       <button type="button" className="btn btn-outline-danger m-1" onClick={() => { onDelete(element); }}>
-                        Borrar
+                        {Delete}
                       </button>
                       <button type="button" className="btn btn-outline-primary m-1" onClick={() => { onEdit(element); }}>
-                        Editar
+                        {EDIT}
                       </button>
                     </Col>
                   </Row>
