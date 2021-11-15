@@ -16,18 +16,18 @@ import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
+import Us from '../pages/Us/Page';
 import ProjectList from '../pages/Project/List';
 import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
 import Categories from '../pages/Categories/List';
-
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-    <Route exact path={publicRoutes.home} component={SlidesList} />
+    <Route exact path={publicRoutes.home} component={Home} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
@@ -41,6 +41,7 @@ function Router() {
       <Route exact path={backOfficeRoutes.category} component={Categories} />
       <Route exact path={backOfficeRoutes.categories} component={CategoriesForm} />
       <Route exact path={`${backOfficeRoutes.categories}/:id`} component={CategoriesForm} />
+      <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />

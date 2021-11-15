@@ -31,4 +31,6 @@ export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
 export const CATEGORY = 'Categorías';
 export const CREATE_CATEGORY = 'Crear categoría';
+export const SUSCRIBE = 'Actividades';
+export const US = 'Nosotros';
 export const SLIDES = 'Slides';
