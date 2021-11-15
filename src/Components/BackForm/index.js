@@ -36,7 +36,6 @@ const BackForm = ({
       submit({ payload, id, push });
     },
   });
-
   return (
     <Container>
       <Row>
@@ -74,7 +73,6 @@ const BackForm = ({
                           onChange={(event, editor) => {
                             const data = editor.getData();
                             setText(data);
-                            Formik.setFieldValue('content', data);
                           }}
                         />
                       )}
@@ -82,7 +80,7 @@ const BackForm = ({
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]
                         && Formik.touched[get(field, 'name')] && (
-                          <p className="error animate__animated animate__shakeX text-center">
+                          <p className="text-danger error animate__animated animate__shakeX text-center">
                             {Formik.errors[get(field, 'name')]}
                           </p>
                       )}
