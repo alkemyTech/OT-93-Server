@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import swal from 'sweetalert2';
 import {
   SUBMIT_LOGIN_REQUESTED,
   CLEAN_LOGIN_FORM,
   SET_SYSTEM_MSG,
+  SET_NEWS_LETTER,
 } from './types';
 
 const initialState = {
@@ -10,6 +12,7 @@ const initialState = {
     email: '',
     password: '',
   },
+  NewsLetter: false,
   loginFields: [
     {
       label: 'Email',
@@ -26,9 +29,41 @@ const initialState = {
       name: 'password',
     },
   ],
-  user: {
-
+  slickSettings: {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   },
+  user: {},
 };
 
 const Login = (state = { ...initialState }, { type, ...props }) => {
@@ -49,6 +84,9 @@ const Login = (state = { ...initialState }, { type, ...props }) => {
       };
     }
 
+    case SET_NEWS_LETTER: {
+      return { ...initialState, NewsLetter: true };
+    }
     case CLEAN_LOGIN_FORM: {
       return {
         ...state,

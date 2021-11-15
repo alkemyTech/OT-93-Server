@@ -1,16 +1,17 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Col,
-  Button,
-  Row,
-  Container,
+  Col, Button, Row, Container,
 } from 'reactstrap';
 import get from 'lodash/get';
-import { getRoutes, swalConfirmAction } from '../../../utils';
+import {
+  getRoutes,
+  swalConfirmAction,
+} from '../../../utils';
 import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
+import {
+  GOBACK, ADD, Warning, Delete, Confirm, Cancel,
+} from '../../../utils/constants';
 
 const Component = ({
   fetchActivitiesRequested,
@@ -29,7 +30,14 @@ const Component = ({
     const deleteField = () => {
       deleteActivitiesRequested(get(prop, 'id'));
     };
-    swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
+    swalConfirmAction(
+      `${Warning}`,
+      `${Delete}`,
+      `${Cancel}`,
+      `${Delete}`,
+      `${Confirm}`,
+      deleteField,
+    );
   };
 
   const onEdit = (prop) => {
@@ -39,10 +47,8 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    console.log('debe llevar al detalle');
-    console.log(id);
+    return id;
   };
-
   return (
         <Container>
             <Row className="list-row">
@@ -63,8 +69,7 @@ const Component = ({
                       onDelete={onDelete}
                       onEdit={onEdit}
                       onView={onView}
-                      // eslint-disable-next-line react/jsx-props-no-spreading
-                      {...table}
+                      table={table}
                     />
                 </Col>
             </Row>
