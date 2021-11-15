@@ -4,27 +4,19 @@ import get from 'lodash/get';
 
 import { FETCH_ORGANIZATION_REQUESTED } from './types';
 
-import { fetchOrganizationSucceeded, fetchOneOrganizationSucceeded } from './actions';
+import { fetchOrganizationSucceeded } from './actions';
 import { setSystemMessage } from '../Session/actions';
 
 import { ORGANIZATION } from '../../../Services/Urls';
 import { Get } from '../../../Services/privateApiService';
 
-function* fetchOrganizationRequestedSagas({ id }) {
+function* fetchOrganizationRequestedSagas() {
   try {
-    if (!id) {
-      const response = yield Get(`${ORGANIZATION}`);
-      const documents = get(response.data, 'data');
-      yield put(fetchOrganizationSucceeded({ documents }));
-    }
-    if (id) {
-      const response = yield get(`${ORGANIZATION}/${id}`);
-      const entry = get(response.data, 'data');
-      yield put(fetchOneOrganizationSucceeded({ entry }));
-    }
+    const response = yield Get(`${ORGANIZATION}`);
+    const documents = get(response.data, 'data');
+    yield put(fetchOrganizationSucceeded({ documents }));
   } catch (error) {
-    yield error;
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    yield put(setSystemMessage({ icon: 'danger', title: `${error}` }));
   }
 }
 
