@@ -33,3 +33,4 @@ export const CATEGORY = 'Categorías';
 export const CREATE_CATEGORY = 'Crear categoría';
 export const SUSCRIBE = 'Actividades';
 export const US = 'Nosotros';
+export const CONTACT_TITLE = 'Contactate con nosotros';
