@@ -13,12 +13,12 @@ import { Get } from '../../../Services/privateApiService';
 function* fetchOrganizationRequestedSagas({ id }) {
   try {
     if (!id) {
-      const response = yield Get(`${ORGANIZATION}`);
+      const response = yield Get(ORGANIZATION);
       const documents = get(response.data, 'data');
       yield put(fetchOrganizationSucceeded({ documents }));
     }
     if (id) {
-      const response = yield get(`${ORGANIZATION}/${id}`);
+      const response = yield Get(ORGANIZATION, id);
       const entry = get(response.data, 'data');
       yield put(fetchOneOrganizationSucceeded({ entry }));
     }

@@ -3,7 +3,7 @@ import {
   FETCH_CATEGORIES_REQUESTED,
   FETCH_ONE_CATEGORIES_SUCCEEDED,
   FETCH_CATEGORIES_SUCCEEDED,
-  DELETE_CATEGORIES_REQUESTED,
+  DELETE_CATEGORIE,
   CLEAN_CATEGORIES_FORM,
   SET_SYSTEM_MSG,
 } from './types';
@@ -33,8 +33,8 @@ export const fetchCategoriesSucceeded = (props) => ({
   ...props,
 });
 
-export const deleteCategoriesRequested = (id) => ({
-  type: DELETE_CATEGORIES_REQUESTED,
+export const deleteCategorie = (id) => ({
+  type: DELETE_CATEGORIE,
   id,
 });
 

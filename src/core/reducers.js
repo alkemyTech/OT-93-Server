@@ -8,8 +8,10 @@ import Categories from './state/categories/reducer';
 import users from './state/Users/reducers';
 import login from './state/Session/reducers';
 import Activities from './state/activities/reducer';
+import UserEdit from './state/UserEdit/reducers';
 import Testimonials from './state/Testimonials/reducers';
 import Slides from './state/Slides/reducers';
+import Project from './state/Project/reducers';
 import Members from './state/orgMembers/reducer';
 
 export default () => combineReducers({
@@ -20,7 +22,9 @@ export default () => combineReducers({
   users,
   login,
   Activities,
+  UserEdit,
   Testimonials,
   Slides,
+  Project,
   Members,
 });

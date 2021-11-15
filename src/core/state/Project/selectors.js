@@ -1,28 +1,28 @@
 import get from 'lodash/get';
 
-const path = 'Slides';
+const path = 'Project';
 
-export const getSlideForm = (state) => get(state, `${path}.slideForm`);
-export const getSlideFields = (state) => get(state, `${path}.slideFields`);
-export const getSlide = (state) => get(state, `${path}.list.documents`);
+export const getProjectsForm = (state) => get(state, `${path}.projectForm`);
+export const getProjectsFields = (state) => get(state, `${path}.projectFields`);
+export const getProjects = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
 
 export const getTableProps = () => {
   const headers = [
     {
-      label: 'Titulo',
-      key: 'name',
+      label: 'Título',
+      key: 'title',
       className: 'border-0 pointer text-left',
     },
     {
-      label: 'Imagen',
-      key: 'image',
+      label: 'Descripción',
+      key: 'description',
       className: 'border-0 pointer',
     },
     {
-      label: 'Orden',
-      key: 'order',
-      className: 'border-0 pointer',
+      label: 'Imágen',
+      key: 'image',
+      className: 'border-0 pointer text-center',
     },
     {
       label: 'Acciones',
@@ -32,8 +32,12 @@ export const getTableProps = () => {
   ];
   const columns = [
     {
-      key: 'name',
-      drawInformation: (document) => get(document, 'name'),
+      key: 'title',
+      drawInformation: (document) => get(document, 'title'),
+    },
+    {
+      key: 'description',
+      drawInformation: (document) => get(document, 'description'),
       className: 'text-left',
     },
     {
@@ -41,12 +45,9 @@ export const getTableProps = () => {
       drawInformation: (document) => get(document, 'image'),
     },
     {
-      key: 'order',
-      drawInformation: (document) => get(document, 'order'),
-    },
-    {
       actions: true,
       edit: true,
+      view: true,
       delete: true,
       className: 'text-center',
     },

@@ -12,16 +12,17 @@ const Component = ({
   title,
   form,
   fields,
-  submitCategoriesRequested,
-  fetchCategoriesRequested,
+  submitProjectsRequested,
+  fetchProjectsRequested,
   match,
   history: { push },
 }) => {
   const goBackToList = () => push('/');
   const validate = (values) => {
     const errors = {};
-    if (!values.name || !values.image) {
-      errors.name = REQUIRED;
+    if (!values.due_date || !values.title || !values.image) {
+      errors.due_date = REQUIRED;
+      errors.title = REQUIRED;
       errors.image = REQUIRED;
     }
     return errors;
@@ -30,26 +31,26 @@ const Component = ({
   const id = match.params.id;
 
   useEffect(() => {
-    fetchCategoriesRequested({ id });
-  }, [fetchCategoriesRequested]);
+    fetchProjectsRequested({ id });
+  }, [fetchProjectsRequested]);
 
   return (
     <Container>
-    <Row>
-      <Col>
-        <h1 className="text-center mb-4">Categoría</h1>
-        <BackForm
-          key="NewsForm"
-          form={form}
-          fields={fields}
-          submit={submitCategoriesRequested}
-          fetch={fetchCategoriesRequested}
-          id={id}
-          goBack={goBackToList}
-          validate={validate}
-        />
-      </Col>
-    </Row>
+      <Row>
+        <Col>
+          <h1 className="text-center mb-4">{title}</h1>
+          <BackForm
+            key="NewsForm"
+            form={form}
+            fields={fields}
+            submit={submitProjectsRequested}
+            fetch={fetchProjectsRequested}
+            id={id}
+            goBack={goBackToList}
+            validate={validate}
+          />
+        </Col>
+      </Row>
     </Container>
   );
 };
