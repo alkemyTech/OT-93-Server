@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
+import { get } from 'lodash';
 import BackForm from '../../Components/BackForm';
 import {
   REQUIRED,
@@ -18,11 +18,9 @@ const Component = ({
 }) => {
   const validate = (values) => {
     const errors = {};
-    if (!values.email || !values.name || !values.image || !values.role || !values.password) {
+    if (!values.email || !values.image) {
       errors.email = REQUIRED;
-      errors.name = REQUIRED;
       errors.image = REQUIRED;
-      errors.password = REQUIRED;
     }
     if (values.password < 8) {
       errors.password = SHORT_PASSWORD;
@@ -32,7 +30,7 @@ const Component = ({
     }
     return errors;
   };
-  const id = match.params.id;
+  const id = get(match, 'params.id');
   const goBackToHome = () => push('/');
 
   return (

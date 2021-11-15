@@ -1,7 +1,7 @@
-import { EDIT_USER } from './types';
+import { EDIT_USER, CLEAN_FORM } from './types';
 
 const initialState = {
-  userEditForm: {
+  userForm: {
     name: '',
     email: '',
     image: '',
@@ -9,7 +9,7 @@ const initialState = {
     password: '',
     type: 'edituser',
   },
-  userEditFields: [
+  userFields: [
     {
       label: 'Nombre',
       placeholder: 'Nombre',
@@ -66,6 +66,14 @@ const UserEdit = (state = { ...initialState }, { type, ...props }) => {
         userEditForm: {
           ...state.userEditForm,
           ...props.entry,
+        },
+      };
+    }
+    case CLEAN_FORM: {
+      return {
+        ...state,
+        userForm: {
+          ...initialState.userForm,
         },
       };
     }
