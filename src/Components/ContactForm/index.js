@@ -21,17 +21,13 @@ import { contactForm, getContactFields } from '../../utils/selectors';
 const validate = (values) => {
   const errors = {};
 
-  if (!values.email) {
-    errors.email = REQUIRED;
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Dirección de e-mail inválida';
   }
   if (!values.name) {
     errors.name = REQUIRED;
   }
-  if (!values.phone) {
-    errors.phone = REQUIRED;
-  } else if (!/^\d{8,}$/.test(values.phone)) {
+  if (!/^\d{8,}$/.test(values.phone)) {
     errors.phone = 'El teléfono debe contener 8 números como mínimo';
   }
   if (!values.message) {
