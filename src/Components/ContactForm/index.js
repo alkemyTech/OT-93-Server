@@ -12,41 +12,37 @@ import {
   Container,
   Form,
 } from 'reactstrap';
-import map from 'lodash/map';
+import { map } from 'lodash-es';
 import get from 'lodash/get';
 import { PropTypes } from 'prop-types';
-import { REQUIRED, SEND, CANCEL } from '../../utils/constants';
+import { REQUIRED, SEND, CONTACT_TITLE } from '../../utils/constants';
+import { contactForm, getContactFields } from '../../utils/selectors';
 
 const validate = (values) => {
   const errors = {};
 
-  if (!values.email) {
-    errors.email = REQUIRED;
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Dirección de e-mail inválida';
   }
-  if (!values.password) {
-    errors.password = REQUIRED;
-  } else if (!/^(?=.*\d)(?=.*[^\w\s\d])(?=.*[a-zA-Z])(?!.*[\s]).{6,}$/gm.test(values.password)) {
-    errors.password = 'Contraseña inválida. La contraseña debe tener una longitud mínima de 6 caraceteres, y contener al menos un número, una letra y un símbolo.';
+  if (!values.name) {
+    errors.name = REQUIRED;
+  }
+  if (!/^\d{8,}$/.test(values.phone)) {
+    errors.phone = 'El teléfono debe contener 8 números como mínimo';
+  }
+  if (!values.message) {
+    errors.message = REQUIRED;
   }
   return errors;
 };
 
-const Component = ({
-  title,
-  form,
-  fields,
-  submitLoginRequested,
-  cleanLoginForm,
-}) => {
+const Component = () => {
+  const contactFields = getContactFields();
   const Formik = useFormik({
+    initialValues: { ...contactForm },
     enableReinitialize: true,
-    initialValues: { ...form },
     validate,
-    onSubmit: (values) => {
-      submitLoginRequested(values);
-      cleanLoginForm();
+    onSubmit: () => {
     },
   });
   return (
@@ -59,11 +55,11 @@ const Component = ({
           lg={{ size: 6, offset: 3 }}
           className="my-5 p-0"
         >
-            <h1 className="text-center mb-4">{title}</h1>
+            <h1 className="text-center mb-4">{CONTACT_TITLE}</h1>
           <Card className="form-card">
             <CardBody>
               <Form key="form" onSubmit={Formik.handleSubmit}>
-                {map(fields, (field) => (
+              {map(contactFields, (field) => (
                   <FormGroup key={get(field, 'id')}>
                     <Col className="mb-3 px-2" tag="h5">
                       <Label for={get(field, 'id')}>
@@ -77,8 +73,8 @@ const Component = ({
                         onBlur={Formik.handleBlur}
                         value={Formik.values[get(field, 'name')]}
                         placeholder={get(field, 'placeholder')}
-                        type={get(field, 'type')}
                         name={get(field, 'name')}
+                        type={get(field, 'type')}
                         id={get(field, 'id')}
                       />
                     </Col>
@@ -91,15 +87,8 @@ const Component = ({
                       )}
                     </Col>
                   </FormGroup>
-                ))}
+              ))}
                 <Col className="mt-4 d-flex justify-content-between px-2">
-                  <Button
-                    color="danger"
-                    className="btn-cancel"
-                    // onClick={goBack}
-                  >
-                    {CANCEL}
-                  </Button>
                   <Button
                     type="submit"
                     color="primary"
@@ -121,21 +110,9 @@ const Component = ({
 export default Component;
 
 Component.propTypes = {
-  form: PropTypes.shape({
-  }).isRequired,
-  fields: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
-  submitLoginRequested: PropTypes.func.isRequired,
-  cleanLoginForm: PropTypes.func.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }),
   title: PropTypes.string,
 };
 
 Component.defaultProps = {
-  title: 'Log-in',
+  title: 'Contactate con nosotros',
 };

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
@@ -55,18 +56,7 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                      {get(field, 'type') !== 'CKEditor' ? (
-                        <Input
-                          className="form-control"
-                          onChange={Formik.handleChange}
-                          onBlur={Formik.handleBlur}
-                          value={Formik.values[get(field, 'name')]}
-                          placeholder={get(field, 'placeholder')}
-                          type={get(field, 'type')}
-                          name={get(field, 'name')}
-                          id={get(field, 'id')}
-                        />
-                      ) : (
+                    { get(field, 'type') === 'CKEditor' && (
                         <CKEditor
                           editor={ClassicEditor}
                           data={Formik.values[get(field, 'name')]}
@@ -75,7 +65,47 @@ const BackForm = ({
                             setText(data);
                           }}
                         />
-                      )}
+                    )}
+                    { get(field, 'type') === 'dropdown' && (
+                      <>
+                        <Input
+                          className="form-control"
+                          onChange={Formik.handleChange}
+                          onBlur={Formik.handleBlur}
+                          value={Formik.values[get(field, 'name')]}
+                          placeholder={get(field, 'placeholder')}
+                          type="select"
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                        >
+                          <option
+                            disabled
+                            key="select"
+                            value="rol"
+                          >
+                            Selecciona el rol
+                          </option>
+                            {map((get(field, 'options')), (option) => (
+                              <option key={get(option, 'key')}>
+                                {get(option, 'value')}
+                              </option>
+                            ))}
+                        </Input>
+                      </>
+                    )}
+                    { get(field, 'type') !== 'CKEditor' && get(field, 'type') !== 'dropdown' && (
+                      <Input
+                        className="form-control"
+                        onChange={Formik.handleChange}
+                        onBlur={Formik.handleBlur}
+                        value={Formik.values[get(field, 'name')]}
+                        placeholder={get(field, 'placeholder')}
+                        type={get(field, 'type')}
+                        name={get(field, 'name')}
+                        id={get(field, 'id')}
+                      />
+                    )}
+
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]

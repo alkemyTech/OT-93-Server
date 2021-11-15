@@ -16,7 +16,7 @@ import {
   Confirm,
   Cancel,
 } from '../../../utils/constants';
-import ShowSwction from '../../../Components/ShowSection';
+
 const Component = ({
   fetchActivitiesRequested,
   deleteActivitiesRequested,

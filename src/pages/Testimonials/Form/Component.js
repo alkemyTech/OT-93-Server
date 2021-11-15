@@ -1,6 +1,10 @@
-/* eslint-disable */
-import React, { useEffect } from 'react';
-import { Container, Col, Row } from 'reactstrap';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import {
+  Container,
+  Col,
+  Row,
+} from 'reactstrap';
 import BackForm from '../../../Components/BackForm';
 import Title from '../../../Components/Title';
 import { REQUIRED } from '../../../utils/constants';
