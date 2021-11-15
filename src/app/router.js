@@ -17,6 +17,8 @@ import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
 import Us from '../pages/Us/Page';
+import ProjectList from '../pages/Project/List';
+import ProjectForm from '../pages/Project/Form';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -32,7 +34,7 @@ function Router() {
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
-        component={ActivitiesForm}
+        component={ProjectForm}
       />
       <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={publicRoutes.news} component={News} />
