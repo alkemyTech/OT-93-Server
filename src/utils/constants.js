@@ -28,4 +28,4 @@ export const Cancel = 'Cancelar';
 export const Empty = 'Empty';
 export const TESTIMONIALS = 'Testimonios';
 export const SUSCRIBE = 'Actividades';
-export const NO_HTML = "/<[^>]+>/g, ''";
+export const US = 'Nosotros';

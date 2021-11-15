@@ -5,7 +5,9 @@ import {
 } from 'reactstrap';
 import { get } from 'lodash';
 import Title from '../../../Components/Title';
-import { NO_HTML } from '../../../utils/constants';
+import USmembers from '../List';
+import { US } from '../../../utils/constants';
+import { noHTML } from '../../../utils';
 
 const Component = ({
   fetchOrganizationRequested,
@@ -21,13 +23,14 @@ const Component = ({
     <>
       <Container fluid>
         <Row>
-          <Col>
+          <Col className="mb-5">
             <Title
-              text={<h1>Nosotros</h1>}
+              text={<h1>{US}</h1>}
               className="mt-3 pb-5"
             />
-            {about?.replace(NO_HTML)}
+            {about && noHTML(about)}
           </Col>
+          <USmembers />
         </Row>
       </Container>
     </>
