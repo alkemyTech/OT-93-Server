@@ -13,7 +13,6 @@ import {
 } from '../../../utils';
 import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
-import Title from '../../../Components/Title';
 import {
   GOBACK,
   ADD,

@@ -16,17 +16,16 @@ import SlidesList from '../pages/Slides/List';
 import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
 import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
 import CategoriesForm from '../pages/Categories/Form';
+import Us from '../pages/Us/Page';
 import ProjectList from '../pages/Project/List';
 import ProjectForm from '../pages/Project/Form';
-import USmembers from '../pages/Us/List';
-
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Switch>
-    <Route exact path={publicRoutes.home} component={SlidesList} />
+    <Route exact path={publicRoutes.home} component={Home} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
@@ -37,17 +36,9 @@ function Router() {
         path={`${backOfficeRoutes.newActivity}`}
         component={ProjectForm}
       />
+      <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-      
-      {/* <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      {/* <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
-
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />

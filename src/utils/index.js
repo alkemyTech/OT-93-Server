@@ -49,3 +49,8 @@ export const authUser = () => {
   }
   return true;
 };
+
+export const noHTML = (text) => {
+  const textNoHTML = text.replace(/<[^>]+>/g, '');
+  return textNoHTML;
+};
