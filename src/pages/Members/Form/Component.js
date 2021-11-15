@@ -1,9 +1,11 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-useless-escape */
 import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import BackForm from '../../../Components/BackForm';
-import { REQUIRED, MEMBERS } from '../../../utils/constants';
+import {
+  REQUIRED, SHORT_NAME, INVALID_IMAGE, INVALID_URL, MEMBERS,
+} from '../../../utils/constants';
 import Title from '../../../Components/Title';
 
 const Component = ({
@@ -17,13 +19,21 @@ const Component = ({
 }) => {
   const validate = (values) => {
     const errors = {};
-    if (!values.name || !values.image || !values.content
-      || !values.facebookUrl || !values.linkedinUrl) {
-      errors.name = REQUIRED;
-      errors.image = REQUIRED;
+    const checkUrl = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i;
+    if (values.name.length < 4) {
+      errors.name = SHORT_NAME;
+    }
+    if (!/\.(jpg|png)$/i.test(values.image)) {
+      errors.image = INVALID_IMAGE;
+    }
+    if (!checkUrl.test(values.facebookUrl)) {
+      errors.facebookUrl = INVALID_URL;
+    }
+    if (!checkUrl.test(values.linkedinUrl)) {
+      errors.linkedinUrl = INVALID_URL;
+    }
+    if (values.content) {
       errors.content = REQUIRED;
-      errors.facebookUrl = REQUIRED;
-      errors.linkedinUrl = REQUIRED;
     }
     return errors;
   };

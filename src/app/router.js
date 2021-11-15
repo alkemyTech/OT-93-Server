@@ -21,7 +21,6 @@ import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
 import MembersForm from '../pages/Members/Form';
 
-
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
@@ -30,7 +29,7 @@ function Router() {
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
-        component={ProjectForm}
+        component={ActivitiesForm}
       />
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.news} component={News} />
