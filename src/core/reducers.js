@@ -10,6 +10,7 @@ import login from './state/Session/reducers';
 import Activities from './state/activities/reducer';
 import Testimonials from './state/Testimonials/reducers';
 import Slides from './state/Slides/reducers';
+import Project from './state/Project/reducers';
 import Members from './state/orgMembers/reducer';
 
 export default () => combineReducers({
@@ -22,5 +23,6 @@ export default () => combineReducers({
   Activities,
   Testimonials,
   Slides,
+  Project,
   Members,
 });
