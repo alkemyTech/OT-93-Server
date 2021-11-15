@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
@@ -9,6 +8,7 @@ import { fetchActivitiesRequested } from '../../core/state/activities/actions';
 export default connect(
   (state) => ({
     data: fromState.Activities.getNews(state),
+    slides: fromState.Activities.getSlides(state),
   }),
   (dispatch) => bindActionCreators(
     {

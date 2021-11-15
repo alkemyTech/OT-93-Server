@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import chunk from 'lodash/chunk';
 import map from 'lodash/map';
 import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
@@ -9,7 +9,12 @@ import Title from '../Title';
 import Card from '../Card';
 
 const index = ({
-  title, titleClass, subtitle, subtitleClass, list, cardNumber,
+  title,
+  titleClass,
+  subtitle,
+  subtitleClass,
+  list,
+  cardNumber,
 }) => {
   const data = chunk(list, cardNumber);
 
@@ -31,7 +36,7 @@ const index = ({
     }
   };
   return (
-    <Container className="show-Section">
+    <Row className="show-Section">
       <Row className="d-flex col-lg-12 mx-auto mt-3">
         <Col>
           <Title text={title} className={titleClass} />
@@ -43,15 +48,21 @@ const index = ({
         </Col>
       </Row>
       <Row className="col-lg-12 mx-auto mt-5">
-    {isEmpty(list) ? null : map(data[value], (e) => <Card data={e} />)}
+        {isEmpty(list) ? null : map(data[value], (e) => <Card data={e} />)}
       </Row>
-     {list ? (
+      {list ? (
         <Row>
-        <HiArrowSmLeft className="left-Arrow" onClick={() => decrementHandler()} />
-        <HiArrowSmRight className="right-Arrow" onClick={() => incrementHandler()} />
+          <HiArrowSmLeft
+            className="left-Arrow"
+            onClick={() => decrementHandler()}
+          />
+          <HiArrowSmRight
+            className="right-Arrow"
+            onClick={() => incrementHandler()}
+          />
         </Row>
-     ) : null}
-    </Container>
+      ) : null}
+    </Row>
   );
 };
 
