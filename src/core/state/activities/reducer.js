@@ -36,6 +36,7 @@ const initialState = {
       name: 'description',
     },
   ],
+  slidesShow: 5,
   list: {
     documents: [],
     total: null,

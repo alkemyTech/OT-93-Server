@@ -10,6 +10,7 @@ import UserEdit from '../pages/UserEdit';
 import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import Activities from '../pages/Activities';
 import TestimonialsForm from '../pages/Testimonials/Form';
 import TestimonialsList from '../pages/Testimonials/List';
 import SlidesForm from '../pages/Slides/Form';
@@ -47,7 +48,14 @@ function Router() {
       <Route exact path={`${backOfficeRoutes.categories}/:id`} component={CategoriesForm} />
       <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={publicRoutes.news} component={News} />
+      <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+      {/* <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      {/* <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+      <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />
