@@ -1,3 +1,5 @@
+/* eslint-disable import/newline-after-import */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -8,12 +10,11 @@ import {
   getRoutes,
   swalConfirmAction,
 } from '../../../utils';
-import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
 import {
-  GOBACK, ADD, DUMMY_TEXT, ACTIVITIES, Warning, Delete, Confirm, Cancel,
+  GOBACK, ADD, Warning, Delete, Confirm, Cancel,
 } from '../../../utils/constants';
-import ShowSwction from '../../../Components/ShowSection';
+
 const Component = ({
   fetchActivitiesRequested,
   deleteActivitiesRequested,

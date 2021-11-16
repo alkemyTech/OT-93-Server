@@ -210,3 +210,44 @@ export const campaignLinks = [
     url: '/school-campaign',
   },
 ];
+
+export const getContactFields = () => {
+  const contactFields = [
+    {
+      label: 'Nombre',
+      placeholder: 'Name',
+      type: 'text',
+      id: 'name',
+      name: 'name',
+      initialValue: 'loco',
+    },
+    {
+      label: 'Email',
+      placeholder: 'Email',
+      type: 'text',
+      id: 'email',
+      name: 'email',
+    },
+    {
+      label: 'Teléfono',
+      placeholder: 'Teléfono',
+      type: 'number',
+      id: 'phone',
+      name: 'phone',
+    },
+    {
+      label: 'Mensaje',
+      placeholder: 'Mensaje',
+      type: 'textarea',
+      id: 'message',
+      name: 'message',
+    },
+  ];
+  return contactFields;
+};
+export const contactForm = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+};

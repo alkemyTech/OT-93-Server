@@ -37,7 +37,7 @@ const Component = ({
     <Container>
     <Row>
       <Col>
-        <h1 className="text-center mb-4">{title}</h1>
+        <h1 className="text-center mb-4">Categoría</h1>
         <BackForm
           key="NewsForm"
           form={form}

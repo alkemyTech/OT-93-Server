@@ -12,7 +12,7 @@ import { Get } from '../../../Services/privateApiService';
 
 function* fetchOrganizationRequestedSagas() {
   try {
-    const response = yield Get(`${ORGANIZATION}`);
+    const response = yield Get(ORGANIZATION);
     const documents = get(response.data, 'data');
     yield put(fetchOrganizationSucceeded({ documents }));
   } catch (error) {
