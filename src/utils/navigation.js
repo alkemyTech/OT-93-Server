@@ -32,6 +32,7 @@ const mainRoutes = {
     editProfile: '/editProfile',
     backOffice: '/backOffice',
     register: '/register',
+    donate: '/donar',
   },
   landingPages: {
     toysCampaign: '/toys-campaign',

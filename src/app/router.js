@@ -23,6 +23,7 @@ import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
 import MembersForm from '../pages/Members/Form';
 import Categories from '../pages/Categories/List';
+import Donations from '../pages/Donations';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -49,6 +50,7 @@ function Router() {
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
       <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
+      <Route exact path={publicRoutes.donate} component={Donations} />
     </Switch>
   );
 }
