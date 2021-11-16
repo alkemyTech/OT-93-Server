@@ -34,15 +34,11 @@ function Router() {
         path={`${backOfficeRoutes.newActivity}`}
         component={ActivitiesForm}
       />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}`}
-        component={ProjectForm}
-      />
       <Route exact path={backOfficeRoutes.category} component={Categories} />
       <Route exact path={backOfficeRoutes.categories} component={CategoriesForm} />
       <Route exact path={`${backOfficeRoutes.categories}/:id`} component={CategoriesForm} />
       <Route exact path={publicRoutes.us} component={Us} />
+      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
