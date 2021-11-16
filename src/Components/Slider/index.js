@@ -9,6 +9,7 @@ import {
   CarouselCaption,
 } from 'reactstrap';
 import map from 'lodash/map';
+import { noHTML } from '../../utils';
 
 const Slider = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,7 +45,7 @@ const Slider = ({ items }) => {
           style={{ width: '100%', height: '55vw', maxHeight: '500px' }}
         />
         <CarouselCaption
-          captionText={item.description}
+          captionText={noHTML(item.description)}
           captionHeader={item.name}
         />
       </CarouselItem>
