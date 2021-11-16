@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API = process.env.REACT_APP_API_URL;
 
-const Post = async (URI, body) => {
+export const Post = async (URI, body) => {
   const header = {
     headers: {
       Group: '93',
@@ -20,4 +20,15 @@ const Post = async (URI, body) => {
   }
 };
 
-export default Post;
+export async function Get(URI, id) {
+  try {
+    if (id) {
+      const response = await axios.get(`${API}${URI}/${id}`);
+      return response;
+    }
+    const response = await axios.get(`${API}${URI}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
