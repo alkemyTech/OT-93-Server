@@ -32,7 +32,6 @@ function Router() {
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.user} component={UserEdit} />
       <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
-    <Route exact path={publicRoutes.home} component={SlidesList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
@@ -49,7 +48,7 @@ function Router() {
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
-  <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
     </Switch>
   );
 }
