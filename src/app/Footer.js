@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../utils/assets/LOGO.png';
 import { getNavigationFooter, socialMediaInfo } from '../utils/selectors';
 import { CONTACT, LOGO_ALT } from '../utils/constants';
-import NewsLetterForm from '../Components/Subscription Form';
+import NewsLetterForm from '../Components/SubscriptionForm';
 import { checkSubscription } from '../core/state/Session/actions';
 
 const Footer = () => {
