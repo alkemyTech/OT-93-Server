@@ -16,6 +16,6 @@ code {
   position: relative;
 }
 
-/*   .switch-wrapper > div {
+.switch-wrapper > div {
   position: absolute;
-}   */
+}

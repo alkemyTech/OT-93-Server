@@ -3,6 +3,10 @@ import { spring } from 'react-router-transition';
 // to the transform style property
 export function mapStyles(styles) {
   return {
+    position: styles.opacity > 0.3 ? 'relative' : 'absolute',
+    boxSizing: 'border-box',
+    width: '100%',
+    height: '100%',
     opacity: styles.opacity,
     transform: `scale(${styles.scale})`,
   };
