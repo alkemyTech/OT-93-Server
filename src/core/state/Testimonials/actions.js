@@ -5,16 +5,10 @@ import {
   FETCH_TESTIMONIAL_SUCCEEDED,
   DELETE_TESTIMONIAL_REQUESTED,
   CLEAN_TESTIMONIAL_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 export const submitTestimonialRequested = (props) => ({
   type: SUBMIT_TESTIMONIAL_REQUESTED,
-  ...props,
-});
-
-export const setSystemMessage = (props) => ({
-  type: SET_SYSTEM_MSG,
   ...props,
 });
 

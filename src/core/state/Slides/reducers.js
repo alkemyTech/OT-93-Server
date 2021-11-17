@@ -1,9 +1,7 @@
-import swal from 'sweetalert2';
 import {
   FETCH_SLIDE_SUCCEEDED,
   FETCH_ONE_SLIDE_SUCCEEDED,
   CLEAN_SLIDE_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 const initialState = {
@@ -63,14 +61,6 @@ const Slides = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
-
-    case SET_SYSTEM_MSG: {
-      swal.fire(props);
-      return {
-        ...state,
-      };
-    }
-
     case CLEAN_SLIDE_FORM: {
       return {
         ...state,
