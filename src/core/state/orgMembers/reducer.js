@@ -1,6 +1,7 @@
 import {
   FETCH_MEMBERS_SUCCEEDED,
   FETCH_ONE_MEMBERS_SUCCEEDED,
+  CLEAN_MEMBERS_FORM,
 } from './types';
 
 const initialState = {
@@ -72,6 +73,14 @@ const Members = (state = { ...initialState }, { type, ...props }) => {
         ...state,
         list: {
           documents: props.documents,
+        },
+      };
+    }
+    case CLEAN_MEMBERS_FORM: {
+      return {
+        ...state,
+        activityForm: {
+          ...initialState.membersForm,
         },
       };
     }

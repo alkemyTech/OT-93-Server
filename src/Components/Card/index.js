@@ -16,19 +16,30 @@ import { Empty } from '../../utils/constants';
 import placeholder from '../../images/image-placeholder.png';
 
 const Component = ({ data }) => {
-  const cardText = get(data, 'description');
-  const textNoHtml = cardText.replace(/<[^>]+>/g, '');
-
+  let cardText;
+  let textNoHtml;
+  if (get(data, 'description')) {
+    cardText = get(data, 'description');
+    textNoHtml = cardText?.replace(/<[^>]+>/g, '');
+  } else {
+    cardText = get(data, 'content');
+    textNoHtml = cardText?.replace(/<[^>]+>/g, '');
+  }
   return (
-  <Col>
-      <Card className="Card">
-        <CardImg top src={get(data, 'image') || placeholder} alt="Card image" className="card-Image" />
-        <CardBody>
-          <CardTitle tag="h5">{get(data, 'name')}</CardTitle>
-          <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>
-        </CardBody>
-      </Card>
-  </Col>
+      <Col>
+        <Card className="Card">
+          <CardImg
+            top
+            src={get(data, 'image') || placeholder}
+            alt="Card image"
+            className="card-Image"
+          />
+          <CardBody>
+            <CardTitle tag="h5">{get(data, 'name')}</CardTitle>
+            <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>
+          </CardBody>
+        </Card>
+      </Col>
   );
 };
 

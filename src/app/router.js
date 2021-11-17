@@ -24,6 +24,7 @@ import ProjectList from '../pages/Project/List';
 import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
 import MembersForm from '../pages/Members/Form';
+import MembersList from '../pages/Members/List';
 import Categories from '../pages/Categories/List';
 import Donations from '../pages/Donations';
 import Thanks from '../pages/Thanks';
@@ -60,11 +61,8 @@ function Router() {
         component={CategoriesForm}
       />
       <Route exact path={publicRoutes.us} component={Us} />
-      <Route
-        exact
-        path={backOfficeRoutes.membersForm}
-        component={MembersForm}
-      />
+      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
+      <Route exact path={backOfficeRoutes.members} component={MembersList} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
