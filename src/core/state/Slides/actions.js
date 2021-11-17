@@ -5,16 +5,10 @@ import {
   FETCH_SLIDE_SUCCEEDED,
   DELETE_SLIDE_REQUESTED,
   CLEAN_SLIDE_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 export const submitSlideRequested = (props) => ({
   type: SUBMIT_SLIDE_REQUESTED,
-  ...props,
-});
-
-export const setSystemMessage = (props) => ({
-  type: SET_SYSTEM_MSG,
   ...props,
 });
 
