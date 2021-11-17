@@ -15,9 +15,10 @@ import {
 import {
   fetchCategoriesSucceeded,
   fetchOneCategoriesSucceeded,
-  setSystemMessage,
   deleteCategorie,
 } from './actions';
+
+import { setSystemMessage } from '../Session/actions';
 
 import { CATEGORIES } from '../../../Services/Urls';
 import {

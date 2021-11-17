@@ -5,16 +5,10 @@ import {
   FETCH_CATEGORIES_SUCCEEDED,
   DELETE_CATEGORIE,
   CLEAN_CATEGORIES_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 export const submitCategoriesRequested = (props) => ({
   type: SUBMIT_CATEGORIES_REQUESTED,
-  ...props,
-});
-
-export const setSystemMessage = (props) => ({
-  type: SET_SYSTEM_MSG,
   ...props,
 });
 

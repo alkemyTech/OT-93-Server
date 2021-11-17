@@ -1,9 +1,7 @@
-import swal from 'sweetalert2';
 import {
   FETCH_TESTIMONIAL_SUCCEEDED,
   FETCH_ONE_TESTIMONIAL_SUCCEEDED,
   CLEAN_TESTIMONIAL_FORM,
-  SET_SYSTEM_MSG,
 } from './types';
 
 const initialState = {
@@ -63,14 +61,6 @@ const Testimonials = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
-
-    case SET_SYSTEM_MSG: {
-      swal.fire(props);
-      return {
-        ...state,
-      };
-    }
-
     case CLEAN_TESTIMONIAL_FORM: {
       return {
         ...state,

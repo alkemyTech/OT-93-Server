@@ -31,8 +31,9 @@ import {
   fetchTestimonialSucceeded,
   fetchOneTestimonialSucceeded,
   fetchTestimonialRequested,
-  setSystemMessage,
 } from './actions';
+
+import { setSystemMessage } from '../Session/actions';
 
 function* submitTestimonialRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
