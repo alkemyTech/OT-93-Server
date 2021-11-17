@@ -10,15 +10,15 @@ const News = ({ fetchNewsRequested, data }) => {
   useEffect(() => {
     fetchNewsRequested();
   }, [fetchNewsRequested]);
-  const { data: info } = data;
+
   return (
     <Container>
       <Row>
         <Col>
           <Title text={NEWS} />
           <Row>
-            {info?.length > 0 ? (
-              map(info, (element) => <Card data={element} />)
+            {data?.length > 0 ? (
+              map(data, (element) => <Card data={element} />)
             ) : (
               <Col>
                 <p>{NO_NEWS}</p>
