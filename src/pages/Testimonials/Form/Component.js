@@ -7,16 +7,10 @@ import {
 } from 'reactstrap';
 import BackForm from '../../../Components/BackForm';
 import Title from '../../../Components/Title';
-import {
-  REQUIRED,
-} from '../../../utils/constants';
-import {
-  getRoutes,
-} from '../../../utils';
+import { REQUIRED } from '../../../utils/constants';
+import { getRoutes } from '../../../utils';
 
-const {
-  backOfficeRoutes,
-} = getRoutes('mainRoutes');
+const { backOfficeRoutes } = getRoutes('mainRoutes');
 
 const Component = ({
   title,
@@ -44,20 +38,19 @@ const Component = ({
       <Row>
         <Col>
           <Title text={title} />
-              <BackForm
-                key="NewsForm"
-                form={form}
-                fields={fields}
-                submit={submitTestimonialRequested}
-                fetch={fetchTestimonialRequested}
-                id={match.params.id}
-                validate={validate}
-                goBack={goBackToList}
-              />
+          <BackForm
+            key="NewsForm"
+            form={form}
+            fields={fields}
+            submit={submitTestimonialRequested}
+            fetch={fetchTestimonialRequested}
+            id={match.params.id}
+            validate={validate}
+            goBack={goBackToList}
+          />
         </Col>
       </Row>
     </Container>
-
   );
 };
 

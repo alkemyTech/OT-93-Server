@@ -4,13 +4,13 @@ import get from 'lodash/get';
 
 import { FETCH_ORGANIZATION_REQUESTED } from './types';
 
-import { fetchOrganizationSucceeded, fetchOneOrganizationSucceeded } from './actions';
+import { fetchOrganizationSucceeded } from './actions';
 import { setSystemMessage } from '../Session/actions';
 
 import { ORGANIZATION } from '../../../Services/Urls';
 import { Get } from '../../../Services/privateApiService';
 
-function* fetchOrganizationRequestedSagas({ id }) {
+function* fetchOrganizationRequestedSagas() {
   try {
     if (!id) {
       const response = yield Get(ORGANIZATION);
@@ -24,9 +24,9 @@ function* fetchOrganizationRequestedSagas({ id }) {
       yield put(fetchOneOrganizationSucceeded({ entry }));
       yield put(setSystemMessage({ icon: 'success', title: 'data obtained successfully' }));
     }
+
   } catch (error) {
-    yield error;
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    yield put(setSystemMessage({ icon: 'danger', title: `${error}` }));
   }
 }
 

@@ -10,6 +10,7 @@ import UserEdit from '../pages/UserEdit';
 import News from '../pages/News';
 import ActivitiesForm from '../pages/Activities/Form';
 import ActivitiesList from '../pages/Activities/List';
+import Activities from '../pages/Activities';
 import TestimonialsForm from '../pages/Testimonials/Form';
 import TestimonialsList from '../pages/Testimonials/List';
 import SlidesForm from '../pages/Slides/Form';
@@ -21,6 +22,7 @@ import Us from '../pages/Us/Page';
 import ProjectList from '../pages/Project/List';
 import ProjectForm from '../pages/Project/Form';
 import USmembers from '../pages/Us/List';
+import MembersForm from '../pages/Members/Form';
 import Categories from '../pages/Categories/List';
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
@@ -31,23 +33,25 @@ function Router() {
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.user} component={UserEdit} />
       <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
-    <Route exact path={publicRoutes.home} component={SlidesList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
         component={ActivitiesForm}
       />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}`}
-        component={ProjectForm}
-      />
       <Route exact path={backOfficeRoutes.category} component={Categories} />
       <Route exact path={backOfficeRoutes.categories} component={CategoriesForm} />
       <Route exact path={`${backOfficeRoutes.categories}/:id`} component={CategoriesForm} />
       <Route exact path={publicRoutes.us} component={Us} />
+      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={publicRoutes.news} component={News} />
+      <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+      {/* <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      {/* <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+      <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />
