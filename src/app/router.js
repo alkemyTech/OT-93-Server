@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { getRoutes } from '../utils';
 
 import Alert from '../Components/Alert';
-import { Loading, INFO } from '../utils/constants';
+import { INFO, LOADING } from '../utils/constants';
 
 const Home = lazy(() => import('../pages/Home'));
 const NewForm = lazy(() => import('../pages/News/Form'));
@@ -31,7 +31,7 @@ const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes')
 
 function Router() {
   return (
-    <Suspense fallback={<Alert show title={Loading} icon={INFO} />}>
+    <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
     <Switch>
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.user} component={UserEdit} />
