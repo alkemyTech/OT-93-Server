@@ -6,6 +6,7 @@ export const getNewsForm = (state) => get(state, `${path}.activityForm`);
 export const getNewsFields = (state) => get(state, `${path}.actFields`);
 export const getNews = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
+export const getSlides = (state) => get(state, `${path}.slidesShow`);
 
 export const getTableProps = () => {
   const headers = [
