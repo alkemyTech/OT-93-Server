@@ -27,6 +27,7 @@ const ProjectForm = lazy(() => import('../pages/Project/Form'));
 const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 
+
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
@@ -36,16 +37,10 @@ function Router() {
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.user} component={UserEdit} />
       <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
-      <Route exact path={publicRoutes.home} component={SlidesList} />
       <Route
         exact
         path={`${backOfficeRoutes.newActivity}`}
         component={ActivitiesForm}
-      />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}`}
-        component={ProjectForm}
       />
       <Route exact path={backOfficeRoutes.category} component={Categories} />
       <Route
@@ -59,17 +54,21 @@ function Router() {
         component={CategoriesForm}
       />
       <Route exact path={publicRoutes.us} component={Us} />
+      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={publicRoutes.news} component={News} />
+      <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+      {/* <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.home} component={Home} />
+      <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      {/* <Route exact path={publicRoutes.newsForm} component={NewForm} />
+      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+      <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
       <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}/:id`}
-        component={ActivitiesForm}
-      />
+      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
     </Switch>
     </Suspense>
   );

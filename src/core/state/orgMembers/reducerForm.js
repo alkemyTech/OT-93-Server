@@ -1,5 +1,4 @@
 import {
-  FETCH_MEMBERS_SUCCEEDED,
   FETCH_ONE_MEMBERS_SUCCEEDED,
 } from './types';
 
@@ -50,10 +49,6 @@ const initialState = {
       name: 'linkedinUrl',
     },
   ],
-  list: {
-    documents: [],
-    total: null,
-  },
 };
 
 const Members = (state = { ...initialState }, { type, ...props }) => {
@@ -64,14 +59,6 @@ const Members = (state = { ...initialState }, { type, ...props }) => {
         membersForm: {
           ...state.membersForm,
           ...props.entry,
-        },
-      };
-    }
-    case FETCH_MEMBERS_SUCCEEDED: {
-      return {
-        ...state,
-        list: {
-          documents: props.documents,
         },
       };
     }

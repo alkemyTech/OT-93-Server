@@ -7,6 +7,7 @@ import * as Login from './state/Session/actions';
 import * as UserEdit from './state/UserEdit/actions';
 import * as Testimonials from './state/Testimonials/actions';
 import * as Slides from './state/Slides/actions';
+import * as Members from './state/orgMembers/actions';
 
 export {
   News,
@@ -18,4 +19,5 @@ export {
   Categories,
   Testimonials,
   Slides,
+  Members,
 };

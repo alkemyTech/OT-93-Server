@@ -1,9 +1,10 @@
-/* eslint-disable no-unused-vars */
 import get from 'lodash/get';
 
 const path = 'Members';
 
-// eslint-disable-next-line import/prefer-default-export
+export const getMembersForm = (state) => get(state, `${path}.membersForm`);
+export const getMembersFields = (state) => get(state, `${path}.membersFields`);
+export const getMembers = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
 
 export const getTableProps = () => {
