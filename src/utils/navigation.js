@@ -12,7 +12,7 @@ const mainRoutes = {
     slides: '/slides',
     slideform: '/backoffice/create-slide',
     users: '/create-user',
-    members: '/create-member',
+    members: '/backoffice/members',
     membersForm: '/backoffice/members/edit',
   },
   publicRoutes: {
@@ -32,6 +32,8 @@ const mainRoutes = {
     editProfile: '/editProfile',
     backOffice: '/backOffice',
     register: '/register',
+    donate: '/donar',
+    thanks: '/gracias',
   },
   landingPages: {
     toysCampaign: '/toys-campaign',

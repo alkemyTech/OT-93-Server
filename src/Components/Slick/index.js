@@ -11,7 +11,7 @@ import '../../css/Slick.css';
 const Slick = ({
   settings, items, title, showLinks, links, labelButton, routes,
 }) => (
-  <Row className="mx-5 px-5">
+  <Row className="mb-5 pb-5 mx-5 px-5">
     <Col>
       <Title
         text={<h2>{title}</h2>}

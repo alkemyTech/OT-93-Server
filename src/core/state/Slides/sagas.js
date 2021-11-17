@@ -35,8 +35,9 @@ import {
   fetchSlideSucceeded,
   fetchOneSlideSucceeded,
   fetchSlideRequested,
-  setSystemMessage,
 } from './actions';
+
+import { setSystemMessage } from '../Session/actions';
 
 function* submitSlideRequestedSagas({ payload, id }) {
   const { name, image, description } = payload;
