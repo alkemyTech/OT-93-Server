@@ -6,5 +6,5 @@ export const ACTIVITIES = 'activities';
 export const USERS = 'users';
 export const TESTIMONIALS = 'testimonials';
 export const PROJECTS = 'projects';
-export const MEMBERS = 'members';
-export const NEWS = 'news';
+export const MEMBERS = process.env.REACT_APP_MEMBERS;
+export const NEWS = process.env.REACT_APP_NEWS;
