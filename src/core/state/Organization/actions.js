@@ -12,3 +12,8 @@ export const fetchOrganizationSucceeded = (props) => ({
   type: FETCH_ORGANIZATION_SUCCEEDED,
   ...props,
 });
+
+export const fetchOneOrganizationSucceeded = (props) => ({
+  type: FETCH_ORGANIZATION_SUCCEEDED,
+  ...props,
+});
