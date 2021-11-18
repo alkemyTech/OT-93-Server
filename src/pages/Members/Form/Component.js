@@ -49,7 +49,7 @@ const Component = ({
     <Container>
       <Row>
         <Col>
-          <Title text={<h2>{title}</h2>} />
+          <Title text={<h1>{title}</h1>} />
           <BackForm
             key="MembersForm"
             form={form}

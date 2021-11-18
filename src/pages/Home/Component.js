@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {
   Container, Row, Col,
 } from 'reactstrap';
+import Sidebar from '../../Components/Sidenav';
+import Spinner from '../../Components/Spinner';
 import Title from '../../Components/Title/index';
 import Slick from '../../Components/Slick/index';
 import {
@@ -38,6 +40,8 @@ const Component = ({
       <Container fluid>
         <Row>
           <Col>
+            <Sidebar />
+            <Spinner show={false} text="cargando" />
             <Slider items={slides} />
             <Title
               text={<h1>{organization.welcome_text}</h1>}

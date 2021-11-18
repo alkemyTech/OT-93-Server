@@ -3,8 +3,6 @@ import {
   FETCH_MEMBERS_REQUESTED,
   FETCH_ONE_MEMBERS_SUCCEEDED,
   FETCH_MEMBERS_SUCCEEDED,
-  DELETE_MEMBERS_REQUESTED,
-  CLEAN_MEMBERS_FORM,
 } from './types';
 
 export const submitMembersRequested = (props) => ({
@@ -25,14 +23,4 @@ export const fetchOneMembersSucceeded = (props) => ({
 export const fetchMembersSucceeded = (props) => ({
   type: FETCH_MEMBERS_SUCCEEDED,
   ...props,
-});
-
-export const deleteMembersRequested = (id) => ({
-  type: DELETE_MEMBERS_REQUESTED,
-  id,
-});
-
-export const cleanMembersForm = (props) => ({
-  type: CLEAN_MEMBERS_FORM,
-  props,
 });

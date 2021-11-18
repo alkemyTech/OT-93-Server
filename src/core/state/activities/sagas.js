@@ -12,8 +12,8 @@ import {
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
 } from './actions';
-import { ACTIVITIES } from '../../../Services/Urls';
 import { setSystemMessage } from '../Session/actions';
+import { ACTIVITIES } from '../../../Services/Urls';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 function* submitActivitieRequestedSagas({ payload, id }) {

@@ -1,12 +1,10 @@
 import { all, takeLatest, put } from 'redux-saga/effects';
 import get from 'lodash/get';
-import {
-  Get, Post, Patch, Delete,
-} from '../../../Services/privateApiService';
+import { Get, Post, Patch } from '../../../Services/privateApiService';
 import { MEMBERS } from '../../../Services/Urls';
 import { setSystemMessage } from '../Session/actions';
-import { SUBMIT_MEMBERS_REQUESTED, FETCH_MEMBERS_REQUESTED, DELETE_MEMBERS_REQUESTED } from './types';
-import { fetchMembersSucceeded, fetchOneMembersSucceeded, fetchMembersRequested } from './actions';
+import { SUBMIT_MEMBERS_REQUESTED, FETCH_MEMBERS_REQUESTED } from './types';
+import { fetchMembersSucceeded, fetchOneMembersSucceeded } from './actions';
 
 function* submitMembersRequestedSagas({ payload, id }) {
   const {
@@ -93,19 +91,9 @@ function* fetchMembersRequestedSagas({ id }) {
   }
 }
 
-function* deleteMembersRequestedSagas({ id }) {
-  try {
-    yield Delete(`${MEMBERS}/${id}`);
-    yield put(fetchMembersRequested());
-  } catch (err) {
-    throw Error(err);
-  }
-}
-
 export default function* userSagas() {
   yield all([
     takeLatest(SUBMIT_MEMBERS_REQUESTED, submitMembersRequestedSagas),
     takeLatest(FETCH_MEMBERS_REQUESTED, fetchMembersRequestedSagas),
-    takeLatest(DELETE_MEMBERS_REQUESTED, deleteMembersRequestedSagas),
   ]);
 }

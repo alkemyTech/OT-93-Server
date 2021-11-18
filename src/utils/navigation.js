@@ -12,7 +12,7 @@ const mainRoutes = {
     slides: '/slides',
     slideform: '/backoffice/create-slide',
     users: '/create-user',
-    members: '/backoffice/members',
+    members: '/create-member',
     membersForm: '/backoffice/members/edit',
   },
   publicRoutes: {

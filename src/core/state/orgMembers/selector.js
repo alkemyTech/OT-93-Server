@@ -11,32 +11,22 @@ export const getTableProps = () => {
   const headers = [
     {
       label: 'Nombre',
-      key: 'name',
+      key: 'description',
       className: 'border-0 pointer',
     },
     {
-      label: 'Imagen',
-      key: 'image',
-      className: 'border-0 pointer text-center',
-    },
-    {
-      label: 'Descripción',
+      label: 'image',
       key: 'description',
       className: 'border-0 pointer text-center',
     },
     {
-      label: 'Facebook',
-      key: 'facebookUrl',
+      label: 'description',
+      key: 'description',
       className: 'border-0 pointer text-center',
     },
     {
-      label: 'Linkedin',
-      key: 'linkedinUrl',
-      className: 'border-0 pointer text-center',
-    },
-    {
-      label: 'Acciones',
-      key: 'actions',
+      label: 'facebookUrl',
+      key: 'description',
       className: 'border-0 pointer text-center',
     },
   ];
@@ -60,12 +50,9 @@ export const getTableProps = () => {
       drawInformation: (document) => get(document, 'facebookUrl'),
     },
     {
-      key: 'linkedinUrl',
-      drawInformation: (document) => get(document, 'linkedinUrl'),
-    },
-    {
       actions: true,
       edit: true,
+      view: true,
       delete: true,
       className: 'text-center',
     },
