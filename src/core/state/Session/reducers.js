@@ -64,6 +64,7 @@ const initialState = {
     ],
   },
   user: {},
+  flag: false,
 };
 
 const Login = (state = { ...initialState }, { type, ...props }) => {

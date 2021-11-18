@@ -42,4 +42,5 @@ export const INFO = 'info';
 export const CONTRIBUTE_TITLE = '¡Contribuye!';
 export const CONTRIBUTE_BUTTON = 'Contribuir';
 export const THANK_YOU = '¡Gracias por contribuir!';
-
+export const ERROR = 'error';
+export const SUCCESS = 'success';
