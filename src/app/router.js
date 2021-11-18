@@ -26,8 +26,10 @@ const ProjectList = lazy(() => import('../pages/Project/List'));
 const ProjectForm = lazy(() => import('../pages/Project/Form'));
 const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
-
-
+const MembersForm = lazy(() => import('../pages/Members/Form'));
+const MembersList = lazy(() => import('../pages/Members/List'));
+const Donations = lazy(() => import('../pages/Donations'));
+const Thanks = lazy(() => import('../pages/Thanks'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -54,10 +56,10 @@ function Router() {
       <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={backOfficeRoutes.members} component={MembersList} />
       <Route exact path={publicRoutes.news} component={News} />
-      <Route exact path={publicRoutes.activity} component={Activities} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />
+      {/* <Route exact path={publicRoutes.activity} component={Activities} /> */}
       {/* <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.home} component={Home} />
       <Route exact path={publicRoutes.newsForm} component={NewForm} />
