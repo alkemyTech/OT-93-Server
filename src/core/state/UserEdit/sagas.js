@@ -4,9 +4,7 @@ import {
   takeLatest,
 } from 'redux-saga/effects';
 import { get } from 'lodash';
-import {
-  USERS,
-} from '../../../Services/Urls';
+import { USERS } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
 import { Post, Patch } from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';

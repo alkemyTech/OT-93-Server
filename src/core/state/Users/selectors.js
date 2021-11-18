@@ -1,6 +1,5 @@
 import get from 'lodash/get';
+import { USERS } from '../../../Services/Urls';
 
-const path = 'users';
-
-export const getRegisterForm = (state) => get(state, `${path}.registerForm`);
-export const getRegisterFields = (state) => get(state, `${path}.registerFields`);
+export const getRegisterForm = (state) => get(state, `${USERS}.registerForm`);
+export const getRegisterFields = (state) => get(state, `${USERS}.registerFields`);
