@@ -7,13 +7,14 @@ import get from 'lodash/get';
 import { FETCH_ORGANIZATION_REQUESTED } from './types';
 
 import { fetchOrganizationSucceeded } from './actions';
-import { setSystemMessage } from '../Session/actions';
+import { setSystemMessage, setRequestFlag } from '../Session/actions';
 
 import { ORGANIZATION } from '../../../Services/Urls';
 import { Get } from '../../../Services/privateApiService';
 
 function* fetchOrganizationRequestedSagas() {
   try {
+    yield put(setRequestFlag(true));
     if (!id) {
       const response = yield Get(ORGANIZATION);
       const documents = get(response.data, 'data');
@@ -38,7 +39,10 @@ function* fetchOrganizationRequestedSagas() {
     }
   } catch (error) {
     yield put(setSystemMessage({ icon: 'danger', title: `${error}` }));
-  }
+  } finally {
+    yield put(setRequestFlag(false));
+}
+
 }
 
 export default function* userSagas() {
