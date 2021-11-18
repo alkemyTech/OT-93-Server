@@ -1,10 +1,13 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
-import { Spinner } from 'reactstrap';
-import '../../css/Spinner.css';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Spinner } from 'reactstrap';
+import fromState from '../../core/selectors';
+import '../../css/Spinner.css';
 
-const index = ({ show, text }) => {
+const index = ({ text }) => {
+  const show = useSelector(fromState.Login.getRequestFlag);
   if (show) {
     return (
       <div className="spinner-component-overlay d-flex justify-content-center align-items-center">
@@ -23,5 +26,9 @@ export default index;
 
 index.propTypes = {
   show: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+};
+
+index.defaultProps = {
+  text: 'Cargando',
 };
