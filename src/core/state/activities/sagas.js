@@ -89,8 +89,12 @@ function* fetchActivitiesRequestedSagas({ id }) {
       yield put(fetchOneActivitiesSucceeded({ entry }));
     }
   } catch (error) {
-    yield error;
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    yield put(
+      setSystemMessage({
+        icon: 'error',
+        title: `${error}`,
+      }),
+    );
   }
 }
 
