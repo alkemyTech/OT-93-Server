@@ -7,4 +7,4 @@ export const CATEGORIES = 'categories';
 export const USERS = 'users';
 export const TESTIMONIALS = 'testimonials';
 export const PROJECTS = 'projects';
-export const MEMBERS = 'members';
+export const MEMBERS = process.env.MEMBERS;
