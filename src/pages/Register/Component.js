@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import { PropTypes } from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
-import { getRoutes } from '../../utils';
+import { get } from 'lodash';
 import BackForm from '../../Components/BackForm';
 import {
   REQUIRED,
@@ -9,8 +12,7 @@ import {
   SHORT_PASSWORD,
   INVALID_PASSWORD,
 } from '../../utils/constants';
-
-const publicRoutes = getRoutes('publicRoutes');
+import pdf from '../../utils/assets/pdf-prueba.pdf';
 
 const Component = ({
   title,
@@ -38,37 +40,61 @@ const Component = ({
     }
     return errors;
   };
-
-  const goBackToHome = () => push(publicRoutes.home);
+  const ID = () => get(match, 'params.id');
+  const [terms, setTerms] = useState(false);
+  const termsReaded = (e) => {
+    setTerms(e.target.checked);
+  };
+  const submitInfo = () => {
+    if (terms === true) {
+      postRegisterUserRequestedSagas();
+    }
+  };
+  const goBackToHome = () => push('/');
 
   return (
-        <Container>
-          <Row>
-            <Col>
-              <h1 className="text-center mb-4">{title}</h1>
-              <BackForm
-                key="RegisterForm"
-                form={form}
-                fields={fields}
-                submit={postRegisterUserRequestedSagas}
-                id={match.params.id}
-                validate={validate}
-                goBack={goBackToHome}
-              />
-            </Col>
-          </Row>
-        </Container>
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="text-center mb-4">{title}</h1>
+          <BackForm
+            key="RegisterForm"
+            form={form}
+            fields={fields}
+            submit={submitInfo}
+            id={ID}
+            validate={validate}
+            goBack={goBackToHome}
+          />
+          <input
+            className="form-check-input mx-2"
+            type="checkbox"
+            onClick={termsReaded}
+          />
+          <Popup
+            trigger={(
+              <p className="btn text-blue p-0">
+                <u> Términos y condiciones</u>
+              </p>
+            )}
+            modal
+            nested
+          >
+            <Document file={pdf}>
+              <Page pageNumber={1} />
+            </Document>
+          </Popup>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default Component;
 
 Component.propTypes = {
-  form: PropTypes.shape({
-  }).isRequired,
-  fields: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
+  form: PropTypes.shape({}).isRequired,
+  fields: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   postRegisterUserRequestedSagas: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -83,5 +109,5 @@ Component.propTypes = {
 
 Component.defaultProps = {
   match: {},
-  title: 'Register',
+  title: 'Registrarse',
 };

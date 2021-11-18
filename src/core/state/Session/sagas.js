@@ -25,7 +25,7 @@ import {
 function* submitLoginRequestedSagas() {}
 
 function* setSystemMessageSagas() {
-  yield console.log('hola');
+  yield console.log('');
 }
 
 function* cleanLoginFormSagas() {}

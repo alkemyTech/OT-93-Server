@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container, Row, Col, Button,
+  Container, Row, Col,
 } from 'reactstrap';
 import map from 'lodash/map';
 import { authUser } from '../utils/index';
@@ -35,8 +35,8 @@ const Header = () => {
             ))}
           </Col>
           <Col lg={3} className="d-flex flex-row align-items-center justify-content-end">
-            <Button type="button" color="primary" className="btn header-button-login m-1 " outline>Log in</Button>
-            <Button type="button" className="btn header-button-register m-1 ">Registrarse</Button>
+            <Link to="login" className="btn header-button-login m-1">Inicar Sesión</Link>
+            <Link to="register" className="btn header-button-register m-1 ">Registrarse</Link>
           </Col>
         </Row>
       </Container>

@@ -3,12 +3,8 @@ import {
   put,
   takeLatest,
 } from 'redux-saga/effects';
-import get from 'lodash/get';
-import {
-  NEWS,
-} from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
-import Api from '../../../Services/Api';
+import { Post } from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';
 import {
   REGISTER_USER,
@@ -19,21 +15,11 @@ import {
 
 const mainRoutes = getRoutes('mainRoutes');
 
-function* postRegisterUserRequestedSagas({ payload, id }) {
+function* postRegisterUserRequestedSagas({ payload }) {
   // add method to register user
-  try {
-    let success = null;
-    if (id) {
-      const responseRegister = yield Api.post(`${NEWS}`, payload);
-      success = get(responseRegister, 'data.success');
-      yield push(mainRoutes.home);
-    }
-    if (success) {
-      yield put(registerUser({}));
-    }
-  } catch (err) {
-    throw Error(err);
-  }
+  yield Post('register', payload);
+  put(registerUser({}));
+  yield push(mainRoutes.home);
 }
 
 export default function* userSagas() {
