@@ -1,7 +1,7 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
-import { NEWS } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
+import { NEWS } from '../../../Services/Urls';
 import Api from '../../../Services/Api';
 import { push } from '../../middlewares/history';
 import {

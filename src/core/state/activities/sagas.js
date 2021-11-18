@@ -12,9 +12,9 @@ import {
   fetchActivitiesSucceeded,
   fetchOneActivitiesSucceeded,
 } from './actions';
-import { setSystemMessage } from '../Session/actions';
 import { ACTIVITIES } from '../../../Services/Urls';
 import { ERROR, SUCCESS } from '../../../utils/constants';
+import { setSystemMessage } from '../Session/actions';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 function* submitActivitieRequestedSagas({ payload, id }) {
