@@ -37,6 +37,9 @@ export const SUSCRIBE = 'Actividades';
 export const US = 'Nosotros';
 export const SLIDES = 'Slides';
 export const CONTACT_TITLE = 'Contactate con nosotros';
+export const LOADING = 'Cargando...';
+export const INFO = 'info';
 export const CONTRIBUTE_TITLE = '¡Contribuye!';
 export const CONTRIBUTE_BUTTON = 'Contribuir';
 export const THANK_YOU = '¡Gracias por contribuir!';
+
