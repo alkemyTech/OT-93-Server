@@ -14,6 +14,7 @@ import {
 } from './actions';
 import { setSystemMessage } from '../Session/actions';
 import { ACTIVITIES } from '../../../Services/Urls';
+import { ERROR, SUCCESS } from '../../../utils/constants';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 function* submitActivitieRequestedSagas({ payload, id }) {
@@ -26,13 +27,13 @@ function* submitActivitieRequestedSagas({ payload, id }) {
       }).then((e) => {
         if (e.data.success) {
           alertProps = {
-            icon: 'success',
-            title: 'data submited successfully',
+            icon: SUCCESS,
+            title: e.data.message,
           };
         } if (e.data.error) {
           alertProps = {
-            icon: 'error',
-            title: 'there was an error submiting the data',
+            icon: ERROR,
+            title: e.data.error,
           };
         }
         return alertProps;
@@ -53,13 +54,13 @@ function* submitActivitieRequestedSagas({ payload, id }) {
       yield Patch(ACTIVITIES, id, data).then((e) => {
         if (e.data.success) {
           alertProps = {
-            icon: 'success',
-            title: 'data submited successfully',
+            icon: SUCCESS,
+            title: e.data.message,
           };
         } if (e.data.error) {
           alertProps = {
-            icon: 'error',
-            title: 'there was an error submiting the data',
+            icon: ERROR,
+            title: e.data.message,
           };
         }
         return alertProps;
@@ -89,12 +90,7 @@ function* fetchActivitiesRequestedSagas({ id }) {
       yield put(fetchOneActivitiesSucceeded({ entry }));
     }
   } catch (error) {
-    yield put(
-      setSystemMessage({
-        icon: 'error',
-        title: `${error}`,
-      }),
-    );
+    throw Error(error);
   }
 }
 

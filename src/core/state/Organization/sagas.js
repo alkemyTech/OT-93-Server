@@ -5,7 +5,6 @@ import get from 'lodash/get';
 import { FETCH_ORGANIZATION_REQUESTED } from './types';
 
 import { fetchOrganizationSucceeded } from './actions';
-import { setSystemMessage } from '../Session/actions';
 
 import { ORGANIZATION } from '../../../Services/Urls';
 import { Get } from '../../../Services/privateApiService';
@@ -15,14 +14,8 @@ function* fetchOrganizationRequestedSagas() {
     const response = yield Get(ORGANIZATION);
     const documents = get(response.data, 'data');
     yield put(fetchOrganizationSucceeded({ documents }));
-    yield put(
-      setSystemMessage({
-        icon: 'success',
-        title: 'data obtained successfully',
-      }),
-    );
   } catch (error) {
-    yield put(setSystemMessage({ icon: 'danger', title: `${error}` }));
+    throw Error(error);
   }
 }
 
