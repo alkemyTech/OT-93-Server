@@ -8,3 +8,4 @@ export const TESTIMONIALS = 'testimonials';
 export const PROJECTS = 'projects';
 export const MEMBERS = process.env.REACT_APP_MEMBERS;
 export const NEWS = process.env.REACT_APP_NEWS;
+export const CONTACT = process.env.REACT_APP_CONTACTS;
