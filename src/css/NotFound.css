@@ -1,0 +1,22 @@
+.not_found {
+  height: calc(100vh - 268px - 112px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.color {
+  font-size: 120px;
+  text-shadow: 0 0 2px rgb(67, 67, 67);
+  display: flex;
+  flex-direction: row;
+}
+.letter1 {
+  color: crimson;
+}
+.letter2 {
+  color: yellow;
+}
+.letter3 {
+  color: lightskyblue;
+}

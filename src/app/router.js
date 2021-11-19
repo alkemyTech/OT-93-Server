@@ -31,6 +31,7 @@ const MembersForm = lazy(() => import('../pages/Members/Form'));
 const MembersList = lazy(() => import('../pages/Members/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
+const NotFound = lazy(() => import('../Components/NotFound'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
@@ -82,6 +83,7 @@ function Router() {
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
       <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+      <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>
 
