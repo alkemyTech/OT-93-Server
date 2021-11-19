@@ -5,6 +5,7 @@ import {
   SET_NEWS_LETTER,
   SET_NEWS_LETTER_REQUESTED,
   CHECK_SUBSCRIPTION,
+  SET_REQUEST_FLAG,
 } from './types';
 
 export const submitLoginRequested = (props) => ({
@@ -15,6 +16,11 @@ export const submitLoginRequested = (props) => ({
 export const setSystemMessage = (props) => ({
   type: SET_SYSTEM_MSG,
   ...props,
+});
+
+export const setRequestFlag = (flag) => ({
+  type: SET_REQUEST_FLAG,
+  flag,
 });
 
 export const checkSubscription = (props) => ({
