@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container, Row, Col,
-} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Title from '../../Components/Title/index';
 import Slick from '../../Components/Slick/index';
+import Skeleton from '../../Components/Skeleton';
 import {
-  LAST_NEWS, TESTIMONIALS, CONTACTS, VIEW_ALL,
+  LAST_NEWS,
+  TESTIMONIALS,
+  CONTACTS,
+  VIEW_ALL,
 } from '../../utils/constants';
 import { getRoutes } from '../../utils';
 import Slider from '../../Components/Slider';
@@ -30,12 +32,16 @@ const Component = ({
     fetchSlideRequested();
     fetchNewsRequested();
     fetchTestimonialRequested();
-  }, [fetchOrganizationRequested, fetchSlideRequested,
-    fetchNewsRequested, fetchTestimonialRequested]);
+  }, [
+    fetchOrganizationRequested,
+    fetchSlideRequested,
+    fetchNewsRequested,
+    fetchTestimonialRequested,
+  ]);
 
   return (
-    <>
-      <Container fluid>
+    <Container fluid>
+      {organization && slickSettings && slides && news && testimonial ? (
         <Row>
           <Col>
             <Slider items={slides} />
@@ -59,8 +65,10 @@ const Component = ({
             />
           </Col>
         </Row>
-      </Container>
-    </>
+      ) : (
+        <Skeleton />
+      )}
+    </Container>
   );
 };
 
