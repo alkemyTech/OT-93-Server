@@ -39,9 +39,15 @@ const Component = ({
     fetchTestimonialRequested,
   ]);
 
+  const onLoad = slickSettings
+    && slides.length
+    && news.length
+    && testimonial.length
+    && organization;
+
   return (
     <Container fluid>
-      {organization && slickSettings && slides && news && testimonial ? (
+      {onLoad ? (
         <Row>
           <Col>
             <Slider items={slides} />
