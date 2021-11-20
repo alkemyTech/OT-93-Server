@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable*/
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import Title from '../../Components/Title/index';
@@ -39,11 +40,24 @@ const Component = ({
     fetchTestimonialRequested,
   ]);
 
-  const onLoad = slickSettings
-    && slides.length
-    && news.length
-    && testimonial.length
-    && organization;
+  const [onLoad, setOnLoad] = useState(null);
+  useEffect(() => {
+    let loading =
+      slickSettings &&
+      slides.length &&
+      news.length &&
+      testimonial.length &&
+      organization;
+    setOnLoad(loading);
+  }, [
+    onLoad,
+    setOnLoad,
+    slickSettings,
+    slides,
+    news,
+    testimonial,
+    organization,
+  ]);
 
   return (
     <Container fluid>
