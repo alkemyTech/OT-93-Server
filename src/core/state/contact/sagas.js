@@ -15,6 +15,7 @@ import {
 import {
   fetchContactSucceeded,
   fetchOneContactSucceeded,
+  cleanContactForm,
   setSystemMessage,
 } from './actions';
 
@@ -22,14 +23,18 @@ import { CONTACT } from '../../../Services/Urls';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
 
 function* submitContactRequestedSagas({ payload, id }) {
-  const { name, image, description } = payload;
+  console.log(payload, id);
+  const {
+    name, email, phone, message,
+  } = payload;
   let alertProps = '';
   try {
     if (!id) {
       yield Post(CONTACT, {
         name,
-        image,
-        description,
+        email,
+        phone,
+        message,
       }).then((e) => {
         if (e.data.success) {
           return alertProps = {
@@ -54,8 +59,9 @@ function* submitContactRequestedSagas({ payload, id }) {
     if (id) {
       const data = {
         name,
-        image,
-        description,
+        email,
+        phone,
+        message,
       };
       yield Patch(CONTACT, id, data).then((e) => {
         if (e.data.success) {

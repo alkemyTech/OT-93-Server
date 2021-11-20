@@ -9,6 +9,7 @@ import { INFO, LOADING } from '../utils/constants';
 
 const Home = lazy(() => import('../pages/Home'));
 const Contact = lazy(() => import('../pages/Contact'));
+// const ContactForm = lazy(() => import('../Components/ContactForm'));
 const NewForm = lazy(() => import('../pages/News/Form'));
 const NewList = lazy(() => import('../pages/News/List'));
 const Register = lazy(() => import('../pages/Register'));

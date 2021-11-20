@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
-import { fetchContactRequested } from '../../core/state/contact/actions';
+import { fetchContactRequested, submitContactRequested } from '../../core/state/contact/actions';
 import Component from './Component';
 
 export default connect(
@@ -14,6 +14,7 @@ export default connect(
   (dispatch) => bindActionCreators(
     {
       fetchContactRequested,
+      submitContactRequested,
     },
     dispatch,
   ),
