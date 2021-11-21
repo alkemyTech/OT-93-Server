@@ -31,39 +31,46 @@ const MembersForm = lazy(() => import('../pages/Members/Form'));
 const MembersList = lazy(() => import('../pages/Members/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
+const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 
 function Router() {
   return (
     <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
-    <AnimatedSwitch
-      atEnter={bounceTransition.atEnter}
-      atLeave={bounceTransition.atLeave}
-      atActive={bounceTransition.atActive}
-      mapStyles={mapStyles}
-      className="switch-wrapper"
-    >
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.user} component={UserEdit} />
-      <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}`}
-        component={ActivitiesForm}
-      />
-      <Route exact path={backOfficeRoutes.category} component={Categories} />
-      <Route
-        exact
-        path={backOfficeRoutes.categories}
-        component={CategoriesForm}
-      />
-      <Route
-        exact
-        path={`${backOfficeRoutes.categories}/:id`}
-        component={CategoriesForm}
-      />
-      <Route exact path={publicRoutes.us} component={Us} />
+      <AnimatedSwitch
+        atEnter={bounceTransition.atEnter}
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles}
+        className="switch-wrapper"
+      >
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.user} component={UserEdit} />
+        <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
+        <Route
+          exact
+          path={`${backOfficeRoutes.newActivity}`}
+          component={ActivitiesForm}
+        />
+        <Route exact path={backOfficeRoutes.category} component={Categories} />
+        <Route
+          exact
+          path={backOfficeRoutes.categories}
+          component={CategoriesForm}
+        />
+        <Route
+          exact
+          path={`${backOfficeRoutes.categories}/:id`}
+          component={CategoriesForm}
+        />
+        <Route exact path={publicRoutes.us} component={Us} />
+        <Route
+          exact
+          path={backOfficeRoutes.organization}
+          component={OrganizationForm}
+        />
+        {/*
       <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={backOfficeRoutes.members} component={MembersList} />
       <Route exact path={publicRoutes.news} component={News} />
@@ -82,9 +89,8 @@ function Router() {
       <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
       <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
-    </AnimatedSwitch>
+      </AnimatedSwitch>
     </Suspense>
-
   );
 }
 
