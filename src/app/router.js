@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import { getRoutes } from '../utils';
+// import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 

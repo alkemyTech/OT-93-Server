@@ -21,6 +21,9 @@ import {
 
 import { CONTACT } from '../../../Services/Urls';
 import { Get, Post, Patch } from '../../../Services/privateApiService';
+import {
+  SUCCESS, ERROR, DATA_SUBMITED, ERROR_SUBMITED, ERROR_FETCHING_DATA, DATA,
+} from '../../../utils/constants';
 
 function* submitContactRequestedSagas({ payload, id }) {
   console.log(payload, id);
@@ -38,14 +41,14 @@ function* submitContactRequestedSagas({ payload, id }) {
       }).then((e) => {
         if (e.data.success) {
           return alertProps = {
-            icon: 'success',
-            title: 'data submited successfully',
+            icon: SUCCESS,
+            title: DATA_SUBMITED,
           };
         } if (e.data.error) {
           return (
             alertProps = {
-              icon: 'error',
-              title: 'there was an error submiting the data',
+              icon: ERROR,
+              title: ERROR_SUBMITED,
             }
           );
         }
@@ -66,13 +69,13 @@ function* submitContactRequestedSagas({ payload, id }) {
       yield Patch(CONTACT, id, data).then((e) => {
         if (e.data.success) {
           return alertProps = {
-            icon: 'success',
-            title: 'data submited successfully',
+            icon: SUCCESS,
+            title: DATA_SUBMITED,
           };
         } if (e.data.error) {
           return alertProps = {
-            icon: 'error',
-            title: 'there was an error submiting the data',
+            icon: ERROR,
+            title: ERROR_SUBMITED,
           };
         }
       });
@@ -83,7 +86,7 @@ function* submitContactRequestedSagas({ payload, id }) {
       }));
     }
   } catch (error) {
-    yield console.log(error);
+    setSystemMessage({ icon: ERROR, title: ERROR_FETCHING_DATA });
   }
 }
 
@@ -91,17 +94,16 @@ function* fetchContactRequestedSagas({ id }) {
   try {
     if (!id) {
       const response = yield Get(`${CONTACT}`);
-      const documents = get(response.data, 'data');
+      const documents = get(response.data, DATA);
       yield put(fetchContactSucceeded({ documents }));
     }
     if (id) {
       const response = yield Get(`${CONTACT}/${id}`);
-      const entry = get(response.data, 'data');
+      const entry = get(response.data, DATA);
       yield put(fetchOneContactSucceeded({ entry }));
     }
   } catch (error) {
-    console.log(error);
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    setSystemMessage({ icon: { ERROR }, title: { ERROR_FETCHING_DATA } });
   }
 }
 
