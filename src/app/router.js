@@ -37,7 +37,7 @@ const Thanks = lazy(() => import('../pages/Thanks'));
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
-    <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
+    <Suspense fallback>
       <AnimatedSwitch
         atEnter={bounceTransition.atEnter}
         atLeave={bounceTransition.atLeave}
