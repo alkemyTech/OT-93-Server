@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import { getRoutes } from '../utils';
-import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
@@ -31,6 +30,7 @@ const MembersList = lazy(() => import('../pages/Members/List'));
 const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
+const LastEvent = lazy(() => import('../pages/News/LastEvent'));
 const Thanks = lazy(() => import('../pages/Thanks'));
 const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
 
@@ -70,10 +70,10 @@ function Router() {
           path={backOfficeRoutes.organization}
           component={OrganizationForm}
         />
+        <Route exact path={publicRoutes.news} component={LastEvent} />
         {/*
       <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
       <Route exact path={backOfficeRoutes.members} component={MembersList} />
-      <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />

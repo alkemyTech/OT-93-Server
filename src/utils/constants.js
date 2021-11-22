@@ -44,3 +44,5 @@ export const CONTRIBUTE_BUTTON = 'Contribuir';
 export const THANK_YOU = '¡Gracias por contribuir!';
 export const ERROR = 'error';
 export const SUCCESS = 'success';
+export const YTURL = 'https://www.youtube.com/watch?v=4YnSk1gI_Oo';
+export const LASTEVENT = 'Último Evento';
