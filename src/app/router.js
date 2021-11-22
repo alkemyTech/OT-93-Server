@@ -2,12 +2,14 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
-import { getRoutes } from '../utils';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
+import { getRoutes } from '../utils';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
 const Home = lazy(() => import('../pages/Home'));
+const Contact = lazy(() => import('../pages/Contact'));
+// const ContactForm = lazy(() => import('../Components/ContactForm'));
 const NewForm = lazy(() => import('../pages/News/Form'));
 const NewList = lazy(() => import('../pages/News/List'));
 const Register = lazy(() => import('../pages/Register'));
@@ -25,16 +27,15 @@ const CategoriesForm = lazy(() => import('../pages/Categories/Form'));
 const Us = lazy(() => import('../pages/Us/Page'));
 const ProjectList = lazy(() => import('../pages/Project/List'));
 const ProjectForm = lazy(() => import('../pages/Project/Form'));
-const USmembers = lazy(() => import('../pages/Us/List'));
-const Categories = lazy(() => import('../pages/Categories/List'));
 const MembersForm = lazy(() => import('../pages/Members/Form'));
 const MembersList = lazy(() => import('../pages/Members/List'));
+const USmembers = lazy(() => import('../pages/Us/List'));
+const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
 const NotFound = lazy(() => import('../Components/NotFound'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
-
 function Router() {
   return (
     <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
@@ -86,8 +87,6 @@ function Router() {
       <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>
-
   );
 }
-
 export default Router;

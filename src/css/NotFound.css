@@ -5,18 +5,11 @@
   justify-content: center;
   flex-direction: column;
 }
-.color {
-  font-size: 120px;
-  text-shadow: 0 0 2px rgb(67, 67, 67);
+.btn-error{
+  color: white;
+  background-color: #384F77;
+}
+.img-404 {
+  width: 70vw;
   display: flex;
-  flex-direction: row;
-}
-.letter1 {
-  color: crimson;
-}
-.letter2 {
-  color: yellow;
-}
-.letter3 {
-  color: lightskyblue;
 }

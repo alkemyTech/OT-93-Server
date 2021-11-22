@@ -13,6 +13,7 @@ import Testimonials from './state/Testimonials/reducers';
 import Slides from './state/Slides/reducers';
 import Project from './state/Project/reducers';
 import Members from './state/orgMembers/reducer';
+import Contact from './state/contact/reducer';
 
 export default () => combineReducers({
   router: connectRouter(history),
@@ -27,4 +28,5 @@ export default () => combineReducers({
   Slides,
   Project,
   Members,
+  Contact,
 });

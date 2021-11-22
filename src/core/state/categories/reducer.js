@@ -12,7 +12,7 @@ const initialState = {
     categoryId: 1,
     type: 'category',
   },
-  catFields: [
+  categoriesFields: [
     {
       label: 'Título',
       placeholder: 'Título',

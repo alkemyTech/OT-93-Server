@@ -3,7 +3,7 @@ import get from 'lodash/get';
 const path = 'Categories';
 
 export const getNewsForm = (state) => get(state, `${path}.categoryForm`);
-export const getNewsFields = (state) => get(state, `${path}.catFields`);
+export const getNewsFields = (state) => get(state, `${path}.categoriesFields`);
 export const getNews = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
 
