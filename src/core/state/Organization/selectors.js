@@ -4,3 +4,4 @@ const path = 'Organization';
 
 export const getOrganization = (state) => get(state, `${path}.list.documents`);
 export const getList = (state) => get(state, `${path}.list`);
+export const getOrganizationFields = (state) => get(state, `${path}.organizationFields`);

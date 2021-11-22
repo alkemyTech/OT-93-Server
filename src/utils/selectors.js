@@ -231,7 +231,7 @@ export const getContactFields = () => {
     {
       label: 'Teléfono',
       placeholder: 'Teléfono',
-      type: 'number',
+      type: 'string',
       id: 'phone',
       name: 'phone',
     },
