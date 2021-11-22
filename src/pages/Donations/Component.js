@@ -7,7 +7,11 @@ const Component = () => (
   <Container>
     <Row>
       <Col>
-        <Donation text={CONTRIBUTE_TITLE} labelButton={CONTRIBUTE_BUTTON} />
+        <Donation
+          text={CONTRIBUTE_TITLE}
+          labelButton={CONTRIBUTE_BUTTON}
+          url={process.env.REACT_APP_MERCADO_PAGO}
+        />
       </Col>
     </Row>
   </Container>
