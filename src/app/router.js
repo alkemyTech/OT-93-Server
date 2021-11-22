@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import { getRoutes } from '../utils';
-// import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
@@ -32,6 +31,9 @@ const MembersForm = lazy(() => import('../pages/Members/Form'));
 const MembersList = lazy(() => import('../pages/Members/List'));
 const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
+const Donations = lazy(() => import('../pages/Donations'));
+const Thanks = lazy(() => import('../pages/Thanks'));
+
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
@@ -63,29 +65,24 @@ function Router() {
           component={CategoriesForm}
         />
         <Route exact path={publicRoutes.us} component={Us} />
-        <Route
-          exact
-          path={backOfficeRoutes.membersForm}
-          component={MembersForm}
-        />
+        <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
         <Route exact path={backOfficeRoutes.members} component={MembersList} />
-        <Route exact path={backOfficeRoutes.contact} component={Contact} />
         <Route exact path={publicRoutes.news} component={News} />
-        {/* <Route exact path={publicRoutes.activity} component={Activities} /> */}
         <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-        {/* <Route exact path={publicRoutes.donate} component={Donations} /> */}
-        {/* <Route exact path={publicRoutes.thanks} component={Thanks} /> */}
-        {/* <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.news} component={NewList} />
-      <Route exact path={publicRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+        <Route exact path={publicRoutes.donate} component={Donations} />
+        <Route exact path={publicRoutes.thanks} component={Thanks} />
+        {/* <Route exact path={publicRoutes.activity} component={Activities} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.news} component={NewList} />
+        <Route exact path={publicRoutes.register} component={Register} />
+        <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
       </AnimatedSwitch>
     </Suspense>
   );
