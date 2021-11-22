@@ -9,6 +9,7 @@ import * as Testimonials from './state/Testimonials/selectors';
 import * as Slides from './state/Slides/selectors';
 import * as Projects from './state/Project/selectors';
 import * as Members from './state/orgMembers/selector';
+import * as Contact from './state/contact/selectors';
 
 export default {
   News,
@@ -22,4 +23,5 @@ export default {
   Slides,
   Projects,
   Members,
+  Contact,
 };

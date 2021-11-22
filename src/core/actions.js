@@ -8,6 +8,7 @@ import * as UserEdit from './state/UserEdit/actions';
 import * as Testimonials from './state/Testimonials/actions';
 import * as Slides from './state/Slides/actions';
 import * as Members from './state/orgMembers/actions';
+import * as Contact from './state/contact/actions';
 
 export {
   News,
@@ -20,4 +21,5 @@ export {
   Testimonials,
   Slides,
   Members,
+  Contact,
 };
