@@ -48,3 +48,6 @@ export const DATA_SUBMITED = 'data submited successfully';
 export const ERROR_SUBMITED = 'there was an error submiting the data';
 export const ERROR_FETCHING_DATA = 'there was an error fetching the data';
 export const DATA = 'data';
+export const LOGIN = 'Entrar';
+export const REGISTER = 'Registrarse';
+export const LOGOUT = 'Desconectarse';

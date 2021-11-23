@@ -1,5 +1,6 @@
 import {
   SUBMIT_LOGIN_REQUESTED,
+  SUBMIT_LOGOUT_REQUESTED,
   CLEAN_LOGIN_FORM,
   SET_SYSTEM_MSG,
   SET_NEWS_LETTER,
@@ -10,6 +11,11 @@ import {
 
 export const submitLoginRequested = (props) => ({
   type: SUBMIT_LOGIN_REQUESTED,
+  ...props,
+});
+
+export const submitLogoutRequested = (props) => ({
+  type: SUBMIT_LOGOUT_REQUESTED,
   ...props,
 });
 
