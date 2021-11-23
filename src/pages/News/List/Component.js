@@ -12,7 +12,7 @@ import { getRoutes, swalConfirmAction } from '../../../utils';
 import TableList from '../../../Components/TableList';
 import { GOBACK, ADD } from '../../../utils/constants';
 
-const mainRoutes = getRoutes('mainRoutes');
+const { backOfficeRoutes, publicRoutes } = getRoutes('mainRoutes');
 
 const Component = ({
   fetchNewsRequested,
@@ -34,13 +34,12 @@ const Component = ({
 
   const onEdit = (prop) => {
     const id = get(prop, 'id');
-    push(`${mainRoutes.newsForm}/${id}`);
+    push(`${backOfficeRoutes.newsForm}/${id}`);
   };
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    console.log('debe llevar al detalle');
-    console.log(id);
+    push(`${publicRoutes.news}/${id}`);
   };
 
   return (
@@ -49,11 +48,11 @@ const Component = ({
                 <Col sm="12" className="mr-2">
                     <Row className="d-flex justify-content-between align-items-center">
                         <Col>
-                        <Button className="ml-3 px-3 btn-cancel" onClick={() => push(mainRoutes.home)}>
+                        <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
                             {GOBACK}
                         </Button>
                         <h1 className="text-center mb-3 my-1">Novedades</h1>
-                        <Button className="btn-submit mr-3" onClick={() => push(mainRoutes.newsForm)}>
+                        <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.newsForm)}>
                             {ADD}
                         </Button>
                         </Col>
