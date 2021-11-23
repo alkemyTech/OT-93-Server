@@ -28,7 +28,7 @@ const Component = ({
     fetchActivitiesRequested();
   }, [fetchActivitiesRequested]);
 
-  const { backOfficeRoutes } = getRoutes('mainRoutes');
+  const { backOfficeRoutes, publicRoutes } = getRoutes('mainRoutes');
 
   const onDelete = (prop) => {
     const deleteField = () => {
@@ -51,7 +51,7 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    return id;
+    push(`${publicRoutes.activity}/${id}`);
   };
   return (
     <Container>
@@ -81,7 +81,7 @@ const Component = ({
             onDelete={onDelete}
             onEdit={onEdit}
             onView={onView}
-            table={table}
+            {...table}
           />
         </Col>
       </Row>
