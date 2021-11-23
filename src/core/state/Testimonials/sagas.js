@@ -17,6 +17,8 @@ import {
   Delete,
 } from '../../../Services/privateApiService';
 
+import { NO_FETCH, NO_ACTION } from '../../../utils/constants';
+
 import {
   TESTIMONIALS,
 } from '../../../Services/Urls';
@@ -91,7 +93,7 @@ function* submitTestimonialRequestedSagas({ payload, id }) {
       }));
     }
   } catch (error) {
-    yield console.log(error);
+    setSystemMessage({ icon: 'error', title: { NO_ACTION } });
   }
 }
 
@@ -108,8 +110,7 @@ function* fetchTestimonialRequestedSagas({ id }) {
       yield put(fetchOneTestimonialSucceeded({ entry }));
     }
   } catch (error) {
-    console.log(error);
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    setSystemMessage({ icon: 'error', title: { NO_FETCH } });
   }
 }
 
@@ -118,7 +119,7 @@ function* deleteTestimonialRequestedSagas({ id }) {
     yield Delete(`${TESTIMONIALS}/${id}`);
     yield put(fetchTestimonialRequested());
   } catch (err) {
-    throw Error(err);
+    setSystemMessage({ icon: 'error', title: { NO_ACTION } });
   }
 }
 

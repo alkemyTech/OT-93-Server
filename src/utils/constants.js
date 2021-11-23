@@ -52,3 +52,5 @@ export const DATA = 'data';
 export const LOGIN = 'Entrar';
 export const REGISTER = 'Registrarse';
 export const LOGOUT = 'Desconectarse';
+export const NO_FETCH = 'Hubo un problema con el servicio';
+export const NO_ACTION = 'No se pudo realizar la acción, intenta más tarde';
