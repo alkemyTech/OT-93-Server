@@ -72,18 +72,7 @@ function Router() {
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />
-      {/* <Route exact path={publicRoutes.activity} component={Activities} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.news} component={NewList} />
       <Route exact path={publicRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
       <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>
