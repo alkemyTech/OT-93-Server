@@ -1,15 +1,18 @@
 .header-logo {
   height: 7rem;
 }
+
 .header-button-login {
   color: #18a0fb !important;
   border: 1px solid #18a0fb !important;
   border-radius: 6px !important;
 }
+
 .header-button-register {
   color: white !important;
   background-color: #18a0fb !important;
 }
+
 .header-link {
   text-decoration: none;
   color: #18a0fb;

@@ -8,6 +8,7 @@ import { authUser } from '../utils/index';
 import '../css/header.css';
 import ongLogo from '../images/LOGO-SOMOS MAS.png';
 import { getNavigationHeader } from '../utils/selectors';
+import { REGISTER, LOGIN, LOGOUT } from '../utils/constants';
 
 const Header = () => {
   const userAuthenticated = authUser();
@@ -30,13 +31,39 @@ const Header = () => {
                 to={`${e.url}`}
                 className={`m-2  ${checkPath(e.url)}`}
                 key={index}
-              >{e.label}
+              >
+                {e.label}
               </Link>
             ))}
           </Col>
-          <Col lg={3} className="d-flex flex-row align-items-center justify-content-end">
-            <Link to="/login" type="button" color="primary" className="btn header-button-login m-1 " outline>Iniciar sesión</Link>
-            <Link to="/register" type="button" className="btn header-button-register m-1 ">Registrarse</Link>
+          <Col
+            lg={3}
+            className="d-flex flex-row align-items-center justify-content-end"
+          >
+            {!userAuthenticated && (
+              <>
+                <Button
+                  type="button"
+                  color="primary"
+                  className="btn header-button-login m-1 "
+                  outline
+                >
+                  {LOGIN}
+                </Button>
+                <Button
+                  type="button"
+                  className="btn header-button-register m-1 "
+                >
+                  {REGISTER}
+                </Button>
+              </>
+            )}
+
+            {userAuthenticated && (
+              <Button type="button" className="btn header-button-register m-1 ">
+                {LOGOUT}
+              </Button>
+            )}
           </Col>
         </Row>
       </Container>
