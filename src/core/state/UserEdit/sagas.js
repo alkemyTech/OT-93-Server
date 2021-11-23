@@ -8,14 +8,20 @@ import {
   USERS,
 } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
-import { Post, Patch } from '../../../Services/privateApiService';
+import {
+  Post, Patch, Get, Delete,
+} from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';
 import {
   EDIT_USER,
+  FETCH_USERS_REQUESTED,
+  DELETE_USERS,
 } from './types';
 import {
   cleanForm,
   editUser,
+  fetchUsersSucceeded,
+  setSystemMessage,
 } from './actions';
 
 const mainRoutes = getRoutes('mainRoutes');
@@ -42,8 +48,36 @@ function* postEditUserRequestedSagas({ payload, id }) {
   }
 }
 
+function* fetchUsersRequestedSagas({ id }) {
+  try {
+    if (!id) {
+      const response = yield Get(USERS);
+      const documents = get(response, 'data');
+      yield put(fetchUsersSucceeded({ documents }));
+    }
+    if (id) {
+      const response = yield Get(USERS, id);
+      const entry = get(response.data, 'data');
+      yield put(editUser({ entry }));
+    }
+  } catch (error) {
+    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+  }
+}
+
+function* deleteUsersSagas({ id }) {
+  try {
+    yield Delete(USERS, id);
+    yield put(fetchUsersSucceeded);
+  } catch (err) {
+    throw Error(err);
+  }
+}
+
 export default function* userSagas() {
   yield all([
     takeLatest(EDIT_USER, postEditUserRequestedSagas),
+    takeLatest(FETCH_USERS_REQUESTED, fetchUsersRequestedSagas),
+    takeLatest(DELETE_USERS, deleteUsersSagas),
   ]);
 }

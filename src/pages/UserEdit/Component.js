@@ -13,6 +13,8 @@ const Component = ({
   form,
   fields,
   editUser,
+  // eslint-disable-next-line react/prop-types
+  fetchUsersRequested,
   match,
   history: { push },
 }) => {
@@ -44,6 +46,7 @@ const Component = ({
                 fields={fields}
                 submit={editUser}
                 id={id}
+                fetch={fetchUsersRequested}
                 validate={validate}
                 goBack={goBackToHome}
               />

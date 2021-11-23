@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
-import fromState from '../../core/selectors';
-import { editUser, fetchUsersRequested } from '../../core/state/UserEdit/actions';
+import fromState from '../../../core/selectors';
+import { fetchUsersRequested, deleteUsers } from '../../../core/state/UserEdit/actions';
 import Component from './Component';
 
 export default connect(
   (state) => ({
-    form: fromState.UserEdit.getUserEditForm(state),
-    fields: fromState.UserEdit.getUserEditFields(state),
+    list: fromState.UserEdit.getList(state),
   }),
   (dispatch) => bindActionCreators(
     {
-      editUser,
       fetchUsersRequested,
+      deleteUsers,
     },
     dispatch,
   ),

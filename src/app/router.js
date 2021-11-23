@@ -8,8 +8,6 @@ import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
 const Home = lazy(() => import('../pages/Home'));
-const Contact = lazy(() => import('../pages/Contact'));
-// const ContactForm = lazy(() => import('../Components/ContactForm'));
 const NewForm = lazy(() => import('../pages/News/Form'));
 const NewList = lazy(() => import('../pages/News/List'));
 const Register = lazy(() => import('../pages/Register'));
@@ -33,6 +31,8 @@ const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
+const UserList = lazy(() => import('../pages/UserEdit/List'));
+const Contact = lazy(() => import('../pages/Contact'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -45,7 +45,7 @@ function Router() {
         mapStyles={mapStyles}
         className="switch-wrapper"
       >
-        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.home} component={UserList} />
         <Route exact path={publicRoutes.user} component={UserEdit} />
         <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
         <Route
@@ -71,6 +71,8 @@ function Router() {
         <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
         <Route exact path={publicRoutes.donate} component={Donations} />
         <Route exact path={publicRoutes.thanks} component={Thanks} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+
         {/* <Route exact path={publicRoutes.activity} component={Activities} />
         <Route exact path={publicRoutes.home} component={Home} />
         <Route exact path={publicRoutes.home} component={Home} />
