@@ -33,6 +33,7 @@ const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
+const NotFound = lazy(() => import('../Components/NotFound'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -72,17 +73,7 @@ function Router() {
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />
       <Route exact path={publicRoutes.register} component={Register} />
-      {/* <Route exact path={publicRoutes.activity} component={Activities} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.news} component={NewList} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+      <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>
   );
