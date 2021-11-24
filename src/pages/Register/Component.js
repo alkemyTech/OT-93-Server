@@ -20,7 +20,6 @@ const Component = ({
   fields,
   postRegisterUserRequestedSagas,
   match,
-  history: { push },
 }) => {
   const validate = (values) => {
     const errors = {};
@@ -51,7 +50,6 @@ const Component = ({
       postRegisterUserRequestedSagas();
     }
   };
-  const goBackToHome = () => push('/');
 
   return (
     <Container>
@@ -65,7 +63,6 @@ const Component = ({
           submit={submitInfo}
           id={ID}
           validate={validate}
-          goBack={goBackToHome}
         />
         <input
           className="form-check-input mx-2"

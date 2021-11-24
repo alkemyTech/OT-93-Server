@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
-import { getRoutes } from '../utils';
+import { getRoutes, authUser } from '../utils';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
+const userAuthenticated = authUser();
 const Home = lazy(() => import('../pages/Home'));
 const Contact = lazy(() => import('../pages/Contact'));
 // const ContactForm = lazy(() => import('../Components/ContactForm'));
@@ -40,48 +41,64 @@ const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes')
 function Router() {
   return (
     <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
-    <AnimatedSwitch
-      atEnter={bounceTransition.atEnter}
-      atLeave={bounceTransition.atLeave}
-      atActive={bounceTransition.atActive}
-      mapStyles={mapStyles}
-      className="switch-wrapper"
-    >
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.user} component={UserEdit} />
-      <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
-      <Route
-        exact
-        path={`${backOfficeRoutes.newActivity}`}
-        component={ActivitiesForm}
-      />
-      <Route exact path={backOfficeRoutes.category} component={Categories} />
-      <Route
-        exact
-        path={backOfficeRoutes.categories}
-        component={CategoriesForm}
-      />
-      <Route
-        exact
-        path={`${backOfficeRoutes.categories}/:id`}
-        component={CategoriesForm}
-      />
-      <Route exact path={publicRoutes.us} component={Us} />
-      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
-      <Route exact path={`${backOfficeRoutes.membersForm}/:id`} component={MembersForm} />
-      <Route exact path={backOfficeRoutes.members} component={MembersList} />
-      <Route exact path={publicRoutes.news} component={News} />
-      <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-      <Route exact path={publicRoutes.donate} component={Donations} />
-      <Route exact path={publicRoutes.thanks} component={Thanks} />
-      <Route exact path={publicRoutes.register} component={Register} />
-      <Route exact path={backOfficeRoutes.newsForm} component={NewsForm} />
-      <Route exact path={`${backOfficeRoutes.newsForm}/:id`} component={NewsForm} />
-      <Route exact path={backOfficeRoutes.news} component={NewsList} />
-      <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
-      <Route exact path={publicRoutes.contact} component={Contact} />
-      <Route component={NotFound} />
-    </AnimatedSwitch>
+      <AnimatedSwitch
+        atEnter={bounceTransition.atEnter}
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles}
+        className="switch-wrapper"
+      >
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.user} component={UserEdit} />
+        <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
+        <Route
+          exact
+          path={`${backOfficeRoutes.newActivity}`}
+          component={ActivitiesForm}
+        />
+        <Route exact path={backOfficeRoutes.category} component={Categories} />
+        <Route
+          exact
+          path={backOfficeRoutes.categories}
+          component={CategoriesForm}
+        />
+        <Route
+          exact
+          path={`${backOfficeRoutes.categories}/:id`}
+          component={CategoriesForm}
+        />
+        <Route exact path={publicRoutes.us} component={Us} />
+        <Route
+          exact
+          path={backOfficeRoutes.membersForm}
+          component={MembersForm}
+        />
+        <Route
+          exact
+          path={`${backOfficeRoutes.membersForm}/:id`}
+          component={MembersForm}
+        />
+        <Route exact path={backOfficeRoutes.members} component={MembersList} />
+        <Route exact path={publicRoutes.news} component={News} />
+        <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+        <Route exact path={publicRoutes.donate} component={Donations} />
+        <Route exact path={publicRoutes.thanks} component={Thanks} />
+        <Route exact path={backOfficeRoutes.newsForm} component={NewsForm} />
+        <Route
+          exact
+          path={`${backOfficeRoutes.newsForm}/:id`}
+          component={NewsForm}
+        />
+        <Route exact path={backOfficeRoutes.news} component={NewsList} />
+        <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+
+        <Route exact path={publicRoutes.register}>
+          {userAuthenticated ? <Redirect to={publicRoutes.home} /> : <Register />}
+        </Route>
+
+        <Route component={NotFound} />
+      </AnimatedSwitch>
     </Suspense>
   );
 }
