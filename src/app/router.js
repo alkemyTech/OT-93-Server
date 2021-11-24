@@ -92,11 +92,7 @@ function Router() {
         <Route exact path={backOfficeRoutes.news} component={NewsList} />
         <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
         <Route exact path={publicRoutes.contact} component={Contact} />
-
-        <Route exact path={publicRoutes.register}>
-          {userAuthenticated ? <Redirect to={publicRoutes.home} /> : <Register />}
-        </Route>
-
+        {userAuthenticated ? <Redirect from="/register" to="/" /> : <Route exact path={publicRoutes.register} component={Register} />}
         <Route component={NotFound} />
       </AnimatedSwitch>
     </Suspense>
