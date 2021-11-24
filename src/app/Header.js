@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container, Row, Col,
+  Container, Row, Col, Button,
 } from 'reactstrap';
 import map from 'lodash/map';
 import { authUser } from '../utils/index';
@@ -42,25 +42,24 @@ const Header = () => {
           >
             {!userAuthenticated && (
               <>
-                <Button
-                  type="button"
+                <Link
+                  to="/login"
                   color="primary"
-                  className="btn header-button-login m-1 "
-                  outline
+                  className="btn header-button-log outline m-1 "
                 >
                   {LOGIN}
-                </Button>
-                <Button
-                  type="button"
+                </Link>
+                <Link
+                  to="/register"
                   className="btn header-button-register m-1 "
                 >
                   {REGISTER}
-                </Button>
+                </Link>
               </>
             )}
 
             {userAuthenticated && (
-              <Button type="button" className="btn header-button-register m-1 ">
+              <Button type="button" className="btn header-button-log m-1 ">
                 {LOGOUT}
               </Button>
             )}
