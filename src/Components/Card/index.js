@@ -6,25 +6,42 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Row,
   Col,
 } from 'reactstrap';
+import get from 'lodash/get';
+import '../../css/Card.css';
+import isEmpty from 'lodash/isEmpty';
+import { Empty } from '../../utils/constants';
 
 import placeholder from '../../images/image-placeholder.png';
 
-const Component = ({ data }) => (
-  <Row>
-    <Col>
-      <Card>
-        <CardImg top width="100%" src={data.url ? data.url : placeholder} alt="Card image" />
-        <CardBody>
-          <CardTitle tag="h5">{data.title}</CardTitle>
-          <CardText>{data.description}</CardText>
-        </CardBody>
-      </Card>
-    </Col>
-  </Row>
-);
+const Component = ({ data }) => {
+  let cardText;
+  let textNoHtml;
+  if (get(data, 'description')) {
+    cardText = get(data, 'description');
+    textNoHtml = cardText?.replace(/<[^>]+>/g, '');
+  } else {
+    cardText = get(data, 'content');
+    textNoHtml = cardText?.replace(/<[^>]+>/g, '');
+  }
+  return (
+      <Col>
+        <Card className="Card">
+          <CardImg
+            top
+            src={get(data, 'image') || placeholder}
+            alt="Card image"
+            className="card-Image"
+          />
+          <CardBody>
+            <CardTitle tag="h5">{get(data, 'name')}</CardTitle>
+            <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>
+          </CardBody>
+        </Card>
+      </Col>
+  );
+};
 
 Component.propTypes = {
   data: PropTypes.object,

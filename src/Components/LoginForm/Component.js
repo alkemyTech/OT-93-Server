@@ -51,7 +51,6 @@ const Component = ({
   });
   return (
         <>
-            <h1 className="text-center mb-4">{title}</h1>
 
     <Container>
       <Row>
@@ -60,6 +59,7 @@ const Component = ({
           lg={{ size: 6, offset: 3 }}
           className="my-5 p-0"
         >
+            <h1 className="text-center mb-4">{title}</h1>
           <Card className="form-card">
             <CardBody>
               <Form key="form" onSubmit={Formik.handleSubmit}>

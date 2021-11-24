@@ -1,45 +1,92 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
+import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import { getRoutes } from '../utils';
-import Home from '../pages/Home';
+import Alert from '../Components/Alert';
+import { INFO, LOADING } from '../utils/constants';
 
-import ActivitiesForm from '../pages/Activities/Form';
-import ActivitiesList from '../pages/Activities/List';
+const Home = lazy(() => import('../pages/Home'));
+const NewForm = lazy(() => import('../pages/News/Form'));
+const NewList = lazy(() => import('../pages/News/List'));
+const Register = lazy(() => import('../pages/Register'));
+const UserEdit = lazy(() => import('../pages/UserEdit'));
+const News = lazy(() => import('../pages/News'));
+const ActivitiesForm = lazy(() => import('../pages/Activities/Form'));
+const ActivitiesList = lazy(() => import('../pages/Activities/List'));
+const TestimonialsForm = lazy(() => import('../pages/Testimonials/Form'));
+const TestimonialsList = lazy(() => import('../pages/Testimonials/List'));
+const SlidesForm = lazy(() => import('../pages/Slides/Form'));
+const SlidesList = lazy(() => import('../pages/Slides/List'));
+const ToysCampaign = lazy(() => import('../Campaigns/Toys/ToysCampaign'));
+const SchoolCampaign = lazy(() => import('../Campaigns/School/SchoolCampaign'));
+const CategoriesForm = lazy(() => import('../pages/Categories/Form'));
+const Us = lazy(() => import('../pages/Us/Page'));
+const ProjectList = lazy(() => import('../pages/Project/List'));
+const ProjectForm = lazy(() => import('../pages/Project/Form'));
+const MembersForm = lazy(() => import('../pages/Members/Form'));
+const MembersList = lazy(() => import('../pages/Members/List'));
+const USmembers = lazy(() => import('../pages/Us/List'));
+const Categories = lazy(() => import('../pages/Categories/List'));
+const Donations = lazy(() => import('../pages/Donations'));
+const Thanks = lazy(() => import('../pages/Thanks'));
+const UserList = lazy(() => import('../pages/UserEdit/List'));
+const Contact = lazy(() => import('../pages/Contact'));
 
-// import ActivitiesForm from '../Components/Activities/ActivitiesForm';
-// import CategoriesForm from '../Components/Categories/CategoriesForm';
-// import NewsForm from '../Components/News/NewsForm';
-// import SlidesForm from '../Components/Slides/SlidesForm';
-// import TestimonialForm from '../Components/Testimonials/TestimonialsForm';
-// import UserForm from '../Components/Users/UsersForm';
-// import MembersForm from '../Components/Members/MembersForm';
-// import ProjectsForm from '../Components/Projects/ProjectsForm';
-import ToysCampaign from '../Campaigns/Toys/ToysCampaign';
-import SchoolCampaign from '../Campaigns/School/SchoolCampaign';
-
-const { backOfficeRoutes } = getRoutes('mainRoutes');
-
+const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
   return (
-    <Switch>
-      <Route exact path={backOfficeRoutes.home} component={ActivitiesList} />
-      <Route exact path={backOfficeRoutes.newActivity} component={ActivitiesForm} />
-       {/* <Route exact path={backOfficeRoutes.activities} component={ActivitiesList} /> */}
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} />
-     {/* <Route exact path={`${mainRoutes.newsForm}/:id`} component={NewForm} />
-       <Route path="/create-activity" component={ActivitiesForm} />
-          <Route path="/create-category" component={CategoriesForm} />
-          <Route path="/create-news" component={NewsForm} />
-          <Route path="/backoffice/create-slide" component={SlidesForm} />
-          <Route path="/create-testimonials" component={TestimonialForm} />
-          <Route path="/create-user" component={UserForm} />
-          <Route path="/create-member" component={MembersForm} />
-          <Route path="/create-project" component={ProjectsForm} />
-          <Route path="/school-campaign" component={SchoolCampaign} />
-          <Route path="/toys-campaign" component={ToysCampaign} /> */}
-    </Switch>
+    <Suspense fallback={<Alert show title={LOADING} icon={INFO} />}>
+      <AnimatedSwitch
+        atEnter={bounceTransition.atEnter}
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles}
+        className="switch-wrapper"
+      >
+        <Route exact path={publicRoutes.home} component={UserList} />
+        <Route exact path={publicRoutes.user} component={UserEdit} />
+        <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
+        <Route
+          exact
+          path={`${backOfficeRoutes.newActivity}`}
+          component={ActivitiesForm}
+        />
+        <Route exact path={backOfficeRoutes.category} component={Categories} />
+        <Route
+          exact
+          path={backOfficeRoutes.categories}
+          component={CategoriesForm}
+        />
+        <Route
+          exact
+          path={`${backOfficeRoutes.categories}/:id`}
+          component={CategoriesForm}
+        />
+        <Route exact path={publicRoutes.us} component={Us} />
+        <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
+        <Route exact path={backOfficeRoutes.members} component={MembersList} />
+        <Route exact path={publicRoutes.news} component={News} />
+        <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+        <Route exact path={publicRoutes.donate} component={Donations} />
+        <Route exact path={publicRoutes.thanks} component={Thanks} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+
+        {/* <Route exact path={publicRoutes.activity} component={Activities} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.news} component={NewList} />
+        <Route exact path={publicRoutes.register} component={Register} />
+        <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+      </AnimatedSwitch>
+    </Suspense>
   );
 }
-
 export default Router;

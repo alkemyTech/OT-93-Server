@@ -1,16 +1,21 @@
-/* eslint-disable no-console */
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Col,
-  Button,
-  Row,
-  Container,
-} from 'reactstrap';
+import { Col, Button, Row, Container } from 'reactstrap';
 import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';
+import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
-import { GOBACK, ADD } from '../../../utils/constants';
+import {
+  GOBACK,
+  ADD,
+  DUMMY_TEXT,
+  ACTIVITIES,
+  Warning,
+  Delete,
+  Confirm,
+  Cancel,
+} from '../../../utils/constants';
 
 const Component = ({
   fetchActivitiesRequested,
@@ -29,7 +34,14 @@ const Component = ({
     const deleteField = () => {
       deleteActivitiesRequested(get(prop, 'id'));
     };
-    swalConfirmAction('warning', 'Eliminar Registro', '', 'Confirmar', 'Cancelar', deleteField);
+    swalConfirmAction(
+      `${Warning}`,
+      `${Delete}`,
+      `${Cancel}`,
+      `${Delete}`,
+      `${Confirm}`,
+      deleteField
+    );
   };
 
   const onEdit = (prop) => {
@@ -39,36 +51,41 @@ const Component = ({
 
   const onView = (prop) => {
     const id = get(prop, 'id');
-    console.log('debe llevar al detalle');
-    console.log(id);
+    return id;
   };
-
   return (
-        <Container>
-            <Row className="list-row">
-                <Col sm="12" className="mr-2">
-                    <Row className="d-flex justify-content-between align-items-center">
-                        <Col className="d-flex justify-content-evenly">
-                        <Button className="ml-3 px-3 btn-cancel" color="danger" onClick={() => push(backOfficeRoutes.home)}>
-                            {GOBACK}
-                        </Button>
-                        <h1 className="text-center mb-3 my-1">Novedades</h1>
-                        <Button className="btn-submit mr-3" color="success" onClick={() => push(backOfficeRoutes.newActivity)}>
-                            {ADD}
-                        </Button>
-                        </Col>
-                    </Row>
-                    <TableList
-                      documents={get(list, 'documents')}
-                      onDelete={onDelete}
-                      onEdit={onEdit}
-                      onView={onView}
-                      // eslint-disable-next-line react/jsx-props-no-spreading
-                      {...table}
-                    />
-                </Col>
-            </Row>
-        </Container>
+    <Container>
+      <Row className="list-row">
+        <Col sm="12" className="mr-2">
+          <Row className="d-flex justify-content-between align-items-center">
+            <Col className="d-flex justify-content-evenly">
+              <Button
+                className="ml-3 px-3 btn-cancel"
+                color="danger"
+                onClick={() => push(backOfficeRoutes.home)}
+              >
+                {GOBACK}
+              </Button>
+              <h1 className="text-center mb-3 my-1">Novedades</h1>
+              <Button
+                className="btn-submit mr-3"
+                color="success"
+                onClick={() => push(backOfficeRoutes.newActivity)}
+              >
+                {ADD}
+              </Button>
+            </Col>
+          </Row>
+          <TableList
+            documents={get(list, 'documents')}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            onView={onView}
+            table={table}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
