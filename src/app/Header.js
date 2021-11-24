@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container, Row, Col,
+  Container, Row, Col, Button,
 } from 'reactstrap';
 import map from 'lodash/map';
 import { authUser } from '../utils/index';

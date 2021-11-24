@@ -1,7 +1,8 @@
 const mainRoutes = {
   backOfficeRoutes: {
     home: '/',
-    news: '/create-news',
+    news: '/backoffice/news',
+    newsForm: '/backoffice/news/create',
     activities: '/activity',
     newActivity: '/create-activity',
     categories: '/categories',
@@ -19,7 +20,7 @@ const mainRoutes = {
     home: '/',
     organization: '/organizations',
     activity: '/activities',
-    news: '/news',
+    news: '/novedades',
     testimonial: '/testimonials',
     contact: '/contact',
     contribute: '/contribute',
