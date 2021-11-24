@@ -10,6 +10,7 @@ export const INVALID_PASSWORD = 'La contraseña debe contener al menos un númer
 export const SHORT_NAME = 'El nombre debe tener al menos 4 caracteres';
 export const INVALID_IMAGE = 'La imagen debe tener formato .jpg o .png';
 export const INVALID_URL = 'Debe tener un formato de URL válido';
+export const SCHOOL_CAMPAIGN = 'Campaña Escolar';
 export const SOCIAL_MEDIA = 'Redes Sociales';
 export const SITE = 'Sitio';
 export const CONTACT = '2021 by Alkemy. All Rights Reserved.';
