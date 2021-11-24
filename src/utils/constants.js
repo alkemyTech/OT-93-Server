@@ -56,3 +56,4 @@ export const INVALID_EMAIL = 'Dirección de e-mail inválida';
 export const SHORT_PHONE_NUMBER = 'El teléfono debe contener 8 números como mínimo';
 export const NO_FETCH = 'Hubo un problema con el servicio';
 export const NO_ACTION = 'No se pudo realizar la acción, intenta más tarde';
+export const NO_LOGGED = 'Antes debes estar registrado';
