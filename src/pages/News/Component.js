@@ -1,10 +1,13 @@
+/* eslint-disable react/no-children-prop */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Container } from 'reactstrap';
+import {
+  Row, Col, Container, Spinner,
+} from 'reactstrap';
 import map from 'lodash/map';
 import Title from '../../Components/Title';
 import Card from '../../Components/Card';
-import { NEWS, NO_NEWS } from '../../utils/constants';
+import { NEWS } from '../../utils/constants';
 
 const News = ({ fetchNewsRequested, data }) => {
   useEffect(() => {
@@ -15,13 +18,13 @@ const News = ({ fetchNewsRequested, data }) => {
     <Container>
       <Row>
         <Col>
-          <Title text={NEWS} />
+          <Title text={<h1>{NEWS}</h1>} />
           <Row>
             {data?.length > 0 ? (
               map(data, (element) => <Card data={element} />)
             ) : (
-              <Col>
-                <p>{NO_NEWS}</p>
+              <Col className="m-5">
+                <Spinner children="" color="dark" className="spinner-loader m-5" />
               </Col>
             )}
           </Row>
