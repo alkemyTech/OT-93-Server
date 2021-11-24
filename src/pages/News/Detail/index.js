@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import fromState from '../../../core/selectors';
 import {
   fetchNewsRequested,
-} from '../../../core/state/news/actions';
+} from '../../../core/state/News/actions';
 import Component from './Component';
 
 export default connect(

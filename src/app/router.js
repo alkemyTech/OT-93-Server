@@ -10,8 +10,8 @@ import { INFO, LOADING } from '../utils/constants';
 const Home = lazy(() => import('../pages/Home'));
 const Contact = lazy(() => import('../pages/Contact'));
 // const ContactForm = lazy(() => import('../Components/ContactForm'));
-const NewForm = lazy(() => import('../pages/News/Form'));
-const NewList = lazy(() => import('../pages/News/List'));
+const NewsForm = lazy(() => import('../pages/News/Form'));
+const NewsList = lazy(() => import('../pages/News/List'));
 const Register = lazy(() => import('../pages/Register'));
 const UserEdit = lazy(() => import('../pages/UserEdit'));
 const News = lazy(() => import('../pages/News'));
@@ -34,6 +34,7 @@ const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
 const NotFound = lazy(() => import('../Components/NotFound'));
+const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -67,12 +68,17 @@ function Router() {
       />
       <Route exact path={publicRoutes.us} component={Us} />
       <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
+      <Route exact path={`${backOfficeRoutes.membersForm}/:id`} component={MembersForm} />
       <Route exact path={backOfficeRoutes.members} component={MembersList} />
       <Route exact path={publicRoutes.news} component={News} />
       <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />
       <Route exact path={publicRoutes.register} component={Register} />
+      <Route exact path={backOfficeRoutes.newsForm} component={NewsForm} />
+      <Route exact path={`${backOfficeRoutes.newsForm}/:id`} component={NewsForm} />
+      <Route exact path={backOfficeRoutes.news} component={NewsList} />
+      <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
       <Route exact path={publicRoutes.contact} component={Contact} />
       <Route component={NotFound} />
     </AnimatedSwitch>
