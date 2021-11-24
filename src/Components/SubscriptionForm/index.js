@@ -1,21 +1,24 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable object-curly-newline */
 import { useFormik } from 'formik';
 import React from 'react';
-import { Row, Col, Input, InputGroup, Button, Form } from 'reactstrap';
+import {
+  Row, Col, Input, InputGroup, Button, Form,
+} from 'reactstrap';
 import { useDispatch } from 'react-redux';
-import { SUBSCRIBE, REQUIRED } from '../../utils/constants';
+import { SUBSCRIBE, REQUIRED, NO_LOGGED } from '../../utils/constants';
 import { subscribeNewsLetterRequested } from '../../core/state/Session/actions';
+import { authUser } from '../../utils/index';
 
 const index = () => {
   const Dispatch = useDispatch();
+  const userAuthenticated = authUser();
 
   const validate = (values) => {
     const errors = {};
     if (!values.email) {
       errors.email = REQUIRED;
+    }
+    if (!userAuthenticated) {
+      errors.email = NO_LOGGED;
     }
     return errors;
   };
