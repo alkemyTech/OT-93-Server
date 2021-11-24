@@ -46,9 +46,14 @@ export const ERROR = 'error';
 export const SUCCESS = 'success';
 export const register = 'register';
 export const DATA_SUBMITED = 'data submited successfully';
-export const ERROR_SUBMITED = 'there was an error submiting the data';
-export const ERROR_FETCHING_DATA = 'there was an error fetching the data';
+export const ERROR_SUBMITED = 'Se ha producido un error al enviar la información';
+export const ERROR_FETCHING_DATA = 'Se ha producido un error al buscar la información';
 export const DATA = 'data';
 export const LOGIN = 'Entrar';
 export const REGISTER = 'Registrarse';
 export const LOGOUT = 'Desconectarse';
+export const INVALID_EMAIL = 'Dirección de e-mail inválida';
+export const SHORT_PHONE_NUMBER = 'El teléfono debe contener 8 números como mínimo';
+export const NO_FETCH = 'Hubo un problema con el servicio';
+export const NO_ACTION = 'No se pudo realizar la acción, intenta más tarde';
+

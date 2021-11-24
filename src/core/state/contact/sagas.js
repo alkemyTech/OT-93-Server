@@ -26,7 +26,6 @@ import {
 } from '../../../utils/constants';
 
 function* submitContactRequestedSagas({ payload, id }) {
-  console.log(payload, id);
   const {
     name, email, phone, message,
   } = payload;
@@ -86,7 +85,7 @@ function* submitContactRequestedSagas({ payload, id }) {
       }));
     }
   } catch (error) {
-    setSystemMessage({ icon: ERROR, title: ERROR_FETCHING_DATA });
+    yield put(setSystemMessage({ icon: ERROR, title: ERROR_SUBMITED }));
   }
 }
 
@@ -103,7 +102,7 @@ function* fetchContactRequestedSagas({ id }) {
       yield put(fetchOneContactSucceeded({ entry }));
     }
   } catch (error) {
-    setSystemMessage({ icon: { ERROR }, title: { ERROR_FETCHING_DATA } });
+    yield put(setSystemMessage({ icon: { ERROR }, title: { ERROR_FETCHING_DATA } }));
   }
 }
 

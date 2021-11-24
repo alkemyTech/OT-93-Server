@@ -79,6 +79,7 @@ function Router() {
       <Route exact path={`${backOfficeRoutes.newsForm}/:id`} component={NewsForm} />
       <Route exact path={backOfficeRoutes.news} component={NewsList} />
       <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
+      <Route exact path={publicRoutes.contact} component={Contact} />
       <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>
