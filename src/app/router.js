@@ -73,6 +73,7 @@ function Router() {
       <Route exact path={publicRoutes.donate} component={Donations} />
       <Route exact path={publicRoutes.thanks} component={Thanks} />
       <Route exact path={publicRoutes.register} component={Register} />
+      <Route exact path={publicRoutes.contact} component={Contact} />
       <Route component={NotFound} />
     </AnimatedSwitch>
     </Suspense>

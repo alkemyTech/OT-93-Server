@@ -8,7 +8,12 @@ import {
   Container,
 } from 'reactstrap';
 import Title from '../../Components/Title/index';
-import { REQUIRED, CONTACT_TITLE } from '../../utils/constants';
+import {
+  REQUIRED,
+  CONTACT_TITLE,
+  INVALID_EMAIL,
+  SHORT_PHONE_NUMBER,
+} from '../../utils/constants';
 import '../../css/Home.css';
 import BackForm from '../../Components/BackForm';
 
@@ -16,13 +21,13 @@ const validate = (values) => {
   const errors = {};
 
   if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Dirección de e-mail inválida';
+    errors.email = INVALID_EMAIL;
   }
   if (!values.name) {
     errors.name = REQUIRED;
   }
   if (!/^\d{8,}$/.test(values.phone)) {
-    errors.phone = 'El teléfono debe contener 8 números como mínimo';
+    errors.phone = SHORT_PHONE_NUMBER;
   }
   if (!values.message) {
     errors.message = REQUIRED;
