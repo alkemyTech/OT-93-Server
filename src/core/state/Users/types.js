@@ -1,2 +1,2 @@
-/* eslint-disable import/prefer-default-export */
 export const REGISTER_USER = 'REGISTER_USER';
+export const CLEAN_REGISTER_FORM = 'CLEAN_REGISTER_FORM';

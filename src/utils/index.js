@@ -54,3 +54,7 @@ export const noHTML = (text) => {
   const textNoHTML = text.replace(/<[^>]+>/g, '');
   return textNoHTML;
 };
+
+export const createSession = (token) => {
+  localStorage.setItem('token', token);
+};

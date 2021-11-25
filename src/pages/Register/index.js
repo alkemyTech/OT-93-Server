@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
 import {
-  registerUser,
+  registerUser, cleanRegisterForm,
 } from '../../core/state/Users/actions';
 import Component from './Component';
 
@@ -15,6 +15,7 @@ export default connect(
   (dispatch) => bindActionCreators(
     {
       registerUser,
+      cleanRegisterForm,
     },
     dispatch,
   ),

@@ -1,15 +1,24 @@
 import {
   REGISTER_USER,
+  CLEAN_REGISTER_FORM,
 } from './types';
 
 const initialState = {
   registerForm: {
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
     type: 'register',
   },
   registerFields: [
+    {
+      label: 'Nombre',
+      placeholder: 'Nombre',
+      type: 'text',
+      id: 'name',
+      name: 'name',
+    },
     {
       label: 'Email',
       placeholder: 'Email',
@@ -45,7 +54,14 @@ const Users = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
-
+    case CLEAN_REGISTER_FORM: {
+      return {
+        ...initialState,
+        registerForm: {
+          ...initialState.registerForm,
+        },
+      };
+    }
     default:
       return state;
   }
