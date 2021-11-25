@@ -36,6 +36,8 @@ const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
 const NotFound = lazy(() => import('../Components/NotFound'));
 const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
+const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
+const Organization = lazy(() => import('../pages/Organization/Admin'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -94,6 +96,8 @@ function Router() {
         <Route exact path={publicRoutes.contact} component={Contact} />
         {userAuthenticated ? <Redirect from="/register" to="/" /> : <Route exact path={publicRoutes.register} component={Register} />}
         <Route component={NotFound} />
+        <Route exact path={backOfficeRoutes.organization} component={Organization} />
+        <Route exact path={backOfficeRoutes.organizationform} component={OrganizationForm} />
       </AnimatedSwitch>
     </Suspense>
   );
