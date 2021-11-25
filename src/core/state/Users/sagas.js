@@ -30,7 +30,7 @@ function* postRegisterUserRequestedSagas({ payload }) {
       yield put(setSystemMessage({ icon: 'error', title: 'Hubo un problema con tus datos' }));
     }
   } catch (err) {
-    yield Error(err);
+    throw Error(err);
   }
 }
 
