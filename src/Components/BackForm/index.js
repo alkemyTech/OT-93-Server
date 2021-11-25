@@ -155,11 +155,11 @@ BackForm.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
-  goBack: PropTypes.func.isRequired,
+  goBack: PropTypes.func,
   id: PropTypes.string,
   submit: PropTypes.func.isRequired,
-  fetch: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
+  fetch: PropTypes.func,
+  push: PropTypes.func,
   validate: PropTypes.func.isRequired,
 };
 
