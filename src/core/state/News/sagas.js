@@ -2,14 +2,13 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 import { getRoutes } from '../../../utils';
 import { NEWS } from '../../../Services/Urls';
-import Api from '../../../Services/Api';
 import { push } from '../../middlewares/history';
 import {
   SUBMIT_NEWS_REQUESTED,
   FETCH_NEWS_REQUESTED,
   DELETE_NEWS_REQUESTED,
 } from './types';
-import { Get, Post } from '../../../Services/privateApiService';
+import { Get, Post, Delete } from '../../../Services/privateApiService';
 import {
   fetchNewsRequested,
   fetchNewsSucceeded,
@@ -67,7 +66,9 @@ function* fetchNewsRequestedSagas({ id }) {
 
 function* deleteNewsRequestedSagas({ id }) {
   try {
-    yield Api.delete(`${NEWS}/${id}`);
+    yield Delete(`${NEWS}/${id}`);
+    // eslint-disable-next-line no-console
+    console.log(id);
     yield put(fetchNewsRequested());
   } catch (err) {
     throw Error(err);

@@ -203,11 +203,11 @@ export const socialMediaInfo = [
 export const campaignLinks = [
   {
     label: 'Campaña Juguetes',
-    url: '/toys-campaign',
+    url: landingPages.toysCampaign,
   },
   {
     label: 'Campaña Escolar',
-    url: '/school-campaign',
+    url: landingPages.schoolCampaign,
   },
 ];
 
@@ -231,7 +231,7 @@ export const getContactFields = () => {
     {
       label: 'Teléfono',
       placeholder: 'Teléfono',
-      type: 'number',
+      type: 'string',
       id: 'phone',
       name: 'phone',
     },

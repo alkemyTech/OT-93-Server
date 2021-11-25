@@ -10,6 +10,7 @@ import Testimonials from './state/Testimonials/sagas';
 import Slides from './state/Slides/sagas';
 import Projects from './state/Project/sagas';
 import Members from './state/orgMembers/sagas';
+import Contact from './state/contact/sagas';
 
 export default function* rootSagas() {
   yield all([
@@ -24,5 +25,6 @@ export default function* rootSagas() {
     Slides(),
     Projects(),
     Members(),
+    Contact(),
   ]);
 }

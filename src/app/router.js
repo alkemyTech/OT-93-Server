@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
-import { getRoutes } from '../utils';
+import { getRoutes, authUser } from '../utils';
 import Alert from '../Components/Alert';
 import { INFO, LOADING } from '../utils/constants';
 
+const userAuthenticated = authUser();
 const Home = lazy(() => import('../pages/Home'));
 const NewForm = lazy(() => import('../pages/News/Form'));
 const NewList = lazy(() => import('../pages/News/List'));
@@ -32,7 +33,10 @@ const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const LastEvent = lazy(() => import('../pages/News/LastEvent'));
 const Thanks = lazy(() => import('../pages/Thanks'));
-const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
+const UserList = lazy(() => import('../pages/UserEdit/List'));
+const Contact = lazy(() => import('../pages/Contact'));
+const NotFound = lazy(() => import('../Components/NotFound'));
+const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -67,28 +71,32 @@ function Router() {
         <Route exact path={publicRoutes.us} component={Us} />
         <Route
           exact
-          path={backOfficeRoutes.organization}
-          component={OrganizationForm}
+          path={backOfficeRoutes.membersForm}
+          component={MembersForm}
+        />
+        <Route
+          exact
+          path={`${backOfficeRoutes.membersForm}/:id`}
+          component={MembersForm}
+        />
+        <Route exact path={backOfficeRoutes.members} component={MembersList} />
+        <Route exact path={publicRoutes.news} component={News} />
+        <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
+        <Route exact path={publicRoutes.donate} component={Donations} />
+        <Route exact path={publicRoutes.thanks} component={Thanks} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+        <Route exact path={backOfficeRoutes.newsForm} component={NewForm} />
+        <Route
+          exact
+          path={`${backOfficeRoutes.newsForm}/:id`}
+          component={NewForm}
         />
         <Route exact path={publicRoutes.news} component={LastEvent} />
-        {/*
-      <Route exact path={backOfficeRoutes.membersForm} component={MembersForm} />
-      <Route exact path={backOfficeRoutes.members} component={MembersList} />
-      <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-      <Route exact path={publicRoutes.donate} component={Donations} />
-      <Route exact path={publicRoutes.thanks} component={Thanks} />
-      {/* <Route exact path={publicRoutes.activity} component={Activities} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.home} component={Home} />
-      <Route exact path={publicRoutes.newsForm} component={NewForm} />
-      <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-      <Route exact path={publicRoutes.news} component={NewList} />
-      <Route exact path={publicRoutes.register} component={Register} />
-      <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+        <Route exact path={backOfficeRoutes.news} component={NewList} />
+        <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+        {userAuthenticated ? <Redirect from="/register" to="/" /> : <Route exact path={publicRoutes.register} component={Register} />}
+        <Route component={NotFound} />
       </AnimatedSwitch>
     </Suspense>
   );

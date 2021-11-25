@@ -1,0 +1,15 @@
+.not_found {
+  height: calc(100vh - 268px - 112px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.btn-error{
+  color: white;
+  background-color: #384F77;
+}
+.img-404 {
+  width: 70vw;
+  display: flex;
+}

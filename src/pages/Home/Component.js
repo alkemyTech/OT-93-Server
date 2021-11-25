@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+/* eslint-disable*/
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container, Row, Col,
-} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Title from '../../Components/Title/index';
 import Slick from '../../Components/Slick/index';
+import Skeleton from '../../Components/Skeleton';
 import {
-  LAST_NEWS, TESTIMONIALS, CONTACTS, VIEW_ALL,
+  LAST_NEWS,
+  TESTIMONIALS,
+  CONTACTS,
+  VIEW_ALL,
 } from '../../utils/constants';
 import { getRoutes } from '../../utils';
 import Slider from '../../Components/Slider';
@@ -30,12 +33,35 @@ const Component = ({
     fetchSlideRequested();
     fetchNewsRequested();
     fetchTestimonialRequested();
-  }, [fetchOrganizationRequested, fetchSlideRequested,
-    fetchNewsRequested, fetchTestimonialRequested]);
+  }, [
+    fetchOrganizationRequested,
+    fetchSlideRequested,
+    fetchNewsRequested,
+    fetchTestimonialRequested,
+  ]);
+
+  const [onLoad, setOnLoad] = useState(null);
+  useEffect(() => {
+    let loading =
+      slickSettings &&
+      slides.length &&
+      news.length &&
+      testimonial.length &&
+      organization;
+    setOnLoad(loading);
+  }, [
+    onLoad,
+    setOnLoad,
+    slickSettings,
+    slides,
+    news,
+    testimonial,
+    organization,
+  ]);
 
   return (
-    <>
-      <Container fluid>
+    <Container fluid>
+      {onLoad ? (
         <Row>
           <Col>
             <Slider items={slides} />
@@ -59,8 +85,10 @@ const Component = ({
             />
           </Col>
         </Row>
-      </Container>
-    </>
+      ) : (
+        <Skeleton />
+      )}
+    </Container>
   );
 };
 
