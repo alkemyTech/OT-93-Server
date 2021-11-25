@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
 import fromState from '../../../core/selectors';
-import {
-  fetchNewsRequested,
-} from '../../../core/state/news/actions';
+import { fetchNewsRequested } from '../../../core/state/News/actions';
 import Component from './Component';
 
 export default connect(
