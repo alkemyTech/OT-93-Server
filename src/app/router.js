@@ -31,6 +31,7 @@ const MembersList = lazy(() => import('../pages/Members/List'));
 const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
+const LastEvent = lazy(() => import('../pages/News/LastEvent'));
 const Thanks = lazy(() => import('../pages/Thanks'));
 const UserList = lazy(() => import('../pages/UserEdit/List'));
 const Contact = lazy(() => import('../pages/Contact'));
@@ -84,25 +85,13 @@ function Router() {
         <Route exact path={publicRoutes.donate} component={Donations} />
         <Route exact path={publicRoutes.thanks} component={Thanks} />
         <Route exact path={publicRoutes.contact} component={Contact} />
-
-        {/* <Route exact path={publicRoutes.activity} component={Activities} />
-        <Route exact path={publicRoutes.home} component={Home} />
-        <Route exact path={publicRoutes.home} component={Home} />
-        <Route exact path={publicRoutes.newsForm} component={NewForm} />
-        <Route exact path={publicRoutes.newsForm} component={NewForm} />
-        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-        <Route exact path={publicRoutes.home} component={Home} />
-        <Route exact path={publicRoutes.newsForm} component={NewForm} />
-        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
-        <Route exact path={publicRoutes.news} component={NewList} />
-        <Route exact path={publicRoutes.register} component={Register} />
-        <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
         <Route exact path={backOfficeRoutes.newsForm} component={NewForm} />
         <Route
           exact
           path={`${backOfficeRoutes.newsForm}/:id`}
           component={NewForm}
         />
+        <Route exact path={publicRoutes.news} component={LastEvent} />
         <Route exact path={backOfficeRoutes.news} component={NewList} />
         <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
         <Route exact path={publicRoutes.contact} component={Contact} />

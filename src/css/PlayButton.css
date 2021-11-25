@@ -1,0 +1,26 @@
+.player-btn {
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border: none;
+  color: white;
+  transition: 0.7s;
+  padding-left: 3px;
+
+}
+
+.player-icn {
+  opacity: 0.8;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.player-btn:hover {
+  background-image: linear-gradient(to left top, #fafa88, #fcdc6f, #fbbd5d, #f79f53, #ee8050, #f37467, #ef6c80, #e46a97, #d883c3, #c19de3, #a9b5f6, #9ac9fb);
+  cursor: pointer;
+  border-radius: 100px;
+  opacity: 1;
+  color: white;
+}
+
