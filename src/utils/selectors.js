@@ -203,11 +203,11 @@ export const socialMediaInfo = [
 export const campaignLinks = [
   {
     label: 'Campaña Juguetes',
-    url: '/toys-campaign',
+    url: landingPages.toysCampaign,
   },
   {
     label: 'Campaña Escolar',
-    url: '/school-campaign',
+    url: landingPages.schoolCampaign,
   },
 ];
 
