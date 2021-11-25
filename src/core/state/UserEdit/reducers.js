@@ -1,4 +1,10 @@
-import { EDIT_USER, CLEAN_FORM } from './types';
+import Swal from 'sweetalert2';
+import {
+  EDIT_USER,
+  CLEAN_FORM,
+  FETCH_USERS_SUCCEEDED,
+  SET_SYSTEM_MSG,
+} from './types';
 
 const initialState = {
   userForm: {
@@ -56,6 +62,10 @@ const initialState = {
       name: 'password',
     },
   ],
+  list: {
+    documents: [],
+    total: null,
+  },
 };
 
 const UserEdit = (state = { ...initialState }, { type, ...props }) => {
@@ -69,6 +79,16 @@ const UserEdit = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
+    case FETCH_USERS_SUCCEEDED: {
+      return {
+        ...initialState,
+        list: {
+          documents: {
+            ...props.documents,
+          },
+        },
+      };
+    }
     case CLEAN_FORM: {
       return {
         ...state,
@@ -77,6 +97,11 @@ const UserEdit = (state = { ...initialState }, { type, ...props }) => {
         },
       };
     }
+    case SET_SYSTEM_MSG:
+      Swal.fire(props);
+      return {
+        ...state,
+      };
 
     default:
       return state;

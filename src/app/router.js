@@ -9,10 +9,8 @@ import { INFO, LOADING } from '../utils/constants';
 
 const userAuthenticated = authUser();
 const Home = lazy(() => import('../pages/Home'));
-const Contact = lazy(() => import('../pages/Contact'));
-// const ContactForm = lazy(() => import('../Components/ContactForm'));
-const NewsForm = lazy(() => import('../pages/News/Form'));
-const NewsList = lazy(() => import('../pages/News/List'));
+const NewForm = lazy(() => import('../pages/News/Form'));
+const NewList = lazy(() => import('../pages/News/List'));
 const Register = lazy(() => import('../pages/Register'));
 const UserEdit = lazy(() => import('../pages/UserEdit'));
 const News = lazy(() => import('../pages/News'));
@@ -34,6 +32,8 @@ const USmembers = lazy(() => import('../pages/Us/List'));
 const Categories = lazy(() => import('../pages/Categories/List'));
 const Donations = lazy(() => import('../pages/Donations'));
 const Thanks = lazy(() => import('../pages/Thanks'));
+const UserList = lazy(() => import('../pages/UserEdit/List'));
+const Contact = lazy(() => import('../pages/Contact'));
 const NotFound = lazy(() => import('../Components/NotFound'));
 const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
 
@@ -83,13 +83,27 @@ function Router() {
         <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
         <Route exact path={publicRoutes.donate} component={Donations} />
         <Route exact path={publicRoutes.thanks} component={Thanks} />
-        <Route exact path={backOfficeRoutes.newsForm} component={NewsForm} />
+        <Route exact path={publicRoutes.contact} component={Contact} />
+
+        {/* <Route exact path={publicRoutes.activity} component={Activities} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.home} component={Home} />
+        <Route exact path={publicRoutes.newsForm} component={NewForm} />
+        <Route exact path={`${publicRoutes.newsForm}/:id`} component={NewForm} />
+        <Route exact path={publicRoutes.news} component={NewList} />
+        <Route exact path={publicRoutes.register} component={Register} />
+        <Route exact path={`${backOfficeRoutes.newActivity}/:id`} component={ActivitiesForm} /> */}
+        <Route exact path={backOfficeRoutes.newsForm} component={NewForm} />
         <Route
           exact
           path={`${backOfficeRoutes.newsForm}/:id`}
-          component={NewsForm}
+          component={NewForm}
         />
-        <Route exact path={backOfficeRoutes.news} component={NewsList} />
+        <Route exact path={backOfficeRoutes.news} component={NewList} />
         <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
         <Route exact path={publicRoutes.contact} component={Contact} />
         {userAuthenticated ? <Redirect from="/register" to="/" /> : <Route exact path={publicRoutes.register} component={Register} />}
