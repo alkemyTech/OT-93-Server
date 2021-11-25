@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { all, put, takeLatest } from 'redux-saga/effects';
 import get from 'lodash/get';
 import { getRoutes, createSession } from '../../../utils';
@@ -7,8 +8,6 @@ import { REGISTER_USER } from './types';
 import { cleanRegisterForm } from './actions';
 import { register } from '../../../utils/constants';
 import { setSystemMessage } from '../Session/actions';
-
-const mainRoutes = getRoutes('mainRoutes');
 
 function* postRegisterUserRequestedSagas({ payload }) {
   const { name, email, password } = payload;
@@ -24,7 +23,7 @@ function* postRegisterUserRequestedSagas({ payload }) {
       createSession(token);
     }
     if (success) {
-      yield push(mainRoutes.home);
+      yield push('/');
       yield put(cleanRegisterForm({}));
     }
     if (!success) {

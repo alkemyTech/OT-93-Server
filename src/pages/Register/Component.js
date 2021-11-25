@@ -75,7 +75,7 @@ const Component = ({
           />
           <Popup
             trigger={(
-              <p className="btn text-blue p-0">
+              <p className="btn p-0">
                 <u> Términos y condiciones</u>
               </p>
             )}
