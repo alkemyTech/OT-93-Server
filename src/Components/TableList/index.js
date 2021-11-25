@@ -166,7 +166,7 @@ TableList.propTypes = {
   onSelect: PropTypes.shape({}),
   headers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   i18n: PropTypes.shape({}),
-  handleChangePage: PropTypes.func.isRequired,
+  handleChangePage: PropTypes.func,
   withOutPagination: PropTypes.bool,
 };
 

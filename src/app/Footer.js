@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import map from 'lodash/map';
@@ -58,9 +59,13 @@ const Footer = () => {
             <a
               key={index}
               className="text-decoration-none text-dark pb-3 pt-3"
-              href="www.google.com"
+              href={`https://${item.url} `}
+              target="blank"
+              rel="noopener noreferrer"
             >
-              <item.component className={`footer-icon ${item.className} `} />
+              <abbr title={item.url}>
+                <item.component className={`footer-icon ${item.className} `} />
+              </abbr>
             </a>
           ))}
         </Col>

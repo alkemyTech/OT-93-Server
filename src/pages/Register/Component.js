@@ -40,7 +40,7 @@ const Component = ({
     return errors;
   };
 
-  const ID = () => get(match, 'params.id');
+  const ID = get(match, 'params.id');
   const [terms, setTerms] = useState(false);
   const termsReaded = (e) => {
     setTerms(e.target.checked);
