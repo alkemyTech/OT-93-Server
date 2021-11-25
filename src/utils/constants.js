@@ -24,7 +24,7 @@ export const VIEW_ALL = 'Ver todas';
 export const MEMBERS = 'Miembros';
 export const ACTIVITIES = 'Actividades';
 export const DUMMY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget scelerisque diam, non tempor eros.';
-export const Warning = 'Warning';
+export const Warning = 'warning';
 export const Delete = 'Eliminar';
 export const EDIT = 'Editar';
 export const Confirm = 'Confirmar';
@@ -56,4 +56,4 @@ export const INVALID_EMAIL = 'Dirección de e-mail inválida';
 export const SHORT_PHONE_NUMBER = 'El teléfono debe contener 8 números como mínimo';
 export const NO_FETCH = 'Hubo un problema con el servicio';
 export const NO_ACTION = 'No se pudo realizar la acción, intenta más tarde';
-
+export const NO_LOGGED = 'Antes debes estar registrado';

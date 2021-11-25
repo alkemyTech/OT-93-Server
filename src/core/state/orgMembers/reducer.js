@@ -8,7 +8,7 @@ const initialState = {
   membersForm: {
     name: '',
     image: '',
-    content: '',
+    description: '',
     facebookUrl: '',
     linkedinUrl: '',
     categoryId: 1,
@@ -33,8 +33,8 @@ const initialState = {
       label: 'Descripción',
       placeholder: 'Descripción',
       type: 'CKEditor',
-      id: 'content',
-      name: 'content',
+      id: 'description',
+      name: 'description',
     },
     {
       label: 'Facebook',

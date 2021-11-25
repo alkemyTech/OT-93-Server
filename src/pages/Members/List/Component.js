@@ -42,7 +42,7 @@ const Component = ({
     const deleteField = () => {
       deleteMembersRequested(get(prop, 'id'));
     };
-    swalConfirmAction(Warning, Delete, Confirm, Cancel, deleteField);
+    swalConfirmAction(Warning, Delete, Confirm, Cancel, deleteField());
   };
 
   const onEdit = (prop) => {
