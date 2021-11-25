@@ -2,6 +2,7 @@
 import swal from 'sweetalert2';
 import {
   SUBMIT_LOGIN_REQUESTED,
+  SUBMIT_LOGOUT_REQUESTED,
   CLEAN_LOGIN_FORM,
   SET_SYSTEM_MSG,
   SET_NEWS_LETTER,
@@ -76,6 +77,12 @@ const Login = (state = { ...initialState }, { type, ...props }) => {
           ...state.loginForm,
         },
         user: { props },
+      };
+    }
+    case SUBMIT_LOGOUT_REQUESTED: {
+      return {
+        ...initialState,
+        user: { ...initialState.user },
       };
     }
     case SET_SYSTEM_MSG: {

@@ -50,6 +50,7 @@ export const getTableProps = () => {
       edit: true,
       delete: true,
       className: 'text-center',
+      view: true,
     },
   ];
   return {

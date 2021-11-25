@@ -13,16 +13,23 @@ import {
   SET_NEWS_LETTER,
   CHECK_SUBSCRIPTION,
   SET_NEWS_LETTER_REQUESTED,
+  SUBMIT_LOGOUT_REQUESTED,
 } from './types';
 
 import {
   submitLoginRequested,
+  submitLogoutRequested,
   setSystemMessage,
   cleanLoginForm,
   subscribeNewsLetter,
 } from './actions';
 
 function* submitLoginRequestedSagas() {}
+
+function* submitLogoutRequestedSagas() {
+  localStorage.removeItem('token');
+  yield put(submitLogoutRequested());
+}
 
 function* setSystemMessageSagas() {
   yield console.log('hola');
@@ -49,5 +56,6 @@ export default function* userSagas() {
     takeLatest(SET_SYSTEM_MSG, setSystemMessageSagas),
     takeLatest(CHECK_SUBSCRIPTION, newsLetterSagasCheck),
     takeLatest(SET_NEWS_LETTER_REQUESTED, newsLetterSagasSubscription),
+    takeLatest(SUBMIT_LOGOUT_REQUESTED, submitLogoutRequestedSagas),
   ]);
 }
