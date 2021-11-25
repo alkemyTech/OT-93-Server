@@ -1,6 +1,6 @@
 export const USERS = 'users';
 export const HOME = '/';
-export const ORGANIZATION = 'organization';
+export const ORGANIZATION = process.env.REACT_APP_ORGANIZATION;
 export const SLIDES = process.env.REACT_APP_SLIDES;
 export const CATEGORIES = process.env.REACT_APP_CATEGORIES;
 export const ACTIVITIES = 'activities';
