@@ -51,7 +51,7 @@ export const authUser = () => {
 };
 
 export const noHTML = (text) => {
-  const textNoHTML = text.replace(/<[^>]+>/g, '');
+  const textNoHTML = text?.replace(/<[^>]+>/g, '');
   return textNoHTML;
 };
 
