@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
@@ -13,8 +14,6 @@ const Component = ({
   form,
   fields,
   editUser,
-  // eslint-disable-next-line react/prop-types
-  fetchUsersRequested,
   match,
   history: { push },
 }) => {
@@ -34,6 +33,7 @@ const Component = ({
   };
   const id = get(match, 'params.id');
   const goBackToHome = () => push('/');
+  console.log(id);
 
   return (
         <Container>
@@ -46,7 +46,6 @@ const Component = ({
                 fields={fields}
                 submit={editUser}
                 id={id}
-                fetch={fetchUsersRequested}
                 validate={validate}
                 goBack={goBackToHome}
               />

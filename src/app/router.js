@@ -52,8 +52,8 @@ function Router() {
         className="switch-wrapper"
       >
         <Route exact path={publicRoutes.home} component={Home} />
-        <Route exact path={publicRoutes.user} component={UserEdit} />
-        <Route exact path={`${publicRoutes.user}/:id`} component={UserEdit} />
+        <Route exact path={backOfficeRoutes.users} component={UserEdit} />
+        <Route exact path={`${backOfficeRoutes.users}/:id`} component={UserEdit} />
         <Route
           exact
           path={`${backOfficeRoutes.newActivity}`}
