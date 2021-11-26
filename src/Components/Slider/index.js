@@ -9,7 +9,10 @@ import {
   CarouselCaption,
 } from 'reactstrap';
 import map from 'lodash/map';
+import get from 'lodash/get';
 import { noHTML } from '../../utils';
+import placeholder from '../../images/image-placeholder.png';
+import '../../css/Slider.css';
 
 const Slider = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,16 +40,16 @@ const Slider = ({ items }) => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item.id}
+        key={get(item, 'id')}
       >
         <img
-          src={item.image}
-          alt={item.name}
+          src={get(item, 'image') ? get(item, 'image') : placeholder}
+          alt={get(item, 'name')}
           style={{ width: '100%', height: '55vw', maxHeight: '500px' }}
         />
         <CarouselCaption
-          captionText={noHTML(item.description)}
-          captionHeader={item.name}
+          captionText={get(item, 'description') ? noHTML(get(item, 'description')) : get(item, 'name')}
+          captionHeader={get(item, 'name')}
         />
       </CarouselItem>
     );
