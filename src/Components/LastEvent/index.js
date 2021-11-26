@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import ReactPlayer from 'react-player';
+import { ReactPlayer } from 'react-player';
 import Title from '../Title';
 import { YTURL } from '../../utils/constants';
 import PlayButton from '../PlayButton';

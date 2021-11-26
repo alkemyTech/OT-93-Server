@@ -19,17 +19,17 @@ import {
 } from '../../../utils/constants';
 
 const Component = ({
-  list, fetchCategoriesRequested, deleteCategorie, history: { push },
+  list, fetchCategoriesRequested, deleteCategorieRequested, history: { push },
 }) => {
   useEffect(() => {
     fetchCategoriesRequested();
-  }, [fetchCategoriesRequested, deleteCategorie]);
+  }, [fetchCategoriesRequested, deleteCategorieRequested]);
 
   const { backOfficeRoutes } = getRoutes('mainRoutes');
   const documents = get(list.documents, 'data');
 
   const onDelete = (prop) => {
-    deleteCategorie(get(prop, 'id'));
+    deleteCategorieRequested(get(prop, 'id'));
   };
   const onEdit = (prop) => {
     const id = get(prop, 'id');
@@ -78,7 +78,7 @@ const Component = ({
 
 Component.propTypes = {
   fetchCategoriesRequested: PropTypes.func.isRequired,
-  deleteCategorie: PropTypes.func.isRequired,
+  deleteCategorieRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({
     documents: PropTypes.string,
   }).isRequired,
