@@ -1,18 +1,34 @@
+/* eslint-disable no-unused-vars */
 import { all, put, takeLatest } from 'redux-saga/effects';
-import { getRoutes } from '../../../utils';
+import get from 'lodash/get';
+import { getRoutes, createSession } from '../../../utils';
 import { Post } from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';
 import { REGISTER_USER } from './types';
-import { registerUser } from './actions';
+import { cleanRegisterForm } from './actions';
 import { register } from '../../../utils/constants';
-
-const mainRoutes = getRoutes('mainRoutes');
+import { setSystemMessage } from '../Session/actions';
 
 function* postRegisterUserRequestedSagas({ payload }) {
+  const { name, email, password } = payload;
   try {
-    yield Post(register, payload);
-    put(registerUser({}));
-    yield push(mainRoutes.home);
+    const registered = yield Post(register, {
+      name,
+      email,
+      password,
+    });
+    const token = get(registered.data, 'data.token');
+    const success = get(registered, 'data.success');
+    if (token) {
+      createSession(token);
+    }
+    if (success) {
+      yield push('/');
+      yield put(cleanRegisterForm({}));
+    }
+    if (!success) {
+      yield put(setSystemMessage({ icon: 'error', title: 'Hubo un problema con tus datos' }));
+    }
   } catch (err) {
     throw Error(err);
   }

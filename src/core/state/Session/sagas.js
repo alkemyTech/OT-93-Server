@@ -31,9 +31,7 @@ function* submitLogoutRequestedSagas() {
   yield put(submitLogoutRequested());
 }
 
-function* setSystemMessageSagas() {
-  yield console.log('hola');
-}
+function* setSystemMessageSagas() {}
 
 function* cleanLoginFormSagas() {}
 
