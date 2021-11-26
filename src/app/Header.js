@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container, Row, Col, Button,
+  Container, Row, Col,
 } from 'reactstrap';
 import map from 'lodash/map';
 import { authUser } from '../utils/index';
@@ -59,9 +59,9 @@ const Header = () => {
             )}
 
             {userAuthenticated && (
-              <Button type="button" className="btn header-button-log m-1 ">
+              <button type="button" className="btn header-button-log m-1">
                 {LOGOUT}
-              </Button>
+              </button>
             )}
           </Col>
         </Row>
