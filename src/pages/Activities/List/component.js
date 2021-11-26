@@ -1,16 +1,14 @@
-/* eslint-disable */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Button, Row, Container } from 'reactstrap';
+import {
+  Col, Button, Row, Container, Input,
+} from 'reactstrap';
 import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';
-import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
 import {
   GOBACK,
   ADD,
-  DUMMY_TEXT,
-  ACTIVITIES,
   Warning,
   Delete,
   Confirm,
@@ -18,6 +16,7 @@ import {
 } from '../../../utils/constants';
 
 const Component = ({
+  fetchDebounceActivitiesRequested,
   fetchActivitiesRequested,
   deleteActivitiesRequested,
   list,
@@ -40,7 +39,7 @@ const Component = ({
       `${Cancel}`,
       `${Delete}`,
       `${Confirm}`,
-      deleteField
+      deleteField,
     );
   };
 
@@ -53,6 +52,14 @@ const Component = ({
     const id = get(prop, 'id');
     push(`${publicRoutes.activity}/${id}`);
   };
+
+  const handleChangeDebounce = (e) => {
+    const value = e.target.value;
+    if (value.length > 2) {
+      fetchDebounceActivitiesRequested({ search: value });
+    }
+  };
+
   return (
     <Container>
       <Row className="list-row">
@@ -76,6 +83,15 @@ const Component = ({
               </Button>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <Input
+                type="text"
+                handleChange={(e) => handleChangeDebounce(e)}
+                name="debounceSearch"
+              />
+            </Col>
+          </Row>
           <TableList
             documents={get(list, 'documents')}
             onDelete={onDelete}
@@ -90,6 +106,7 @@ const Component = ({
 };
 
 Component.propTypes = {
+  fetchDebounceActivitiesRequested: PropTypes.func.isRequired,
   fetchActivitiesRequested: PropTypes.func.isRequired,
   deleteActivitiesRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
