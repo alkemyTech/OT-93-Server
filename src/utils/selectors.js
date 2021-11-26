@@ -74,12 +74,12 @@ export const getNavigationFooter = () => {
     {
       name: 'activities',
       label: 'Actividades',
-      url: publicRoutes.activities,
+      url: publicRoutes.activity,
     },
     {
       name: 'testimonials',
       label: 'Testimonios',
-      url: publicRoutes.testimonials,
+      url: publicRoutes.testimonial,
     },
     {
       name: 'us',

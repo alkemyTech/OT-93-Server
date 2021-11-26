@@ -39,7 +39,7 @@ const Component = ({
 
 Component.propTypes = {
   fetchOrganizationRequested: PropTypes.func.isRequired,
-  organization: PropTypes.isRequired,
+  organization: PropTypes.object,
 };
 
 export default Component;

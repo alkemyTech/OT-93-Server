@@ -21,7 +21,7 @@ const News = ({ fetchNewsRequested, data }) => {
           <Title text={<h1>{NEWS}</h1>} />
           <Row>
             {data?.length > 0 ? (
-              map(data, (element) => <Card data={element} />)
+              map(data, (element, index) => <Card key={index} data={element} />)
             ) : (
               <Col className="m-5">
                 <Spinner children="" color="dark" className="spinner-loader m-5" />
@@ -37,7 +37,7 @@ const News = ({ fetchNewsRequested, data }) => {
 News.propTypes = {
   fetchNewsRequested: PropTypes.func.isRequired,
   title: PropTypes.string,
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 
 export default News;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import map from 'lodash/map';
@@ -24,8 +25,8 @@ const Footer = () => {
       <Row className="Border d-flex justify-content-center ">
         <Col className=" col-lg-5 linkFooter d-flex justify-content-around">
           <ul className="list-unstyled footer-navigation-list d-flex justify-content-around container-fluid">
-            {map(navigationItems.slice(0, 3), (item) => (
-              <li>
+            {map(navigationItems.slice(0, 3), (item, index) => (
+              <li key={index}>
                 <Link
                   className="text-decoration-none text-dark px-4"
                   to={item.url}
@@ -41,8 +42,8 @@ const Footer = () => {
         </Col>
         <Col className=" col-lg-5 linkFooter d-flex justify-content-around">
           <ul className="list-unstyled footer-navigation-list d-flex justify-content-around container-fluid">
-            {map(navigationItems.slice(3, 6), (item) => (
-              <li>
+            {map(navigationItems.slice(3, 6), (item, index) => (
+              <li key={index}>
                 <Link className=" text-dark px-4" to={item.url}>
                   {item.label}
                 </Link>
@@ -54,12 +55,17 @@ const Footer = () => {
       <Row>{NewsLetter ? null : <NewsLetterForm />}</Row>
       <Row>
         <Col className="col-lg-4 container-fluid  d-flex justify-content-evenly ">
-          {map(socialMediaInfo, (item) => (
+          {map(socialMediaInfo, (item, index) => (
             <a
+              key={index}
               className="text-decoration-none text-dark pb-3 pt-3"
-              href="www.google.com"
+              href={`https://${item.url} `}
+              target="blank"
+              rel="noopener noreferrer"
             >
-              <item.component className={`footer-icon ${item.className} `} />
+              <abbr title={item.url}>
+                <item.component className={`footer-icon ${item.className} `} />
+              </abbr>
             </a>
           ))}
         </Col>
