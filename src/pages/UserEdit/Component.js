@@ -29,11 +29,13 @@ const Component = ({
     if (values.name < 4) {
       errors.name = SHORT_PASSWORD;
     }
+    if (values.role === 'rol') {
+      errors.role = REQUIRED;
+    }
     return errors;
   };
   const id = get(match, 'params.id');
   const goBackToHome = () => push('/');
-  console.log(id);
 
   return (
         <Container>

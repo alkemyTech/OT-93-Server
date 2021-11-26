@@ -56,7 +56,7 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                    { get(field, 'type') === 'CKEditor' && (
+                      {get(field, 'type') === 'CKEditor' && (
                         <CKEditor
                           editor={ClassicEditor}
                           data={Formik.values[get(field, 'name')]}
@@ -65,9 +65,20 @@ const BackForm = ({
                             setText(data);
                           }}
                         />
-                    )}
-                    { get(field, 'type') === 'dropdown' && (
-                      <>
+                      )}
+                      {get(field, 'type') === 'image' && (
+                        <Input
+                          className="form-control"
+                          onChange={Formik.handleChange}
+                          onBlur={Formik.handleBlur}
+                          value={Formik.values[get(field, 'name')]}
+                          type="file"
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                          accept="image/png, image/jpeg, image/jpg"
+                        />
+                      )}
+                      {get(field, 'type') === 'dropdown' && (
                         <Input
                           className="form-control"
                           onChange={Formik.handleChange}
@@ -78,34 +89,30 @@ const BackForm = ({
                           name={get(field, 'name')}
                           id={get(field, 'id')}
                         >
-                          <option
-                            disabled
-                            key="select"
-                            value="rol"
-                          >
-                            Selecciona el rol
+                          <option key="select" value="rol">
+                            Seleccionar opción
                           </option>
-                            {map((get(field, 'options')), (option) => (
-                              <option key={get(option, 'key')}>
-                                {get(option, 'value')}
-                              </option>
-                            ))}
+                          {map(get(field, 'options'), (option) => (
+                            <option key={get(option, 'key')} value={get(option, 'value')}>
+                              {get(option, 'key')}
+                            </option>
+                          ))}
                         </Input>
-                      </>
-                    )}
-                    { get(field, 'type') !== 'CKEditor' && get(field, 'type') !== 'dropdown' && (
-                      <Input
-                        className="form-control"
-                        onChange={Formik.handleChange}
-                        onBlur={Formik.handleBlur}
-                        value={Formik.values[get(field, 'name')]}
-                        placeholder={get(field, 'placeholder')}
-                        type={get(field, 'type')}
-                        name={get(field, 'name')}
-                        id={get(field, 'id')}
-                      />
-                    )}
-
+                      )}
+                      {get(field, 'type') !== 'CKEditor'
+                        && get(field, 'type') !== 'dropdown'
+                        && get(field, 'type') !== 'image' && (
+                          <Input
+                            className="form-control"
+                            onChange={Formik.handleChange}
+                            onBlur={Formik.handleBlur}
+                            value={Formik.values[get(field, 'name')]}
+                            placeholder={get(field, 'placeholder')}
+                            type={get(field, 'type')}
+                            name={get(field, 'name')}
+                            id={get(field, 'id')}
+                          />
+                      )}
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import { all, put, takeLatest } from 'redux-saga/effects';
 import { get } from 'lodash';
 import { USERS } from '../../../Services/Urls';
@@ -29,7 +28,8 @@ function* postEditUserRequestedSagas({ payload, id }) {
         email,
         name,
         password,
-        role,
+        role_id: role,
+        profile_image: image,
       });
       success = get(responseCreate, 'data.success');
       yield push(mainRoutes.home);
@@ -39,7 +39,8 @@ function* postEditUserRequestedSagas({ payload, id }) {
         email,
         name,
         password,
-        role,
+        role_id: role,
+        profile_image: image,
       });
       success = get(responseEdit, 'data.success');
       yield push(mainRoutes.home);
