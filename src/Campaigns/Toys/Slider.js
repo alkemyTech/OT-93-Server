@@ -2,7 +2,7 @@ import React from 'react';
 import firstPhoto from '../../images/Foto-10.jpg';
 import secondPhoto from '../../images/Foto-11.jpg';
 import thirdPhoto from '../../images/Manos-10.jpg';
-import Carrousel from '../../Components/Slider';
+import Carousel from '../../Components/Slider';
 
 const Slider = () => {
   const slides = [
@@ -23,7 +23,7 @@ const Slider = () => {
     },
   ];
   return (
-    <Carrousel items={slides} />
+    <Carousel items={slides} />
   );
 };
 
