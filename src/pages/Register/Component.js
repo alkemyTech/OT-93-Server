@@ -44,10 +44,10 @@ const Component = ({
     if (terms === false) {
       errors.confirmPassword = READ_TERMS;
     }
-    // const myRegex = /(?=.*[a-z])(?=.*\d)(?=.*[$.,@$!%*?&])[a-zA-Z\d.*]{5,20}[^'\s]/;
-    // if (!myRegex.test(values.password)) {
-    //   errors.password = INVALID_PASSWORD;
-    // }
+    const myRegex = /(?=.*[a-z])(?=.*\d)(?=.*[$.,@$!%*?&])[a-zA-Z\d.*]{5,20}[^'\s]/;
+    if (!myRegex.test(values.password)) {
+      errors.password = INVALID_PASSWORD;
+    }
     return errors;
   };
 

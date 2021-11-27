@@ -1,11 +1,13 @@
-/* eslint-disable no-console */
-import { all, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, put, takeLatest, debounce,
+} from 'redux-saga/effects';
 import get from 'lodash/get';
 
 import {
   SUBMIT_ACTIVITIES_REQUESTED,
   FETCH_ACTIVITIES_REQUESTED,
   DELETE_ACTIVITIES_REQUESTED,
+  FETCH_DEBOUNCE_ACTIVITIES_REQUESTED,
 } from './types';
 
 import {
@@ -76,16 +78,19 @@ function* submitActivitieRequestedSagas({ payload, id }) {
   }
 }
 
-function* fetchActivitiesRequestedSagas({ id }) {
+function* fetchActivitiesRequestedSagas({ id, search }) {
   try {
+    let url = `${ACTIVITIES}`;
     if (!id) {
-      const response = yield Get(`${ACTIVITIES}`);
-
+      if (search) {
+        url += `?search=${search}`;
+      }
+      const response = yield Get(url);
       const documents = get(response.data, 'data');
       yield put(fetchActivitiesSucceeded({ documents }));
     }
     if (id) {
-      const response = yield Get(`${ACTIVITIES}/${id}`);
+      const response = yield Get(`${url}/${id}`);
       const entry = get(response.data, 'data');
       yield put(fetchOneActivitiesSucceeded({ entry }));
     }
@@ -102,5 +107,6 @@ export default function* userSagas() {
     takeLatest(SUBMIT_ACTIVITIES_REQUESTED, submitActivitieRequestedSagas),
     takeLatest(FETCH_ACTIVITIES_REQUESTED, fetchActivitiesRequestedSagas),
     takeLatest(DELETE_ACTIVITIES_REQUESTED, deleteActivitieRequestedSagas),
+    debounce(1000, FETCH_DEBOUNCE_ACTIVITIES_REQUESTED, fetchActivitiesRequestedSagas),
   ]);
 }
