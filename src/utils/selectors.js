@@ -161,6 +161,11 @@ export const getNavigationHeader = (userAuthentication) => {
       url: landingPages.schoolCampaign,
 
     },
+    {
+      name: 'Donate',
+      label: 'Contribuir',
+      url: publicRoutes.donate,
+    },
   ];
   return userAuthentication
     ? publicAndBackOfficeHeader
