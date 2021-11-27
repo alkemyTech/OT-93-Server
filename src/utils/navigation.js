@@ -11,7 +11,7 @@ const mainRoutes = {
     testimonialform: '/create-testimonials',
     organization: '/organization',
     slides: '/slides',
-    slideform: '/backoffice/create-slide',
+    slideform: '/create-slide',
     users: '/create-user',
     members: '/backoffice/members',
     membersForm: '/backoffice/members/edit',
