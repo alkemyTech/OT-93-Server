@@ -52,6 +52,17 @@ const Component = ({
   };
 
   const ID = get(match, 'params.id');
+
+  // const [terms, setTerms] = useState(false);
+  // const termsReaded = (e) => {
+  //   setTerms(e.target.checked);
+  // };
+  // const submitInfo = () => {
+  //   if (terms === true) {
+  //     postRegisterUserRequestedSagas();
+  //   }
+  // };
+
   const goBackToHome = () => push('/');
 
   return (

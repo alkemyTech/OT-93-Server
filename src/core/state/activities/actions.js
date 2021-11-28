@@ -5,6 +5,7 @@ import {
   FETCH_ACTIVITIES_SUCCEEDED,
   DELETE_ACTIVITIES_REQUESTED,
   CLEAN_ACTIVITIES_FORM,
+  FETCH_DEBOUNCE_ACTIVITIES_REQUESTED,
 } from './types';
 
 export const submitActivitiesRequested = (props) => ({
@@ -14,6 +15,11 @@ export const submitActivitiesRequested = (props) => ({
 
 export const fetchActivitiesRequested = (props) => ({
   type: FETCH_ACTIVITIES_REQUESTED,
+  ...props,
+});
+
+export const fetchDebounceActivitiesRequested = (props) => ({
+  type: FETCH_DEBOUNCE_ACTIVITIES_REQUESTED,
   ...props,
 });
 
