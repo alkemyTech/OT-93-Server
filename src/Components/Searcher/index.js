@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { BsSearch } from 'react-icons/bs';
+import { SEARCH } from '../../utils/constants';
 
 const Component = ({ fetchDebounce, fetchRequested }) => {
   const handleChangeDebounce = (e) => {
@@ -20,14 +21,13 @@ const Component = ({ fetchDebounce, fetchRequested }) => {
       <Col md={6}>
         <InputGroup size="lg">
           <InputGroupText>
-            {' '}
-            <BsSearch />{' '}
+            <BsSearch />
           </InputGroupText>
           <Input
             type="text"
             onChange={handleChangeDebounce}
             name="debounceSearch"
-            placeholder="Buscar"
+            placeholder={SEARCH}
             class="form-control"
           />
         </InputGroup>
