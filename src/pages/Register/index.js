@@ -1,4 +1,4 @@
-/* import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
 import fromState from '../../core/selectors';
@@ -20,4 +20,3 @@ export default connect(
     dispatch,
   ),
 )(Component);
- */
