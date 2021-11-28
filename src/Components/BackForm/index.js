@@ -22,18 +22,20 @@ import get from 'lodash/get';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SEND, CANCEL } from '../../utils/constants';
+import { toBase64 } from '../../utils';
 
 const BackForm = ({
   form, fields, submit, id, validate, goBack, push,
 }) => {
-  const [text, setText] = useState('');
-
+  const [text, setText] = useState();
+  const [image, setImage] = useState();
   const Formik = useFormik({
     enableReinitialize: true,
     initialValues: { ...form },
     validate,
     onSubmit: (payload) => {
       payload.description = text;
+      payload.image = image;
       submit({ payload, id, push });
     },
   });
@@ -67,15 +69,16 @@ const BackForm = ({
                         />
                       )}
                       {get(field, 'type') === 'image' && (
-                        <Input
-                          className="form-control"
-                          onChange={Formik.handleChange}
+                        <input
+                          className="form-control form-control-file"
+                          onChange={(event) => {
+                            toBase64(event.currentTarget.files[0]).then((data) => setImage(data));
+                          }}
                           onBlur={Formik.handleBlur}
-                          value={Formik.values[get(field, 'name')]}
                           type="file"
                           name={get(field, 'name')}
                           id={get(field, 'id')}
-                          accept="image/png, image/jpeg, image/jpg"
+                          accept=".png, .jpeg, .jpg"
                         />
                       )}
                       {get(field, 'type') === 'dropdown' && (

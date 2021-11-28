@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React from 'react';
 import { PropTypes } from 'prop-types';
@@ -19,9 +20,8 @@ const Component = ({
 }) => {
   const validate = (values) => {
     const errors = {};
-    if (!values.email || !values.image) {
+    if (!values.email) {
       errors.email = REQUIRED;
-      errors.image = REQUIRED;
     }
     if (values.password < 8) {
       errors.password = SHORT_PASSWORD;

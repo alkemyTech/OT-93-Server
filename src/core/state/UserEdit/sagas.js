@@ -29,7 +29,7 @@ function* postEditUserRequestedSagas({ payload, id }) {
         name,
         password,
         role_id: role,
-        profile_image: image,
+        // profile_image: image,
       });
       success = get(responseCreate, 'data.success');
       yield push(mainRoutes.home);
@@ -40,14 +40,17 @@ function* postEditUserRequestedSagas({ payload, id }) {
         name,
         password,
         role_id: role,
-        profile_image: image,
+        // profile_image: image,
       });
       success = get(responseEdit, 'data.success');
       yield push(mainRoutes.home);
     }
     if (success) {
-      yield put(editUser({}));
       yield put(cleanForm({}));
+      yield put(setSystemMessage({ icon: 'success', message: '' }));
+    }
+    if (!success) {
+      yield put(setSystemMessage({ icon: 'error', message: 'Algo salió mal' }));
     }
   } catch (err) {
     throw Error(err);
