@@ -7,13 +7,12 @@ import {
 } from 'reactstrap';
 import BackForm from '../../../Components/BackForm';
 import Title from '../../../Components/Title';
-import { REQUIRED } from '../../../utils/constants';
+import { REQUIRED, CREATE_TESTIMONIAL } from '../../../utils/constants';
 import { getRoutes } from '../../../utils';
 
 const { backOfficeRoutes } = getRoutes('mainRoutes');
 
 const Component = ({
-  title,
   form,
   fields,
   submitTestimonialRequested,
@@ -37,7 +36,7 @@ const Component = ({
     <Container>
       <Row>
         <Col>
-          <Title text={title} />
+          <Title text={<h1>{CREATE_TESTIMONIAL}</h1>} />
           <BackForm
             key="NewsForm"
             form={form}

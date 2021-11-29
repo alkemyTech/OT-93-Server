@@ -53,31 +53,39 @@ const Component = ({
   };
 
   return (
-        <Container>
-            <Row className="list-row">
-                <Col sm="12" className="mr-2">
-                    <Row className="d-flex justify-content-between align-items-center">
-                        <Col>
-                        <Button className="ml-3 px-3 btn-cancel" onClick={() => push(backOfficeRoutes.home)}>
-                            {GOBACK}
-                        </Button>
-                        <Title text={TESTIMONIALS} />
-                        <Button className="btn-submit mr-3" onClick={() => push(backOfficeRoutes.testimonial)}>
-                            {ADD}
-                        </Button>
-                        </Col>
-                    </Row>
-                    <TableList
-                      documents={get(list, 'documents')}
-                      onDelete={onDelete}
-                      onEdit={onEdit}
-                      onView={onView}
-                      // eslint-disable-next-line react/jsx-props-no-spreading
-                      {...table}
-                    />
-                </Col>
-            </Row>
-        </Container>
+    <Container>
+      <Row className="list-row">
+        <Col sm="12" className="mr-2">
+          <Row className="d-flex justify-content-between align-items-center mt-5 mb-5">
+            <Col className="d-flex justify-content-evenly">
+              <Button
+                className="ml-3 px-3 btn-cancel"
+                color="danger"
+                onClick={() => push(backOfficeRoutes.home)}
+              >
+                {GOBACK}
+              </Button>
+              <Title text={<h1>{TESTIMONIALS}</h1>} />
+              <Button
+                className="btn-submit mr-3"
+                color="success"
+                onClick={() => push(backOfficeRoutes.testimonial)}
+              >
+                {ADD}
+              </Button>
+            </Col>
+          </Row>
+          <TableList
+            documents={get(list, 'documents')}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            onView={onView}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...table}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

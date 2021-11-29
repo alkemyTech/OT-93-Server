@@ -36,8 +36,8 @@ const index = () => {
   });
 
   return (
-    <Row className="justify-content-center mt-3">
-      <Col lg={10}>
+    <Row className="justify-content-center mt-4 mb-3">
+      <Col lg={8}>
         <Form onSubmit={Formik.handleSubmit}>
           <InputGroup>
             <Input

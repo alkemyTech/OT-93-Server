@@ -39,6 +39,7 @@ const NotFound = lazy(() => import('../Components/NotFound'));
 const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
 const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
 const Organization = lazy(() => import('../pages/Organization/Admin'));
+const Activities = lazy(() => import('../pages/Activities'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -97,10 +98,40 @@ function Router() {
         <Route exact path={backOfficeRoutes.news} component={NewList} />
         <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
         <Route exact path={publicRoutes.contact} component={Contact} />
-        {userAuthenticated ? <Redirect from="/register" to="/" /> : <Route exact path={publicRoutes.register} component={Register} />}
+        <Route
+          exact
+          path={backOfficeRoutes.organization}
+          component={Organization}
+        />
+        <Route
+          exact
+          path={backOfficeRoutes.activities}
+          component={ActivitiesList}
+        />
+        <Route exact path={publicRoutes.activity} component={Activities} />
+        <Route exact path={backOfficeRoutes.slideform} component={SlidesForm} />
+        <Route
+          exact
+          path={backOfficeRoutes.organizationform}
+          component={OrganizationForm}
+        />
+        <Route
+          exact
+          path={backOfficeRoutes.testimonialform}
+          component={TestimonialsForm}
+        />
+        <Route
+          exact
+          path={backOfficeRoutes.testimonials}
+          component={TestimonialsList}
+        />
+
+        {userAuthenticated ? (
+          <Redirect from="/register" to="/" />
+        ) : (
+          <Route exact path={publicRoutes.register} component={Register} />
+        )}
         <Route component={NotFound} />
-        <Route exact path={backOfficeRoutes.organization} component={Organization} />
-        <Route exact path={backOfficeRoutes.organizationform} component={OrganizationForm} />
       </AnimatedSwitch>
     </Suspense>
   );
