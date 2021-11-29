@@ -5,6 +5,7 @@ import {
   FETCH_NEWS_SUCCEEDED,
   DELETE_NEWS_REQUESTED,
   CLEAN_NEWS_FORM,
+  FETCH_DEBOUNCE_NEWS_REQUESTED,
 } from './types';
 
 export const submitNewsRequested = (props) => ({
@@ -14,6 +15,11 @@ export const submitNewsRequested = (props) => ({
 
 export const fetchNewsRequested = (props) => ({
   type: FETCH_NEWS_REQUESTED,
+  ...props,
+});
+
+export const fetchDebounceNewsRequested = (props) => ({
+  type: FETCH_DEBOUNCE_NEWS_REQUESTED,
   ...props,
 });
 
