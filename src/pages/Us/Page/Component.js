@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { get } from 'lodash';
 import Title from '../../../Components/Title';
+import SocialMedia from '../../../Components/SocialMedia';
 import USmembers from '../List';
 import { US } from '../../../utils/constants';
 import { noHTML } from '../../../utils';
@@ -31,6 +32,7 @@ const Component = ({
             {about && noHTML(about)}
           </Col>
           <USmembers />
+          <SocialMedia />
         </Row>
       </Container>
     </>

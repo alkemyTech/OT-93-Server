@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row, Container } from 'reactstrap';
-import { LinkedinCompanyProfile } from 'react-social-plugins';
+import { LinkedinCompanyProfile, TwitterTweet } from 'react-social-plugins';
+import { ONG_NAME } from '../../utils/constants';
 
 export default function SocialMedia() {
   return (
@@ -9,17 +10,18 @@ export default function SocialMedia() {
         <Col>
           <LinkedinCompanyProfile
             lang="en_US"
-            companyId={1231231231}
-            format="inline" // Or "hover"
-            text="Company name" // text to show in "hover" format
+            companyId={3144678}
+            format="inline"
+            text={ONG_NAME}
           />
         </Col>
         <Col>
-          <LinkedinCompanyProfile
-            lang="en_US"
-            companyId={123123123}
-            format="inline" // Or "hover"
-            text="Company name" // text to show in "hover" format
+          <TwitterTweet
+            align="left"
+            coversation="none"
+            tweetId="1457709181708951558"
+            theme="light"
+            width={325}
           />
         </Col>
       </Row>
