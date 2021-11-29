@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Col, Row, Container } from 'reactstrap';
 import { LinkedinCompanyProfile, TwitterTweet } from 'react-social-plugins';
