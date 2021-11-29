@@ -6,8 +6,10 @@ import {
   CardText,
   CardBody,
   CardTitle,
+  Button,
   Col,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import get from 'lodash/get';
 import '../../css/Card.css';
 import isEmpty from 'lodash/isEmpty';
@@ -27,16 +29,21 @@ const Component = ({ data }) => {
   }
   return (
       <Col>
-        <Card className="Card">
+        <Card className="backoffice-card my-2">
+          {get(data, 'image') ? (
           <CardImg
             top
             src={get(data, 'image') || placeholder}
             alt="Card image"
             className="card-Image"
           />
+          ) : (
+            get(data, 'icon')
+          )}
           <CardBody>
-            <CardTitle tag="h5">{get(data, 'name')}</CardTitle>
-            <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>
+            {get(data, 'name') && !get(data, 'label') && <CardTitle tag="h5">{get(data, 'name')}</CardTitle>}
+            {textNoHtml && <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>}
+            {get(data, 'label') && <Link to={get(data, 'url')} style={{ textDecoration: 'none' }}> <Button type="button" outline color="secondary">{get(data, 'label')}</Button> </Link>}
           </CardBody>
         </Card>
       </Col>
@@ -44,7 +51,7 @@ const Component = ({ data }) => {
 };
 
 Component.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 export default Component;
