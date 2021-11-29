@@ -1,9 +1,8 @@
-
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Col, Button, Row, Container, Input,
+  Col, Button, Row, Container,
 } from 'reactstrap';
 import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';

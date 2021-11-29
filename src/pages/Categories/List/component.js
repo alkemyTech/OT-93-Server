@@ -17,9 +17,14 @@ import { getRoutes } from '../../../utils';
 import {
   CATEGORY, CREATE_CATEGORY, Delete, EDIT,
 } from '../../../utils/constants';
+import Searcher from '../../../Components/Searcher';
 
 const Component = ({
-  list, fetchCategoriesRequested, deleteCategorieRequested, history: { push },
+  list,
+  fetchDebounceCategoriesRequested,
+  fetchCategoriesRequested,
+  deleteCategorieRequested,
+  history: { push },
 }) => {
   useEffect(() => {
     fetchCategoriesRequested();
@@ -43,13 +48,17 @@ const Component = ({
           <Title text={<h1>{CATEGORY}</h1>} className="mt-3 pb-5" />
           <Link
             to={backOfficeRoutes.categories}
-            className="btn btn-secondary mb-5"
+            className="btn btn-secondary mb-3"
           >
             {CREATE_CATEGORY}
           </Link>
+          <Searcher
+            fetchDebounce={fetchDebounceCategoriesRequested}
+            fetchRequested={fetchCategoriesRequested}
+          />
           {documents
             && map(documents, (element) => (
-              <Card key={element.id}>
+              <Card className="mt-2" key={element.id}>
                 <CardBody>
                   <Row>
                     <Col>
@@ -77,6 +86,7 @@ const Component = ({
 };
 
 Component.propTypes = {
+  fetchDebounceCategoriesRequested: PropTypes.func.isRequired,
   fetchCategoriesRequested: PropTypes.func.isRequired,
   deleteCategorieRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({

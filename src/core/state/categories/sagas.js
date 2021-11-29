@@ -1,10 +1,13 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, put, takeLatest, debounce,
+} from 'redux-saga/effects';
 import get from 'lodash/get';
 
 import {
   SUBMIT_CATEGORIES_REQUESTED,
   FETCH_CATEGORIES_REQUESTED,
   DELETE_CATEGORIES_REQUESTED,
+  FETCH_DEBOUNCE_CATEGORIES_REQUESTED,
 } from './types';
 
 import {
@@ -80,10 +83,14 @@ function* submitCategoriesRequestedSagas({ payload, id }) {
   }
 }
 
-function* fetchCategoriesRequestedSagas({ id }) {
+function* fetchCategoriesRequestedSagas({ id, search }) {
   try {
+    let url = `${CATEGORIES}`;
     if (!id) {
-      const response = yield Get(CATEGORIES);
+      if (search) {
+        url += `?search=${search}`;
+      }
+      const response = yield Get(url);
       const documents = get(response, 'data');
       yield put(fetchCategoriesSucceeded({ documents }));
     }
@@ -111,5 +118,6 @@ export default function* userSagas() {
     takeLatest(SUBMIT_CATEGORIES_REQUESTED, submitCategoriesRequestedSagas),
     takeLatest(FETCH_CATEGORIES_REQUESTED, fetchCategoriesRequestedSagas),
     takeLatest(DELETE_CATEGORIES_REQUESTED, deleteCategorieSagas),
+    debounce(1000, FETCH_DEBOUNCE_CATEGORIES_REQUESTED, fetchCategoriesRequestedSagas),
   ]);
 }
