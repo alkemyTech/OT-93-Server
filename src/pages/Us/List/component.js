@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Container } from 'reactstrap';
@@ -12,7 +11,7 @@ const Component = ({ fetchMembersRequested, list, table }) => {
   }, []);
 
   return (
-    <Container>
+    <Container fluid>
       <Row className="list-row">
         <Col sm="12" className="mr-2">
           <h4 className="text-center mb-3 my-1">{MEMBERS}</h4>

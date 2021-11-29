@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { getRoutes } from '../../../utils';
 import BackForm from '../../../Components/BackForm';
-import { REQUIRED } from '../../../utils/constants';
+import { REQUIRED, NEWS } from '../../../utils/constants';
 import Title from '../../../Components/Title';
 
 const backOfficeRoutes = getRoutes('backOffice');
 
 const Component = ({
-  title,
   form,
   fields,
   submitNewsRequested,
@@ -35,7 +34,7 @@ const Component = ({
 
   return (
     <>
-      <Title text={title} />
+      <Title text={<h1>{NEWS}</h1>} />
       <BackForm
         key="NewsForm"
         form={form}

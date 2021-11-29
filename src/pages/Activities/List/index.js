@@ -6,8 +6,7 @@ import {
   fetchActivitiesRequested,
   deleteActivitiesRequested,
   fetchDebounceActivitiesRequested,
-}
-  from '../../../core/state/activities/actions';
+} from '../../../core/state/activities/actions';
 import Component from './component';
 
 const mapStateToProps = (state) => ({
