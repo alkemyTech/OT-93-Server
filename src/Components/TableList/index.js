@@ -13,6 +13,10 @@ import map from 'lodash/map';
 import noop from 'lodash/noop';
 import isEmpty from 'lodash/isEmpty';
 import uniqueId from 'lodash/uniqueId';
+import {
+  EDIT,
+  Delete,
+} from '../../utils/constants';
 
 export const getDocumentByColumn = (document, column) => get(document, get(column, 'key', null));
 
@@ -103,7 +107,7 @@ const TableList = ({
                                                           color="warning"
                                                           className="btn-grey "
                                                         >
-                                                                 Edit
+                                                                 {EDIT}
                                                         </Button>
                                                     )}
                                                     {column.view && (
@@ -123,7 +127,7 @@ const TableList = ({
                                                           color="danger"
                                                           className="btn-grey "
                                                         >
-                                                            Delete
+                                                            {Delete}
                                                         </Button>
                                                     )}
                                                 </Col>

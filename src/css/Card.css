@@ -6,6 +6,7 @@
 
 .Card {
   height: 300px !important;
+  overflow: scroll;
 }
 
 .show-Section {

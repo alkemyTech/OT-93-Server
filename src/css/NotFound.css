@@ -1,5 +1,4 @@
 .not_found {
-  height: calc(100vh - 268px - 112px);
   display: flex;
   align-items: center;
   justify-content: center;

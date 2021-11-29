@@ -9,16 +9,16 @@ import { getNavigationBackOffice } from '../../utils/selectors';
 import Logo from '../../utils/assets/LOGO.png';
 
 const Sidenav = () => (
-    <Navbar className="shadow" color="light" light>
-        <Row>
-          <Col>
+    <Navbar className=" d-flex d-md-none bg-transparent">
+        <Row className="mx-auto">
+          <Col md={12}>
         <Button
-          className="navbar-toggler "
+          className="navbar-toggler text-center d-flex mx-auto justify-content-center"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
-          <span className="navbar-toggler-icon " />
+          <span className=" navbar-toggler-icon" />
         </Button>
 
         <div

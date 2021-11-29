@@ -22,18 +22,20 @@ import get from 'lodash/get';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SEND, CANCEL } from '../../utils/constants';
+import { toBase64 } from '../../utils';
 
 const BackForm = ({
   form, fields, submit, id, validate, goBack, push,
 }) => {
-  const [text, setText] = useState('');
-
+  const [text, setText] = useState();
+  const [image, setImage] = useState();
   const Formik = useFormik({
     enableReinitialize: true,
     initialValues: { ...form },
     validate,
     onSubmit: (payload) => {
       payload.description = text;
+      payload.image = image;
       submit({ payload, id, push });
     },
   });
@@ -56,7 +58,7 @@ const BackForm = ({
                       </Label>
                     </Col>
                     <Col className="mb-3 px-2">
-                    { get(field, 'type') === 'CKEditor' && (
+                      {get(field, 'type') === 'CKEditor' && (
                         <CKEditor
                           editor={ClassicEditor}
                           data={Formik.values[get(field, 'name')]}
@@ -65,9 +67,21 @@ const BackForm = ({
                             setText(data);
                           }}
                         />
-                    )}
-                    { get(field, 'type') === 'dropdown' && (
-                      <>
+                      )}
+                      {get(field, 'type') === 'image' && (
+                        <input
+                          className="form-control form-control-file"
+                          onChange={(event) => {
+                            toBase64(event.currentTarget.files[0]).then((data) => setImage(data));
+                          }}
+                          onBlur={Formik.handleBlur}
+                          type="file"
+                          name={get(field, 'name')}
+                          id={get(field, 'id')}
+                          accept=".png, .jpeg, .jpg"
+                        />
+                      )}
+                      {get(field, 'type') === 'dropdown' && (
                         <Input
                           className="form-control"
                           onChange={Formik.handleChange}
@@ -78,34 +92,30 @@ const BackForm = ({
                           name={get(field, 'name')}
                           id={get(field, 'id')}
                         >
-                          <option
-                            disabled
-                            key="select"
-                            value="rol"
-                          >
-                            Selecciona el rol
+                          <option key="select" value="rol">
+                            Seleccionar opción
                           </option>
-                            {map((get(field, 'options')), (option) => (
-                              <option key={get(option, 'key')}>
-                                {get(option, 'value')}
-                              </option>
-                            ))}
+                          {map(get(field, 'options'), (option) => (
+                            <option key={get(option, 'key')} value={get(option, 'value')}>
+                              {get(option, 'key')}
+                            </option>
+                          ))}
                         </Input>
-                      </>
-                    )}
-                    { get(field, 'type') !== 'CKEditor' && get(field, 'type') !== 'dropdown' && (
-                      <Input
-                        className="form-control"
-                        onChange={Formik.handleChange}
-                        onBlur={Formik.handleBlur}
-                        value={Formik.values[get(field, 'name')]}
-                        placeholder={get(field, 'placeholder')}
-                        type={get(field, 'type')}
-                        name={get(field, 'name')}
-                        id={get(field, 'id')}
-                      />
-                    )}
-
+                      )}
+                      {get(field, 'type') !== 'CKEditor'
+                        && get(field, 'type') !== 'dropdown'
+                        && get(field, 'type') !== 'image' && (
+                          <Input
+                            className="form-control"
+                            onChange={Formik.handleChange}
+                            onBlur={Formik.handleBlur}
+                            value={Formik.values[get(field, 'name')]}
+                            placeholder={get(field, 'placeholder')}
+                            type={get(field, 'type')}
+                            name={get(field, 'name')}
+                            id={get(field, 'id')}
+                          />
+                      )}
                     </Col>
                     <Col className="mb-3 p-0">
                       {Formik.errors[get(field, 'name')]

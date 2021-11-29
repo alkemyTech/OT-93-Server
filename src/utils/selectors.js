@@ -1,6 +1,14 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {
   FaFacebookF, FaInstagram, FaPhoneAlt, FaAt, FaTwitter,
 } from 'react-icons/fa';
+import { BsCardChecklist, BsNewspaper, BsPersonCircle } from 'react-icons/bs';
+import { AiOutlineHome } from 'react-icons/ai';
+import { IoListCircleOutline } from 'react-icons/io5';
+import { IoIosPeople } from 'react-icons/io';
+import { RiSlideshow2Line } from 'react-icons/ri';
+import { CgOrganisation } from 'react-icons/cg';
+import { VscCommentDiscussion } from 'react-icons/vsc';
 import { getRoutes } from './index';
 
 const { publicRoutes, landingPages } = getRoutes('mainRoutes');
@@ -9,56 +17,58 @@ const { backOfficeRoutes } = getRoutes('mainRoutes');
 export const getNavigationBackOffice = () => {
   const navigationBackOffice = [
     {
-      home: '/',
+      name: 'Home',
       label: 'Home',
       url: `${backOfficeRoutes.home}`,
+      icon: <AiOutlineHome className="backoffice-icon" />,
     },
     {
       name: 'activities',
-      label: 'actividades',
+      label: 'Actividades',
       url: `${backOfficeRoutes.activities}`,
-    },
-    {
-      name: 'create activities',
-      label: 'crear actividades',
-      url: `${backOfficeRoutes.newActivity}`,
+      icon: <BsCardChecklist className="backoffice-icon" />,
     },
     {
       name: 'categories',
-      label: 'categorias',
+      label: 'Categorías',
       url: `${backOfficeRoutes.categories}`,
+      icon: <IoListCircleOutline className="backoffice-icon" />,
     },
-
     {
       name: 'slides',
-      label: 'galeria',
+      label: 'Galería',
       url: `${backOfficeRoutes.slides}`,
+      icon: <RiSlideshow2Line className="backoffice-icon" />,
     },
     {
       name: 'members',
-      label: 'miembros',
+      label: 'Miembros',
       url: `${backOfficeRoutes.members}`,
+      icon: <IoIosPeople className="backoffice-icon" />,
     },
     {
       name: 'news',
-      label: 'noticias',
+      label: 'Novedades',
       url: `${backOfficeRoutes.news}`,
+      icon: <BsNewspaper className="backoffice-icon" />,
     },
     {
       name: 'organization',
-      label: 'organizacion',
+      label: 'Organización',
       url: `${backOfficeRoutes.organization}`,
+      icon: <CgOrganisation className="backoffice-icon" />,
     },
-
     {
       name: 'testimonials',
-      label: 'testimonios',
+      label: 'Testimonios',
       url: `${backOfficeRoutes.testimonials}`,
+      icon: <VscCommentDiscussion className="backoffice-icon" />,
     },
     {
       name: 'users',
-      label: 'usuarios',
+      label: 'Usuarios',
       url: `${backOfficeRoutes.users}`,
+      icon: <BsPersonCircle className="backoffice-icon" />,
     },
   ];
   return navigationBackOffice;
