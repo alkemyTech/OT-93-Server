@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
 import fromState from '../../../core/selectors';
-import { fetchNewsRequested, deleteNewsRequested } from '../../../core/state/News/actions';
+import { fetchNewsRequested, deleteNewsRequested, fetchDebounceNewsRequested } from '../../../core/state/News/actions';
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
@@ -15,5 +15,6 @@ export default connect(
   (dispatch) => bindActionCreators({
     fetchNewsRequested,
     deleteNewsRequested,
+    fetchDebounceNewsRequested,
   }, dispatch),
 )(Component);

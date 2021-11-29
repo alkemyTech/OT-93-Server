@@ -1,4 +1,6 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, put, takeLatest, debounce,
+} from 'redux-saga/effects';
 import get from 'lodash/get';
 import { getRoutes } from '../../../utils';
 import { NEWS } from '../../../Services/Urls';
@@ -7,6 +9,7 @@ import {
   SUBMIT_NEWS_REQUESTED,
   FETCH_NEWS_REQUESTED,
   DELETE_NEWS_REQUESTED,
+  FETCH_DEBOUNCE_NEWS_REQUESTED,
 } from './types';
 import { Get, Post, Delete } from '../../../Services/privateApiService';
 import {
@@ -45,20 +48,26 @@ function* submitNewsRequestedSagas({ payload, id }) {
   }
 }
 
-function* fetchNewsRequestedSagas({ id }) {
+function* fetchNewsRequestedSagas({ id, search }) {
   try {
+    let url = `${NEWS}`;
+    if (!id) {
+      if (search) {
+        url += `?search=${search}`;
+      }
+      const response = yield Get(url);
+      const documents = get(response.data, 'data');
+      yield put(fetchNewsSucceeded({ documents }));
+    }
     if (id) {
       const response = yield Get(NEWS, id);
       const entry2 = get(response, 'data');
       const entry = get(entry2, 'data');
       if (!entry) {
-        return yield put(cleanNewsForm({}));
+        yield put(cleanNewsForm({}));
       }
-      return yield put(fetchOneNewsSucceeded({ entry }));
+      yield put(fetchOneNewsSucceeded({ entry }));
     }
-    const entries = yield Get(NEWS);
-    const documents = get(entries.data, 'data');
-    return yield put(fetchNewsSucceeded({ documents }));
   } catch (err) {
     throw Error(err);
   }
@@ -80,5 +89,6 @@ export default function* userSagas() {
     takeLatest(SUBMIT_NEWS_REQUESTED, submitNewsRequestedSagas),
     takeLatest(FETCH_NEWS_REQUESTED, fetchNewsRequestedSagas),
     takeLatest(DELETE_NEWS_REQUESTED, deleteNewsRequestedSagas),
+    debounce(1000, FETCH_DEBOUNCE_NEWS_REQUESTED, fetchNewsRequestedSagas),
   ]);
 }

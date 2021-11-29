@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Col, Button, Row, Container, Input,
+  Col, Button, Row, Container,
 } from 'reactstrap';
 import get from 'lodash/get';
 import { getRoutes, swalConfirmAction } from '../../../utils';
 import TableList from '../../../Components/TableList';
+import Searcher from '../../../Components/Searcher';
 import {
   GOBACK,
   ADD,
@@ -53,13 +55,6 @@ const Component = ({
     push(`${publicRoutes.activity}/${id}`);
   };
 
-  const handleChangeDebounce = (e) => {
-    const value = e.target.value;
-    if (value.length > 2) {
-      fetchDebounceActivitiesRequested({ search: value });
-    }
-  };
-
   return (
     <Container>
       <Row className="list-row">
@@ -83,15 +78,10 @@ const Component = ({
               </Button>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <Input
-                type="text"
-                handleChange={(e) => handleChangeDebounce(e)}
-                name="debounceSearch"
-              />
-            </Col>
-          </Row>
+          <Searcher
+            fetchDebounce={fetchDebounceActivitiesRequested}
+            fetchRequested={fetchActivitiesRequested}
+          />
           <TableList
             documents={get(list, 'documents')}
             onDelete={onDelete}
