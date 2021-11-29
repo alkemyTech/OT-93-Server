@@ -58,3 +58,14 @@ export const noHTML = (text) => {
 export const createSession = (token) => {
   localStorage.setItem('token', token);
 };
+
+export const toBase64 = (blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  if (blob) {
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+      resolve(reader.result.split(',')[1]);
+    };
+    reader.onerror = (err) => { reject(err); };
+  }
+});

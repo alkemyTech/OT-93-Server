@@ -33,7 +33,7 @@ const initialState = {
     {
       label: 'Imagen',
       placeholder: 'Imagen',
-      type: 'text',
+      type: 'image',
       id: 'image',
       name: 'image',
     },
@@ -45,12 +45,12 @@ const initialState = {
       name: 'role',
       options: [
         {
-          key: 1,
-          value: 'usuario',
+          value: 1,
+          key: 'usuario',
         },
         {
-          key: 2,
-          value: 'admin',
+          value: 0,
+          key: 'admin',
         },
       ],
     },

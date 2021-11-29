@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Container, Row } from 'reactstrap';
@@ -13,22 +15,22 @@ const Component = ({
   form,
   fields,
   editUser,
-  // eslint-disable-next-line react/prop-types
-  fetchUsersRequested,
   match,
   history: { push },
 }) => {
   const validate = (values) => {
     const errors = {};
-    if (!values.email || !values.image) {
+    if (!values.email) {
       errors.email = REQUIRED;
-      errors.image = REQUIRED;
     }
     if (values.password < 8) {
       errors.password = SHORT_PASSWORD;
     }
     if (values.name < 4) {
       errors.name = SHORT_PASSWORD;
+    }
+    if (values.role === 'rol') {
+      errors.role = REQUIRED;
     }
     return errors;
   };
@@ -46,7 +48,6 @@ const Component = ({
                 fields={fields}
                 submit={editUser}
                 id={id}
-                fetch={fetchUsersRequested}
                 validate={validate}
                 goBack={goBackToHome}
               />

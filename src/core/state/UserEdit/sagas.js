@@ -1,22 +1,13 @@
-import {
-  all,
-  put,
-  takeLatest,
-} from 'redux-saga/effects';
+/* eslint-disable no-unused-vars */
+import { all, put, takeLatest } from 'redux-saga/effects';
 import { get } from 'lodash';
-import {
-  USERS,
-} from '../../../Services/Urls';
+import { USERS } from '../../../Services/Urls';
 import { getRoutes } from '../../../utils';
 import {
   Post, Patch, Get, Delete,
 } from '../../../Services/privateApiService';
 import { push } from '../../middlewares/history';
-import {
-  EDIT_USER,
-  FETCH_USERS_REQUESTED,
-  DELETE_USERS,
-} from './types';
+import { EDIT_USER, FETCH_USERS_REQUESTED, DELETE_USERS } from './types';
 import {
   cleanForm,
   editUser,
@@ -27,21 +18,39 @@ import {
 const mainRoutes = getRoutes('mainRoutes');
 
 function* postEditUserRequestedSagas({ payload, id }) {
+  const {
+    email, name, password, image, role,
+  } = payload;
   try {
     let success = null;
-    if (id) {
-      const responseEdit = yield Patch(USERS, id, payload);
-      success = get(responseEdit, 'data.success');
-      yield push(mainRoutes.home);
-    }
     if (!id) {
-      const responseCreate = yield Post(USERS, id, payload);
+      const responseCreate = yield Post(USERS, {
+        email,
+        name,
+        password,
+        role_id: role,
+        // profile_image: image,
+      });
       success = get(responseCreate, 'data.success');
       yield push(mainRoutes.home);
     }
+    if (id) {
+      const responseEdit = yield Patch(USERS, id, {
+        email,
+        name,
+        password,
+        role_id: role,
+        // profile_image: image,
+      });
+      success = get(responseEdit, 'data.success');
+      yield push(mainRoutes.home);
+    }
     if (success) {
-      yield put(editUser({}));
       yield put(cleanForm({}));
+      yield put(setSystemMessage({ icon: 'success', message: '' }));
+    }
+    if (!success) {
+      yield put(setSystemMessage({ icon: 'error', message: 'Algo salió mal' }));
     }
   } catch (err) {
     throw Error(err);
@@ -61,7 +70,10 @@ function* fetchUsersRequestedSagas({ id }) {
       yield put(editUser({ entry }));
     }
   } catch (error) {
-    setSystemMessage({ icon: 'error', title: 'there was an error fetching the data' });
+    setSystemMessage({
+      icon: 'error',
+      title: 'there was an error fetching the data',
+    });
   }
 }
 
