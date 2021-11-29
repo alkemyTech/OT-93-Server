@@ -5,6 +5,7 @@ import {
   FETCH_CATEGORIES_SUCCEEDED,
   DELETE_CATEGORIES_REQUESTED,
   CLEAN_CATEGORIES_FORM,
+  FETCH_DEBOUNCE_CATEGORIES_REQUESTED,
 } from './types';
 
 export const submitCategoriesRequested = (props) => ({
@@ -14,6 +15,11 @@ export const submitCategoriesRequested = (props) => ({
 
 export const fetchCategoriesRequested = (props) => ({
   type: FETCH_CATEGORIES_REQUESTED,
+  ...props,
+});
+
+export const fetchDebounceCategoriesRequested = (props) => ({
+  type: FETCH_DEBOUNCE_CATEGORIES_REQUESTED,
   ...props,
 });
 
