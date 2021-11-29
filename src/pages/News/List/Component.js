@@ -12,6 +12,7 @@ import {
 } from '../../../utils';
 import Title from '../../../Components/Title';
 import TableList from '../../../Components/TableList';
+import Searcher from '../../../Components/Searcher';
 import {
   GOBACK,
   ADD,
@@ -23,6 +24,7 @@ import {
 } from '../../../utils/constants';
 
 const Component = ({
+  fetchDebounceNewsRequested,
   deleteNewsRequested,
   fetchNewsRequested,
   list,
@@ -72,6 +74,10 @@ const Component = ({
               </Button>
             </Col>
           </Row>
+          <Searcher
+            fetchDebounce={fetchDebounceNewsRequested}
+            fetchRequested={fetchNewsRequested}
+          />
           <TableList
             documents={get(list, 'documents')}
             onDelete={onDelete}
@@ -88,6 +94,7 @@ const Component = ({
 Component.propTypes = {
   fetchNewsRequested: PropTypes.func.isRequired,
   deleteNewsRequested: PropTypes.func.isRequired,
+  fetchDebounceNewsRequested: PropTypes.func.isRequired,
   list: PropTypes.shape({}).isRequired,
   table: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({
