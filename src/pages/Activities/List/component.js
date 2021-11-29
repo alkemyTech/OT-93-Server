@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -55,13 +56,6 @@ const Component = ({
     push(`${publicRoutes.activity}/${id}`);
   };
 
-  /* const handleChangeDebounce = (e) => {
-    const value = e.target.value;
-    if (value.length > 2) {
-      fetchDebounceActivitiesRequested({ search: value });
-    }
-  };
- */
   return (
     <Container>
       <Row className="list-row">

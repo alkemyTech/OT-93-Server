@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-
 import React, { useEffect } from 'react';
 import {
   Container,
@@ -11,9 +10,7 @@ import {
 } from 'reactstrap';
 import Title from '../../../Components/Title';
 import BackForm from '../../../Components/BackForm';
-import {
-  REQUIRED,
-} from '../../../utils/constants';
+import { REQUIRED, CREATE_SLIDE } from '../../../utils/constants';
 import {
   getRoutes,
 } from '../../../utils';
@@ -46,7 +43,7 @@ const Component = ({
         <Container>
           <Row>
             <Col>
-            <Title text={title} />
+            <Title text={<h1>{CREATE_SLIDE}</h1>} />
             <BackForm
               key="SlidesForm"
               form={form}

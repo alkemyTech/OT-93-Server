@@ -11,9 +11,7 @@ import {
 } from 'reactstrap';
 import Title from '../../../Components/Title';
 import BackForm from '../../../Components/BackForm';
-import {
-  REQUIRED,
-} from '../../../utils/constants';
+import { REQUIRED, CREATE_ACTIVITY } from '../../../utils/constants';
 
 const Component = ({
   title,
@@ -44,7 +42,7 @@ const Component = ({
     <Container>
       <Row>
         <Col>
-          <Title text={title} />
+          <Title text={<h1>{CREATE_ACTIVITY}</h1>} />
           <BackForm
             key="NewsForm"
             form={form}
