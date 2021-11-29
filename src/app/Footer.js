@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <Container>
-      <Row className="Border d-flex justify-content-center ">
+      <Row className="Border d-flex justify-content-center m-4">
         <Col className=" col-lg-5 linkFooter d-flex justify-content-around">
           <ul className="list-unstyled footer-navigation-list d-flex justify-content-around container-fluid">
             {map(navigationItems.slice(0, 3), (item, index) => (
