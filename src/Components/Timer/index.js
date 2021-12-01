@@ -14,7 +14,9 @@ function Timer({ expiryTimestamp }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
+
       <h3>¡Falta {days} días y {hours} horas para que termine la campaña! </h3>
+
       <div style={{ fontSize: '72px' }}>
         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
       </div>

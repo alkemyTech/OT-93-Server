@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -22,8 +23,8 @@ const Component = ({
   return (
     <>
       <Container fluid>
-        <Row>
-          <Col className="mb-5">
+        <Row className="justify-content-center" >
+          <Col className="mb-5" lg={8}>
             <Title
               text={<h1>{US}</h1>}
               className="mt-3 pb-5"

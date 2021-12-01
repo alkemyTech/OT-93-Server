@@ -40,7 +40,9 @@ const Component = ({ data }) => {
           ) : (
             get(data, 'icon')
           )}
+
           <CardBody className="Card">
+
             {get(data, 'name') && !get(data, 'label') && <CardTitle tag="h5">{get(data, 'name')}</CardTitle>}
             {textNoHtml && <CardText>{isEmpty(textNoHtml) ? Empty : textNoHtml}</CardText>}
             {get(data, 'label') && <Link to={get(data, 'url')} style={{ textDecoration: 'none' }}> <Button type="button" outline color="secondary">{get(data, 'label')}</Button> </Link>}

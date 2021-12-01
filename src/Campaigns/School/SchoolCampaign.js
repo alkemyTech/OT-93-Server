@@ -7,6 +7,7 @@ import Content from './Content';
 import Footer from './Footer';
 import Slider from '../../Components/Slider';
 
+
 const SchoolCampaign = () => {
   const dispatch = useDispatch();
   useEffect(() => {

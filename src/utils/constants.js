@@ -70,3 +70,4 @@ export const CREATE_TESTIMONIAL = 'Crear un testimonio';
 export const CREATE_SLIDE = 'Crear un slide';
 export const GO_HOME = 'Ir a Inicio';
 export const ONG_NAME = 'Somos Más';
+
