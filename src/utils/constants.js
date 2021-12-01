@@ -15,7 +15,7 @@ export const SOCIAL_MEDIA = 'Redes Sociales';
 export const SITE = 'Sitio';
 export const CONTACT = '2021 by Alkemy. All Rights Reserved.';
 export const LOGO_ALT = 'Logo de Somos Más';
-export const SUBSCRIBE = 'Subscribe to our News Letter';
+export const SUBSCRIBE = '¡Suscribite a nuestro newsletter!';
 export const NEWS = 'Novedades';
 export const NO_NEWS = 'No hay novedades';
 export const LAST_NEWS = 'Últimas novedades';
@@ -69,3 +69,5 @@ export const CREATE_ACTIVITY = 'Crear una actividad';
 export const CREATE_TESTIMONIAL = 'Crear un testimonio';
 export const CREATE_SLIDE = 'Crear un slide';
 export const GO_HOME = 'Ir a Inicio';
+export const ONG_NAME = 'Somos Más';
+

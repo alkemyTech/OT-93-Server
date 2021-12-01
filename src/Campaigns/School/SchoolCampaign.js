@@ -7,7 +7,8 @@ import Content from './Content';
 import Footer from './Footer';
 import Slider from '../../Components/Slider';
 
-const School = () => {
+
+const SchoolCampaign = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchSlideRequested());
@@ -16,12 +17,8 @@ const School = () => {
   const slides = useSelector((state) => state.Slides);
 
   return (
-  <Container>
-      <Row>
-        <Col>
-          <Header />
-        </Col>
-      </Row>
+  <div>
+          <Header style={{ width: '100%' }} />
       <Row>
         <Col>
           <Container>
@@ -34,14 +31,10 @@ const School = () => {
           <Content />
         </Col>
       </Row>
-      <Row>
-        <Col className="mt-4">
           <Footer />
-        </Col>
-      </Row>
-  </Container>
+  </div>
 
   );
 };
 
-export default School;
+export default SchoolCampaign;

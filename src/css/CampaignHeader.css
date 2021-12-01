@@ -1,5 +1,6 @@
 .header-container {
   height: 10rem;
+  background-color: #e3f2fd;
 }
 .header-campaign-logo {
   height: 7rem;
@@ -19,10 +20,5 @@
 @media screen and (min-width: 992px) {
   .header-slogan {
     display: flex;
-  }
-}
-@media screen and (min-width: 1400px) {
-  .header-container {
-    background-color: #50c87880;
   }
 }

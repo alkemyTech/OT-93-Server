@@ -12,7 +12,7 @@ import logo from '../../utils/assets/LOGO.png';
 import { socialMediaInfo, campaignLinks } from '../../utils/selectors';
 
 const Footer = ({ campaignInfo }) => (
-  <footer className="text-center bg-light container-fluid pt-3">
+  <footer className="text-center container-fluid pt-3">
     <Container>
       <Row>
         <Col lg="3" md="4" sm="8" className="mx-auto">
@@ -24,12 +24,12 @@ const Footer = ({ campaignInfo }) => (
           sm="8"
           className="my-auto d-none d-md-block footer-navigation-list"
         >
-          <a
-            href="www.google.com"
+          <Link
+            to="/"
             className="mb-3 d-inline-block fw-bold text-uppercase"
           >
             ¡Ingresá a Somos Más!
-          </a>
+          </Link>
           <ul className="list-unstyled d-none d-xxl-block">
             {map(
               filter(

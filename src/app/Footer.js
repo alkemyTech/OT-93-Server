@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import map from 'lodash/map';
 import '../css/Footer.css';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../utils/assets/LOGO.png';
 import { getNavigationFooter, socialMediaInfo } from '../utils/selectors';
@@ -14,14 +14,21 @@ import { checkSubscription } from '../core/state/Session/actions';
 const Footer = () => {
   const navigationItems = getNavigationFooter();
   const Dispatch = useDispatch();
+  let display = useLocation();
+  console.log(display.pathname, 'Display', display.pathname === '/school-campaign');
+  if (display.pathname === '/school-campaign' || display.pathname === '/toys-campaign') {
+    display = 'none';
+  } else {
+    display = 'block';
+  }
   useEffect(() => {
     Dispatch(checkSubscription());
-  }, []);
+  }, [display]);
 
   const { NewsLetter } = useSelector((state) => state.login);
 
   return (
-    <Container>
+    <div style={{ display: `${display}`, backgroundColor: '#e3f2fd' }}>
       <Row className="Border d-flex justify-content-center m-4">
         <Col className=" col-lg-5 linkFooter d-flex justify-content-around">
           <ul className="list-unstyled footer-navigation-list d-flex justify-content-around container-fluid">
@@ -73,7 +80,7 @@ const Footer = () => {
       <Row>
         <h6 className="pb-2 pt-2">{CONTACT}</h6>
       </Row>
-    </Container>
+    </div>
   );
 };
 

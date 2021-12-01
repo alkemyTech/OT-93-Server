@@ -66,8 +66,8 @@ const Component = ({
           <Col>
             <Slider items={slides} />
             <Title
-              text={<h1>{organization.welcome_text}</h1>}
-              className="mt-3 pb-5"
+              text={<h3>{organization.welcome_text}</h3>}
+              className="mt-4 pb-5"
             />
             <Slick
               settings={slickSettings}

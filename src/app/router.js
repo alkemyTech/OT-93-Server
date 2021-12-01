@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import { bounceTransition, mapStyles } from '../utils/animatedSwitch';
 import { getRoutes, authUser } from '../utils';
@@ -16,8 +16,10 @@ const UserEdit = lazy(() => import('../pages/UserEdit'));
 const News = lazy(() => import('../pages/News'));
 const ActivitiesForm = lazy(() => import('../pages/Activities/Form'));
 const ActivitiesList = lazy(() => import('../pages/Activities/List'));
+const ActivitiesPage = lazy(() => import('../pages/Activities'));
 const TestimonialsForm = lazy(() => import('../pages/Testimonials/Form'));
 const TestimonialsList = lazy(() => import('../pages/Testimonials/List'));
+const TestimonialsPage = lazy(() => import('../pages/Testimonials/Page'));
 const SlidesForm = lazy(() => import('../pages/Slides/Form'));
 const SlidesList = lazy(() => import('../pages/Slides/List'));
 const ToysCampaign = lazy(() => import('../Campaigns/Toys/ToysCampaign'));
@@ -39,7 +41,6 @@ const NotFound = lazy(() => import('../Components/NotFound'));
 const NewsDetail = lazy(() => import('../pages/News/Detail/index'));
 const OrganizationForm = lazy(() => import('../pages/Organization/Form'));
 const Organization = lazy(() => import('../pages/Organization/Admin'));
-const Activities = lazy(() => import('../pages/Activities'));
 
 const { publicRoutes, landingPages, backOfficeRoutes } = getRoutes('mainRoutes');
 function Router() {
@@ -52,80 +53,111 @@ function Router() {
         mapStyles={mapStyles}
         className="switch-wrapper"
       >
-        <Route exact path={publicRoutes.home} component={Home} />
-        <Route exact path={backOfficeRoutes.users} component={UserEdit} />
-        <Route exact path={`${backOfficeRoutes.users}/:id`} component={UserEdit} />
         <Route
           exact
-          path={`${backOfficeRoutes.newActivity}`}
-          component={ActivitiesForm}
+          path={landingPages.schoolCampaign}
+          component={SchoolCampaign}
         />
-        <Route exact path={backOfficeRoutes.category} component={Categories} />
-        <Route
-          exact
-          path={backOfficeRoutes.categories}
-          component={CategoriesForm}
-        />
-        <Route
-          exact
-          path={`${backOfficeRoutes.categories}/:id`}
-          component={CategoriesForm}
-        />
-        <Route exact path={publicRoutes.us} component={Us} />
-        <Route
-          exact
-          path={backOfficeRoutes.membersForm}
-          component={MembersForm}
-        />
-        <Route
-          exact
-          path={`${backOfficeRoutes.membersForm}/:id`}
-          component={MembersForm}
-        />
-        <Route exact path={backOfficeRoutes.members} component={MembersList} />
-        <Route exact path={publicRoutes.news} component={News} />
-        <Route exact path={backOfficeRoutes.slides} component={SlidesList} />
-        <Route exact path={publicRoutes.donate} component={Donations} />
-        <Route exact path={publicRoutes.thanks} component={Thanks} />
-        <Route exact path={publicRoutes.contact} component={Contact} />
-        <Route exact path={backOfficeRoutes.newsForm} component={NewForm} />
-        <Route
-          exact
-          path={`${backOfficeRoutes.newsForm}/:id`}
-          component={NewForm}
-        />
-        <Route exact path={publicRoutes.news} component={LastEvent} />
-        <Route exact path={backOfficeRoutes.news} component={NewList} />
-        <Route exact path={`${publicRoutes.news}/:id`} component={NewsDetail} />
-        <Route exact path={publicRoutes.contact} component={Contact} />
-        <Route
-          exact
-          path={backOfficeRoutes.organization}
-          component={Organization}
-        />
-        <Route
-          exact
-          path={backOfficeRoutes.activities}
-          component={ActivitiesList}
-        />
-        <Route exact path={publicRoutes.activity} component={Activities} />
-        <Route exact path={backOfficeRoutes.slideform} component={SlidesForm} />
-        <Route
-          exact
-          path={backOfficeRoutes.organizationform}
-          component={OrganizationForm}
-        />
-        <Route
-          exact
-          path={backOfficeRoutes.testimonialform}
-          component={TestimonialsForm}
-        />
-        <Route
-          exact
-          path={backOfficeRoutes.testimonials}
-          component={TestimonialsList}
-        />
+        {!userAuthenticated && (
+          <>
+            <Route exact path={publicRoutes.home} component={Home} />
+            <Route exact path={publicRoutes.activity} component={ActivitiesPage} />
+            <Route exact path={publicRoutes.us} component={Us} />
+            <Route exact path={publicRoutes.user} component={UserEdit} />
+            <Route
+              exact
+              path={`${publicRoutes.user}/:id`}
+              component={UserEdit}
+            />
+            <Route exact path={publicRoutes.news} component={News} />
+            <Route exact path={publicRoutes.donate} component={Donations} />
+            <Route exact path={publicRoutes.thanks} component={Thanks} />
+            <Route exact path={publicRoutes.contact} component={Contact} />
+            <Route
+              exact
+              path={`${publicRoutes.news}/:id`}
+              component={NewsDetail}
+            />
+            <Route
+              exact
+              path={publicRoutes.testimonial}
+              component={TestimonialsPage}
+            />
 
+          </>
+        )}
+        {userAuthenticated && (
+          <>
+            <Route
+              exact
+              path={`${backOfficeRoutes.newActivity}`}
+              component={ActivitiesForm}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.category}
+              component={Categories}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.categories}
+              component={CategoriesForm}
+            />
+            <Route
+              exact
+              path={`${backOfficeRoutes.categories}/:id`}
+              component={CategoriesForm}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.membersForm}
+              component={MembersForm}
+            />
+            <Route
+              exact
+              path={`${backOfficeRoutes.membersForm}/:id`}
+              component={MembersForm}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.members}
+              component={MembersList}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.slides}
+              component={SlidesList}
+            />
+            <Route exact path={backOfficeRoutes.newsForm} component={NewForm} />
+            <Route
+              exact
+              path={`${backOfficeRoutes.newsForm}/:id`}
+              component={NewForm}
+            />
+            <Route exact path={backOfficeRoutes.news} component={NewList} />
+            <Route
+              exact
+              path={backOfficeRoutes.organization}
+              component={Organization}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.organizationform}
+              component={OrganizationForm}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.testimonialform}
+              component={TestimonialsForm}
+            />
+            <Route
+              exact
+              path={backOfficeRoutes.testimonials}
+              component={TestimonialsList}
+            />
+
+          </>
+        )}
         {userAuthenticated ? (
           <Redirect from="/register" to="/" />
         ) : (
@@ -137,3 +169,4 @@ function Router() {
   );
 }
 export default Router;
+
